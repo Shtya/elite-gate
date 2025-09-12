@@ -1,74 +1,138 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { FiPhoneCall } from 'react-icons/fi';
-import { HiOutlineMailOpen } from 'react-icons/hi';
-import { IoLocation } from 'react-icons/io5';
+"use client"
+import Image from "next/image";
+import Link from "next/link";
+import { FiPhoneCall, FiCopy } from "react-icons/fi";
+import { HiOutlineMailOpen } from "react-icons/hi";
+import { IoLocation } from "react-icons/io5";
+import { useCallback, useState } from "react";
 
 export default function TopContactBar() {
-    return (
-        <div className='bg-bg-1 border-b-[1px]'>
-            <div className="container mx-auto flex justify-between py-3 lg:py-5 gap-1">
-                {/* Logo for XL screens */}
-                <Image
-                    alt="الشعار"
-                    src='/logo.png'
-                    width={172}
-                    height={48}
-                    priority
-                    className="self-center hidden xl:block"
-                />
+  const [copied, setCopied] = useState<"phone" | "email" | null>(null);
 
-                {/* Favicon for smaller screens */}
-                <Image
-                    alt="الشعار"
-                    src='/favicon.png'
-                    width={56}
-                    height={40}
-                    priority
-                    className="self-center xl:hidden w-[40px] h-[40px] ml-3"
-                />
+  const copy = useCallback(async (text: string, key: "phone" | "email") => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(key);
+      setTimeout(() => setCopied(null), 1500);
+    } catch {}
+  }, []);
 
-                {/* Contact Info */}
-                <div className="flex divide-x-[1px]">
-                    {/* Phone */}
-                    <div className="flex items-center gap-5 px-2 xl:px-4">
-                        <div className="bg-primary text-white text-2xl p-2 rounded-full">
-                            <FiPhoneCall size={24} />
-                        </div>
-                        <div className="flex-col hidden lg:flex">
-                            <span className="text-xs">اتصال مجاني</span>
-                            <Link className="text-base" href="tel:4065550120">(406) 555-0120</Link>
-                        </div>
-                    </div>
+  const phone = "(406) 555-0120";
+  const email = "debra.holt@example.com";
 
-                    {/* Email */}
-                    <div className="flex items-center gap-5 px-2 xl:px-4">
-                        <div className="bg-secondary text-neutral-700 text-2xl p-2 rounded-full">
-                            <HiOutlineMailOpen size={24} />
-                        </div>
-                        <div className="flex-col hidden lg:flex">
-                            <span className="text-xs">الدعم الإلكتروني</span>
-                            <Link className="text-base" href="mailto:debra.holt@example.com">debra.holt@example.com</Link >
-                        </div>
-                    </div>
-
-                    {/* Location */}
-                    <div className="flex items-center gap-5 px-2 xl:px-4">
-                        <div className="bg-tertiary text-neutral-700 text-2xl p-2 rounded-full">
-                            <IoLocation size={24} />
-                        </div>
-                        <div className="flex-col hidden lg:flex">
-                            <span className="text-xs">موقعنا</span>
-                            <span className="text-base">3605 طريق باركر</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Submit Button */}
-                <Link href="/add-property" className="btn-primary-lg hidden md:block">
-                    أضف عقارك
-                </Link>
-            </div>
+  return (
+    <header aria-label="شريط التواصل العلوي" className="bg-bg-1 border-b">
+      <div className="container mx-auto flex items-center justify-between py-3 lg:py-5 gap-2 px-3">
+        {/* Logo (XL) */}
+        <div className="flex items-center">
+          <div className="hidden xl:block">
+            <Image
+              alt="الشعار"
+              src="/logo.png"
+              width={172}
+              height={48}
+              priority
+              className="h-12 w-auto"
+              sizes="172px"
+            />
+          </div>
+          {/* Favicon (sm) */}
+          <div className="xl:hidden ml-3">
+            <Image
+              alt="الشعار"
+              src="/favicon.png"
+              width={40}
+              height={40}
+              priority
+              className="h-10 w-10"
+              sizes="40px"
+            />
+          </div>
         </div>
-    );
+
+        {/* Contact Info */}
+        <div className="hidden sm:flex items-stretch divide-x">
+          {/* Phone */}
+          <div className="flex items-center gap-4 px-3 xl:px-4">
+            <span className="bg-primary text-white text-2xl p-2 rounded-full inline-flex">
+              <FiPhoneCall size={20} aria-hidden />
+            </span>
+            <div className="hidden lg:flex flex-col">
+              <span className="text-xs text-neutral-500">اتصال مجاني</span>
+              <div className="flex items-center gap-2">
+                <Link
+                  aria-label={`الاتصال على ${phone}`}
+                  className="text-base hover:underline"
+                  href={`tel:${phone.replace(/[^\d+]/g, "")}`}
+                >
+                  {phone}
+                </Link>
+                <button
+                  onClick={() => copy(phone, "phone")}
+                  className="p-1 rounded hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  aria-label="نسخ رقم الهاتف"
+                  title="نسخ"
+                >
+                  <FiCopy className="text-sm" />
+                </button>
+                {copied === "phone" && (
+                  <span className="text-xs text-primary">تم النسخ</span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Email */}
+          <div className="flex items-center gap-4 px-3 xl:px-4">
+            <span className="bg-secondary text-neutral-700 text-2xl p-2 rounded-full inline-flex">
+              <HiOutlineMailOpen size={20} aria-hidden />
+            </span>
+            <div className="hidden lg:flex flex-col">
+              <span className="text-xs text-neutral-500">الدعم الإلكتروني</span>
+              <div className="flex items-center gap-2">
+                <Link
+                  aria-label={`إرسال بريد إلى ${email}`}
+                  className="text-base hover:underline break-all"
+                  href={`mailto:${email}`}
+                >
+                  {email}
+                </Link>
+                <button
+                  onClick={() => copy(email, "email")}
+                  className="p-1 rounded hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  aria-label="نسخ البريد الإلكتروني"
+                  title="نسخ"
+                >
+                  <FiCopy className="text-sm" />
+                </button>
+                {copied === "email" && (
+                  <span className="text-xs text-primary">تم النسخ</span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Location */}
+          <div className="hidden md:flex items-center gap-4 px-3 xl:px-4">
+            <span className="bg-tertiary text-neutral-700 text-2xl p-2 rounded-full inline-flex">
+              <IoLocation size={20} aria-hidden />
+            </span>
+            <div className="hidden lg:flex flex-col">
+              <span className="text-xs text-neutral-500">موقعنا</span>
+              <span className="text-base">3605 طريق باركر</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Submit Button */}
+        <Link
+          href="/add-property"
+          className="btn-primary-lg hidden md:inline-flex focus:outline-none focus:ring-2 focus:ring-primary/30"
+          aria-label="أضف عقارك"
+        >
+          أضف عقارك
+        </Link>
+      </div>
+    </header>
+  );
 }

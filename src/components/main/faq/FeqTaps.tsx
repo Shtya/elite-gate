@@ -1,10 +1,11 @@
-'use client'
-import { useState } from "react";
+'use client';
+
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import FaqList from "@/components/shared/FaqList";
 
 export const faqGroups = [
-    {
+  {
         title: 'شراء منزل جديد',
         items: [
             { question: 'ما هي خطوات شراء المنزل؟', answer: 'تبدأ بتحديد الميزانية، ثم البحث، ثم التفاوض، وأخيرًا التوثيق.' },
@@ -60,43 +61,81 @@ export const faqGroups = [
     },
 ];
 
-
 export default function FeqTaps() {
-    const [activeTitle, setActiveTitle] = useState(faqGroups[0].title);
-    const activeFaq = faqGroups.find(group => group.title === activeTitle);
+  const titles = useMemo(() => faqGroups.map(g => g.title), []);
+  const [activeTitle, setActiveTitle] = useState<string>(faqGroups[0].title);
 
+  // Support deep link via ?group=<slug>
+  const toSlug = (s: string) =>
+    s.trim().toLowerCase().replace(/[^\u0600-\u06FF\w\s-]/g, "").replace(/\s+/g, "-");
 
-    return <>
-        <div className="col-span-12 lg:col-span-4 2xl:col-span-3">
-            <div className="bg-[var(--bg-2)] rounded-2xl p-3 md:p-6 mb-6">
-                <div role="tablist" aria-orientation="horizontal" className="flex flex-col gap-2">
-                    {faqGroups.map((faqGroups, index) => (
-                        <button
-                            key={index}
-                            className={`focus:outline-none flex gap-2 items-center font-medium py-3 px-5 ${activeTitle === faqGroups.title ? 'bg-primary text-white w-full  rounded-full ' : 'text-black'
-                                }`}
-                            role="tab"
-                            aria-selected={activeTitle === activeFaq?.title}
-                            onClick={() => setActiveTitle(faqGroups.title)}
-                        >
-                            {`${index + 1 < 10 ? '0' + (index + 1) : index + 1}. ${faqGroups.title}`}
-                        </button>
-                    ))}
-                </div>
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const g = url.searchParams.get("group");
+    if (!g) return;
+    const bySlug = faqGroups.find(f => toSlug(f.title) === g);
+    if (bySlug) setActiveTitle(bySlug.title);
+  }, []);
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("group", toSlug(activeTitle));
+    history.replaceState(null, "", url.toString());
+  }, [activeTitle]);
+
+  const activeFaq = faqGroups.find((g) => g.title === activeTitle);
+
+  return (
+    <>
+      {/* Sidebar */}
+      <div className="col-span-12 lg:col-span-4 2xl:col-span-3">
+        <aside className="sticky top-24">
+          <div className="bg-[var(--bg-2)] rounded-2xl p-3 md:p-6 mb-6 border border-neutral-200">
+            <div role="tablist" aria-orientation="vertical" className="flex flex-col gap-2">
+              {faqGroups.map((group, index) => {
+                const active = activeTitle === group.title;
+                return (
+                  <button
+                    key={group.title}
+                    role="tab"
+                    aria-selected={active}
+                    aria-controls={`panel-${toSlug(group.title)}`}
+                    id={`tab-${toSlug(group.title)}`}
+                    onClick={() => setActiveTitle(group.title)}
+                    className={`text-right focus:outline-none flex gap-2 items-center font-medium py-3 px-5 rounded-full transition
+                      ${active ? "bg-primary text-white shadow-sm" : "text-neutral-800 hover:bg-white"}
+                    `}
+                  >
+                    <span className="inline-block w-8 text-neutral-500">{`${index + 1}`.padStart(2, "0")}.</span>
+                    <span className="truncate">{group.title}</span>
+                    <span className={`ms-auto text-xs ${active ? "text-white/80" : "text-neutral-500"}`}>
+                      {group.items.length} سؤال
+                    </span>
+                  </button>
+                );
+              })}
             </div>
+          </div>
 
-            {/* بانر التواصل */}
-            <div className="px-6 py-10 rounded-2xl faq-banner overflow-hidden relative isolate bg-[url('/main/faq/faq-banner-img.jpg')] bg-cover bg-center bg-no-repeat">
+          {/* Banner */}
+          <div className="px-6 py-10 rounded-2xl overflow-hidden relative isolate bg-[url('/main/faq/faq-banner-img.jpg')] bg-cover bg-center bg-no-repeat">
+            <div className="absolute inset-0 bg-black/35 -z-10" />
+            <h4 className="mb-6 text-2xl font-semibold text-white">ابحث عن عقارك المثالي</h4>
+            <Link className="py-3 px-6 bg-white rounded-full font-semibold text-primary inline-block hover:brightness-95"
+              href="/contact-us" aria-label="تواصل معنا">
+              تواصل معنا
+            </Link>
+          </div>
+        </aside>
+      </div>
 
-                <h4 className="mb-10 text-2xl font-semibold text-white">ابحث عن عقارك المثالي - تواصل معنا</h4>
-                <Link className="link py-3 px-6 bg-white rounded-full font-semibold text-primary" href="contact-us">تواصل معنا</Link>
-            </div >
-        </div >
-
-        {/* الأسئلة */}
-        < div className="col-span-12 lg:col-span-8 2xl:col-start-5 2xl:col-span-8 flex flex-col content-end" >
-            <h2 className="h2 mb-5 lg:mb-8">{activeTitle}</h2>
-            <FaqList faqs={activeFaq?.items ?? []} />
-        </div >
+      {/* Content */}
+      <div className="col-span-12 lg:col-span-8 2xl:col-start-5 2xl:col-span-8">
+        <h2 className="h2 mb-5 lg:mb-8" id={`panel-${toSlug(activeTitle)}`} role="tabpanel" aria-labelledby={`tab-${toSlug(activeTitle)}`}>
+          {activeTitle}
+        </h2>
+        <FaqList faqs={activeFaq?.items ?? []} />
+      </div>
     </>
+  );
 }

@@ -1,80 +1,75 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
-import Slider from "rc-slider";
-import Link from "next/link";
-import SelectDropdown from "@/components/shared/SelectDropdown";
+import { useState } from 'react';
+import { AiOutlineSearch } from 'react-icons/ai';
+import Slider from 'rc-slider';
+import Link from 'next/link';
+import SelectDropdown from '@/components/shared/SelectDropdown';
 
-type TransactionType = "للإيجار" | "للبيع";
-type CityType = "نيويورك" | "شيكاغو" | "أتلانتا" | "تورونتو" | "لوس أنجلوس";
-type PropertyType = "شقة" | "فيلا" | "مكتب";
+type TransactionType = 'للإيجار' | 'للبيع';
+type CityType = 'نيويورك' | 'شيكاغو' | 'أتلانتا' | 'تورونتو' | 'لوس أنجلوس';
+type PropertyType = 'شقة' | 'فيلا' | 'مكتب';
 
 export default function HeroPropertyFiltering() {
-    const [transaction, setTransaction] = useState<TransactionType>("للإيجار");
-    const [city, setCity] = useState<CityType>("نيويورك");
-    const [propertyType, setPropertyType] = useState<PropertyType>("شقة");
-    const [price, setPrice] = useState<number>(40);
+  const [transaction, setTransaction] = useState<TransactionType>('للإيجار');
+  const [city, setCity] = useState<CityType>('نيويورك');
+  const [propertyType, setPropertyType] = useState<PropertyType>('شقة');
+  const [price, setPrice] = useState<number>(40);
 
-    return (
-        <div className="z-30 p-4 lg:p-5 rounded-xl shadow-lg bg-white flex flex-wrap items-center gap-3 relative max-w-[1060px] mx-auto mt-12">
-            <div className="w-full md:w-[48%] xl:w-[22%] cursor-pointer">
-                <SelectDropdown
-                    options={["للإيجار", "للبيع"]}
-                    value={transaction}
-                    onChange={setTransaction}
-                />
-            </div>
+  const searchHref = `/search?deal=${encodeURIComponent(transaction)}&city=${encodeURIComponent(city)}&type=${encodeURIComponent(propertyType)}&price=${price}`;
 
-            <div className="w-full md:w-[48%] xl:w-[22%] cursor-pointer">
-                <SelectDropdown
-                    options={["نيويورك", "شيكاغو", "أتلانتا", "تورونتو", "لوس أنجلوس"]}
-                    value={city}
-                    onChange={setCity}
-                />
-            </div>
-            <div className="w-full md:w-[48%] xl:w-[22%] cursor-pointer">
-                <SelectDropdown
-                    options={["شقة", "فيلا", "مكتب"]}
-                    value={propertyType}
-                    onChange={setPropertyType}
-                />
-            </div>
+  return (
+    <div className='z-30 p-4 lg:p-5 rounded-2xl shadow-xl bg-white/90 backdrop-blur-sm flex flex-wrap items-center gap-3 relative max-w-[1060px] mx-auto mt-10 border border-neutral-200'>
+      <div className='w-full md:w-[48%] xl:w-[22%] cursor-pointer'>
+         <SelectDropdown options={['للإيجار', 'للبيع']} value={transaction} onChange={setTransaction} />
+      </div>
 
-            {/* Price Slider */}
-            <div className="w-full md:w-[48%] xl:w-[22%]">
-                <div className="relative flex items-center gap-2 py-2 px-6 bg-bg-1 border rounded-3xl focus:shadow-xl">
-                    <span className="flex items-center gap-1">
-                        <AiOutlineSearch className="w-5 h-5" />
-                        السعر
-                    </span>
-                    <span className="absolute top-[-14px] right-4 bg-white px-5 py-1 rounded-2xl shadow text-primary text-xs">
-                        ${price}
-                    </span>
-                    <div className="flex-1 px-2">
-                        <Slider
-                            min={0}
-                            max={100}
-                            value={price}
-                            onChange={(val) => setPrice(val as number)}
-                            styles={{
-                                track: { backgroundColor: "var(--primary)" },
-                                handle: {
-                                    borderColor: "var(--primary)",
-                                    backgroundColor: "var(--primary)",
-                                },
-                            }}
-                        />
-                    </div>
-                </div>
-            </div>
+      <div className='w-full md:w-[48%] xl:w-[22%] cursor-pointer'>
+        <SelectDropdown options={['نيويورك', 'شيكاغو', 'أتلانتا', 'تورونتو', 'لوس أنجلوس']} value={city} onChange={setCity} />
+      </div>
 
-            {/* Search Button */}
-            <div className="w-full xl:w-auto">
-                <Link href="/search" className="py-[14px] px-6 w-full flex justify-center text-white bg-primary rounded-full">
-                    <AiOutlineSearch className="w-5 h-5 shrink-0" />
-                </Link>
-            </div>
+      <div className='w-full md:w-[48%] xl:w-[22%] cursor-pointer'>
+        <SelectDropdown options={['شقة', 'فيلا', 'مكتب']} value={propertyType} onChange={setPropertyType} />
+      </div>
+
+      {/* Price Slider */}
+      <div className='w-full md:w-[48%] xl:w-[22%]'>
+        <div className='relative flex items-center gap-2 py-[12px] px-4 bg-bg-1 border rounded-full focus-within:ring-2 focus-within:ring-primary/40'>
+          <span className='flex items-center gap-1 text-neutral-700'>
+            <AiOutlineSearch className='w-5 h-5' />
+            <span className='text-sm'>حتى</span>
+          </span>
+          <span className='absolute top-[-14px] right-3 bg-white px-3 py-1 rounded-xl shadow-sm text-primary text-xs'>${price}k</span>
+          <div className='flex-1 px-2'>
+            <Slider
+              min={0}
+              max={100}
+              value={price}
+              onChange={val => setPrice(val as number)}
+              styles={{
+                track: { backgroundColor: 'var(--primary)', height: 6 },
+                rail: { height: 6 },
+                handle: {
+                  borderColor: 'var(--primary)',
+                  backgroundColor: 'var(--primary)',
+                  width: 18,
+                  height: 18,
+                  boxShadow: '0 0 0 4px rgba(46,48,190,0.15)',
+                },
+              }}
+              ariaLabelForHandle='سعر أقصى'
+            />
+          </div>
         </div>
-    )
+      </div>
+
+      {/* Search Button */}
+      <div className='w-full xl:w-auto'>
+        <Link href={searchHref} className='py-[14px] px-6 w-full flex items-center gap-2 justify-center text-white bg-primary rounded-full hover:bg-[#212391] transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary' aria-label='ابحث الآن'>
+          <AiOutlineSearch className='w-5 h-5 shrink-0' />
+          <span className='hidden sm:inline'>ابحث الآن</span>
+        </Link>
+      </div>
+    </div>
+  );
 }
