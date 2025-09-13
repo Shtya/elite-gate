@@ -1,4 +1,5 @@
 
+import PrimaryButton from "@/components/shared/Button";
 import SectionTitle from "@/components/shared/SectionTitle";
 import { BiLike } from "react-icons/bi";
 import { BsArrowRight, BsBuilding, BsShop, BsBuildings } from "react-icons/bs";
@@ -77,13 +78,14 @@ const WhyChooseSection = () => {
                         </ul>
 
 
-                        <a
-                            className="link inline-flex items-center gap-2 py-3 px-6 rounded-full bg-primary text-white :bg-primary-400 hover:text-white font-medium"
+                        <PrimaryButton
                             href="service"
+                            className="inline-flex items-center gap-2 py-3 px-6 rounded-full bg-primary text-white hover:text-white font-medium"
                         >
                             <BsArrowRight />
                             <span className="inline-block">اقرأ المزيد</span>
-                        </a>
+                        </PrimaryButton>
+
                     </div>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import PrimaryButton from "@/components/shared/Button";
 import TextInput from "@/components/shared/TextInput";
 import Link from "next/link";
 
@@ -22,12 +23,13 @@ export default function PasswordForm() {
                 </Link>
             </div>
             <div className="col-span-12">
-                <button
+                <PrimaryButton
                     type="submit"
                     className="w-full py-3 px-6 rounded-full bg-primary text-white hover:bg-primary/90 font-semibold transition"
                 >
                     تسجيل الدخول
-                </button>
+                </PrimaryButton>
+
             </div>
         </>
     );

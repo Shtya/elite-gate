@@ -1,3 +1,4 @@
+import PrimaryButton from "@/components/shared/Button";
 import SectionTitle from "@/components/shared/SectionTitle";
 import Link from "next/link";
 import { BsArrowLeft } from "react-icons/bs";
@@ -21,9 +22,13 @@ export default function CallToActionSection() {
 
                     >
                         <div className="max-w-max mt-8">
-                            <Link className="btn-primary flex items-center gap-2" href="#">
+                            <PrimaryButton
+                                href="#"
+                                className="flex items-center gap-2"
+                            >
                                 اتصل بنا <BsArrowLeft />
-                            </Link>
+                            </PrimaryButton>
+
                         </div>
                     </SectionTitle>
                 </div>

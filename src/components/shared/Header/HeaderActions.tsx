@@ -5,13 +5,18 @@ import Image from 'next/image';
 import Menu from '../Menu';
 import UserMenu from './UserMenu';
 import NotificationsMenu from './NotificationsMenu';
+import PrimaryButton from '../Button';
 
 export default function HeaderActions() {
   return (
     <div className="lg:order-2 flex gap-2 items-center">
-      <a href='sign-in' className='btn-primary focus:outline-none focus:ring-2 focus:ring-primary/30'>
+      <PrimaryButton
+        href="sign-in"
+        className="focus:outline-none focus:ring-2 focus:ring-primary/30"
+      >
         Login
-      </a>
+      </PrimaryButton>
+
       {/* Notification Icon */}
       <div className="relative inline-block text-left">
         <Menu

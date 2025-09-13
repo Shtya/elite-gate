@@ -87,7 +87,7 @@ const similarProjects = [
 
 export default function ProjectDetailsPage() {
     return (
-        <div className="container py-10 space-y-12">
+        <div className="container py-[30px] lg:py-[60px] bg-[var(--bg-2)] px-3 space-y-12">
             {/* Hero Section */}
             <ImageGallery images={projectImages} />
 

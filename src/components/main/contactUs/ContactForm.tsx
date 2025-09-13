@@ -1,3 +1,4 @@
+import PrimaryButton from '@/components/shared/Button';
 import SelectInput from '@/components/shared/SelectInput';
 import TextareaInput from '@/components/shared/TextareaInput';
 import TextInput from '@/components/shared/TextInput';
@@ -25,9 +26,13 @@ export default function ContactForm() {
 
                     <TextareaInput id="review-review" label="الرسالة" name="message" placeholder="اكتب رسالتك" />
                     <div className="col-span-12">
-                        <button type="submit" className="link inline-flex items-center gap-2 py-3 px-6 rounded-full bg-primary text-white :bg-primary-400 hover:text-white font-semibold">
+                        <PrimaryButton
+                            type="submit"
+                            className="inline-flex items-center gap-2 py-3 px-6 rounded-full bg-primary text-white hover:text-white font-semibold"
+                        >
                             <span className="inline-block">إرسال الرسالة</span>
-                        </button>
+                        </PrimaryButton>
+
                     </div>
                 </div>
             </form>

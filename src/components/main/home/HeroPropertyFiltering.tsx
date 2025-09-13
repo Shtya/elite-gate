@@ -5,6 +5,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import Slider from 'rc-slider';
 import Link from 'next/link';
 import SelectDropdown from '@/components/shared/SelectDropdown';
+import PrimaryButton from '@/components/shared/Button';
 
 type TransactionType = 'للإيجار' | 'للبيع';
 type CityType = 'نيويورك' | 'شيكاغو' | 'أتلانتا' | 'تورونتو' | 'لوس أنجلوس';
@@ -21,7 +22,7 @@ export default function HeroPropertyFiltering() {
   return (
     <div className='z-30 p-4 lg:p-5 rounded-2xl shadow-xl bg-white/90 backdrop-blur-sm flex flex-wrap items-center gap-3 relative max-w-[1060px] mx-auto mt-10 border border-neutral-200'>
       <div className='w-full md:w-[48%] xl:w-[22%] cursor-pointer'>
-         <SelectDropdown options={['للإيجار', 'للبيع']} value={transaction} onChange={setTransaction} />
+        <SelectDropdown options={['للإيجار', 'للبيع']} value={transaction} onChange={setTransaction} />
       </div>
 
       <div className='w-full md:w-[48%] xl:w-[22%] cursor-pointer'>
@@ -65,10 +66,15 @@ export default function HeroPropertyFiltering() {
 
       {/* Search Button */}
       <div className='w-full xl:w-auto'>
-        <Link href={searchHref} className='py-[14px] px-6 w-full flex items-center gap-2 justify-center text-white bg-primary rounded-full hover:bg-[#212391] transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary' aria-label='ابحث الآن'>
-          <AiOutlineSearch className='w-5 h-5 shrink-0' />
-          <span className='hidden sm:inline'>ابحث الآن</span>
-        </Link>
+        <PrimaryButton
+          href={searchHref}
+          className="py-[14px] px-6 w-full flex items-center gap-2 justify-center text-white bg-primary rounded-full hover:bg-[#212391] transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+          aria-label="ابحث الآن"
+        >
+          <AiOutlineSearch className="w-5 h-5 shrink-0" />
+          <span className="hidden sm:inline">ابحث الآن</span>
+        </PrimaryButton>
+
       </div>
     </div>
   );

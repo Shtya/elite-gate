@@ -5,6 +5,7 @@ import { FiPhoneCall, FiCopy } from "react-icons/fi";
 import { HiOutlineMailOpen } from "react-icons/hi";
 import { IoLocation } from "react-icons/io5";
 import { useCallback, useState } from "react";
+import PrimaryButton from "../Button";
 
 export default function TopContactBar() {
   const [copied, setCopied] = useState<"phone" | "email" | null>(null);
@@ -14,7 +15,7 @@ export default function TopContactBar() {
       await navigator.clipboard.writeText(text);
       setCopied(key);
       setTimeout(() => setCopied(null), 1500);
-    } catch {}
+    } catch { }
   }, []);
 
   const phone = "(406) 555-0120";
@@ -125,13 +126,14 @@ export default function TopContactBar() {
         </div>
 
         {/* Submit Button */}
-        <Link
+        <PrimaryButton
           href="/add-property"
           className="btn-primary-lg hidden md:inline-flex focus:outline-none focus:ring-2 focus:ring-primary/30"
           aria-label="أضف عقارك"
         >
           أضف عقارك
-        </Link>
+        </PrimaryButton>
+
       </div>
     </header>
   );

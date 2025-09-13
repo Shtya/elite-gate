@@ -5,6 +5,7 @@ import TextInput from '@/components/shared/TextInput';
 import Image from 'next/image';
 import { FaCheckCircle } from 'react-icons/fa';
 import Link from 'next/link';
+import PrimaryButton from '@/components/shared/Button';
 
 export default function ForgotPasswordPage() {
     const [email, setEmail] = useState('');
@@ -41,12 +42,13 @@ export default function ForgotPasswordPage() {
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
                                     <div className="col-span-12">
-                                        <button
+                                        <PrimaryButton
                                             type="submit"
                                             className="w-full py-3 px-6 rounded-full bg-primary text-white hover:bg-primary/90 font-semibold transition"
                                         >
                                             إرسال الرابط
-                                        </button>
+                                        </PrimaryButton>
+
                                     </div>
                                 </form>
                             </>
