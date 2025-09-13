@@ -9,6 +9,9 @@ import NotificationsMenu from './NotificationsMenu';
 export default function HeaderActions() {
   return (
     <div className="lg:order-2 flex gap-2 items-center">
+      <a href='sign-in' className='btn-primary focus:outline-none focus:ring-2 focus:ring-primary/30'>
+        Login
+      </a>
       {/* Notification Icon */}
       <div className="relative inline-block text-left">
         <Menu

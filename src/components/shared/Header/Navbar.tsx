@@ -11,12 +11,12 @@ const navigation: NavItem[] = [
         name: "العقارات",
         children: [
             {
-                name: "فلل", href: "/listings/villas",
+                name: "فلل", href: "/projects?type=villas",
             },
-            { name: "شقق", href: "/listings/apartments" },
-            { name: "أراضي سكنية", href: "/listings/residential-land" },
-            { name: "أراضي تجارية", href: "/listings/commercial-land" },
-            { name: "مكاتب إدارية", href: "/listings/offices" },
+            { name: "شقق", href: "/projects?type=apartments" },
+            { name: "أراضي سكنية", href: "/projects?type=residential-land" },
+            { name: "أراضي تجارية", href: "/projects?type=commercial-land" },
+            { name: "مكاتب إدارية", href: "/projects?type=offices" },
         ],
     },
     {

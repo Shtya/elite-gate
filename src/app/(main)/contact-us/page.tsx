@@ -1,3 +1,5 @@
+import ContactSection from "@/components/main/contactUs/ContactSection";
+import HelpSection from "@/components/main/contactUs/HelpSection";
 import { Metadata } from "next";
 
 
@@ -9,8 +11,9 @@ export const metadata: Metadata = {
 export default function ContactUs() {
 
   return (
-    <div>
-      Contact us
-    </div>
+    <>
+      <HelpSection />
+      <ContactSection />
+    </>
   );
 }

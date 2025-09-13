@@ -2,7 +2,7 @@ import { BsArrowRight } from "react-icons/bs";
 
 type SectionTitleProps = {
     title: string,
-    bgColor: string,
+    bgColor?: string,
     arrowTitle: string,
     description?: string,
     className?: string,

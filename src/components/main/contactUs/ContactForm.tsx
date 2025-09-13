@@ -1,0 +1,26 @@
+import SelectInput from '@/components/shared/SelectInput';
+import TextareaInput from '@/components/shared/TextareaInput';
+import TextInput from '@/components/shared/TextInput';
+import React from 'react';
+
+export default function ContactForm() {
+    return (
+        <div className="bg-white rounded-2xl p-3 sm:p-4 md:p-6 lg:p-8">
+            <form>
+                <h3 className="mb-0 h3">طلب عرض سعر</h3>
+                <div className="border border-dashed my-6"></div>
+                <div className="grid grid-cols-12 gap-4">
+                    <TextInput id="first-name" label="الاسم" placeholder="أدخل الاسم" name="name" />
+                    <TextInput id="enter-email" label="البريد الإلكتروني" placeholder="أدخل البريد الإلكتروني" name="email" type="email" />
+                    <SelectInput label="اختر نوع الخدمة" name="service" options={['شقق', 'نيويورك', 'شيكاغو', 'أتلانتا']} />
+                    <TextareaInput id="review-review" label="الرسالة" name="message" placeholder="اكتب رسالتك" />
+                    <div className="col-span-12">
+                        <button type="submit" className="link inline-flex items-center gap-2 py-3 px-6 rounded-full bg-primary text-white :bg-primary-400 hover:text-white font-semibold">
+                            <span className="inline-block">إرسال الرسالة</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    );
+}
