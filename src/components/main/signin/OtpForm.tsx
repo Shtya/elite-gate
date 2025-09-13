@@ -1,7 +1,6 @@
 import PrimaryButton from '@/components/shared/Button';
 import OtpInput from '@/components/shared/OtpInput';
-import TextInput from '@/components/shared/TextInput';
-
+ 
 export default function OtpForm({ otpSent, otpCooldown, otp, setOtp, email, handleSendOtp }: any) {
     return !otpSent ? (
         <div className="col-span-12">
