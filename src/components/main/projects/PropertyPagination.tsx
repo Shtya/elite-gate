@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Pagination from '@/components/shared/Pagination';
 
 interface PaginationControllerProps {
@@ -11,13 +11,14 @@ interface PaginationControllerProps {
 export default function PropertyPagination({ pageCount }: PaginationControllerProps) {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const pathname = usePathname();
 
     const currentPage = Number(searchParams.get('page')) || 1;
 
     const handlePageChange = (page: number) => {
         const params = new URLSearchParams(searchParams.toString());
         params.set('page', page.toString());
-        router.push(`?${params.toString()}`);
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     };
 
     return (

@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { useFavoriteProjects } from '@/hooks/useFavoriteProjects';
 import { Property } from '@/types/global';
+import { useFavoriteProjects } from '@/contexts/FavoriteProjectsContext';
 
 interface FavoriteButtonProps {
     property: Property;

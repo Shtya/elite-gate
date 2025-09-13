@@ -1,11 +1,22 @@
+// FavoriteProjectsContext.tsx
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Property } from '@/types/global';
 
 const STORAGE_KEY = 'favoriteProjects';
 
-export function useFavoriteProjects() {
+interface FavoriteProjectsContextType {
+    favorites: Map<string, Property>;
+    isFavorite: (id: string) => boolean;
+    addFavorite: (property: Property) => void;
+    removeFavorite: (id: string) => void;
+    toggleFavorite: (property: Property) => void;
+}
+
+const FavoriteProjectsContext = createContext<FavoriteProjectsContextType | undefined>(undefined);
+
+export const FavoriteProjectsProvider = ({ children }: { children: React.ReactNode }) => {
     const [favorites, setFavorites] = useState<Map<string, Property>>(new Map());
 
     useEffect(() => {
@@ -21,9 +32,7 @@ export function useFavoriteProjects() {
         }
     }, []);
 
-    const isFavorite = (id: string) => {
-        return favorites.has(id);
-    };
+    const isFavorite = (id: string) => favorites.has(id);
 
     const addFavorite = (property: Property) => {
         const updated = new Map(favorites);
@@ -40,18 +49,24 @@ export function useFavoriteProjects() {
     };
 
     const toggleFavorite = (property: Property) => {
-        if (isFavorite(property.id)) {
-            removeFavorite(property.id);
-        } else {
-            addFavorite(property);
-        }
+        isFavorite(property.id) ? removeFavorite(property.id) : addFavorite(property);
     };
 
-    return {
-        favorites,
-        isFavorite,
-        addFavorite,
-        removeFavorite,
-        toggleFavorite,
-    };
+    return (
+        <FavoriteProjectsContext.Provider
+            value={{ favorites, isFavorite, addFavorite, removeFavorite, toggleFavorite }}
+        >
+            {children}
+        </FavoriteProjectsContext.Provider>
+    );
+};
+
+
+export function useFavoriteProjects() {
+    const context = useContext(FavoriteProjectsContext)
+    if (context === undefined) {
+        throw new Error("Favorite Context was used outside provider")
+    }
+
+    return context;
 }

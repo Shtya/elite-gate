@@ -8,7 +8,7 @@ export default function SigninPage() {
 
 
     return (
-        <section className="py-20 bg-[var(--bg-1)]">
+        <section className="py-20 bg-[var(--bg-1)] mt-4 lg:mt-16">
             <div className="container max-w-[1200px] mx-auto px-4">
                 <div className="flex flex-col lg:flex-row items-stretch justify-between rounded-2xl custom-shadow overflow-hidden">
                     <SectionForm />

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { BsArrowRight } from 'react-icons/bs';
 import SelectInput from '@/components/shared/SelectInput';
 import PrimaryButton from '@/components/shared/Button';
@@ -16,12 +16,13 @@ const propertyTypes = [
 export default function ListPropertyFilterBar() {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const pathname = usePathname();
     const selectedType = searchParams.get('type') || 'all';
 
     const handleTypeChange = (newType: string) => {
         const params = new URLSearchParams(searchParams.toString());
         params.set('type', newType);
-        router.push(`?${params.toString()}`);
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     };
 
     return (

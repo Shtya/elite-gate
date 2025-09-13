@@ -1,49 +1,62 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import SelectInput from '@/components/shared/SelectInput';
 import KeywordSearch from '@/components/shared/KeywordSearch';
 import PriceRangeSlider from '@/components/shared/PriceRangeSlider';
 import ResetFiltersButton from '@/components/shared/ResetFiltersButton';
-
+import { useDebounce } from '@/hooks/useDebounce'; // Adjust path if needed
 
 export default function ProjectsFilterPanel() {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const pathname = usePathname();
 
-    const [keyword, setKeyword] = useState(searchParams.get('keyword') || '');
-    const [type, setType] = useState(searchParams.get('type') || '');
-    const [city, setCity] = useState(searchParams.get('city') || '');
-    const [priceRange, setPriceRange] = useState<[number, number]>([
-        Number(searchParams.get('priceMin')) || 25,
-        Number(searchParams.get('priceMax')) || 89,
-    ]);
+    const [estate, setEstate] = useState({
+        keyword: searchParams.get('keyword') || '',
+        type: searchParams.get('type') || '',
+        city: searchParams.get('city') || '',
+        priceRange: [
+            Number(searchParams.get('priceMin')) || 25,
+            Number(searchParams.get('priceMax')) || 89,
+        ] as [number, number],
+    });
+
+    // Debounced values
+    const debouncedKeyword = useDebounce(estate.keyword);
+    const debouncedPriceRange = useDebounce(estate.priceRange);
 
     useEffect(() => {
-        const params = new URLSearchParams();
-        if (keyword.trim()) params.set('keyword', keyword);
-        if (type) params.set('type', type);
-        if (city) params.set('city', city);
-        if (priceRange[0]) params.set('priceMin', priceRange[0].toString());
-        if (priceRange[1]) params.set('priceMax', priceRange[1].toString());
-        router.push(`?${params.toString()}`);
-    }, [keyword, type, city, priceRange]);
+        const params = new URLSearchParams(searchParams);
+        if (debouncedKeyword.trim()) params.set('keyword', debouncedKeyword);
+        if (estate.type) params.set('type', estate.type);
+        if (estate.city) params.set('city', estate.city);
+        if (debouncedPriceRange[0]) params.set('priceMin', debouncedPriceRange[0].toString());
+        if (debouncedPriceRange[1]) params.set('priceMax', debouncedPriceRange[1].toString());
+
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }, [debouncedKeyword, estate.type, estate.city, debouncedPriceRange]);
 
     const handleReset = () => {
-        setKeyword('');
-        setType('');
-        setCity('');
-        setPriceRange([25, 89]);
-        router.push('?');
+        setEstate({
+            keyword: '',
+            type: '',
+            city: '',
+            priceRange: [25, 89],
+        });
+        router.replace(`${pathname}?`, { scroll: false });
     };
 
     return (
-        <div className="p-4 lg:py-6 lg:px-8 bg-white rounded-2xl shadow-lg">
+        <div className="sticky top-24  p-4 lg:py-6 lg:px-8 bg-white rounded-2xl shadow-lg ">
             <h4 className="mb-0 text-2xl font-semibold">فلترة</h4>
             <div className="border-b border-dashed my-6 opacity-50" />
 
-            <KeywordSearch value={keyword} onChange={setKeyword} />
+            <KeywordSearch
+                value={estate.keyword}
+                onChange={(val) => setEstate((prev) => ({ ...prev, keyword: val }))}
+            />
 
             <div className="border-t border-dashed my-6" />
 
@@ -52,8 +65,8 @@ export default function ProjectsFilterPanel() {
                     <SelectInput
                         label="نوع العقار"
                         name="type"
-                        value={type}
-                        onChange={setType}
+                        value={estate.type}
+                        onChange={(val) => setEstate((prev) => ({ ...prev, type: val }))}
                         options={[
                             { value: '', label: 'اختر نوع العقار' },
                             { value: 'apartment', label: 'شقة' },
@@ -66,8 +79,8 @@ export default function ProjectsFilterPanel() {
                     <SelectInput
                         label="المدينة"
                         name="city"
-                        value={city}
-                        onChange={setCity}
+                        value={estate.city}
+                        onChange={(val) => setEstate((prev) => ({ ...prev, city: val }))}
                         options={[
                             { value: '', label: 'اختر المدينة' },
                             { value: 'jeddah', label: 'جدة' },
@@ -81,7 +94,10 @@ export default function ProjectsFilterPanel() {
             <div className="border-t border-dashed my-6" />
             <p className="mb-4 text-[var(--neutral-700)] text-xl font-medium">نطاق السعر</p>
 
-            <PriceRangeSlider value={priceRange} onChange={setPriceRange} />
+            <PriceRangeSlider
+                value={estate.priceRange}
+                onChange={(val) => setEstate((prev) => ({ ...prev, priceRange: val }))}
+            />
 
             <div className="border-t border-dashed my-4 " />
             <ResetFiltersButton onClick={handleReset} />
