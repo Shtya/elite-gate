@@ -12,7 +12,17 @@ export default function ContactForm() {
                 <div className="grid grid-cols-12 gap-4">
                     <TextInput id="first-name" label="الاسم" placeholder="أدخل الاسم" name="name" />
                     <TextInput id="enter-email" label="البريد الإلكتروني" placeholder="أدخل البريد الإلكتروني" name="email" type="email" />
-                    <SelectInput label="اختر نوع الخدمة" name="service" options={['شقق', 'نيويورك', 'شيكاغو', 'أتلانتا']} />
+                    <SelectInput
+                        label="اختر نوع الخدمة"
+                        name="service"
+                        options={[
+                            { value: 'apartment', label: 'شقق' },
+                            { value: 'new-york', label: 'نيويورك' },
+                            { value: 'chicago', label: 'شيكاغو' },
+                            { value: 'atlanta', label: 'أتلانتا' },
+                        ]}
+                    />
+
                     <TextareaInput id="review-review" label="الرسالة" name="message" placeholder="اكتب رسالتك" />
                     <div className="col-span-12">
                         <button type="submit" className="link inline-flex items-center gap-2 py-3 px-6 rounded-full bg-primary text-white :bg-primary-400 hover:text-white font-semibold">

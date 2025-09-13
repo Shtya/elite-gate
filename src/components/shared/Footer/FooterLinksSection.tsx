@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function FooterLinksSection() {
     const links = [
         { label: "من نحن", href: "/about-us" },
-        { label: "العقارات", href: "/property-list" },
+        { label: "العقارات", href: "/projects" },
         { label: "الأسئلة الشائعة", href: "/faq" },
         { label: "اتصل بنا", href: "/contact-us" },
     ];
