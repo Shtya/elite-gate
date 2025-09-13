@@ -4,6 +4,8 @@ import ClientsSection from "@/components/main/home/ClientsSection";
 import CtaSection from "@/components/main/home/CtaSection";
 import FaqSection from "@/components/main/home/FaqSection";
 import HeroSection from "@/components/main/home/HeroSection";
+import ListedPropertySection from "@/components/main/home/ListedPropertySection";
+import RecentlyAddedPropertySection from "@/components/main/home/RecentlyAddedPropertySection";
 import ServicesSection from "@/components/main/home/ServicesSection";
 import TestimonialSection from "@/components/main/home/TestimonialSection";
 
@@ -14,7 +16,9 @@ export default function Home() {
     <div className="">
       <HeroSection />
       <CategorySection />
+      <ListedPropertySection />
       <ServicesSection />
+      <RecentlyAddedPropertySection />
       <CallToActionSection />
       <TestimonialSection />
       <ClientsSection />
