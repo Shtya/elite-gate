@@ -5,7 +5,8 @@ import WhyChooseSection from "@/components/main/aboutUs/WhyChooseSection";
 import WorkProcessSection from "@/components/main/aboutUs/WorkProcessSection";
 
 
-export default function AboutUsPage() {
+export default async function AboutUsPage() {
+
     return (
         <>
             <AboutSection />

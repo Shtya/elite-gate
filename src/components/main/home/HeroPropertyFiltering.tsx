@@ -38,7 +38,7 @@ export default function HeroPropertyFiltering() {
         <div className='relative flex items-center gap-2 py-[12px] px-4 bg-bg-1 border rounded-full focus-within:ring-2 focus-within:ring-primary/40'>
           <span className='flex items-center gap-1 text-neutral-700'>
             <AiOutlineSearch className='w-5 h-5' />
-            <span className='text-sm'>حتى</span>
+            <span className='text-sm'>السعر</span>
           </span>
           <span className='absolute top-[-14px] right-3 bg-white px-3 py-1 rounded-xl shadow-sm text-primary text-xs'>${price}k</span>
           <div className='flex-1 px-2'>

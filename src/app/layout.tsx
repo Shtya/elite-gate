@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../../src/styles/globals.css";
-import { FavoriteProjectsProvider } from "@/contexts/FavoriteProjectsContext";
+import Providers from "./Providers ";
 
 export const metadata: Metadata = {
   title: {
@@ -18,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang="ar">
       <body className="flex flex-col">
-
-        <FavoriteProjectsProvider>
+        <Providers>
           {children}
-        </FavoriteProjectsProvider>
+        </Providers>
+
       </body>
     </html>
   );
