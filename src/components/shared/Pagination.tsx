@@ -19,7 +19,7 @@ export default function Pagination({ currentPage, pageCount, onPageChange }: Pag
     if (pageCount <= 1) return null;
 
     return (
-        <div className="bg-white flex flex-wrap justify-center items-center pt-6 pb-6 gap-2">
+        <div className="flex flex-wrap justify-center items-center pt-6 pb-6 gap-2">
             {/* First Page */}
             <button
                 onClick={() => onPageChange(1)}

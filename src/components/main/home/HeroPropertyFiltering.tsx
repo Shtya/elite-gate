@@ -17,7 +17,7 @@ export default function HeroPropertyFiltering() {
   const [propertyType, setPropertyType] = useState<PropertyType>('شقة');
   const [price, setPrice] = useState<number>(40);
 
-  const searchHref = `/search?deal=${encodeURIComponent(transaction)}&city=${encodeURIComponent(city)}&type=${encodeURIComponent(propertyType)}&price=${price}`;
+  const searchHref = `/projects?deal=${encodeURIComponent(transaction)}&city=${encodeURIComponent(city)}&type=${encodeURIComponent(propertyType)}&price=${price}`;
 
   return (
     <div className='z-30 p-4 lg:p-5 rounded-2xl shadow-xl bg-white/90 backdrop-blur-sm flex flex-wrap items-center gap-3 relative max-w-[1060px] mx-auto mt-10 border border-neutral-200'>

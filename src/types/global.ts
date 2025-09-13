@@ -7,6 +7,7 @@ export type NavItem = {
 };
 
 export type Property = {
+    id: string;
     imageLink: string;
     type: string;
     title: string;

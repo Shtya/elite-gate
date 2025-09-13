@@ -23,8 +23,9 @@ const navigation: NavItem[] = [
         name: "الصفحات",
         children: [
             { name: "من نحن", href: "/about-us" },
-            { name: "الأسئلة الشائعة", href: "/faq" },
             { name: "اتصل بنا", href: "/contact-us" },
+            { name: "المفضلة", href: "/favorites" },
+            { name: "الأسئلة الشائعة", href: "/faq" },
             { name: "سياسة الخصوصية", href: "/privacy" },
             { name: "الشروط والأحكام", href: "/terms" },
         ],

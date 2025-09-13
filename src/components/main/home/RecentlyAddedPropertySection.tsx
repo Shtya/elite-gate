@@ -5,82 +5,9 @@ import { BsArrowRight } from "react-icons/bs";
 import ListPropertyFilterBar from "./ListPropertyFilterBar";
 import ListProperty from "./ListProperty";
 import { Property } from "@/types/global";
+import { properties } from "@/constants/projects";
 
-const properties: Property[] = [
-    {
-        imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
-        title: 'فيلا الزمرد 362',
-        link: '/projects/emerald-362',
-        rooms: '9 غرف نوم',
-        beds: '7 حمامات',
-        area: '650 متر مربع',
-    },
-    {
-        imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
-        title: 'فيلا الزمرد 362',
-        link: '/projects/emerald-362',
-        rooms: '9 غرف نوم',
-        beds: '7 حمامات',
-        area: '650 متر مربع',
-    },
-    {
-        imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
-        title: 'فيلا الزمرد 362',
-        link: '/projects/emerald-362',
-        rooms: '9 غرف نوم',
-        beds: '7 حمامات',
-        area: '650 متر مربع',
-    },
-    {
-        imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
-        title: 'فيلا الزمرد 362',
-        link: '/projects/emerald-362',
-        rooms: '9 غرف نوم',
-        beds: '7 حمامات',
-        area: '650 متر مربع',
-    },
-    {
-        imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
-        title: 'فيلا الزمرد 362',
-        link: '/projects/emerald-362',
-        rooms: '9 غرف نوم',
-        beds: '7 حمامات',
-        area: '650 متر مربع',
-    },
-    {
-        imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
-        title: 'فيلا الزمرد 362',
-        link: '/projects/emerald-362',
-        rooms: '9 غرف نوم',
-        beds: '7 حمامات',
-        area: '650 متر مربع',
-    },
-    {
-        imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
-        title: 'فيلا الزمرد 362',
-        link: '/projects/emerald-362',
-        rooms: '9 غرف نوم',
-        beds: '7 حمامات',
-        area: '650 متر مربع',
-    },
-    {
-        imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
-        title: 'فيلا الزمرد 362',
-        link: '/projects/emerald-362',
-        rooms: '9 غرف نوم',
-        beds: '7 حمامات',
-        area: '650 متر مربع',
-    },
-    // Add more properties here...
-];
+
 
 export default function RecentlyAddedPropertySection() {
     return (
