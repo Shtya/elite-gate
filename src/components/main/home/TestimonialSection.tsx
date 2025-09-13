@@ -2,9 +2,9 @@
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
 import SectionTitle from "@/components/shared/SectionTitle";
 import SwiperPrevButton from "@/components/shared/SwiperPrevButton";
 import SwiperNextButton from "@/components/shared/SwiperNextButton";

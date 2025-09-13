@@ -11,15 +11,15 @@ interface PropertyCardGridProps {
 
 export default function PropertyCardGrid({ property }: PropertyCardGridProps) {
     return (
-        <div className="bg-white shadow-xl rounded-2xl overflow-hidden">
+        <div className="bg-white shadow-xl rounded-2xl overflow-hidden ">
             {/* Image Section */}
-            <div className="relative group rounded-2xl overflow-hidden">
+            <div className="relative min-h-[400px] group rounded-2xl overflow-hidden">
                 <Image
                     src={property.imageLink}
                     alt={property.title}
                     width={400}
                     height={280}
-                    className="rounded-2xl w-full object-cover"
+                    className="rounded-2xl w-full object-cover min-h-[400px]"
                 />
 
                 {/* Type Tag */}
