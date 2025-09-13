@@ -26,29 +26,32 @@ export default function TopContactBar() {
       <div className="container mx-auto flex items-center justify-between py-3 lg:py-5 gap-2 px-3">
         {/* Logo (XL) */}
         <div className="flex items-center">
-          <div className="hidden xl:block">
-            <Image
-              alt="الشعار"
-              src="/logo.png"
-              width={172}
-              height={48}
-              priority
-              className="h-12 w-auto"
-              sizes="172px"
-            />
-          </div>
-          {/* Favicon (sm) */}
-          <div className="xl:hidden ml-3">
-            <Image
-              alt="الشعار"
-              src="/favicon.png"
-              width={40}
-              height={40}
-              priority
-              className="h-10 w-10"
-              sizes="40px"
-            />
-          </div>
+          <Link href="/">
+
+            <div className="hidden xl:block">
+              <Image
+                alt="الشعار"
+                src="/logo.png"
+                width={172}
+                height={48}
+                priority
+                className="h-12 w-auto"
+                sizes="172px"
+              />
+            </div>
+            {/* Favicon (sm) */}
+            <div className="xl:hidden ml-3">
+              <Image
+                alt="الشعار"
+                src="/favicon.png"
+                width={40}
+                height={40}
+                priority
+                className="h-10 w-10"
+                sizes="40px"
+              />
+            </div>
+          </Link>
         </div>
 
         {/* Contact Info */}
@@ -114,7 +117,7 @@ export default function TopContactBar() {
           </div>
 
           {/* Location */}
-          <div className="hidden md:flex items-center gap-4 px-3 xl:px-4">
+          <div className="md:flex items-center gap-4 px-3 xl:px-4">
             <span className="bg-tertiary text-neutral-700 text-2xl p-2 rounded-full inline-flex">
               <IoLocation size={20} aria-hidden />
             </span>

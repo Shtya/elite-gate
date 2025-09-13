@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { FaCheckCircle } from 'react-icons/fa';
 import Link from 'next/link';
 import PrimaryButton from '@/components/shared/Button';
+import Logo from '@/components/shared/Logo';
 
 export default function ForgotPasswordPage() {
     const [email, setEmail] = useState('');
@@ -22,13 +23,14 @@ export default function ForgotPasswordPage() {
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-center">
                     <div className="w-full lg:w-[50%] bg-white p-8 custom-shadow rounded-2xl">
-                        <h3 className="text-3xl font-bold mb-4 text-[var(--primary-dark)]">
+                        <Logo />
+                        <h3 className="text-3xl font-bold mb-4 text-[var(--primary-dark)] text-center">
                             تغيير كلمة المرور
                         </h3>
 
                         {!submitted ? (
                             <>
-                                <p className="text-[var(--neutral-600)] mb-8">
+                                <p className="text-[var(--neutral-600)] mb-8 text-center">
                                     أدخل بريدك الإلكتروني لإرسال رابط إعادة تعيين كلمة المرور
                                 </p>
                                 <form onSubmit={handleSubmit} className="grid grid-cols-12 gap-4">

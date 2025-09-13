@@ -1,6 +1,7 @@
 'use client';
 
 import PrimaryButton from '@/components/shared/Button';
+import Logo from '@/components/shared/Logo';
 import TextInput from '@/components/shared/TextInput';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,9 +15,11 @@ export default function SigninPage() {
 
                     {/* Form Section */}
                     <div className="w-full lg:w-[50%] bg-white rounded-tr-2xl rounded-br-2xl p-8 ">
+                        <Logo />
                         <form>
-                            <h3 className="text-3xl font-bold mb-4 text-[var(--primary-dark)]">لنبدأ الآن!</h3>
-                            <p className="text-[var(--neutral-600)] mb-8">يرجى إدخال بياناتك للانضمام إلينا</p>
+
+                            <h3 className="text-3xl font-bold mb-4 text-[var(--primary-dark)] text-center">لنبدأ الآن!</h3>
+                            <p className="text-[var(--neutral-600)] mb-8 text-center">يرجى إدخال بياناتك للانضمام إلينا</p>
 
                             <div className="grid grid-cols-12 gap-4">
                                 <TextInput
