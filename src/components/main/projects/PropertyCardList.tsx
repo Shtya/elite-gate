@@ -36,9 +36,13 @@ export default function PropertyCardList({ property }: { property: Property }) {
             {/* Content Section */}
             <div className="col-span-12 md:col-span-7 flex flex-col justify-between">
                 <div className="px-4 pt-4">
-                    <Link href={link} className="text-xl font-semibold text-neutral-700 block mb-4">
+                    <Link href={link} className="text-xl font-semibold text-neutral-700 block mb-4 truncate">
                         {title}
                     </Link>
+
+                    <p className="text-lg font-semibold  mt-2">
+                        {property.price?.toLocaleString() || 1704550555?.toLocaleString()} ريال
+                    </p>
 
                     <ul className="flex flex-wrap divide-x divide-dashed justify-between mb-5 text-sm text-neutral-600">
                         {rooms && (

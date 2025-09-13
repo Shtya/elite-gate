@@ -24,7 +24,7 @@ export default function SimilarProjectsSection({ projects, title }: SimilarProje
         <section className="relative mt-12 max-w-6xl mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">{title}</h2>
 
-            <div className="relative overflow-hidden ">
+            <div className="relative ">
                 <Swiper
                     modules={[Navigation]}
                     spaceBetween={20}
@@ -35,15 +35,15 @@ export default function SimilarProjectsSection({ projects, title }: SimilarProje
                     loop={true}
                     breakpoints={{
                         0: { slidesPerView: 1 },
-                        768: { slidesPerView: 2 },
-                        1024: { slidesPerView: 3 },
+                        1200: { slidesPerView: 2 },
+                        1400: { slidesPerView: 3 },
                     }}
-                    className="h-full"
+                    className="swiper max-w-full text-center  items-stretch"
                 >
 
                     {projects.map((property, idx) => (
-                        <SwiperSlide key={idx} className="!h-full p-2">
-                            <div className="h-full flex items-stretch">
+                        <SwiperSlide key={idx} className="!h-full p-2  items-stretch">
+                            <div className="!h-full flex items-stretch">
                                 <PropertyCardGrid property={property} />
                             </div>
                         </SwiperSlide>

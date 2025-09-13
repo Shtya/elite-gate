@@ -48,6 +48,7 @@ const propertyInfo = {
 
 const similarProjects = [
     {
+        id: "dihshjs5s5",
         imageLink: '/main/projects/property-1.webp',
         type: 'فيلا',
         title: 'فيلا فاخرة – جدة | أبحر الشمالية',
@@ -57,6 +58,7 @@ const similarProjects = [
         area: '800 متر مربع',
     },
     {
+        id: "muskslk56",
         imageLink: '/main/projects/property-2.webp',
         type: 'فيلا',
         title: 'فيلا نموذج لايت',
@@ -66,6 +68,7 @@ const similarProjects = [
         area: '480 متر مربع',
     },
     {
+        id: "jdoamsl55",
         imageLink: '/main/projects/property-3.webp',
         type: 'فيلا',
         title: 'فيلا جوري',
@@ -75,6 +78,7 @@ const similarProjects = [
         area: '460 متر مربع',
     },
     {
+        id: "dkjsmas5",
         imageLink: '/main/projects/property-4.webp',
         type: 'فيلا',
         title: 'فيلا جوري',
@@ -87,17 +91,17 @@ const similarProjects = [
 
 export default function ProjectDetailsPage() {
     return (
-        <div className="container py-[30px] lg:py-[60px] bg-[var(--bg-2)] px-3 space-y-12">
+        <div className="container py-[30px] lg:py-[60px] bg-[var(--bg-1)] px-3 space-y-12">
             {/* Hero Section */}
             <ImageGallery images={projectImages} />
 
             <div className='flex flex-col md:flex-row gap-4 md:gap-6 '>
 
-                <div className=''>
+                <div className='md:basis-4/12'>
                     <ProjectBookingForm id={propertyInfo.id} />
                 </div>
 
-                <div className='flex-1 space-y-4 md:space-y-6'>
+                <div className='md:basis-8/12 space-y-4 md:space-y-6 overflow-hidden'>
 
                     <PropertySummary
                         title={propertyInfo.title}

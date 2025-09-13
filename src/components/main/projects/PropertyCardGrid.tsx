@@ -12,7 +12,7 @@ interface PropertyCardGridProps {
 
 export default function PropertyCardGrid({ property }: PropertyCardGridProps) {
     return (
-        <div className="bg-white shadow-xl rounded-2xl overflow-hidden ">
+        <div className="bg-white shadow-xl rounded-2xl overflow-hidden flex flex-col h-[675px]">
             {/* Image Section */}
             <div className="relative min-h-[400px] group rounded-2xl overflow-hidden">
                 <Image
@@ -37,9 +37,18 @@ export default function PropertyCardGrid({ property }: PropertyCardGridProps) {
 
             {/* Content Section */}
             <div className="p-2 sm:p-5">
-                <Link href={property.link} className="text-xl font-medium text-neutral-700 mb-4 block">
+
+                <Link
+                    href={property.link}
+                    className="text-xl font-medium text-neutral-700 block truncate"
+                    title={property.title}
+                >
                     {property.title}
                 </Link>
+
+                <p className="text-lg font-semibold  mt-2">
+                    {property.price?.toLocaleString() || 1704550555?.toLocaleString()} ريال
+                </p>
 
                 <ul className="flex flex-wrap divide-x divide-dashed justify-between mt-5 text-sm text-neutral-600">
                     {property.rooms && (

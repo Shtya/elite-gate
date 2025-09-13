@@ -22,7 +22,7 @@ export default function SectionForm(
     };
 
     return (
-        <div className="w-full lg:w-[50%] bg-white p-8">
+        <div className="w-full lg:w-[50%] bg-white p-8 flex flex-col">
             <h3 className="text-3xl font-bold mb-4 text-[var(--primary-dark)]">مرحبًا بعودتك!</h3>
             <p className="text-[var(--neutral-600)] mb-8">
                 {activeTab === 'password'
@@ -32,7 +32,7 @@ export default function SectionForm(
 
             <AuthTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
-            <form className="grid grid-cols-12 gap-4">
+            <form className="grid grid-cols-12 gap-4 flex-1">
                 {(!otpSent || activeTab === 'password') && (
                     <TextInput
                         id="email"

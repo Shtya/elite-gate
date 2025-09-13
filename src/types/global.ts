@@ -15,5 +15,6 @@ export type Property = {
     rooms?: string;
     beds?: string;
     area?: string;
+    price?: number;
 
 };
