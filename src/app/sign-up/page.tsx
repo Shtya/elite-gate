@@ -1,5 +1,3 @@
-'use client';
-
 import PrimaryButton from '@/components/shared/Button';
 import Logo from '@/components/shared/Logo';
 import TextInput from '@/components/shared/TextInput';
@@ -7,7 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-export default function SigninPage() {
+export const metadata = {
+    title: 'إنشاء حساب',
+    description: 'أنشئ حسابك الجديد على منصة مراسل جدة العقاري وابدأ رحلتك في استكشاف وامتلاك العقارات بكل سهولة وأمان.',
+};
+
+
+export default function SignUpPage() {
     return (
         <section className="py-20 bg-[var(--bg-1)]">
             <div className="container max-w-[1200px] mx-auto px-4">

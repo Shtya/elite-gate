@@ -9,6 +9,12 @@ import VideoSection from '@/components/shared/VideoSection';
 import GuaranteesSection from '@/components/main/projects/property/GuaranteesSection';
 import SimilarProjectsSection from '@/components/shared/SimilarProjectsSection';
 
+export const metadata = {
+    title: 'تفاصيل المشروع',
+    description: 'استعرض كافة تفاصيل المشروع العقاري، بما في ذلك المواصفات، الموقع، السعر، والصور عبر منصة مراسل جدة العقاري.',
+};
+
+
 const projectImages = [
     '/main/projects/property-1.webp',
     '/main/projects/property-2.webp',

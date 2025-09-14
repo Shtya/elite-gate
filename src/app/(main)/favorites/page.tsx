@@ -1,7 +1,11 @@
 import ListProperty from "@/components/main/home/ListProperty";
 import PropertyPagination from "@/components/main/projects/PropertyPagination";
-import Pagination from "@/components/shared/Pagination";
 import { properties } from "@/constants/projects";
+
+export const metadata = {
+    title: 'المشاريع المفضلة',
+    description: 'استعرض قائمة مشاريعك العقارية المفضلة، وابقَ على اطلاع بأحدث العروض والتحديثات عبر منصة مراسل جدة العقاري.',
+};
 
 
 export default function FavoritesPage() {

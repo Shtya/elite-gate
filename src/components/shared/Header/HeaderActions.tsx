@@ -22,14 +22,24 @@ export default function HeaderActions() {
         <Menu
           width={288}
           trigger={(toggle) => (
-            <button
-              type="button"
-              onClick={toggle}
-              aria-label="فتح الإشعارات"
-              className="inline-flex justify-center rounded-3xl bg-btn-bg p-3 text-sm text-gray-800 hover:bg-opacity-30 focus:outline-none focus:ring-2 focus:ring-primary/30"
-            >
-              <BsBell className="w-5 h-5" />
-            </button>
+            <div className="relative inline-flex">
+              {/* Notification Dot */}
+              <span className="absolute top-[-12px] right-0 flex size-3">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                <span className="absolute inline-flex size-3 rounded-full bg-sky-500"></span>
+              </span>
+
+              {/* Bell Button */}
+              <button
+                type="button"
+                onClick={toggle}
+                aria-label="فتح الإشعارات"
+                className="inline-flex justify-center rounded-3xl bg-btn-bg p-3 text-sm text-gray-800 hover:bg-opacity-30 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              >
+                <BsBell className="w-5 h-5" />
+              </button>
+            </div>
+
           )}
         >
           <NotificationsMenu />

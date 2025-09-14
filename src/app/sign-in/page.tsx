@@ -4,8 +4,13 @@ import Image from 'next/image';
 
 import React from 'react';
 
-export default function SigninPage() {
+export const metadata = {
+    title: 'تسجيل الدخول',
+    description: 'قم بتسجيل الدخول إلى حسابك للوصول إلى خدمات مراسل جدة العقاري، وإدارة حجوزاتك ومشاريعك بسهولة.',
+};
 
+
+export default function SigninPage() {
 
     return (
         <section className="py-20 bg-[var(--bg-1)] mt-4 lg:mt-16">

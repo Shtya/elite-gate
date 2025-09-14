@@ -68,6 +68,7 @@
 
 :root {
   --primary: #363aed;
+  --primary-600: #2f32d1;
   --secondary: #37d279;
   --tertiary: #ffbe46;
   --bg-1: #f9f9fe;
@@ -144,6 +145,7 @@
   --color-foreground: var(--neutral-700);
 
   --color-primary: var(--primary);
+  --color-primary-600: var(--primary-600);
   --color-secondary: var(--secondary);
   --color-tertiary: var(--tertiary);
   --color-bg-1: var(--bg-1);

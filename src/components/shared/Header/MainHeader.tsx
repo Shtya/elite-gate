@@ -31,9 +31,8 @@ export default function MainHeader() {
 
   return (
     <header
-      className={`z-50 sticky top-0 left-0 border-y bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 transition-shadow duration-300 ${
-        atTop ? "shadow-md border-transparent" : "shadow-none"
-      }`}
+      className={`z-40 sticky top-0 left-0 border-y bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 transition-shadow duration-300 ${atTop ? "shadow-md border-transparent" : "shadow-none"
+        }`}
       role="banner"
     >
       <div className="container flex justify-between items-center relative px-3 py-2 lg:py-0 lg:px-0 mx-auto">

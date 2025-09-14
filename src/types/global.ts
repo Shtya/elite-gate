@@ -18,3 +18,30 @@ export type Property = {
     price?: number;
 
 };
+
+export type NotificationType = "info" | "done" | "warn" | "error";
+
+export type BookingStatus =
+    | 'pending'
+    | 'assigned'
+    | 'confirmed'
+    | 'in_progress'
+    | 'completed'
+    | 'cancelled'
+    | 'no_show';
+
+export interface Booking {
+    id: string;
+    status: BookingStatus;
+    propertyName: string;
+    propertyType: string;
+    propertyImage: string;
+    startDate: string;
+    endDate: string;
+    agent?: string;
+    propertyLink: string;
+    review?: {
+        rating: number;
+        comment: string;
+    }
+}

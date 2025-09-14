@@ -3,8 +3,9 @@ import PolicyGroup from "@/components/main/privacy/PolicyGroup";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "سياسة الخصوصية",
+export const metadata = {
+    title: 'سياسة الخصوصية',
+    description: 'تعرف على كيفية تعامل مراسل جدة العقاري مع بياناتك الشخصية، والتزامنا الكامل بحمايتها واحترام خصوصيتك.',
 };
 
 

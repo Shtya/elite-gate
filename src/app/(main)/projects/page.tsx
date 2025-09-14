@@ -3,7 +3,11 @@ import PropertyCardsDisplay from "@/components/main/projects/PropertyCardsDispla
 import PropertyPagination from "@/components/main/projects/PropertyPagination";
 import PropertyToolbar from "@/components/main/projects/PropertyToolbar";
 import { properties } from "@/constants/projects";
-import { Property } from "@/types/global";
+
+export const metadata = {
+    title: 'المشاريع العقارية',
+    description: 'استعرض أحدث المشاريع العقارية المتاحة للبيع أو الإيجار، واختر من بين الفلل، الشقق، الأراضي والمزيد عبر منصة مراسل جدة العقاري.',
+};
 
 
 export default function ProjectsPage() {

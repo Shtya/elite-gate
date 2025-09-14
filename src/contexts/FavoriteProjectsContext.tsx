@@ -1,13 +1,14 @@
 // FavoriteProjectsContext.tsx
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { Property } from '@/types/global';
 
 const STORAGE_KEY = 'favoriteProjects';
 
 interface FavoriteProjectsContextType {
     favorites: Map<string, Property>;
+    favoritesCount: number;
     isFavorite: (id: string) => boolean;
     addFavorite: (property: Property) => void;
     removeFavorite: (id: string) => void;
@@ -18,7 +19,7 @@ const FavoriteProjectsContext = createContext<FavoriteProjectsContextType | unde
 
 export const FavoriteProjectsProvider = ({ children }: { children: React.ReactNode }) => {
     const [favorites, setFavorites] = useState<Map<string, Property>>(new Map());
-
+    const favoritesCount = useMemo(() => favorites.size, [favorites.size])
     useEffect(() => {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) {
@@ -54,7 +55,7 @@ export const FavoriteProjectsProvider = ({ children }: { children: React.ReactNo
 
     return (
         <FavoriteProjectsContext.Provider
-            value={{ favorites, isFavorite, addFavorite, removeFavorite, toggleFavorite }}
+            value={{ favorites, favoritesCount, isFavorite, addFavorite, removeFavorite, toggleFavorite }}
         >
             {children}
         </FavoriteProjectsContext.Provider>

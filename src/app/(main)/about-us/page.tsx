@@ -4,6 +4,11 @@ import StatsSection from "@/components/main/aboutUs/StatsSection";
 import WhyChooseSection from "@/components/main/aboutUs/WhyChooseSection";
 import WorkProcessSection from "@/components/main/aboutUs/WorkProcessSection";
 
+export const metadata = {
+    title: 'من نحن',
+    description: 'تعرف على مراسل جدة العقاري، رؤيتنا، خطوات العمل، ولماذا نحن الخيار الأفضل لشراء وبيع العقارات في المملكة.',
+};
+
 
 export default async function AboutUsPage() {
 

@@ -17,7 +17,7 @@ export default function PrimaryButton({
     external = false,
     ...props
 }: PrimaryButtonProps) {
-    const baseClasses = `btn-primary justify-center ${className}`;
+    const baseClasses = `btn-primary hover:bg-primary-600 justify-center ${className}`;
 
     if (href) {
         return external ? (

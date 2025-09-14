@@ -3,8 +3,9 @@ import FeqTaps from "@/components/main/faq/FeqTaps";
 import { Metadata } from "next";
 
 
-export const metadata: Metadata = {
-    title: "الأسئلة الشائعة",
+export const metadata = {
+    title: 'الأسئلة الشائعة',
+    description: 'اعثر على إجابات لأكثر الأسئلة شيوعًا حول خدمات مراسل جدة العقاري، بما في ذلك الحجز، التواصل، وإدارة الحساب.',
 };
 
 

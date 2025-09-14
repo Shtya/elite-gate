@@ -25,10 +25,9 @@ export default function UserMenu({ user, onLogout }: Props) {
       </div>
 
       <div className="px-1 py-1" role="menu" aria-label="قائمة المستخدم">
-        <MenuItem icon={<HiOutlineUser className="w-5 h-5" />} label="حسابي" />
-        <MenuItem icon={<HiOutlineCalendar className="w-5 h-5" />} label="حجوزاتي" />
-        <MenuItem icon={<HiOutlineHeart className="w-5 h-5" />} label="المفضلة" />
-        <MenuItem icon={<HiOutlineQuestionMarkCircle className="w-5 h-5" />} label="المساعدة" />
+        <MenuItem icon={<HiOutlineUser className="w-5 h-5" />} label="حسابي" href="/personal-info" />
+        <MenuItem icon={<HiOutlineCalendar className="w-5 h-5" />} label="حجوزاتي" href="/user-booking" />
+        <MenuItem icon={<HiOutlineHeart className="w-5 h-5" />} label="المفضلة" href="/favorites" />
         <MenuItem
           icon={<HiOutlineArrowRightOnRectangle className="w-5 h-5" />}
           label="تسجيل الخروج"
