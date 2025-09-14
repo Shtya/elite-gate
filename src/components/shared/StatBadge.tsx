@@ -1,19 +1,33 @@
 import React from 'react';
-import { BiLike } from 'react-icons/bi';
+import { IconType } from 'react-icons';
 
-type StatBadgeProps = {
+type StatItem = {
     value: string;
     label: string;
+    icon: IconType;
 };
 
-export default function StatBadge({ value, label }: StatBadgeProps) {
+type StatBadgeProps = {
+    stats: StatItem[];
+};
+
+export default function StatBadge({ stats }: StatBadgeProps) {
     return (
-        <div className="grid place-content-center w-[200px] h-[200px] rounded-3xl bg-primary shadow-lg absolute top-[30%] right-[13%]">
-            <div className="w-10 h-10 rounded bg-white grid place-content-center text-primary mx-auto">
-                <BiLike size={20} />
+        <div className="absolute top-[30%] right-[13%] bg-primary rounded-2xl shadow-lg p-4 w-fit max-w-[700px]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {stats.map(({ value, label, icon: Icon }, index) => (
+                    <div
+                        key={index}
+                        className="flex flex-col items-center justify-center bg-primary text-white p-4 rounded-xl"
+                    >
+                        <div className="w-8 h-8 rounded-full bg-white grid place-content-center text-primary mb-2">
+                            <Icon size={18} />
+                        </div>
+                        <h3 className="text-lg font-bold">{value}</h3>
+                        <p className="text-sm">{label}</p>
+                    </div>
+                ))}
             </div>
-            <h3 className="text-center  mt-3 h3 mb-1 text-white">{value}</h3>
-            <p className="mb-0 text-sm text-center text-white">{label}</p>
         </div>
     );
 }

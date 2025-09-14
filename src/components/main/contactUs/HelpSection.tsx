@@ -9,20 +9,20 @@ import { IoLocation } from 'react-icons/io5';
 const helpData = [
     {
         title: 'اتصال مجاني',
-        details: ['(406) 555-0120', '(671) 555-0110'],
+        details: ['966\u00A054\u00A0364\u00A00639+'],
         iconBg: 'bg-primary text-white',
         icon: FiPhoneCall,
     },
     {
         title: 'الدعم عبر الإنترنت',
-        details: ['info@example.com', 'info@example.com'],
+        details: ['ali@albarakati.net'],
         iconBg: 'bg-[var(--secondary)] text-[var(--neutral-700)]',
         icon: HiOutlineMailOpen,
     },
     {
         title: 'موقعنا',
         details: [
-            '3891 شارع رانشفيو، ريتشاردسون', 'كاليفورنيا 62639'],
+            'طريق الملك عبدالعزيز، جدة'],
 
         iconBg: 'bg-[var(--tertiary)] text-[var(--neutral-700)]',
         icon: IoLocation,

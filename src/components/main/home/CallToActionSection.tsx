@@ -9,7 +9,7 @@ export default function CallToActionSection() {
         <section className="bg-white px-3 xl:px-0 relative isolate">
 
             <div className="!ml-0 z-10 relative mt-[110px] after:bg-[url('/main/home/cta-bg.png')] after:absolute after:left-0 3xl:after:left-[12%] 4xl:after:left-[16%] after:w-[98%] after:mx-auto lg:after:w-[84%] after:h-[388px] after:right-0 after:bottom-0 after:bg-[#c2c3f7]">
-                <div className="cta-after-flip container  py-[60px] z-20 relative after:absolute lg:after:bg-[url('/main/home/cta-img.png')] after:bg-right-bottom after:bg-no-repeat after:w-full after:h-full after:bottom-0">
+                <div className="cta-after-flip container  py-[60px] z-20 relative after:absolute lg:after:bg-[url('/main/home/cta-img.png')] after:bg-right-bottom after:bg-no-repeat after:w-full after:h-full after:bottom-0 after:pointer-events-none">
 
                     <div className="xl:pl-[90px] px-3">
 
@@ -23,7 +23,7 @@ export default function CallToActionSection() {
                     >
                         <div className="max-w-max mt-8">
                             <PrimaryButton
-                                href="#"
+                                href="/contact-us"
                                 className="flex items-center gap-2"
                             >
                                 اتصل بنا <BsArrowLeft />

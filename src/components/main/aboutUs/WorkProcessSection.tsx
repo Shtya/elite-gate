@@ -4,26 +4,29 @@ import SectionTitle from '@/components/shared/SectionTitle';
 
 const WorkProcessSection = () => {
 
+
     const cards = [
         {
             step: 1,
             title: 'اختيار البحث',
-            description: 'حدد نوع العقار الذي ترغب في التخصص فيه، مثل السكني',
-            imageSrc: '/main/about/work-process-icon-3.png',
+            description: 'ابدأ بتحديد نوع العقار الذي يناسب احتياجاتك، مثل السكني أو التجاري.',
+            imageSrc: '/main/about/work-process-icon-1.png',
         },
         {
             step: 2,
             title: 'تحديد الوجهة',
-            description: 'حدد نوع العقار الذي ترغب في التخصص فيه، مثل السكني',
-            imageSrc: '/main/about/work-process-icon-3.png',
+            description: 'اختر المدينة أو الحي الذي ترغب في السكن أو الاستثمار فيه.',
+            imageSrc: '/main/about/work-process-icon-2.png',
         },
         {
             step: 3,
             title: 'سهولة الحجز',
-            description: 'حدد نوع العقار الذي ترغب في التخصص فيه، مثل السكني',
+            description: 'أكمل عملية الحجز بسهولة عبر خطوات واضحة وسريعة.',
             imageSrc: '/main/about/work-process-icon-3.png',
         },
     ];
+
+
 
     if (!cards || cards.length === 0) {
         return <p className="text-center text-neutral-500">لا توجد خطوات متاحة حالياً.</p>;

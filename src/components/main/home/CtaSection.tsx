@@ -12,8 +12,8 @@ export default function CtaSection() {
               <h2 className="h2 mb-4 leading-tight">ابدأ بإدراج أو شراء عقار معنا</h2>
               <p className="mb-8 text-neutral-700">تحدث إلى خبرائنا أو تصفّح المزيد من العقارات.</p>
               <div className="max-w-max">
-                <Link className="btn-tertiary hover:brightness-95" href="#">
-                  ابدأ الآن <BsArrowLeft className="text-xl inline-block ml-2" />
+                <Link className="btn-tertiary hover:brightness-95" href="/projects">
+                  تصفح المشاريع <BsArrowLeft className="text-xl inline-block ml-2" />
                 </Link>
               </div>
             </div>

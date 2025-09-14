@@ -8,12 +8,12 @@ import SelectDropdown from '@/components/shared/SelectDropdown';
 import PrimaryButton from '@/components/shared/Button';
 
 type TransactionType = 'للإيجار' | 'للبيع';
-type CityType = 'نيويورك' | 'شيكاغو' | 'أتلانتا' | 'تورونتو' | 'لوس أنجلوس';
+type CityType = 'جدة' | 'الرياض' | 'الدمام' | 'مكة المكرمة' | 'المدينة المنورة';
 type PropertyType = 'شقة' | 'فيلا' | 'مكتب';
 
 export default function HeroPropertyFiltering() {
   const [transaction, setTransaction] = useState<TransactionType>('للإيجار');
-  const [city, setCity] = useState<CityType>('نيويورك');
+  const [city, setCity] = useState<CityType>('جدة');
   const [propertyType, setPropertyType] = useState<PropertyType>('شقة');
   const [price, setPrice] = useState<number>(40);
 
@@ -21,12 +21,9 @@ export default function HeroPropertyFiltering() {
 
   return (
     <div className='z-30 p-4 lg:p-5 rounded-2xl shadow-xl bg-white/90 backdrop-blur-sm flex flex-wrap items-center gap-3 relative max-w-[1060px] mx-auto mt-10 border border-neutral-200'>
-      <div className='w-full md:w-[48%] xl:w-[22%] cursor-pointer'>
-        <SelectDropdown options={['للإيجار', 'للبيع']} value={transaction} onChange={setTransaction} />
-      </div>
 
       <div className='w-full md:w-[48%] xl:w-[22%] cursor-pointer'>
-        <SelectDropdown options={['نيويورك', 'شيكاغو', 'أتلانتا', 'تورونتو', 'لوس أنجلوس']} value={city} onChange={setCity} />
+        <SelectDropdown options={['جدة', 'الرياض', 'الدمام', 'مكة المكرمة', 'المدينة المنورة']} value={city} onChange={setCity} />
       </div>
 
       <div className='w-full md:w-[48%] xl:w-[22%] cursor-pointer'>
@@ -65,7 +62,7 @@ export default function HeroPropertyFiltering() {
       </div>
 
       {/* Search Button */}
-      <div className='w-full xl:w-auto'>
+      <div className='w-full xl:flex-1'>
         <PrimaryButton
           href={searchHref}
           className="py-[14px] px-6 w-full flex items-center gap-2 justify-center text-white bg-primary rounded-full hover:bg-[#212391] transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"

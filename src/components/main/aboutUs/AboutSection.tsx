@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useState } from 'react';
-import { FaHeadset } from 'react-icons/fa';
+import { FaHeadset, FaProjectDiagram, FaUsers } from 'react-icons/fa';
 import StatBadge from '@/components/shared/StatBadge';
 import FeatureList from './FeatureList';
 import SectionTitle from '@/components/shared/SectionTitle';
 import { toSlug } from '@/utils/helpers';
+import { BiLike } from 'react-icons/bi';
 
 const tabConfig = [
     {
@@ -44,7 +45,14 @@ export default function AboutSection() {
                             className="mx-auto lg:mx-0 rounded-xl shadow-md"
                         />
                         <div className="mt-6 lg:mt-8">
-                            <StatBadge value="7.5K+" label="عملاء راضون" />
+                            <StatBadge
+                                stats={[
+                                    { value: '10+', label: 'الخبرة', icon: BiLike },
+                                    { value: '880+', label: 'العملاء', icon: FaUsers },
+                                    { value: '251+', label: 'المشاريع', icon: FaProjectDiagram },
+                                ]}
+                            />
+
                         </div>
                     </div>
 
@@ -89,7 +97,7 @@ export default function AboutSection() {
                                 </div>
                                 <div className="text-center lg:text-start">
                                     <p className="text-sm text-[var(--neutral-500)] mb-1">الدعم الفني</p>
-                                    <p className="text-lg font-semibold text-[var(--primary-dark)]">(704) 555-0127</p>
+                                    <p className="text-lg font-semibold text-[var(--primary-dark)]">966&nbsp;54&nbsp;364&nbsp;0639+</p>
                                 </div>
                             </div>
 

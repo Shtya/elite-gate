@@ -15,11 +15,10 @@ export default function ContactSection() {
                     <div className="col-span-12 lg:col-span-6 order-1 lg:order-none">
                         <MapCard
                             title="موقعنا"
-                            subTitle="الفرع الرئيسي - الرياض"
-                            lat={24.7136}
-                            lng={46.6753}
+                            subTitle="الفرع الرئيسي - جدة"
+                            lat={21.543333}
+                            lng={39.172778}
                         />
-
 
                     </div>
                 </div>

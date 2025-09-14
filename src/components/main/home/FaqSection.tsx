@@ -31,7 +31,7 @@ export default function FaqSection() {
         <SectionTitle
           arrowTitle="الأسئلة الشائعة"
           title="إذا كان لديك أي سؤال، لدينا الإجابة"
-          description="كل ما تحتاج معرفته حول الشراء والبيع والتمويل العقاري."
+          description="كل ما تحتاج معرفته حول شراء وبيع العقارات."
           bgColor="var(--primary-light)"
         />
         <div className="max-w-[856px] mx-auto">

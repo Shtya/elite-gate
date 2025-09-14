@@ -12,7 +12,7 @@ interface PropertyCardGridProps {
 
 export default function PropertyCardGrid({ property }: PropertyCardGridProps) {
     return (
-        <div className="bg-white shadow-xl rounded-2xl overflow-hidden flex flex-col h-[675px]">
+        <div className="bg-white shadow-xl rounded-2xl overflow-hidden flex flex-col h-[665px]">
             {/* Image Section */}
             <div className="relative min-h-[400px] group rounded-2xl overflow-hidden">
                 <Image
@@ -36,7 +36,7 @@ export default function PropertyCardGrid({ property }: PropertyCardGridProps) {
             </div>
 
             {/* Content Section */}
-            <div className="p-2 sm:p-5">
+            <div className="p-2 sm:p-5 flex flex-col flex-grow">
 
                 <Link
                     href={property.link}
@@ -73,7 +73,7 @@ export default function PropertyCardGrid({ property }: PropertyCardGridProps) {
 
                 <div className="border-t border-dashed my-4" />
 
-                <div className="flex justify-end">
+                <div className="flex justify-end mt-auto">
                     <Link href={property.link} className="btn-outline">
                         اقرأ المزيد
                     </Link>

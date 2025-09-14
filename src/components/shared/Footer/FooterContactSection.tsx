@@ -14,9 +14,9 @@ export default function FooterContactSection() {
                         <div className="bg-primary text-white text-2xl p-2 rounded-full">
                             <FiPhoneCall size={20} />
                         </div>
-                        <Link href="tel:3165550116" className="text-neutral-300">
-                            (316) 555-0116
-                        </Link >
+                        <Link href="tel:+966543640639" className="text-neutral-300">
+                            966&nbsp;54&nbsp;364&nbsp;0639+
+                        </Link>
                     </div>
                 </li>
                 <li>
@@ -24,9 +24,9 @@ export default function FooterContactSection() {
                         <div className="bg-secondary text-neutral-700 text-2xl p-2 rounded-full">
                             <HiOutlineMailOpen size={20} />
                         </div>
-                        <Link href="mailto:example@mail.com" className="text-neutral-300">
-                            example@mail.com
-                        </Link >
+                        <Link href="mailto:ali@albarakati.net" className="text-neutral-300">
+                            ali@albarakati.net
+                        </Link>
                     </div>
                 </li>
                 <li>
@@ -34,7 +34,7 @@ export default function FooterContactSection() {
                         <div className="bg-tertiary text-neutral-700 text-2xl p-2 rounded-full">
                             <IoLocation size={20} />
                         </div>
-                        <p className="text-neutral-300">٣١ طريق براندي، ساتون، SM2 6SE</p>
+                        <p className="text-neutral-300">طريق الملك عبدالعزيز، جدة</p>
                     </div>
                 </li>
             </ul>

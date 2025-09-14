@@ -6,19 +6,14 @@ import { BsArrowRight, BsBuilding, BsShop, BsBuildings } from "react-icons/bs";
 const services =
     [
         {
-            icon: <BsBuilding className="text-[40px] text-primary" />,
-            title: "شراء عقار",
-            description: "يشير بيع العقار إلى عملية نقل الملكية.",
-        },
-        {
-            icon: <BsShop className="text-[40px] text-[var(--secondary-500)]" />,
-            title: "استئجار عقار",
-            description: "يشير استئجار العقار إلى دفع الإيجار للمالك.",
-        },
-        {
             icon: <BsBuildings className="text-[40px] text-[#9C742B]" />,
-            title: "بيع عقار",
-            description: "يشير بيع العقار إلى عملية نقل الملكية.",
+            title: "لو كنت مطور أو مالك عقار",
+            description: "فمراسل جدة العقاري هو الخيار الأمثل لتسويق عقارك بشكل مثالي تصوير العقارات عن طريق فريق تصوير احترافي إنشاء منشورات وملفات ومحتويات جذابة للتعريف عن مشروعك نقل التغطيات على وسائل التواصل الاجتماعي بمشاهدات عالية حملات ممولة إلكترونية لاستهداف عميلك المحتمل مرافقة عملائك أثناء معاينة العقار لتعزيز تجربة العميل تقديم خدمات تمويلية بالشراكة لتسهيل عملية تملك العميل",
+        },
+        {
+            icon: <BsBuilding className="text-[40px] text-primary" />,
+            title: "أما لو كنت العميل",
+            description: "فأنت محل اهتمامنا ، و دائماً تجدني قريباً منك لتقديم أفضل الخيارات التي تلائمك ، وتحقيق مايتطلبه الأمر لك ، لتحظى بتجربة شراء فريدة من نوعها ، بكل مصداقية وتقديم استشارات عقارية تُسهل عليك اتخاذ القرار الأمثل باختيار مسكنك الملائم والأفضل",
         },
     ]
 
@@ -44,7 +39,7 @@ const WhyChooseSection = () => {
                                 </div>
                                 <div className="text-center sm:text-start">
                                     <h3 className="text-2xl font-bold mb-1">
-                                        <span>25</span>+
+                                        <span>10</span>+
                                     </h3>
                                     <p className="text-sm">سنوات من الخبرة</p>
                                 </div>
@@ -58,7 +53,7 @@ const WhyChooseSection = () => {
                         <SectionTitle
                             arrowTitle="لماذا تختارنا"
                             title="ارتقِ بتجربة السكن مع أفضل العقارات لدينا"
-                            description="يمكن شراء العقارات أو بيعها أو تأجيرها، وهي فرصة استثمارية قيّمة. قيمة العقارات قابلة للنمو..."
+                            description="دائما يتم ترديد عبارة لسنا الوحيدين ولكن نحن الأفضل هذه العبارة لا أرددها فقط بل ألتزم بها بمعنى الكلمة وذلك بتقديم منظومة من الخدمات العقارية الاستثنائية ، لجميع الأطراف المعنية بالمجال العقاري"
                             bgColor="white"
                             className="text-start"
                         />
@@ -76,15 +71,6 @@ const WhyChooseSection = () => {
                                 </li>
                             ))}
                         </ul>
-
-
-                        <PrimaryButton
-                            href="service"
-                            className="inline-flex items-center gap-2 py-3 px-6 rounded-full bg-primary text-white hover:text-white font-medium"
-                        >
-                            <BsArrowRight />
-                            <span className="inline-block">اقرأ المزيد</span>
-                        </PrimaryButton>
 
                     </div>
                 </div>

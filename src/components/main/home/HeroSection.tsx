@@ -40,7 +40,7 @@ export default function HeroSection() {
             {/* More Details */}
             <div className="mx-auto mt-12">
               <Link
-                href="#more-details"
+                href="/projects"
                 className="inline-flex items-center justify-center rounded-full bg-primary text-white p-4 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition"
                 aria-label="عرض المزيد"
               >

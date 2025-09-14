@@ -8,7 +8,7 @@ export default function ServicesSection() {
             description: "الشراء هو خطوة استثمارية مهمة تتيح لك امتلاك منزل أو أرض.",
             buttonText: "ابحث عن منزل",
             imageUrl: "/main/home/service-img-1.webp",
-            link: "#",
+            link: "/projects",
         },
         {
             title: "بيع عقار",

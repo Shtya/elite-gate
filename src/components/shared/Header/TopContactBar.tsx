@@ -6,6 +6,8 @@ import { HiOutlineMailOpen } from "react-icons/hi";
 import { IoLocation } from "react-icons/io5";
 import { useCallback, useState } from "react";
 import PrimaryButton from "../Button";
+import LogoIcon from "../LogoIcon";
+import LogoWithoutText from "../LogoWithoutText";
 
 export default function TopContactBar() {
   const [copied, setCopied] = useState<"phone" | "email" | null>(null);
@@ -18,8 +20,8 @@ export default function TopContactBar() {
     } catch { }
   }, []);
 
-  const phone = "(406) 555-0120";
-  const email = "debra.holt@example.com";
+  const phone = "+966 54 364 063";
+  const email = "ali@albarakati.net";
 
   return (
     <header aria-label="شريط التواصل العلوي" className="bg-bg-1 border-b">
@@ -29,27 +31,11 @@ export default function TopContactBar() {
           <Link href="/">
 
             <div className="hidden xl:block">
-              <Image
-                alt="الشعار"
-                src="/logo.png"
-                width={172}
-                height={48}
-                priority
-                className="h-12 w-auto"
-                sizes="172px"
-              />
+              <LogoIcon className="w-[140px] max-md:w-[140px] text-black" />
             </div>
             {/* Favicon (sm) */}
-            <div className="xl:hidden ml-3">
-              <Image
-                alt="الشعار"
-                src="/favicon.png"
-                width={40}
-                height={40}
-                priority
-                className="h-10 w-10"
-                sizes="40px"
-              />
+            <div className="relative xl:hidden ml-3 ">
+              <LogoWithoutText className="text-black" />
             </div>
           </Link>
         </div>
@@ -69,7 +55,7 @@ export default function TopContactBar() {
                   className="text-base hover:underline"
                   href={`tel:${phone.replace(/[^\d+]/g, "")}`}
                 >
-                  {phone}
+                  966&nbsp;54&nbsp;364&nbsp;0639+
                 </Link>
                 <button
                   onClick={() => copy(phone, "phone")}
@@ -123,7 +109,7 @@ export default function TopContactBar() {
             </span>
             <div className="hidden lg:flex flex-col">
               <span className="text-xs text-neutral-500">موقعنا</span>
-              <span className="text-base">3605 طريق باركر</span>
+              <span className="text-base">طريق الملك عبدالعزيز، جدة</span>
             </div>
           </div>
         </div>

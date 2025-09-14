@@ -26,7 +26,7 @@ export default function ExplorePropertiesSection() {
                 <SectionTitle
                     arrowTitle="استكشاف العقارات"
                     title="نظرة تفصيلية داخل عقاراتنا"
-                    description="يمكن شراء العقارات أو بيعها أو تأجيرها، وهي فرصة استثمارية قيّمة. قيمة العقارات قابلة للنمو..."
+                    description="يمكن شراء العقارات أو بيعها ،وهي فرصة استثمارية قيّمة. قيمة العقارات قابلة للنمو..."
                     bgColor="var(--primary-light)"
                 />
 

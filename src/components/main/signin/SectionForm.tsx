@@ -5,7 +5,7 @@ import Link from 'next/link';
 import TextInput from '@/components/shared/TextInput';
 import OtpForm from './OtpForm';
 import PasswordForm from './PasswordForm';
-import Logo from '@/components/shared/Logo';
+import LogoLink from '@/components/shared/LogoLink';
 
 export default function SectionForm(
 ) {
@@ -24,7 +24,7 @@ export default function SectionForm(
 
     return (
         <div className="w-full lg:w-[50%] bg-white p-8 flex flex-col">
-            <Logo />
+            <LogoLink />
             <h3 className="text-3xl font-bold mb-4 text-[var(--primary-dark)] text-center">مرحبًا بعودتك!</h3>
             <p className="text-[var(--neutral-600)] mb-8 text-center">
                 {activeTab === 'password'
