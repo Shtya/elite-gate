@@ -1,6 +1,7 @@
 import AboutSection from "@/components/main/aboutUs/AboutSection";
 import ExplorePropertiesSection from "@/components/main/aboutUs/ExplorePropertiesSection";
 import StatsSection from "@/components/main/aboutUs/StatsSection";
+import TeamSection from "@/components/main/aboutUs/TeamSection";
 import WhyChooseSection from "@/components/main/aboutUs/WhyChooseSection";
 import WorkProcessSection from "@/components/main/aboutUs/WorkProcessSection";
 
@@ -19,6 +20,8 @@ export default async function AboutUsPage() {
             <WhyChooseSection />
             <ExplorePropertiesSection />
             <StatsSection />
+            <TeamSection />
+
         </>
     )
 }

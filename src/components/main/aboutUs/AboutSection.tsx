@@ -5,7 +5,6 @@ import { FaHeadset, FaProjectDiagram, FaUsers } from 'react-icons/fa';
 import StatBadge from '@/components/shared/StatBadge';
 import FeatureList from './FeatureList';
 import SectionTitle from '@/components/shared/SectionTitle';
-import { toSlug } from '@/utils/helpers';
 import { BiLike } from 'react-icons/bi';
 
 const tabConfig = [

@@ -27,11 +27,11 @@ export default function TopContactBar() {
     <header aria-label="شريط التواصل العلوي" className="bg-bg-1 border-b">
       <div className="container mx-auto flex items-center justify-between py-3 lg:py-5 gap-2 px-3">
         {/* Logo (XL) */}
-        <div className="flex items-center">
+        <div className="flex items-center z-[11]">
           <Link href="/">
 
-            <div className="hidden xl:block">
-              <LogoIcon className="w-[140px] max-md:w-[140px] text-black" />
+            <div className="hidden xl:block ">
+              <LogoIcon className="w-[140px] max-md:w-[140px] text-black " />
             </div>
             {/* Favicon (sm) */}
             <div className="relative xl:hidden ml-3 ">
