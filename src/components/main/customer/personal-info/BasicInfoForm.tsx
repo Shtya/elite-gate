@@ -11,16 +11,19 @@ type BasicInfo = {
     fullName: string;
     email: string;
     phone: string;
+    image: string;
 };
+
+
 
 export default function BasicInfoForm() {
     const [info, setInfo] = useState<BasicInfo>({
         fullName: '',
         email: '',
         phone: '',
+        image: '/users/user-1.jpg',
     });
-
-    const [selectedImage, setSelectedImage] = useState<string>('/users/user-1.jpg');
+    ;
 
     const handleChange =
         (key: keyof BasicInfo) =>
@@ -32,45 +35,58 @@ export default function BasicInfoForm() {
         const file = e.target.files?.[0];
         if (file) {
             const imageUrl = URL.createObjectURL(file);
-            setSelectedImage(imageUrl);
+            setInfo((prev) => ({ ...prev, image: imageUrl }));
         }
     };
 
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('تم الإرسال:', info, selectedImage);
+        console.log('تم الإرسال:', info);
     };
 
     const handleCancel = () => {
-        setInfo({ fullName: '', email: '', phone: '' });
-        setSelectedImage('/users/user-1.jpg');
+        setInfo({
+            fullName: '',
+            email: '',
+            phone: '',
+            image: '/users/user-1.jpg',
+        });
     };
+
 
     return (
         <Card title='المعلومات الاساسية'>
             {/* رفع الصورة */}
             <div className="relative mx-auto mb-6 w-[180px] h-[180px]">
-                <div className="avatar-upload__edit">
-                    <input
-                        id="imageUpload"
-                        accept=".png, .jpg, .jpeg"
-                        className="hidden"
-                        type="file"
-                        onChange={handleImageChange}
-                    />
-                    <label
-                        htmlFor="imageUpload"
-                        className="avatar-upload__label absolute inset-0 cursor-pointer"
-                    />
-                </div>
-                <img
-                    alt="الصورة الشخصية"
-                    loading="lazy"
-                    width={180}
-                    height={180}
-                    className="rounded-full border-[6px] border-[#F5F5FE] shadow-md"
-                    src={selectedImage}
+                <input
+                    id="imageUpload"
+                    accept=".png, .jpg, .jpeg"
+                    className="hidden"
+                    type="file"
+                    onChange={handleImageChange}
                 />
+                <label htmlFor="imageUpload" className="cursor-pointer">
+                    <img
+                        alt="الصورة الشخصية"
+                        loading="lazy"
+                        width={180}
+                        height={180}
+                        className="rounded-full border-[6px] border-[#F5F5FE] shadow-md"
+                        src={info.image}
+                    />
+                    <div className="absolute bottom-2 right-2 bg-white rounded-full p-2 shadow-md">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 text-gray-600"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536M9 13l6.536-6.536a2 2 0 112.828 2.828L11.828 15H9v-2z" />
+                        </svg>
+                    </div>
+                </label>
             </div>
 
             {/* النموذج */}
