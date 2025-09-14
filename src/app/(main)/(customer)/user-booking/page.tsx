@@ -6,7 +6,6 @@ export const metadata = {
     description: 'استعرض جميع حجوزاتك العقارية، وتابع حالتها أو قم بإدارتها بسهولة عبر منصة مراسل جدة العقاري.',
 };
 
-
 export default function UserBookingPage() {
 
     return (

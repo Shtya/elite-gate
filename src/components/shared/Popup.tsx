@@ -17,7 +17,7 @@ export default function Popup({ children, onClose, show }: PopupProps) {
     useOutsideClick(popupRef, () => {
         if (show) onClose?.();
     });
-
+    if (typeof document === 'undefined') return null;
     return createPortal(
         <div
             className={`fixed inset-0 z-50 flex items-center justify-center bg-black/30 transition-opacity duration-300 ${show ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
