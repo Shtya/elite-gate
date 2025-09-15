@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function FooterLogoSection() {
     return (
         <div className="col-span-12 md:col-span-6 xl:col-span-3">
-            <Link href="/" className="inline-block mb-6">
+            <Link href="/" className="inline-block mb-4">
 
                 <Image
                     src="/whiteLogo.svg"
