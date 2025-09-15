@@ -10,6 +10,7 @@ import Image from 'next/image';
 import SidebarSection from '@/components/shared/SidebarSection';
 import SidebarLink from '@/components/shared/SidebarLink';
 import FavoritesLink from './FavoritesLink';
+import LogoutButton from '@/components/shared/LogoutButton';
 
 
 export default function CustomerSidebar() {
@@ -53,14 +54,7 @@ export default function CustomerSidebar() {
             </SidebarSection>
 
             {/* Logout Button */}
-            <div className="mt-[60px] flex justify-center">
-                <button
-                    type="button"
-                    className="px-6 py-2  text-white rounded-lg bg-[#243756] hover:bg-primary transition"
-                >
-                    تسجيل خروج
-                </button>
-            </div>
+            <LogoutButton />
         </div>
     );
 }

@@ -431,11 +431,4 @@
     background: var(--primary-light);
   }
 
-
-
-  .contact-icon:hover~.tooltip {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: all;
-  }
 }

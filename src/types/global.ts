@@ -1,3 +1,4 @@
+import { IconType } from "react-icons";
 
 
 export type NavItem = {
@@ -46,3 +47,10 @@ export interface Booking {
         comment: string;
     }
 }
+
+export type SelectableItem = {
+    label: string;
+    icon?: IconType;
+    href?: string;
+    children?: SelectableItem[];
+};

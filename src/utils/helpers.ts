@@ -33,3 +33,7 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     }
     return pages;
 };
+
+export function cleanHref(href?: string): string {
+    return href?.split('?')[0] ?? '';
+}

@@ -60,7 +60,7 @@ export default function ProjectBookingForm({ id }: { id: string }) {
                     label="رقم الهاتف"
                     name="phone"
                     placeholder="05xxxxxxxx"
-                    type="tel"
+                    type="text"
                     value={formData.phone}
                     onChange={(e) => handleChange('phone', e.target.value)}
                     required
