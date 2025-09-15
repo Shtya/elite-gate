@@ -3,11 +3,15 @@
 import { useEffect, useState } from "react";
 import HeaderActions from "./HeaderActions";
 import DesktopNavbar from "./DesktopNavbar";
-import MobileNavbar from "./MobileNavbar";
 
-export default function MainHeader() {
+type MainHeaderProps = {
+  setShowMobileMenu: (val: boolean) => void;
+  showMobileMenu: boolean;
+};
+
+export default function MainHeader({ setShowMobileMenu, showMobileMenu }: MainHeaderProps) {
   const [atTop, setAtTop] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
 
   // Header elevation on scroll
   useEffect(() => {
@@ -49,10 +53,7 @@ export default function MainHeader() {
           onClick={() => setShowMobileMenu(false)}
           className={`fixed inset-0 bg-black/30 transition-opacity ${showMobileMenu ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         />
-        <MobileNavbar
-          onCloseMobileMenu={() => setShowMobileMenu(false)}
-          mobileMenuOpen={showMobileMenu}
-        />
+
       </div>
     </header>
   );

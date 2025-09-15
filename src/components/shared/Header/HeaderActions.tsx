@@ -15,7 +15,7 @@ export default function HeaderActions() {
   return (
     <div className={`lg:order-2 flex gap-2 items-center`}>
       {!isDashboard && <PrimaryButton
-        href="sign-in"
+        href="/sign-in"
         className="focus:outline-none focus:ring-2 focus:ring-primary/30"
       >
         Login
@@ -29,7 +29,7 @@ export default function HeaderActions() {
           trigger={(toggle) => (
             <div className="relative inline-flex">
               {/* Notification Dot */}
-              <span className="absolute top-[-12px] right-0 flex size-3">
+              <span className="absolute top-[-8px] right-0 flex size-3">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
                 <span className="absolute inline-flex size-3 rounded-full bg-sky-500"></span>
               </span>

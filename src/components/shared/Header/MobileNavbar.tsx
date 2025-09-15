@@ -12,7 +12,7 @@ type MobileNavbarProps = {
 
 export default function MobileNavbar({
     onCloseMobileMenu,
-    mobileMenuOpen
+    mobileMenuOpen = true
 }: MobileNavbarProps) {
 
     const [currentLevel, setCurrentlevel] = useState<number | undefined>(undefined);
