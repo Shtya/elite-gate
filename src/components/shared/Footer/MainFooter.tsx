@@ -19,7 +19,9 @@ export default function MainFooter() {
                     </div>
                 </div>
             </div>
-            <FooterBottom />
+            <div className="container">
+                <FooterBottom />
+            </div>
         </footer>
     );
 }

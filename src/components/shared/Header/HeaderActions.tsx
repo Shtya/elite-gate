@@ -5,22 +5,27 @@ import Image from 'next/image';
 import Menu from '../Menu';
 import UserMenu from './UserMenu';
 import NotificationsMenu from './NotificationsMenu';
+import { usePathname } from 'next/navigation';
 import PrimaryButton from '../Button';
 
 export default function HeaderActions() {
+  const pathname = usePathname();
+  const isDashboard = pathname?.startsWith('/dashboard');
+
   return (
-    <div className="lg:order-2 flex gap-2 items-center">
-      <PrimaryButton
+    <div className={`lg:order-2 flex gap-2 items-center`}>
+      {!isDashboard && <PrimaryButton
         href="sign-in"
         className="focus:outline-none focus:ring-2 focus:ring-primary/30"
       >
         Login
-      </PrimaryButton>
+      </PrimaryButton>}
 
       {/* Notification Icon */}
       <div className="relative inline-block text-left">
         <Menu
-          width={288}
+
+          width={250}
           trigger={(toggle) => (
             <div className="relative inline-flex">
               {/* Notification Dot */}
@@ -49,6 +54,7 @@ export default function HeaderActions() {
       {/* Profile */}
       <div className="relative inline-block">
         <Menu
+          width={200}
           trigger={(toggle) => (
             <button
               onClick={toggle}

@@ -116,8 +116,8 @@ export default function TeamSection() {
                     ))}
                 </Swiper>
 
-                <SwiperPrevButton className="team-prev absolute top-[50%] left-2 lg:left-6 xl:-left-2 z-10" />
-                <SwiperNextButton className="team-next absolute top-[50%] right-2 lg:right-6 xl:-right-2 z-10" />
+                <SwiperPrevButton className="team-prev absolute top-[50%] left-2 lg:left-6 xl:left-1 z-10" />
+                <SwiperNextButton className="team-next absolute top-[50%] right-2 lg:right-6 xl:right-1 z-10" />
             </div>
         </section>
     );

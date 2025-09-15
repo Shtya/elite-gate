@@ -8,6 +8,7 @@ import MapCard from '@/components/shared/MapCard';
 import VideoSection from '@/components/shared/VideoSection';
 import GuaranteesSection from '@/components/main/projects/property/GuaranteesSection';
 import SimilarProjectsSection from '@/components/shared/SimilarProjectsSection';
+import { Property } from '@/types/global';
 
 export const metadata = {
     title: 'تفاصيل المشروع',
@@ -52,7 +53,7 @@ const propertyInfo = {
     }
 };
 
-const similarProjects = [
+const similarProjects: Property[] = [
     {
         id: "dihshjs5s5",
         imageLink: '/main/projects/property-1.webp',
@@ -62,6 +63,7 @@ const similarProjects = [
         rooms: '5 غرف نوم',
         beds: '5 حمامات',
         area: '800 متر مربع',
+        location: 'جدة، أبحر الشمالية',
     },
     {
         id: "muskslk56",
@@ -72,6 +74,7 @@ const similarProjects = [
         rooms: '5 غرف نوم',
         beds: '6 حمامات',
         area: '480 متر مربع',
+        location: 'جدة، حي النموذج',
     },
     {
         id: "jdoamsl55",
@@ -82,6 +85,7 @@ const similarProjects = [
         rooms: '7 غرف نوم',
         beds: '6 حمامات',
         area: '460 متر مربع',
+        location: 'جدة، حي الزمرد',
     },
     {
         id: "dkjsmas5",
@@ -92,6 +96,29 @@ const similarProjects = [
         rooms: '7 غرف نوم',
         beds: '6 حمامات',
         area: '460 متر مربع',
+        location: 'جدة، حي الزمرد',
+    },
+    {
+        id: "jdoamsl55",
+        imageLink: '/main/projects/property-3.webp',
+        type: 'فيلا',
+        title: 'فيلا جوري',
+        link: '/projects/jory-villa',
+        rooms: '7 غرف نوم',
+        beds: '6 حمامات',
+        area: '460 متر مربع',
+        location: 'جدة، حي الزمرد',
+    },
+    {
+        id: "dkjsmas5",
+        imageLink: '/main/projects/property-4.webp',
+        type: 'فيلا',
+        title: 'فيلا جوري',
+        link: '/projects/jory-villa',
+        rooms: '7 غرف نوم',
+        beds: '6 حمامات',
+        area: '460 متر مربع',
+        location: 'جدة، حي الزمرد',
     },
 ];
 
@@ -101,13 +128,13 @@ export default function ProjectDetailsPage() {
             {/* Hero Section */}
             <ImageGallery images={projectImages} />
 
-            <div className='flex flex-col md:flex-row gap-4 md:gap-6 '>
+            <div className='relative flex flex-col md:flex-row gap-4 md:gap-6 '>
 
-                <div className='md:basis-4/12'>
+                <div className='md:basis-4/12 '>
                     <ProjectBookingForm id={propertyInfo.id} />
                 </div>
 
-                <div className='md:basis-8/12 space-y-4 md:space-y-6 overflow-hidden'>
+                <div className='md:basis-8/12 space-y-4 md:space-y-6 '>
 
                     <PropertySummary
                         title={propertyInfo.title}
@@ -132,11 +159,11 @@ export default function ProjectDetailsPage() {
                     </div>
                     <VideoSection videoUrl={propertyInfo.videoUrl} />
                     {/* <section className="max-w-screen-xl mx-auto px-4"> */}
-                    <SimilarProjectsSection projects={similarProjects} title='مشاريع مشابهة' />
                     {/* </section> */}
 
                 </div>
             </div>
+            <SimilarProjectsSection projects={similarProjects} title='مشاريع مشابهة' />
         </div >
     );
 }

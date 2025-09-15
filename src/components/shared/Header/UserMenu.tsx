@@ -10,10 +10,15 @@ import MenuItem from "../MenuItem";
 
 type Props = {
   user: { name: string; location: string; avatarUrl: string };
+  onClose?: () => void;
   onLogout?: () => void;
 };
 
-export default function UserMenu({ user, onLogout }: Props) {
+export default function UserMenu({ user, onLogout, onClose }: Props) {
+  function handleLogout() {
+    onLogout?.();
+    onClose?.();
+  }
   return (
     <>
       <div className="flex gap-3 pb-3 items-center border-b border-dashed">
@@ -25,13 +30,13 @@ export default function UserMenu({ user, onLogout }: Props) {
       </div>
 
       <div className="px-1 py-1" role="menu" aria-label="قائمة المستخدم">
-        <MenuItem icon={<HiOutlineUser className="w-5 h-5" />} label="حسابي" href="/personal-info" />
-        <MenuItem icon={<HiOutlineCalendar className="w-5 h-5" />} label="حجوزاتي" href="/user-booking" />
-        <MenuItem icon={<HiOutlineHeart className="w-5 h-5" />} label="المفضلة" href="/favorites" />
+        <MenuItem icon={<HiOutlineUser className="w-5 h-5" />} label="حسابي" href="/personal-info" onClick={onClose} />
+        <MenuItem icon={<HiOutlineCalendar className="w-5 h-5" />} label="حجوزاتي" href="/user-booking" onClick={onClose} />
+        <MenuItem icon={<HiOutlineHeart className="w-5 h-5" />} label="المفضلة" href="/favorites" onClick={onClose} />
         <MenuItem
           icon={<HiOutlineArrowRightOnRectangle className="w-5 h-5" />}
           label="تسجيل الخروج"
-          onClick={onLogout}
+          onClick={handleLogout}
         />
       </div>
     </>

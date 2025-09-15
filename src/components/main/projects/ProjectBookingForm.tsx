@@ -33,7 +33,7 @@ export default function ProjectBookingForm({ id }: { id: string }) {
     };
 
     return (
-        <section className="bg-white rounded-xl shadow-md p-6 w-full">
+        <section className="sticky top-24  bg-white rounded-xl shadow-md p-6 w-full">
             <h2 className="text-2xl font-bold mb-4">احجز موعد لزيارة المشروع</h2>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <TextInput

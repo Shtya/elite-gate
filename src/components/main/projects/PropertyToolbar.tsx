@@ -21,7 +21,7 @@ export default function PropertyToolbar({ total, shown }: PropertyToolbarProps) 
     const searchParams = useSearchParams();
     const pathname = usePathname();
 
-    const currentView = searchParams.get('view') || 'list';
+    const currentView = searchParams.get('view') || 'grid';
     const currentSort = searchParams.get('sort') || sortOptions[0]?.value || '';
 
     const updateParam = (key: string, value: string) => {

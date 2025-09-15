@@ -30,8 +30,8 @@ export default function PropertyCardsDisplay({ properties }: PropertyCardsDispla
                     key={index}
                     className={
                         view === 'list'
-                            ? 'col-span-12'
-                            : 'col-span-12 lg:col-span-6'
+                            ? 'col-span-12 xl:col-span-6'
+                            : 'col-span-12 xs:col-span-6 xl:col-span-4'
                     }
                 >
                     {view === 'list' ? (

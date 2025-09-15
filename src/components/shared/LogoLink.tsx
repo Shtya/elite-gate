@@ -8,7 +8,7 @@ export default function LogoLink() {
             <Link href="/">
                 <div className="flex items-center justify-center">
                     <div className="xl:block">
-                        <LogoIcon className="w-[172px] max-md:w-[172px] text-black mb-2" />
+                        <LogoIcon className="mb-2" />
                     </div>
 
                 </div>

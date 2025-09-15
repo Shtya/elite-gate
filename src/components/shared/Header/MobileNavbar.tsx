@@ -3,6 +3,7 @@ import Image from "next/image";
 import { RiCloseLargeFill } from "react-icons/ri";
 import Navbar from "./Navbar";
 import { useState } from "react";
+import LogoIcon from "../LogoIcon";
 
 type MobileNavbarProps = {
     onCloseMobileMenu: () => void;
@@ -30,7 +31,7 @@ export default function MobileNavbar({
                 <RiCloseLargeFill size={20} />
             </button>
 
-            <Image src="/logo.png" alt="الشعار" width={227} height={60} className="mr-3" />
+            <LogoIcon />
 
             <div className="border-b my-2" />
 

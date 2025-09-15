@@ -1,29 +1,22 @@
 "use client";
-import {
-    FaFacebookF,
-    FaTwitter,
-    FaInstagram,
-    FaYoutube,
-    FaTiktok,
-    FaSnapchat,
-} from "react-icons/fa";
-import Image from "next/image";
 import Link from "next/link";
 import LogoIcon from "../LogoIcon";
+import { socialLinks } from "@/constants/general";
+import Image from "next/image";
 
-const socialLinks = [
-    { icon: FaSnapchat, href: "https://www.instagram.com/jeddahreporter/?r=nametag#" },
-    { icon: FaTwitter, href: "https://x.com/jeddah_reporter?s=09" },
-    { icon: FaInstagram, href: "https://www.instagram.com/ali_n_albarakati/?igsh=bXRjaXZnOW1xd204&utm_source=qr" },
-    { icon: FaYoutube, href: "https://www.youtube.com/@JeddahReporterAliAlbarakati" },
-    { icon: FaTiktok, href: "https://www.tiktok.com/@ali.n.albarakati" },
-];
 
 export default function FooterLogoSection() {
     return (
         <div className="col-span-12 md:col-span-6 xl:col-span-3">
             <Link href="/" className="inline-block mb-6">
-                <LogoIcon className="w-[200px]" />
+
+                <Image
+                    src="/whiteLogo.svg"
+                    alt="Logo"
+                    width={150}
+                    height={128}
+                    priority
+                />
             </Link>
             <p className="text-neutral-300 mb-6 leading-relaxed">
                 مرحبًا بكر، عبر منصتنا يمكنك استكشاف وشراء وحدات عقارية بكل سهولة وشفافية، حيث نوفر لك عروضًا متنوعة تناسب احتياجاتك. كما نتيح لأصحاب العقارات فرصة عرض وحداتهم للبيع، وإدارتها من خلال نظام ذكي يضمن وصولها إلى المهتمين، مع دعم فريق متخصص لضمان جودة التجربة للطرفين.

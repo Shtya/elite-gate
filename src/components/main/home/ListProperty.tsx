@@ -27,7 +27,7 @@ export default function ListProperty({ properties, max = 10 }: ListPropertyProps
                 {visibleProperties.map((property, idx) => (
                     <div
                         key={idx}
-                        className="col-span-12 md:col-span-6 xl:col-span-3 px-3 xl:px-0"
+                        className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 px-3 xl:px-0"
                     >
                         <PropertyCardGrid property={property} />
                     </div>

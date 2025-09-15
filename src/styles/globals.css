@@ -136,6 +136,11 @@
 
   }
 
+  @media (max-width: 520px) {
+    .container {
+      width: 100% !important;
+    }
+  }
 
 }
 
@@ -161,6 +166,9 @@
   --color-dark: var(--dark);
 
   --font-main: var(--font-din-next);
+
+  --breakpoint-xs: 520px;
+
 }
 
 @layer components {
@@ -406,5 +414,20 @@
 
   .custom-shadow {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .scrollbarthin::-webkit-scrollbar {
+    width: 4px;
+    height: 10px;
+  }
+
+  .scrollbarthin::-webkit-scrollbar-thumb {
+    background: #5c5ef3;
+    border-radius: 100vh;
+  }
+
+  .scrollbarthin::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: var(--primary-light);
   }
 }

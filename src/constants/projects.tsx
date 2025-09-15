@@ -10,6 +10,7 @@ export const properties: Property[] = [
         rooms: '9 غرف نوم',
         beds: '7 حمامات',
         area: '650 متر مربع',
+        location: 'جدة، حي الزمرد',
     },
     {
         id: "hdd45d5",
@@ -20,6 +21,7 @@ export const properties: Property[] = [
         rooms: '9 غرف نوم',
         beds: '7 حمامات',
         area: '650 متر مربع',
+        location: 'جدة، حي الزمرد',
     },
     {
         id: "skljsds5d5s",
@@ -30,6 +32,7 @@ export const properties: Property[] = [
         rooms: '9 غرف نوم',
         beds: '7 حمامات',
         area: '650 متر مربع',
+        location: 'جدة، حي الزمرد',
     },
     {
         id: "dkkdk55d6",
@@ -40,6 +43,7 @@ export const properties: Property[] = [
         rooms: '9 غرف نوم',
         beds: '7 حمامات',
         area: '650 متر مربع',
+        location: 'جدة، حي الزمرد',
     },
     {
         id: "ddls4s5",
@@ -50,6 +54,7 @@ export const properties: Property[] = [
         rooms: '9 غرف نوم',
         beds: '7 حمامات',
         area: '650 متر مربع',
+        location: 'جدة، حي الزمرد',
     },
     {
         id: "kdkdss",
@@ -60,6 +65,7 @@ export const properties: Property[] = [
         rooms: '9 غرف نوم',
         beds: '7 حمامات',
         area: '650 متر مربع',
+        location: 'جدة، حي الزمرد',
     },
     {
         id: "sjks7s4s",
@@ -70,6 +76,7 @@ export const properties: Property[] = [
         rooms: '9 غرف نوم',
         beds: '7 حمامات',
         area: '650 متر مربع',
+        location: 'جدة، حي الزمرد',
     },
     {
         id: "kdols445d",
@@ -80,6 +87,6 @@ export const properties: Property[] = [
         rooms: '9 غرف نوم',
         beds: '7 حمامات',
         area: '650 متر مربع',
+        location: 'جدة، حي الزمرد',
     },
-    // Add more properties here...
 ];

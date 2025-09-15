@@ -11,7 +11,7 @@ export default function MapCard({ title, subTitle, lat, lng }: MapCardProps) {
     const isValidLocation = typeof lat === 'number' && typeof lng === 'number';
 
     return (
-        <div className='bg-gray-100/30 p-1 rounded-md shadow-lg overflow-hidden border border-gray-200/60 text-center h-full flex flex-col'>
+        <div className='bg-white p-1 rounded-md shadow-lg overflow-hidden border border-gray-200/60 text-center h-full flex flex-col'>
             {title && <h2 className='text-2xl md:text-xl font-bold text-gray-800 mb-3'>{title}</h2>}
             {subTitle && <p className='text-gray-600 mb-8'>{subTitle}</p>}
             <div className='flex-grow'>

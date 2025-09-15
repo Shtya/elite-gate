@@ -97,14 +97,7 @@ export default function NotificationCard({
                                 )}
                             </button>
 
-                            <button
-                                aria-label="Close notification"
-                                onClick={handleClose}
-                                className="p-1 rounded hover:bg-gray-100"
-                                title="Close"
-                            >
-                                <MdClose className="w-4 h-4 text-gray-500" />
-                            </button>
+
                         </div>
                     </div>
 

@@ -30,12 +30,8 @@ export default function TopContactBar() {
         <div className="flex items-center z-[11]">
           <Link href="/">
 
-            <div className="hidden xl:block ">
-              <LogoIcon className="w-[140px] max-md:w-[140px] text-black " />
-            </div>
-            {/* Favicon (sm) */}
-            <div className="relative xl:hidden ml-3 ">
-              <LogoWithoutText className="text-black" />
+            <div className="block ">
+              <LogoIcon className="w-[140px] max-md:w-[140px] text-black" />
             </div>
           </Link>
         </div>

@@ -16,7 +16,7 @@ export default function MenuItem({ icon, label, onClick, href }: MenuItemProps) 
 
     if (href) {
         return (
-            <Link href={href} className={commonClasses} role="menuitem">
+            <Link href={href} className={commonClasses} role="menuitem" onClick={onClick}>
                 {icon}
                 {label}
             </Link>
