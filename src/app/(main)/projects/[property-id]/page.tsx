@@ -149,17 +149,7 @@ export default function ProjectDetailsPage() {
 
                     <PropertyInfoSection details={propertyInfo.details} />
                     <GuaranteesSection guarantees={propertyInfo.guarantees} />
-                    <div className='h-[500px]'>
-                        <MapCard
-                            title="موقعنا"
-                            subTitle={propertyInfo.location}
-                            lat={propertyInfo.lat}
-                            lng={propertyInfo.lng}
-                        />
-                    </div>
                     <VideoSection videoUrl={propertyInfo.videoUrl} />
-                    {/* <section className="max-w-screen-xl mx-auto px-4"> */}
-                    {/* </section> */}
 
                 </div>
             </div>
