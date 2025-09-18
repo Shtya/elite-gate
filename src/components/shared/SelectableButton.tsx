@@ -31,25 +31,25 @@ export default function SelectableButton({
         fontWeight: level === 0 ? 600 : level === 1 ? 500 : 400,
     }
 
-    const baseClasses = `
-        h-12 py-3 flex items-center w-full rounded-md transition-all
+    const className = `
+        h-12 py-3 px-1 flex items-center w-full rounded-md transition-all
         hover:bg-[var(--primary-light)] hover:text-[var(--primary)]
         ${active ? "bg-[var(--primary-light)] text-[var(--primary)]" : "text-gray-700"}
     `;
 
     const content = (
         <div className="flex-1 flex items-center justify-start gap-3" style={{ paddingLeft }}>
-            {Icon && <Icon size={20} className="text-[var(--primary)]" />}
+            {Icon && <Icon size={20} className="" />}
             <span className="text-start">{label}</span>
         </div>
     );
 
     const ButtonElement = href ? (
-        <Link href={href} onClick={onClick} className={`block ${baseClasses}`} style={style}>
+        <Link href={href} onClick={onClick} className={`block ${className}`} style={style}>
             {content}
         </Link>
     ) : (
-        <button onClick={onClick} className={baseClasses} style={style}>
+        <button onClick={onClick} className={className} style={style}>
             {content}
             {children && <ul className="mt-1 flex flex-col gap-1 border-l border-gray-200 ">{children}</ul>}
         </button>

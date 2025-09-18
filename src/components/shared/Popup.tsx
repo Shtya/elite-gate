@@ -20,8 +20,9 @@ export default function Popup({ children, onClose, show }: PopupProps) {
     if (typeof document === 'undefined') return null;
     return createPortal(
         <div
-            className={`fixed inset-0 z-50 flex items-center justify-center bg-black/30 transition-opacity duration-300 ${show ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+            className={`popup fixed inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-300 ${show ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                 }`}
+            style={{ zIndex: 99999 }}
         >
             <div
                 ref={popupRef}

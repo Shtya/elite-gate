@@ -20,7 +20,7 @@ export default function DashboardLayout({
             <DashboardSidebar sidebarOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
             <main className={`lg:mr-[312px] relative h-screen flex flex-col ${sidebarOpen && "after:bg-black after:opacity-70 after:absolute after:inset-0 after:z-10 after:duration-300 overflow-y-hidden lg:after:content-none"}`}>
                 <DashboardHeader toggleSidebar={toggleSidebar} />
-                <div className="flex-1">
+                <div className="flex-1 px-3 lg:px-6 pb-4 lg:pb-6  ">
 
                     {children}
                 </div>

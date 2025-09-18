@@ -1,19 +1,21 @@
-"use client";
+'use client';
 
 import { useState, useRef } from "react";
 import { SlArrowDown } from "react-icons/sl";
-import { useOutsideClick } from "@/hooks/useOutsideClick"; // adjust path as needed
+import { useOutsideClick } from "@/hooks/useOutsideClick";
 
 type SelectDropdownProps<T extends string> = {
     options: T[];
     value: T;
     onChange: (val: T) => void;
+    label?: string;
 };
 
 export default function SelectDropdown<T extends string>({
     options,
     value,
     onChange,
+    label,
 }: SelectDropdownProps<T>) {
     const [open, setOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -21,14 +23,17 @@ export default function SelectDropdown<T extends string>({
     useOutsideClick(dropdownRef, () => setOpen(false));
 
     return (
-        <div className="relative" ref={dropdownRef}>
+        <div className="relative w-full" ref={dropdownRef}>
             <button
                 type="button"
                 onClick={() => setOpen(!open)}
-                className="relative w-full py-3 px-8 focus:shadow-xl flex gap-3 items-center sm:text-sm bg-bg-1 border rounded-3xl"
+                className="relative w-full py-3 px-8 focus:shadow-xl flex gap-2 items-center sm:text-sm bg-bg-1 border rounded-3xl justify-between"
             >
-                <span className="truncate">{value}</span>
-                <SlArrowDown size={13} className="absolute left-8" />
+                <span className="truncate flex items-center gap-2">
+                    {label && <span className="text-gray-500">{label}:</span>}
+                    <span className="font-medium">{value}</span>
+                </span>
+                <SlArrowDown size={13} className="text-gray-400" />
             </button>
 
             {open && (

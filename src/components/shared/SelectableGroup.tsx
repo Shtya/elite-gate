@@ -51,7 +51,7 @@ export default function SelectableGroup({
 
             {hasChildren && (
                 <ul
-                    className={`mt-1 flex flex-col gap-1 overflow-hidden transition-all duration-300 border-r pr-2 border-gray-300 ${isOpen ? 'max-h-[500px]' : 'max-h-0'
+                    className={`mt-1 flex flex-col gap-1 overflow-hidden transition-all duration-300 border-r pr-4 border-gray-300 ${isOpen ? 'max-h-[500px]' : 'max-h-0'
                         }`}
                 >
                     {item?.children?.map((child, index) => (

@@ -25,7 +25,7 @@ export const dashboardItems: SelectableItem[] = [
                 label: "العملاء",
                 icon: FaUserFriends,
                 children: [
-                    { label: "قائمة العملاء", icon: FaRegListAlt, href: "/dashboard/clients/list" },
+                    { label: "قائمة العملاء", icon: FaRegListAlt, href: "/dashboard/clients" },
                     { label: "إضافة عميل", icon: FaUserPlus, href: "/dashboard/clients/add" }
                 ]
             },
