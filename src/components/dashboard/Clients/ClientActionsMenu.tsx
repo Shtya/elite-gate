@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { TableRow } from '@/types/components/Table';
+import { TableRow } from '@/types/components/table';
 import { PiPencilCircleDuotone } from 'react-icons/pi';
 import { BiTrash } from 'react-icons/bi';
 import { FaPencilAlt, FaRegTrashAlt } from 'react-icons/fa';

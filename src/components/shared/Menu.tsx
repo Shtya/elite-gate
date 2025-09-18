@@ -93,7 +93,7 @@ export default function Menu({
             if (!isMenuOpen) return;
             const target = ev.target as Node | null;
             if (!target) return;
-            if (target instanceof Element && target.closest('popup')) {
+            if (target instanceof Element && target.closest('[data-popup]')) {
                 return;
             }
             if (menuRef.current?.contains(target)) return;

@@ -1,10 +1,10 @@
 'use client';
 
-import { FilterConfig } from '@/types/components/Table';
+import { FilterConfig } from '@/types/components/table';
 import DataView from '@/components/shared/DateViewTable/DataView';
-import { columns, rows } from '@/constants/dashboard/users';
-import { FaPencilAlt, FaRegTrashAlt } from 'react-icons/fa';
+import { FaCheck, FaPencilAlt, FaRegTrashAlt } from 'react-icons/fa';
 import useClients from '@/hooks/dashboard/useClients';
+import { columns } from '@/constants/dashboard/clientsContants';
 
 const filters: FilterConfig[] = [
     {
@@ -14,7 +14,6 @@ const filters: FilterConfig[] = [
         options: [
             { label: 'الكل', value: '' },
             { label: 'نشط', value: 'active' },
-            { label: 'قيد المراجعة', value: 'pending' },
             { label: 'موقوف', value: 'suspended' },
         ],
     },
@@ -34,6 +33,7 @@ const sortFields = [
 
 export default function ClientsDataView() {
     const getRows = useClients();
+
     return (
         <DataView
             columns={columns}
@@ -41,24 +41,34 @@ export default function ClientsDataView() {
             sortFields={sortFields}
             showSearch
             showSort
-            pageSize={10}
-            totalCount={rows.length}
             getRows={getRows}
             showActions
-            actionsMenuItems={[
-                {
-                    label: 'تعديل المستخدم',
-                    icon: <FaPencilAlt />,
-                    type: 'primary',
-                    link: `/users/1/edit`,
-                },
-                {
-                    label: 'حذف المستخدم',
-                    icon: <FaRegTrashAlt />,
-                    type: 'delete',
-                    child: <div>Delete popup</div>,
-                },
-            ]}
+            actionsMenuItems={(row) => {
+                const isSuspended = row.status === 'suspended';
+
+                return [
+                    {
+                        label: 'عرض التفاصيل',
+                        type: 'primary',
+                        icon: <FaPencilAlt />,
+                        link: `/clients/${row.id}`,
+                    },
+                    {
+                        label: isSuspended ? 'تفعيل الحساب' : 'تعليق الحساب',
+                        type: isSuspended ? 'primary' : 'delete',
+                        icon: isSuspended ? <FaCheck /> : <FaRegTrashAlt />,
+                        child: (
+                            <div>
+                                {isSuspended
+                                    ? `Activate client ${row.id}`
+                                    : `Suspend client ${row.id}`}
+                            </div>
+                        ),
+                    },
+                ];
+            }}
+
         />
     );
 }
+

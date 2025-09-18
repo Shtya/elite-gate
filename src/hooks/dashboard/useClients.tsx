@@ -1,15 +1,17 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { TableRow } from '@/types/components/Table';
-import { rows as mockRows } from '@/constants/dashboard/users';
+import { TableRow } from '@/types/components/table';
+import { rows as mockRows } from '@/constants/dashboard/clientsContants';
+import { ClientRow, ClientStatus, statusMap } from '@/types/client';
 
 export default function useClients() {
     const searchParams = useSearchParams();
 
-    const getRows = async (): Promise<{
-        rows: TableRow[];
-        error: string | null;
+    const getRows = async (signal?: AbortSignal): Promise<{
+        rows: ClientRow[];
+        error?: Error | null;
+        totalCount?: number;
     }> => {
         try {
             const status = searchParams.get('status');
@@ -21,14 +23,15 @@ export default function useClients() {
             const limit = parseInt(searchParams.get('limit') || '10', 10);
             const searchKey = searchParams.get('search')?.toLowerCase().trim() || '';
 
+            // Simulate delay 
             await new Promise((r) => setTimeout(r, 700)); // simulate delay
 
             let filtered = [...mockRows];
 
             if (status) {
                 filtered = filtered.filter((row) => {
-                    const statusText = typeof row.status === 'string' ? row.status : row.status?.props?.children;
-                    return statusText === statusMap[status];
+                    const statusText = row.status;
+                    return statusText === status as ClientStatus;
                 });
             }
 
@@ -54,30 +57,48 @@ export default function useClients() {
             }
 
             if (sort) {
+                const sortKey = sort as keyof ClientRow;
+
                 filtered.sort((a, b) => {
-                    let valA = a[sort];
-                    let valB = b[sort];
-                    if (sort === 'joinedAt') {
-                        valA = new Date(valA);
-                        valB = new Date(valB);
+                    let valA = a[sortKey];
+                    let valB = b[sortKey];
+
+                    // Handle undefined values safely
+                    if (valA === undefined || valB === undefined) return 0;
+
+                    // Special case: sort by date
+                    if (sortKey === 'joinedAt') {
+                        const dateA = new Date(valA as string);
+                        const dateB = new Date(valB as string);
+
+                        if (dateA < dateB) return dir === 'desc' ? 1 : -1;
+                        if (dateA > dateB) return dir === 'desc' ? -1 : 1;
+                        return 0;
                     }
+
+                    // General comparison
                     if (valA < valB) return dir === 'desc' ? 1 : -1;
                     if (valA > valB) return dir === 'desc' ? -1 : 1;
                     return 0;
                 });
             }
 
+
             const total = filtered.length;
             const paginated = filtered.slice((page - 1) * limit, page * limit);
-
             return {
                 rows: paginated,
-                error: null,
+                totalCount: total,
             };
-        } catch {
+        } catch (err) {
+            if (err instanceof DOMException && err.name === 'AbortError') {
+                return {
+                    rows: [],
+                };
+            }
             return {
                 rows: [],
-                error: 'Failed to fetch rows',
+                error: new Error('فشل في جلب البيانات'),
             };
         }
     };
@@ -85,8 +106,3 @@ export default function useClients() {
     return getRows;
 }
 
-const statusMap: Record<string, string> = {
-    active: 'نشط',
-    pending: 'قيد المراجعة',
-    suspended: 'موقوف',
-};

@@ -1,16 +1,13 @@
-import { ReactElement } from "react";
 
-export interface TableColumn {
-    key: string;
+
+export type TableColumn<T = Record<string, any>> = {
+    key: keyof T;
     label: string;
     className?: string;
-    cell?: (value: any) => ReactElement
-}
+    cell?: (value: T[keyof T], row?: T) => React.ReactNode;
+};
 
-export interface TableRow {
-    [key: string]: any;
-}
-
+export type TableRow<T = Record<string, any>> = T;
 
 export type FilterConfig = {
     type: 'select' | 'dateRange';

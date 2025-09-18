@@ -1,25 +1,29 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { FilterConfig, TableColumn, TableRow } from '@/types/components/Table';
+import { FilterConfig, TableColumn, TableRow } from '@/types/components/table';
 import TableSkeleton from '../TableSkeleton';
 import PropertyPagination from '../../main/projects/PropertyPagination';
 import FilterContainer from './FilterContainer';
 import { MenuActionItem } from '../Header/MenuActionList';
-import { Suspense } from 'react';
-import TableWrapper from './TableWrapper';
+import { useEffect, useState } from 'react';
+import Table from '../Table';
+import TableError from '../TableError';
 
-type DataViewProps = {
-    columns: TableColumn[];
+type DataViewProps<T = Record<string, any>> = {
+    columns: TableColumn<T>[];
     filters?: FilterConfig[];
     showSearch?: boolean;
     showSort?: boolean;
     sortFields?: { label: string; value: string }[];
-    actionsMenuItems?: MenuActionItem[];
+    actionsMenuItems?: (row: T) => MenuActionItem[];
     showActions?: boolean;
-    totalCount?: number;
     pageSize?: number;
-    getRows: () => Promise<{ rows: TableRow[]; error: string | null }>;
+    getRows: (signal?: AbortSignal) => Promise<{
+        rows: TableRow<T>[];
+        error?: Error | null;
+        totalCount?: number;
+    }>;
 };
 
 const directions = [
@@ -27,31 +31,50 @@ const directions = [
     { label: 'تنازلي', value: 'desc' },
 ];
 
-export default function DataView({
+export default function DataView<T = Record<string, any>>({
     columns,
     filters = [],
     showSearch = true,
     showSort = true,
     sortFields = [],
-    actionsMenuItems = [],
+    actionsMenuItems,
     showActions = false,
-    totalCount = 0,
     pageSize = 10,
     getRows,
-}: DataViewProps) {
+}: DataViewProps<T>) {
     const searchParams = useSearchParams();
-    const suspenseKey = searchParams.toString();
+    const [rows, setRows] = useState<TableRow<T>[] | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [totalRowsCount, setTotalRowsCount] = useState(0);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const controller = new AbortController();
+        fetchRows(controller.signal);
+        return () => controller.abort();
+    }, [getRows]);
+
+    const fetchRows = async (signal?: AbortSignal) => {
+        setIsLoading(true);
+        try {
+            const { rows, error, totalCount } = await getRows(signal);
+            setTotalRowsCount(totalCount ?? 0);
+            setError(error ? error.message : null);
+            setRows(rows);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     const pageParam = searchParams.get('page');
     const currentPage = pageParam ? parseInt(pageParam) : 1;
 
     const startEntry = (currentPage - 1) * pageSize + 1;
-    const endEntry = Math.min(currentPage * pageSize, totalCount);
-    const pageCount = Math.ceil(totalCount / pageSize);
+    const endEntry = Math.min(currentPage * pageSize, totalRowsCount);
+    const pageCount = Math.ceil(totalRowsCount / pageSize);
 
     return (
         <>
-            {/* 🔍 Filter Container */}
             <FilterContainer
                 filters={filters}
                 showSearch={showSearch}
@@ -60,18 +83,24 @@ export default function DataView({
                 directions={directions}
             />
 
-            <TableWrapper
-                columns={columns}
-                showActions={showActions}
-                actionsMenuItems={actionsMenuItems}
-                getRows={getRows}
-            />
+            {isLoading ? (
+                <TableSkeleton columns={columns} />
+            ) : error ? (
+                <TableError message={error} onRetry={fetchRows} />
+            ) : (
+                <Table<T>
+                    columns={columns}
+                    rows={rows ?? []}
+                    showActions={showActions}
+                    actionsMenuItems={actionsMenuItems}
+                />
+            )}
 
-            {totalCount > 0 && (
+            {totalRowsCount > 0 && (
                 <div className="flex justify-between items-center gap-3 pt-5 lg:pt-7 flex-wrap">
                     <PropertyPagination pageCount={pageCount} />
                     <span className="text-sm text-gray-500">
-                        Showing {startEntry} to {endEntry} of {totalCount} entries
+                        Showing {startEntry} to {endEntry} of {totalRowsCount} entries
                     </span>
                 </div>
             )}

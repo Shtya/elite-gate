@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { format, parse } from 'date-fns';
-import { FilterConfig } from '@/types/components/Table';
+import { FilterConfig } from '@/types/components/table';
 import SelectDropdown from '../SelectDropdown';
 import SelectDateRange from '../Forms/SelectDateRange';
 import SearchField from '../Forms/SearchField';
