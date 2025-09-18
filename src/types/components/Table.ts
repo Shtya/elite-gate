@@ -9,9 +9,20 @@ export type TableColumn<T = Record<string, any>> = {
 
 export type TableRow<T = Record<string, any>> = T;
 
-export type FilterConfig = {
+export type BaseFilterKeys = 'sort' | 'dir' | 'search' | 'page' | 'limit';
+
+export type FilterConfig<T extends string = string> = {
     type: 'select' | 'dateRange';
     label: string;
-    key: string;
+    key: T;
     options?: { label: string; value: string }[]; // for select
+    default?: string | { stateDate?: Date; endDate?: Date };
+};
+
+
+export type SortConfig = {
+    defaultSort?: string;
+    defaultDir?: string
+    sortFields: { label: string; value: string }[];
+    directions?: { label: string; value: string }[];
 };

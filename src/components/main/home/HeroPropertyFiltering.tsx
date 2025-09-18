@@ -4,31 +4,55 @@ import { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Slider from 'rc-slider';
 import Link from 'next/link';
-import SelectDropdown from '@/components/shared/SelectDropdown';
+import SelectDropdown from '@/components/shared/Forms/SelectDropdown';
 import PrimaryButton from '@/components/shared/Button';
 
 type TransactionType = 'للإيجار' | 'للبيع';
-type CityType = 'جدة' | 'الرياض' | 'الدمام' | 'مكة المكرمة' | 'المدينة المنورة';
-type PropertyType = 'شقة' | 'فيلا' | 'مكتب';
+type CityType = 'jeddah' | 'riyadh' | 'dammam' | 'mecca' | 'medina';
+type PropertyType = 'apartment' | 'villa' | 'office';
+
 
 export default function HeroPropertyFiltering() {
   const [transaction, setTransaction] = useState<TransactionType>('للإيجار');
-  const [city, setCity] = useState<CityType>('جدة');
-  const [propertyType, setPropertyType] = useState<PropertyType>('شقة');
+  const [city, setCity] = useState<CityType>('jeddah');
+  const [propertyType, setPropertyType] = useState<PropertyType>('apartment');
   const [price, setPrice] = useState<number>(40);
 
   const searchHref = `/projects?deal=${encodeURIComponent(transaction)}&city=${encodeURIComponent(city)}&type=${encodeURIComponent(propertyType)}&price=${price}`;
 
+
   return (
     <div className='z-30 p-4 lg:p-5 rounded-2xl shadow-xl bg-white/90 backdrop-blur-sm flex flex-wrap items-center gap-3 relative max-w-[1060px] mx-auto mt-10 border border-neutral-200'>
 
-      <div className='w-full md:w-[48%] xl:w-[22%] cursor-pointer'>
-        <SelectDropdown options={['جدة', 'الرياض', 'الدمام', 'مكة المكرمة', 'المدينة المنورة']} value={city} onChange={setCity} />
+      <div className="w-full md:w-[48%] xl:w-[22%] cursor-pointer">
+        <SelectDropdown
+          options={[
+            { label: 'جدة', value: 'jeddah' },
+            { label: 'الرياض', value: 'riyadh' },
+            { label: 'الدمام', value: 'dammam' },
+            { label: 'مكة المكرمة', value: 'mecca' },
+            { label: 'المدينة المنورة', value: 'medina' },
+          ]}
+          value={city}
+          onChange={(val) => setCity(val as CityType)}
+          label="المدينة"
+        />
       </div>
 
-      <div className='w-full md:w-[48%] xl:w-[22%] cursor-pointer'>
-        <SelectDropdown options={['شقة', 'فيلا', 'مكتب']} value={propertyType} onChange={setPropertyType} />
+      <div className="w-full md:w-[48%] xl:w-[22%] cursor-pointer">
+        <SelectDropdown
+          options={[
+            { label: 'شقة', value: 'apartment' },
+            { label: 'فيلا', value: 'villa' },
+            { label: 'مكتب', value: 'office' },
+          ]}
+          value={propertyType}
+          onChange={(val) => setPropertyType(val as PropertyType)}
+          label="نوع العقار"
+        />
       </div>
+
+
 
       {/* Price Slider */}
       <div className='w-full md:w-[48%] xl:w-[22%]'>

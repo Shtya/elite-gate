@@ -5,14 +5,15 @@ import React from 'react';
 interface KeywordSearchProps {
     value: string;
     onChange: (val: string) => void;
+    searchPlaceholder?: string;
 }
 
-export default function KeywordSearch({ value, onChange }: KeywordSearchProps) {
+export default function KeywordSearch({ value, onChange, searchPlaceholder = "ابحث..." }: KeywordSearchProps) {
     return (
         <div className="flex items-center justify-between rounded-full border bg-[var(--bg-1)] px-5 py-3">
             <input
                 className="w-full bg-transparent focus:outline-none"
-                placeholder="كلمات مفتاحية..."
+                placeholder={searchPlaceholder}
                 type="text"
                 value={value}
                 onChange={(e) => onChange(e.target.value)}

@@ -1,21 +1,33 @@
 'use client';
+/**
+ * 📊 DataView Component
+ *
+ * A generic table wrapper that handles:
+ * - Fetching paginated data using the `getRows` function
+ * - Displaying filters, search, and sort controls via `FilterContainer`
+ * - Rendering loading skeletons, error states, and the final table
+ * - Managing pagination and showing entry count summary
+ *
 
+ * This component is designed to be reusable across different data types by leveraging generics (`<T>`).
+ */
 import { useSearchParams } from 'next/navigation';
-import { FilterConfig, TableColumn, TableRow } from '@/types/components/table';
-import TableSkeleton from '../TableSkeleton';
+import { FilterConfig, SortConfig, TableColumn, TableRow } from '@/types/components/table';
+import TableSkeleton from './TableSkeleton';
 import PropertyPagination from '../../main/projects/PropertyPagination';
 import FilterContainer from './FilterContainer';
 import { MenuActionItem } from '../Header/MenuActionList';
 import { useEffect, useState } from 'react';
-import Table from '../Table';
-import TableError from '../TableError';
+import Table from './Table';
+import TableError from './TableError';
 
 type DataViewProps<T = Record<string, any>> = {
     columns: TableColumn<T>[];
     filters?: FilterConfig[];
+    sortConfig: SortConfig;
     showSearch?: boolean;
+    searchPlaceholder?: string;
     showSort?: boolean;
-    sortFields?: { label: string; value: string }[];
     actionsMenuItems?: (row: T) => MenuActionItem[];
     showActions?: boolean;
     pageSize?: number;
@@ -26,17 +38,15 @@ type DataViewProps<T = Record<string, any>> = {
     }>;
 };
 
-const directions = [
-    { label: 'تصاعدي', value: 'asc' },
-    { label: 'تنازلي', value: 'desc' },
-];
+
 
 export default function DataView<T = Record<string, any>>({
     columns,
     filters = [],
+    sortConfig,
     showSearch = true,
+    searchPlaceholder,
     showSort = true,
-    sortFields = [],
     actionsMenuItems,
     showActions = false,
     pageSize = 10,
@@ -79,8 +89,8 @@ export default function DataView<T = Record<string, any>>({
                 filters={filters}
                 showSearch={showSearch}
                 showSort={showSort}
-                sortFields={sortFields}
-                directions={directions}
+                searchPlaceholder={searchPlaceholder}
+                sortConfig={sortConfig}
             />
 
             {isLoading ? (
@@ -99,7 +109,7 @@ export default function DataView<T = Record<string, any>>({
             {totalRowsCount > 0 && (
                 <div className="flex justify-between items-center gap-3 pt-5 lg:pt-7 flex-wrap">
                     <PropertyPagination pageCount={pageCount} />
-                    <span className="text-sm text-gray-500">
+                    <span className="text-sm text-gray-500 mr-auto">
                         Showing {startEntry} to {endEntry} of {totalRowsCount} entries
                     </span>
                 </div>

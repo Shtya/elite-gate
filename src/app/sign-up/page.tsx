@@ -1,6 +1,6 @@
 import PrimaryButton from '@/components/shared/Button';
 import LogoLink from '@/components/shared/LogoLink';
-import TextInput from '@/components/shared/TextInput';
+import TextInput from '@/components/shared/Forms/TextInput';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';

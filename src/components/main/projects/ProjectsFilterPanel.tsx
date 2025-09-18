@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import SelectInput from '@/components/shared/SelectInput';
+import SelectInput from '@/components/shared/Forms/SelectInput';
 import KeywordSearch from '@/components/shared/KeywordSearch';
 import PriceRangeSlider from '@/components/shared/PriceRangeSlider';
 import ResetFiltersButton from '@/components/shared/ResetFiltersButton';

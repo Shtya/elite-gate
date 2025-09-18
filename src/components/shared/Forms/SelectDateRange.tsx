@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 import { SlArrowDown } from "react-icons/sl";
@@ -8,24 +8,23 @@ import { useOutsideClick } from "@/hooks/useOutsideClick";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 
+
 type DateRangePickerWrapperProps = {
-    onChange: (range: { startDate: Date | undefined; endDate: Date | undefined }) => void;
+    value?: { startDate?: Date; endDate?: Date };
+    onChange: (range: { startDate?: Date; endDate?: Date }) => void;
     label?: string;
-    defaultStartDate?: Date | undefined;
-    defaultEndDate?: Date | undefined;
 };
 
 export default function SelectDateRange({
+    value,
     onChange,
     label,
-    defaultStartDate,
-    defaultEndDate,
 }: DateRangePickerWrapperProps) {
     const [open, setOpen] = useState(false);
-    const [range, setRange] = useState<[{ startDate: Date | undefined; endDate: Date | undefined; key: string }]>([
+    const [range, setRange] = useState([
         {
-            startDate: defaultStartDate,
-            endDate: defaultEndDate,
+            startDate: value?.startDate,
+            endDate: value?.endDate,
             key: 'selection',
         },
     ]);
@@ -33,9 +32,18 @@ export default function SelectDateRange({
     const dropdownRef = useRef<HTMLDivElement>(null);
     useOutsideClick(dropdownRef, () => setOpen(false));
 
-
+    useEffect(() => {
+        setRange([
+            {
+                startDate: value?.startDate,
+                endDate: value?.endDate,
+                key: 'selection',
+            },
+        ]);
+    }, [value?.startDate, value?.endDate]);
 
     const isSelected = range[0].startDate && range[0].endDate;
+
     const formattedRange = isSelected
         ? `${format(range[0].startDate!, 'yyyy-MM-dd')} - ${format(range[0].endDate!, 'yyyy-MM-dd')}`
         : 'لم يتم التحديد';

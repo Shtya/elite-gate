@@ -3,7 +3,7 @@
 import React from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { BsArrowRight } from 'react-icons/bs';
-import SelectInput from '@/components/shared/SelectInput';
+import SelectInput from '@/components/shared/Forms/SelectInput';
 import PrimaryButton from '@/components/shared/Button';
 
 const propertyTypes = [

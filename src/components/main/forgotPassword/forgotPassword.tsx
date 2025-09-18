@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import TextInput from '@/components/shared/TextInput';
+import TextInput from '@/components/shared/Forms/TextInput';
 import PrimaryButton from '@/components/shared/Button';
 import { FaCheckCircle } from 'react-icons/fa';
 

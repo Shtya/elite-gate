@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 import LogoIcon from "../shared/LogoIcon";
 import Link from "next/link";
-import SelectableMenu from "../shared/SelectableMenu";
+import SelectableMenu from "../shared/NavigationTree/SelectableMenu";
 import LogoutButton from "../shared/LogoutButton";
 import { dashboardItems } from "@/constants/AdminDashboardItems";
 

@@ -1,4 +1,4 @@
-import ClientsDataView from "@/components/dashboard/Clients/ClientsDataView";
+import ClientsDataView from "@/components/dashboard/clients/ClientsDataView";
 import DashboardHeaderTitle from "@/components/dashboard/DashboardHeaderTitle";
 import DownloadList from "@/components/shared/DownloadList";
 import { SearchParams } from "next/dist/server/request/search-params";

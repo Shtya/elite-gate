@@ -1,5 +1,5 @@
 import PrimaryButton from "@/components/shared/Button";
-import TextInput from "@/components/shared/TextInput";
+import TextInput from "@/components/shared/Forms/TextInput";
 import Link from "next/link";
 
 

@@ -1,44 +1,20 @@
 'use client';
-
-import { FilterConfig } from '@/types/components/table';
 import DataView from '@/components/shared/DateViewTable/DataView';
 import { FaCheck, FaPencilAlt, FaRegTrashAlt } from 'react-icons/fa';
-import useClients from '@/hooks/dashboard/useClients';
-import { columns } from '@/constants/dashboard/clientsContants';
+import useClients from '@/hooks/dashboard/client/useClients';
+import { columns, filters, sortConfig } from '@/constants/dashboard/client/contants';
+import { ClientRow } from '@/types/dashboard/client';
 
-const filters: FilterConfig[] = [
-    {
-        type: 'select',
-        label: 'الحالة',
-        key: 'status',
-        options: [
-            { label: 'الكل', value: '' },
-            { label: 'نشط', value: 'active' },
-            { label: 'موقوف', value: 'suspended' },
-        ],
-    },
-    {
-        type: 'dateRange',
-        label: 'تاريخ الانضمام',
-        key: 'joinedAt',
-    },
-];
-
-const sortFields = [
-    { label: 'الاسم', value: 'name' },
-    { label: 'الحالة', value: 'status' },
-    { label: 'تاريخ الانضمام', value: 'joinedAt' },
-];
 
 
 export default function ClientsDataView() {
     const getRows = useClients();
 
     return (
-        <DataView
+        <DataView<ClientRow>
             columns={columns}
             filters={filters}
-            sortFields={sortFields}
+            sortConfig={sortConfig}
             showSearch
             showSort
             getRows={getRows}
@@ -67,8 +43,6 @@ export default function ClientsDataView() {
                     },
                 ];
             }}
-
         />
     );
 }
-

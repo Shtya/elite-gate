@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import TextInput from '@/components/shared/TextInput';
-import TextareaInput from '@/components/shared/TextareaInput';
-import SelectInput from '@/components/shared/SelectInput';
+import TextInput from '@/components/shared/Forms/TextInput';
+import TextareaInput from '@/components/shared/Forms/TextareaInput';
+import SelectInput from '@/components/shared/Forms/SelectInput';
 import PrimaryButton from '@/components/shared/Button';
 
 const availableTimes = [

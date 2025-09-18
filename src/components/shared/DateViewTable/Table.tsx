@@ -2,9 +2,9 @@
 
 import React, { ReactElement } from 'react';
 import { TableColumn, TableRow } from '@/types/components/table';
-import Menu, { MenuChildProps } from './Menu';
-import MenuActionList, { MenuActionItem } from './Header/MenuActionList';
-import NoRowsFound from './NoRowsFound';
+import Menu, { MenuChildProps } from '../Menu';
+import MenuActionList, { MenuActionItem } from '../Header/MenuActionList';
+import NoRowsFound from '../NoRowsFound';
 
 
 

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { FaLock, FaArrowLeft } from 'react-icons/fa';
 import Card from '@/components/shared/Card';
-import TextInput from '@/components/shared/TextInput';
+import TextInput from '@/components/shared/Forms/TextInput';
 import PrimaryButton from '@/components/shared/Button';
 import SoftActionButton from '@/components/shared/SoftActionButton';
 

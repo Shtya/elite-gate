@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import TextInput from '@/components/shared/TextInput';
+import TextInput from '@/components/shared/Forms/TextInput';
 import OtpForm from './OtpForm';
 import PasswordForm from './PasswordForm';
 import LogoLink from '@/components/shared/LogoLink';
