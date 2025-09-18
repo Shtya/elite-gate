@@ -4,6 +4,7 @@ import { FilterConfig } from '@/types/components/Table';
 import DataView from '@/components/shared/DateViewTable/DataView';
 import { columns, rows } from '@/constants/dashboard/users';
 import { FaPencilAlt, FaRegTrashAlt } from 'react-icons/fa';
+import useClients from '@/hooks/dashboard/useClients';
 
 const filters: FilterConfig[] = [
     {
@@ -11,6 +12,7 @@ const filters: FilterConfig[] = [
         label: 'الحالة',
         key: 'status',
         options: [
+            { label: 'الكل', value: '' },
             { label: 'نشط', value: 'active' },
             { label: 'قيد المراجعة', value: 'pending' },
             { label: 'موقوف', value: 'suspended' },
@@ -29,13 +31,9 @@ const sortFields = [
     { label: 'تاريخ الانضمام', value: 'joinedAt' },
 ];
 
-// ✅ Simulated async fetch function
-const getRows = async () => {
-    await new Promise((r) => setTimeout(r, 700));
-    return rows; // Replace with API call if needed
-};
 
 export default function ClientsDataView() {
+    const getRows = useClients();
     return (
         <DataView
             columns={columns}
@@ -44,7 +42,7 @@ export default function ClientsDataView() {
             showSearch
             showSort
             pageSize={10}
-            totalCount={20}
+            totalCount={rows.length}
             getRows={getRows}
             showActions
             actionsMenuItems={[

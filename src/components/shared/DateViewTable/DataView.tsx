@@ -19,7 +19,7 @@ type DataViewProps = {
     showActions?: boolean;
     totalCount?: number;
     pageSize?: number;
-    getRows: () => Promise<TableRow[]>;
+    getRows: () => Promise<{ rows: TableRow[]; error: string | null }>;
 };
 
 const directions = [
@@ -60,15 +60,12 @@ export default function DataView({
                 directions={directions}
             />
 
-            {/* 🧠 Table Wrapper with Suspense */}
-            <Suspense fallback={<TableSkeleton columns={columns} />} key={suspenseKey}>
-                <TableWrapper
-                    columns={columns}
-                    showActions={showActions}
-                    actionsMenuItems={actionsMenuItems}
-                    getRows={getRows}
-                />
-            </Suspense>
+            <TableWrapper
+                columns={columns}
+                showActions={showActions}
+                actionsMenuItems={actionsMenuItems}
+                getRows={getRows}
+            />
 
             {totalCount > 0 && (
                 <div className="flex justify-between items-center gap-3 pt-5 lg:pt-7 flex-wrap">
