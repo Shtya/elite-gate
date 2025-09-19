@@ -4,6 +4,8 @@ import BasicInfoForm from '@/components/main/customer/personal-info/BasicInfoFor
 import Link from 'next/link';
 import { BiGroup } from 'react-icons/bi';
 
+export const dynamic = 'force-dynamic';
+
 export default function AddClientPage() {
     return (
         <div>

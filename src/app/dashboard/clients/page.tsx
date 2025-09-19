@@ -1,12 +1,12 @@
 import DashboardHeaderTitle from "@/components/dashboard/DashboardHeaderTitle";
 import DownloadList from "@/components/shared/DownloadList";
-import { SearchParams } from "next/dist/server/request/search-params";
 import Link from "next/link";
 import { BiEditAlt } from "react-icons/bi";
 import ClientsDataView from "@/components/dashboard/clients/ClientsDataView";
 
+export const dynamic = 'force-dynamic';
 
-export default function ClientsPage({ searchParams }: { searchParams?: SearchParams }) {
+export default function ClientsPage() {
     return <div>
         <DashboardHeaderTitle path={['العملاء']}>
             <div className="flex gap-4 flex-wrap">

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Card from '@/components/shared/Card';
 import TextInput from '@/components/shared/Forms/TextInput';
 import PrimaryButton from '@/components/shared/Button';
@@ -33,7 +33,6 @@ export default function BasicInfoForm({ client, isCurentUser = false, isAdmin = 
                 status: 'active',
             }
     );
-
 
     const handleTextChange = (key: keyof typeof info) =>
         (e: React.ChangeEvent<HTMLInputElement>) => {
