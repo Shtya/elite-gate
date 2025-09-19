@@ -11,7 +11,7 @@ export default function Card({ children, title = '', className = '', hasMinHeigh
     return (
         <div
             className={
-                `bg-white p-4 sm:p-6  rounded-2xl shadow-lg ${hasMinHeight ? "min-h-[712px]" : ""}` +
+                `bg-white p-4 sm:p-6  rounded-2xl border ${hasMinHeight ? "min-h-[712px]" : ""}` +
                 className
             }
         >

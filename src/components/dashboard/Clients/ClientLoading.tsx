@@ -1,19 +1,13 @@
 'use client';
-
 import Skeleton from '@/components/shared/Skelatons/Skeleton';
-import { BiGroup } from 'react-icons/bi';
-import Link from 'next/link';
-import DashboardHeaderTitleSkeleton from '@/components/shared/Skelatons/DashboardHeaderTitleSkeleton';
 
 export default function LoadingClientDetailsPage() {
     return (
         <div>
-            <DashboardHeaderTitleSkeleton />
-
             {/* Grid Layout */}
-            <div className="grid grid-cols-12 gap-4 lg:gap-6">
+            <div className="grid grid-cols-1 2xl:grid-cols-6 gap-4 lg:gap-6 items-stretch">
                 {/* Left Column */}
-                <div className="col-span-12 xl:col-span-4 ">
+                <div className="h-full xl:col-span-2">
                     <div className="relative rounded-2xl bg-white p-6 shadow-sm">
                         {/* Edit Icon */}
                         <div className="absolute top-4 right-4 w-9 h-9 bg-gray-200 rounded-full animate-pulse" />
@@ -32,12 +26,16 @@ export default function LoadingClientDetailsPage() {
                             <Skeleton className="h-4 w-full" />
                             <Skeleton className="h-4 w-full" />
                         </div>
+                        <div
+                            className="h-10 rounded-full my-2"
+                            style={{ backgroundColor: '#d1d5db', width: '100%' }}
+                        />
                     </div>
                 </div>
 
                 {/* Right Column */}
-                <div className="col-span-12 xl:col-span-8 ">
-                    <div className="rounded-2xl bg-white p-6 shadow-sm">
+                <div className="h-full xl:col-span-4">
+                    <div className="rounded-2xl bg-white p-6 shadow-sm h-full ">
                         <Skeleton className="h-6 w-48 mb-6" />
 
                         {/* Booking Cards */}

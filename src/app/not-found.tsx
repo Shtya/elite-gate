@@ -1,7 +1,11 @@
-import Link from "next/link";
+'use client';
 
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function NotFound() {
+    const router = useRouter();
+
     return (
         <div className="py-[30px] lg:py-[60px] bg-bg-2 h-screen">
             <div className="container mx-auto">
@@ -10,7 +14,6 @@ export default function NotFound() {
                         <div className="text-center pb-10">
                             <img
                                 alt="image"
-
                                 className="mx-auto w-full"
                                 src="/error-img.png"
                             />
@@ -18,9 +21,18 @@ export default function NotFound() {
                             <p className="mb-8 text-gray-600">
                                 نأسف، الصفحة التي تبحث عنها غير موجودة. قد تكون قد أُزيلت أو تم تغيير عنوانها أو أنها غير متوفرة مؤقتًا.
                             </p>
-                            <Link href="/" className="btn-primary font-semibold inline-block">
-                                العودة إلى الصفحة الرئيسية
-                            </Link>
+
+                            <div className="flex justify-center gap-4 flex-wrap">
+                                <Link href="/" className="btn-primary font-semibold inline-block">
+                                    العودة إلى الصفحة الرئيسية
+                                </Link>
+                                <button
+                                    onClick={() => router.back()}
+                                    className="btn-secondary font-semibold inline-block"
+                                >
+                                    العودة للخلف
+                                </button>
+                            </div>
 
                         </div>
                     </div>

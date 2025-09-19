@@ -2,14 +2,14 @@
 
 import { useSearchParams } from 'next/navigation';
 import { rows as mockRows } from '@/constants/dashboard/client/contants';
-import { ClientRow, ClientStatus } from '@/types/dashboard/client';
+import { ClientFilterKeys, ClientRow, ClientStatus } from '@/types/dashboard/client';
 import { useCallback } from 'react';
 
 
 
 export default function useClients() {
     const searchParams = useSearchParams();
-    const getParam = useCallback((key: string) => searchParams.get(key), [searchParams]);
+    const getParam = useCallback((key: ClientFilterKeys) => searchParams.get(key), [searchParams]);
 
     const getRows = useCallback(
         async (signal?: AbortSignal): Promise<{
@@ -28,7 +28,7 @@ export default function useClients() {
                 const searchKey = getParam('search')?.toLowerCase().trim() || '';
 
                 // Simulate delay 
-                await new Promise((r) => setTimeout(r, 700)); // simulate delay
+                await new Promise((r) => setTimeout(r, 300)); // simulate delay
 
                 let filtered = [...mockRows];
 
@@ -108,4 +108,3 @@ export default function useClients() {
 
     return getRows;
 }
-

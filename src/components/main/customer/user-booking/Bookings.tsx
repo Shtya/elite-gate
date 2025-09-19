@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import BookingList from './BookingList';
 import { Booking, BookingStatus } from '@/types/global';
-
 const initialBookings: Booking[] = [
     {
         id: '1',
@@ -11,8 +10,8 @@ const initialBookings: Booking[] = [
         propertyName: 'مشروع فلل إيليت الماسية قيمة العقار',
         propertyType: 'شقة فيلا ارض',
         propertyImage: '/main/projects/property-1.webp',
-        startDate: '2025-09-20',
-        endDate: '2025-09-25',
+        startDate: '2025-09-20T09:00:00',
+        endDate: '2025-09-20T11:00:00',
         agent: 'محمد عبد الله',
         propertyLink: '/projects/elite-villa',
     },
@@ -22,8 +21,8 @@ const initialBookings: Booking[] = [
         propertyName: 'مشروع أبراج النخبة',
         propertyType: 'شقة',
         propertyImage: '/main/projects/property-2.webp',
-        startDate: '2025-10-01',
-        endDate: '2025-10-05',
+        startDate: '2025-10-01T14:30:00',
+        endDate: '2025-10-01T16:30:00',
         propertyLink: '/projects/nokhba-towers',
     },
     {
@@ -32,8 +31,8 @@ const initialBookings: Booking[] = [
         propertyName: 'مجمع فلل المرجان',
         propertyType: 'فيلا',
         propertyImage: '/main/projects/property-3.webp',
-        startDate: '2025-11-10',
-        endDate: '2025-11-15',
+        startDate: '2025-11-10T08:00:00',
+        endDate: '2025-11-10T10:00:00',
         agent: 'سارة منصور',
         propertyLink: '/projects/murjan-villas',
     },
@@ -43,8 +42,8 @@ const initialBookings: Booking[] = [
         propertyName: 'أرض النخيل الاستثمارية',
         propertyType: 'ارض',
         propertyImage: '/main/projects/property-4.webp',
-        startDate: '2025-12-01',
-        endDate: '2025-12-10',
+        startDate: '2025-12-01T17:00:00',
+        endDate: '2025-12-01T19:00:00',
         agent: 'خالد يوسف',
         propertyLink: '/projects/palm-land',
     },
@@ -54,14 +53,14 @@ const initialBookings: Booking[] = [
         propertyName: 'مشروع شقق الواجهة البحرية',
         propertyType: 'شقة',
         propertyImage: '/main/projects/property-5.webp',
-        startDate: '2025-08-01',
-        endDate: '2025-08-07',
+        startDate: '2025-08-01T15:00:00',
+        endDate: '2025-08-01T18:00:00',
         agent: 'ليلى أحمد',
         propertyLink: '/projects/seafront-apartments',
         review: {
             comment: 'إقامة رائعة وموقع ممتاز على البحر. الخدمة كانت ممتازة والوكيل كان متعاون جداً.',
-            rating: 5
-        }
+            rating: 5,
+        },
     },
     {
         id: '6',
@@ -69,8 +68,8 @@ const initialBookings: Booking[] = [
         propertyName: 'مشروع فلل الواحة',
         propertyType: 'فيلا',
         propertyImage: '/main/projects/property-6.webp',
-        startDate: '2025-07-15',
-        endDate: '2025-07-20',
+        startDate: '2025-07-15T10:30:00',
+        endDate: '2025-07-15T12:30:00',
         propertyLink: '/projects/oasis-villas',
     },
     {
@@ -79,8 +78,8 @@ const initialBookings: Booking[] = [
         propertyName: 'أرض التلال الذهبية',
         propertyType: 'ارض',
         propertyImage: '/main/projects/property-7.webp',
-        startDate: '2025-06-10',
-        endDate: '2025-06-15',
+        startDate: '2025-06-10T13:00:00',
+        endDate: '2025-06-10T15:00:00',
         agent: 'نادر فؤاد',
         propertyLink: '/projects/golden-hills',
     },

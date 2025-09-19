@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import BookingCard from './BookingCard';
 import { Booking, BookingStatus } from '@/types/global';
 import Card from '@/components/shared/Card';
-import { bookingStatusMap } from '@/constants/booking';
+import { bookingStatusMap } from '@/constants/dashboard/appointment/contants';
 
 interface BookingListProps {
     bookings: Booking[];
@@ -27,7 +27,7 @@ export default function BookingList({
     return (
         <Card title='حجوزاتي' hasMinHeight={true}>
             {/* Tabs */}
-            <div className="flex flex-wrap gap-4 border-b pb-2">
+            <div className="flex flex-wrap gap-4 border-b mb-4">
                 {taps.map((tab) => (
                     <button
                         key={tab[1]}

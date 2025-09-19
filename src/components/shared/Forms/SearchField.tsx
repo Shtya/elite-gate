@@ -16,7 +16,7 @@ export default function SearchField({ value, onChange, searchPlaceholder }: Prop
     const pathname = usePathname();
     const router = useRouter();
 
-    const debouncedValue = useDebounce(value, 1500);
+    const debouncedValue = useDebounce(value);
 
     useEffect(() => {
         const params = new URLSearchParams(searchParams.toString());

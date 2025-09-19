@@ -179,6 +179,7 @@ export default function BasicInfoForm({ client, isCurentUser = false, isAdmin = 
                     <SoftActionButton onClick={handleCancel}>إلغاء</SoftActionButton>
                 </div>
             </form>
+
         </Card>
     );
 }

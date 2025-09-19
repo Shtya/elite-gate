@@ -13,7 +13,7 @@ export const dashboardItems: SelectableItem[] = [
         label: "المواعيد",
         icon: FaCalendarAlt,
         children: [
-            { label: "قائمة المواعيد", icon: FaRegListAlt, href: "/dashboard/appointments/list" },
+            { label: "قائمة المواعيد", icon: FaRegListAlt, href: "/dashboard/appointments" },
             { label: "المواعيد غير المثبتة", icon: FaUserClock, href: "/dashboard/appointments/unproofed" }
         ]
     },

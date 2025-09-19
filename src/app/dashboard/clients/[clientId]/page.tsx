@@ -3,31 +3,33 @@ import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import { rows } from '@/constants/dashboard/client/contants';
 import Link from 'next/link';
 import { BiGroup } from 'react-icons/bi';
-import { notFound } from 'next/navigation';
+import DownloadContent from '@/components/shared/DownloadContent';
+import AppointmentsDataView from '@/components/dashboard/appointments/AppointmentsDataView';
+import DashboardSectionCard from '@/components/dashboard/DashboardSectionCard';
 
 type Props = {
     params: { clientId: string };
 };
-
-export default async function ClientDetailsPage({ params }: Props) {
+export default function ClientDetailsPage({ params }: Props) {
     const clientId = Number(params.clientId);
-    const client = rows.find((r) => r.id === clientId);
-
-    await new Promise((r) => setTimeout(r, 700)); // simulate loading
-
-    if (!client) {
-        notFound();
-    }
 
     return (
         <div>
-            <DashboardHeaderTitle path={['العملاء', `تفاصيل العميل: ${client.name}`]}>
-                <Link className="btn-primary" href="/dashboard/clients">
-                    <BiGroup /> عرض جميع العملاء
-                </Link>
+            <DashboardHeaderTitle path={['العملاء', `تفاصيل العميل`]}>
+                <div className="flex gap-4 flex-wrap">
+                    <DownloadContent text="تحميل المعلومات" />
+                    <Link className="btn-primary" href="/dashboard/clients">
+                        <BiGroup /> عرض جميع العملاء
+                    </Link>
+                </div>
             </DashboardHeaderTitle>
 
-            <ClientDetails client={client} bookingsThisMonth={5} totalBookings={53} />
-        </div>
+            <ClientDetails clientId={clientId} />
+            <DashboardSectionCard className=' mt-4 lg:mt-6'>
+                <h2 className="h3 text-gray-800 mb-6">سجل الحجوزات</h2>
+                <AppointmentsDataView clientId={clientId} />
+            </DashboardSectionCard>
+
+        </div >
     );
 }

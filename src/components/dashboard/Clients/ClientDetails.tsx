@@ -4,54 +4,109 @@ import CardInfo from '@/components/shared/infos/CardInfo';
 import IconDetail from '@/components/shared/infos/IconDetail';
 import { InfoBlock } from '@/components/shared/infos/InfoBlock';
 import { ClientRow, statusMap } from '@/types/dashboard/client';
-import { format } from 'date-fns';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { BiEdit } from 'react-icons/bi';
 import { FaCalendarAlt, FaClipboardList } from 'react-icons/fa';
+import ClientStatusToggle from './ClientStatusToggle';
+import Popup from '@/components/shared/Popup';
+import { notFound } from 'next/navigation';
+import LoadingClientDetailsPage from './ClientLoading';
+import { rows } from '@/constants/dashboard/client/contants';
+import DashboardSectionCard from '../DashboardSectionCard';
+import { formatDate } from '@/utils/date';
 
 type Props = {
-    client: ClientRow;
-    bookingsThisMonth: number;
-    totalBookings: number;
+    clientId: number;
 };
 
-export default function ClientDetails({ client, bookingsThisMonth, totalBookings }: Props) {
+const mockActivationDate = '2025-09-01';
+
+export default function ClientDetails({ clientId }: Props) {
+    const [client, setClient] = useState<ClientRow | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [currentStatus, setCurrentStatus] = useState<'active' | 'suspended'>('active');
+    const [showStatusPopup, setShowStatusPopup] = useState(false);
+
+    const handleStatusChange = () => {
+        setCurrentStatus(currentStatus === 'active' ? 'suspended' : 'active');
+        setShowStatusPopup(false);
+        // Optional: toast or refresh logic
+    };
+
+
+
+    useEffect(() => {
+        const fetchClient = async () => {
+            setLoading(true);
+            await new Promise((r) => setTimeout(r, 300)); // simulate loading
+            const found = rows.find((r) => r.id === clientId);
+            if (found) {
+                setClient(found);
+                setCurrentStatus(found.status);
+            }
+            setLoading(false);
+        };
+
+        fetchClient();
+    }, [clientId]);
+
+    if (loading) {
+        return <LoadingClientDetailsPage />;
+    }
+
+    if (!client) {
+        notFound();
+    }
+
+
     return (
-        <div className="grid grid-cols-12 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 2xl:grid-cols-6 gap-4 lg:gap-6 items-stretch">
+
             {/* Left Column */}
-            <div className="col-span-12 xl:col-span-4 ">
-                <div className="relative rounded-2xl bg-white p-6 shadow-sm">
+            <div className="h-full xl:col-span-2">
+                <DashboardSectionCard className=' h-full'>
 
-                    {/* ✏️ Edit Icon at Card Corner */}
-                    <Link
-                        href={`/dashboard/clients/${client.id}/edit`}
-                        className="absolute top-4 right-4 bg-white border border-gray-200 p-2 rounded-full shadow-sm hover:bg-gray-50 transition z-10"
-                        title="تعديل العميل"
-                    >
-                        <BiEdit className="w-5 h-5 text-gray-600" />
-                    </Link>
+                    <div className="relative rounded-2xl bg-white p-6">
 
-                    {/* Avatar */}
-                    <div className="relative w-fit mx-auto">
-                        <img
-                            src={client.image || '/users/default-user.png'}
-                            alt={client.name}
-                            className="rounded-full w-20 h-20 object-cover border"
-                            onError={(e) => {
-                                e.currentTarget.src = '/users/default-user.png';
-                            }}
-                        />
+                        {/* ✏️ Edit Icon at Card Corner */}
+                        <Link
+                            href={`/dashboard/clients/${client.id}/edit`}
+                            className="absolute top-4 right-4 bg-white border border-gray-200 p-2 rounded-full shadow-sm hover:bg-gray-50 transition z-10"
+                            title="تعديل العميل"
+                        >
+                            <BiEdit className="w-5 h-5 text-gray-600" />
+                        </Link>
 
+                        {/* Avatar */}
+                        <div className="relative w-fit mx-auto">
+                            <img
+                                src={client.image || '/users/default-user.png'}
+                                alt={client.name}
+                                className="rounded-full w-20 h-20 object-cover border"
+                                onError={(e) => {
+                                    e.currentTarget.src = '/users/default-user.png';
+                                }}
+                            />
+
+                        </div>
+
+                        {/* Name */}
+                        <h5 className="text-xl font-semibold mt-5 text-center">{client.name}</h5>
                         {/* Status Ball */}
-                        <span
-                            className={`absolute bottom-1 right-1 w-4 h-4 rounded-full border-2 border-white ${client.status === 'active' ? 'bg-green-500' : 'bg-red-500'
-                                }`}
-                            title={client.status === 'active' ? 'نشط' : 'موقوف'}
-                        />
+                        <div className='flex items-center justify-center border-b border-dashed py-2'>
+                            <div className="flex items-center gap-1 bg-white px-2 py-1 rounded-full border border-gray-200 shadow-sm">
+                                <span
+                                    className={`w-3 h-3 rounded-full border border-white ${client.status === 'active' ? 'bg-green-500' : 'bg-red-500'
+                                        }`}
+                                    title={client.status === 'active' ? 'نشط' : 'موقوف'}
+                                />
+                                <span className="text-[10px] font-medium text-gray-700">
+                                    {client.status === 'active' ? 'نشط' : 'موقوف'}
+                                </span>
+                            </div>
+                        </div>
                     </div>
-
-                    {/* Name */}
-                    <h5 className="text-xl font-semibold mt-5 text-center">{client.name}</h5>
 
                     {/* Contact Info */}
                     <div className="mt-6 space-y-4">
@@ -69,24 +124,34 @@ export default function ClientDetails({ client, bookingsThisMonth, totalBookings
                             href={`mailto:${client.email}`}
                         />
                     </div>
-                </div>
+                    <button
+                        onClick={() => setShowStatusPopup(true)}
+                        className={`mt-6 w-full px-4 py-2 rounded-md text-white font-semibold transition ${currentStatus === 'suspended'
+                            ? 'bg-green-600 hover:bg-green-700'
+                            : 'bg-red-600 hover:bg-red-700'
+                            }`}
+                    >
+                        {currentStatus === 'suspended' ? 'تفعيل الحساب' : 'تعليق الحساب'}
+                    </button>
+
+                </DashboardSectionCard>
             </div>
 
             {/* Right Column */}
-            <div className="col-span-12 xl:col-span-8 ">
-                <div className="rounded-2xl bg-white p-6 shadow-sm">
+            <div className="h-full xl:col-span-4">
+                <DashboardSectionCard className=' h-full'>
                     <h3 className="text-xl font-semibold mb-6">معلومات العميل</h3>
 
                     {/* Cards */}
                     <div className="flex flex-wrap gap-6 border-b pb-8 border-dashed">
                         <CardInfo
                             icon={<FaClipboardList className="text-[var(--primary)] w-10 h-10" />}
-                            value={totalBookings}
+                            value={53}
                             label="إجمالي الحجوزات"
                         />
                         <CardInfo
                             icon={<FaCalendarAlt className="text-[var(--secondary-500)] w-10 h-10" />}
-                            value={bookingsThisMonth}
+                            value={5}
                             label="حجوزات هذا الشهر"
                         />
                     </div>
@@ -99,14 +164,28 @@ export default function ClientDetails({ client, bookingsThisMonth, totalBookings
                         </div>
                         <div className="col-span-12 sm:col-span-6 xl:col-span-4 flex flex-col gap-3">
                             <InfoBlock label="البريد الإلكتروني" value={client.email} />
-                            <InfoBlock label="تاريخ الانضمام" value={format(new Date(client.joinedAt), 'yyyy-MM-dd')} />
+                            <InfoBlock label="تاريخ الانضمام" value={formatDate(client.joinedAt)} />
                         </div>
                         <div className="col-span-12 sm:col-span-6 xl:col-span-4 flex flex-col gap-3">
                             <InfoBlock label="الحالة" value={statusMap[client.status]} />
+                            {currentStatus === 'suspended' && (
+                                <InfoBlock label="تاريخ التعليق" value={formatDate(mockActivationDate)} />
+                            )}
                         </div>
+
+
                     </div>
-                </div>
+                </DashboardSectionCard>
             </div>
-        </div>
+            <Popup show={showStatusPopup} onClose={() => setShowStatusPopup(false)}>
+                <ClientStatusToggle
+                    client={client}
+                    currentStatus={currentStatus}
+                    onConfirm={handleStatusChange}
+                    onCancel={() => setShowStatusPopup(false)}
+                />
+            </Popup>
+
+        </div >
     );
 }

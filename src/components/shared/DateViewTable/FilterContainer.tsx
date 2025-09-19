@@ -71,7 +71,7 @@ export default function FilterContainer({
 
                 initial[`${filter.key}_from`] =
                     fromParam ??
-                    (defaultRange.stateDate ? format(defaultRange.stateDate, 'yyyy-MM-dd') : '');
+                    (defaultRange.startDate ? format(defaultRange.startDate, 'yyyy-MM-dd') : '');
 
                 initial[`${filter.key}_to`] =
                     toParam ??
@@ -121,8 +121,8 @@ export default function FilterContainer({
 
             if (filter.type === 'dateRange') {
                 const defaultRange = typeof filter.default === 'object' ? filter.default : {};
-                if (defaultRange.stateDate) {
-                    reset[`${filter.key}_from`] = format(defaultRange.stateDate, 'yyyy-MM-dd');
+                if (defaultRange.startDate) {
+                    reset[`${filter.key}_from`] = format(defaultRange.startDate, 'yyyy-MM-dd');
                 }
                 if (defaultRange.endDate) {
                     reset[`${filter.key}_to`] = format(defaultRange.endDate, 'yyyy-MM-dd');
@@ -161,11 +161,20 @@ export default function FilterContainer({
             )}
 
             {filters.map((filter) => {
+                const current = allFilters[filter.key];
+                const handleChange = (value: string | undefined) => {
+                    updateQuery(filter.key, value);
+                };
+                if (filter.type === 'custom' && filter.component) {
+                    const CustomComponent = filter.component;
+                    return (
+                        <div key={filter.key} className="w-fit">
+                            <CustomComponent value={current} onChange={handleChange} />
+                        </div>
+                    );
+                }
+
                 if (filter.type === 'select' && filter.options) {
-                    const current = allFilters[filter.key];
-                    const handleChange = (value: string) => {
-                        updateQuery(filter.key, value);
-                    };
                     return (
                         <div className="w-fit" key={filter.key}>
                             <SelectDropdown
@@ -223,15 +232,15 @@ export default function FilterContainer({
                 return null;
             })}
 
-            {showSearch && (
+            {showSearch ? (
                 <div className="mr-auto">
                     <SearchField
                         value={search}
                         onChange={setSearch}
                         searchPlaceholder={searchPlaceholder}
                     />
-                </div>
-            )}
+                </div>) : <div className='mr-auto'></div>
+            }
 
             {(showSearch || filters.length > 0 || showSort) && (
                 <div className="relative group">

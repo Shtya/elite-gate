@@ -7,7 +7,7 @@ export default function EditClientLoading() {
     return (
         <div>
             {/* Header Skeleton */}
-            <DashboardHeaderTitleSkeleton />
+            <DashboardHeaderTitleSkeleton buttons={2} />
 
             {/* Form Skeleton */}
             <div className="bg-white rounded-2xl shadow-sm p-6 mt-6">

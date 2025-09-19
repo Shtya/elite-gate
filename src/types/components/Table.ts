@@ -4,20 +4,25 @@ export type TableColumn<T = Record<string, any>> = {
     key: keyof T;
     label: string;
     className?: string;
-    cell?: (value: T[keyof T], row?: T) => React.ReactNode;
+    cell?: (value: any, row?: T) => React.ReactNode;
 };
 
 export type TableRow<T = Record<string, any>> = T;
 
 export type BaseFilterKeys = 'sort' | 'dir' | 'search' | 'page' | 'limit';
 
-export type FilterConfig<T extends string = string> = {
-    type: 'select' | 'dateRange';
+export type FilterConfig = {
+    key: string;
     label: string;
-    key: T;
-    options?: { label: string; value: string }[]; // for select
-    default?: string | { stateDate?: Date; endDate?: Date };
+    type: 'select' | 'dateRange' | 'custom';
+    options?: { label: string; value: string }[];
+    default?: string | { startDate?: Date; endDate?: Date };
+    component?: React.FC<{
+        value?: string;
+        onChange: (val: string | undefined) => void;
+    }>;
 };
+
 
 
 export type SortConfig = {

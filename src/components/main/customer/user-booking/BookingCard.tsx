@@ -1,12 +1,13 @@
 import React from 'react';
 import { FaCalendarAlt, FaUserTie, FaHome } from 'react-icons/fa';
 import Link from 'next/link';
-import { Booking, BookingStatus } from '@/types/global';
+import { Booking } from '@/types/global';
 import Image from 'next/image';
-import { bookingStatusMap } from '@/constants/booking';
+import { bookingStatusMap } from '@/constants/dashboard/appointment/contants';
 import CancelBookingButton from './CancelBookingButton';
 import StarRating from '@/components/shared/StarRating';
 import ReviewBookingButton from './ReviewBookingButton';
+import { formatDate, formatTime } from '@/utils/date';
 
 interface BookingCardProps {
     booking: Booking;
@@ -40,15 +41,14 @@ export default function BookingCard({ booking, onCancel }: BookingCardProps) {
             </div>
 
             {/* تفاصيل الحجز */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-700">
+            <div className="flex flex-col md:flex-row flex-wrap  gap-2 lg:gap-6 xl:gap-10 text-sm text-gray-700">
                 <div className="flex items-center gap-2">
                     <FaCalendarAlt />
-                    <span>تاريخ البدء: {booking.startDate}</span>
+                    <span>
+                        تاريخ الحجز: {formatDate(booking.startDate)} — {formatTime(booking.startDate)} - {formatTime(booking.endDate)}
+                    </span>
                 </div>
-                <div className="flex items-center gap-2">
-                    <FaCalendarAlt />
-                    <span>تاريخ الانتهاء: {booking.endDate}</span>
-                </div>
+
                 {booking.agent && (
                     <div className="flex items-center gap-2">
                         <FaUserTie />
@@ -56,6 +56,7 @@ export default function BookingCard({ booking, onCancel }: BookingCardProps) {
                     </div>
                 )}
             </div>
+
 
             {/* إجراء */}
             {![bookingStatusMap.completed, bookingStatusMap.cancelled, bookingStatusMap.no_show].includes(status) && <div className="text-end">

@@ -1,5 +1,6 @@
 import { ClientRow, ClientStatus } from "@/types/dashboard/client";
 import { FilterConfig, SortConfig, TableColumn, TableRow } from "@/types/components/table";
+import { formatDate } from "@/utils/date";
 
 
 
@@ -35,7 +36,7 @@ export const columns: TableColumn<ClientRow>[] = [
     {
         key: 'image',
         label: 'الصورة',
-        cell: (val) => {
+        cell: (val, row) => {
             const imageSrc = typeof val === 'string' && val.trim() !== ''
                 ? val
                 : '/users/default-user.png';
@@ -64,7 +65,12 @@ export const columns: TableColumn<ClientRow>[] = [
             );
         }
     },
-    { key: 'joinedAt', label: 'تاريخ الانضمام' },
+    {
+        key: 'joinedAt', label: 'تاريخ الانضمام',
+        cell: (val) => {
+            return <span className='' >{formatDate(val)}</span>
+        }
+    },
     {
         key: 'status',
         label: 'الحالة',

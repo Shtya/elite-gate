@@ -37,3 +37,9 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
 export function cleanHref(href?: string): string {
     return href?.split('?')[0] ?? '';
 }
+
+
+export function toArabicDigits(input: string): string {
+    const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    return input.replace(/\d/g, (d) => arabicNumbers[parseInt(d)]);
+}

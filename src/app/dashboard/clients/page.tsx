@@ -1,8 +1,9 @@
 import DashboardHeaderTitle from "@/components/dashboard/DashboardHeaderTitle";
-import DownloadList from "@/components/shared/DownloadList";
+import DownloadList from "@/components/shared/DownloadContent";
 import Link from "next/link";
 import { BiEditAlt } from "react-icons/bi";
 import ClientsDataView from "@/components/dashboard/clients/ClientsDataView";
+import DashboardSectionCard from "@/components/dashboard/DashboardSectionCard";
 
 export const dynamic = 'force-dynamic';
 
@@ -14,8 +15,8 @@ export default function ClientsPage() {
                 <Link className="btn-primary" href="/dashboard/clients/add"><BiEditAlt /> إضافة عميل </Link>
             </div>
         </DashboardHeaderTitle>
-        <section className="p-3 md:py-6 lg:py-8 md:px-8 lg:px-10 border rounded-2xl bg-white relative z-[1]">
+        <DashboardSectionCard>
             <ClientsDataView />
-        </section>
+        </DashboardSectionCard>
     </div >
 }

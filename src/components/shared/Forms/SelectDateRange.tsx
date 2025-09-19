@@ -5,6 +5,7 @@ import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 import { SlArrowDown } from "react-icons/sl";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
+import { ar } from 'date-fns/locale';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 
@@ -88,6 +89,7 @@ export default function SelectDateRange({
                         moveRangeOnFirstSelection={false}
                         rangeColors={['var(--primary-300)']}
                         ranges={isSelected ? range : fallbackRange}
+                        locale={ar}
                     />
                     <button
                         onClick={handleReset}
