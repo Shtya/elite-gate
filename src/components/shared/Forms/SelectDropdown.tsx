@@ -28,7 +28,7 @@ export default function SelectDropdown({
     useOutsideClick(dropdownRef, () => setOpen(false));
 
     const selectedLabel = options.find((opt) => opt.value === value)?.label ?? value;
-    console.log(options, selectedLabel, value)
+
     return (
         <div className="relative w-full" ref={dropdownRef}>
             <button

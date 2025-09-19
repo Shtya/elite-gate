@@ -94,7 +94,7 @@ export default function DataView<T = Record<string, any>>({
             />
 
             {isLoading ? (
-                <TableSkeleton columns={columns} />
+                <TableSkeleton columns={columns} rowCount={pageSize} />
             ) : error ? (
                 <TableError message={error} onRetry={fetchRows} />
             ) : (

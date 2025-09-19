@@ -20,9 +20,9 @@ export default function DashboardFooter() {
                             href={href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="border border-[#3538ED] hover:bg-[#3538ED] duration-300 grid place-content-center p-[10px] rounded-full"
+                            className="group border border-[#3538ED] hover:bg-[#3538ED] duration-300 grid place-content-center p-[10px] rounded-full"
                         >
-                            <Icon className="text-xl text-primary" />
+                            <Icon className="text-xl text-primary group-hover:text-white" />
                         </Link>
                     </li>
                 ))}

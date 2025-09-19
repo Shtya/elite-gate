@@ -430,4 +430,9 @@
     background: var(--primary-light);
   }
 
+  .ltr-data {
+    text-align: right !important;
+    direction: ltr !important;
+  }
+
 }

@@ -8,7 +8,7 @@ type DashboardHeaderTitleProps = {
 
 export default function DashboardHeaderTitle({ path, children }: DashboardHeaderTitleProps) {
     return (
-        <div className="flex items-center justify-between flex-wrap px-6 py-6 md:px-10 md:py-8 lg:px-16 lg:py-10 bg-[var(--bg-1)] ">
+        <div className="flex items-center justify-between flex-wrap px-6 py-6 md:px-10 md:py-8 lg:px-16 lg:py-10 bg-[var(--bg-1)] gap-4">
             <div className="flex gap-2 items-center text-[var(--dark)]">
                 <div className="w-6 h-6 text-[var(--primary)]">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"

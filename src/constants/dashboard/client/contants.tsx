@@ -55,7 +55,15 @@ export const columns: TableColumn<ClientRow>[] = [
     },
     { key: 'name', label: 'الاسم' },
     { key: 'email', label: 'البريد الإلكتروني' },
-    { key: 'phone', label: 'رقم الهاتف' },
+    {
+        key: 'phone', label: 'رقم الهاتف', cell: (val) => {
+            return (
+                <span className='' dir="ltr">
+                    {val}
+                </span>
+            );
+        }
+    },
     { key: 'joinedAt', label: 'تاريخ الانضمام' },
     {
         key: 'status',
@@ -69,7 +77,7 @@ export const columns: TableColumn<ClientRow>[] = [
 
             return (
                 <span className={`${style} px-3 py-1 rounded-full text-sm`}>
-                    {val}
+                    {val === 'active' ? 'نشط' : 'موقوف'}
                 </span>
             );
         },

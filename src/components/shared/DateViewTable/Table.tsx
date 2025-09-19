@@ -63,6 +63,7 @@ export default function Table<T = Record<string, any>>({
                                         >
                                             {col.key === 'actions' && showActions ? (
                                                 <Menu
+                                                    width={200}
                                                     trigger={(toggle) => (
                                                         <button
                                                             onClick={toggle}

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { cloneElement, ReactElement, useState } from 'react';
+import React, { cloneElement, ReactElement, useState } from 'react';
 import { MenuChildProps } from '../Menu';
 import Popup from '../Popup';
 
@@ -38,6 +38,10 @@ export default function MenuActionList({ items, onClose }: Props) {
         return className;
     };
 
+
+    function handleOnClose() {
+        setMenuOpen(false);
+    }
     if (items?.length == 0) return null;
     return (
         <div className="flex flex-col gap-2">
@@ -68,7 +72,6 @@ export default function MenuActionList({ items, onClose }: Props) {
                         onClick={() => {
                             setActiveChild(item.child);
                             setMenuOpen(true);
-                            // onClose?.();
                         }}
                         className={`flex items-center gap-2 text-sm ${getColorClass(item.type)}`}
                     >
@@ -79,10 +82,14 @@ export default function MenuActionList({ items, onClose }: Props) {
 
             {/* Render child if active */}
             {activeChild && (
-                <Popup onClose={() => setMenuOpen(false)} show={menuOpen} >
-                    {activeChild}
+                <Popup onClose={handleOnClose} show={menuOpen}>
+                    {React.cloneElement(activeChild as React.ReactElement<any>, {
+                        onCancel: handleOnClose,
+                    })}
                 </Popup>
             )}
+
+
         </div>
     );
 }

@@ -8,6 +8,7 @@ type TextInputProps = {
     type?: string;
     value?: string;
     required?: boolean
+    className?: string
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -20,6 +21,7 @@ export default function TextInput({
     value,
     onChange,
     required = false,
+    className,
     ...props
 }: TextInputProps) {
     return (
@@ -36,7 +38,7 @@ export default function TextInput({
                 onChange={onChange}
                 required={required}
                 {...props}
-                className="w-full bg-[var(--bg-1)] focus:outline-none border rounded-full py-3 px-5"
+                className={`${className} w-full bg-[var(--bg-1)] focus:outline-none border rounded-full py-3 px-5`}
             />
         </div>
     );

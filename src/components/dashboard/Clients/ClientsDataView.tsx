@@ -1,9 +1,10 @@
 'use client';
 import DataView from '@/components/shared/DateViewTable/DataView';
-import { FaCheck, FaPencilAlt, FaRegTrashAlt } from 'react-icons/fa';
+import { FaCheck, FaEdit, FaPencilAlt, FaRegTrashAlt } from 'react-icons/fa';
 import useClients from '@/hooks/dashboard/client/useClients';
 import { columns, filters, sortConfig } from '@/constants/dashboard/client/contants';
 import { ClientRow } from '@/types/dashboard/client';
+import ClientStatusToggle from './ClientStatusToggle';
 
 
 
@@ -25,24 +26,33 @@ export default function ClientsDataView() {
                 return [
                     {
                         label: 'عرض التفاصيل',
-                        type: 'primary',
                         icon: <FaPencilAlt />,
-                        link: `/clients/${row.id}`,
+                        link: `/dashboard/clients/${row.id}`,
+                    },
+                    {
+                        label: 'تعديل العميل',
+                        icon: <FaEdit />,
+                        link: `/dashboard/clients/${row.id}/edit`,
                     },
                     {
                         label: isSuspended ? 'تفعيل الحساب' : 'تعليق الحساب',
                         type: isSuspended ? 'primary' : 'delete',
                         icon: isSuspended ? <FaCheck /> : <FaRegTrashAlt />,
                         child: (
-                            <div>
-                                {isSuspended
-                                    ? `Activate client ${row.id}`
-                                    : `Suspend client ${row.id}`}
-                            </div>
+                            <ClientStatusToggle
+                                client={row}
+                                currentStatus={row.status}
+                                onConfirm={() => {
+                                    // Optional: refresh data or show toast
+                                }}
+                            />
                         ),
                     },
                 ];
             }}
+
+
+
         />
     );
 }
