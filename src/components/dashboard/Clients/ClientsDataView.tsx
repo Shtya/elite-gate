@@ -5,6 +5,7 @@ import useClients from '@/hooks/dashboard/client/useClients';
 import { columns, filters, sortConfig } from '@/constants/dashboard/client/contants';
 import { ClientRow } from '@/types/dashboard/client';
 import ClientStatusToggle from './ClientStatusToggle';
+import { ActionType, MenuActionItem } from '@/components/shared/Header/MenuActionList';
 
 
 
@@ -20,39 +21,42 @@ export default function ClientsDataView() {
             showSort
             getRows={getRows}
             showActions
-            actionsMenuItems={(row) => {
-                const isSuspended = row.status === 'suspended';
-
-                return [
-                    {
-                        label: 'عرض التفاصيل',
-                        icon: <FaPencilAlt />,
-                        link: `/dashboard/clients/${row.id}`,
-                    },
-                    {
-                        label: 'تعديل العميل',
-                        icon: <FaEdit />,
-                        link: `/dashboard/clients/${row.id}/edit`,
-                    },
-                    {
-                        label: isSuspended ? 'تفعيل الحساب' : 'تعليق الحساب',
-                        type: isSuspended ? 'primary' : 'delete',
-                        icon: isSuspended ? <FaCheck /> : <FaRegTrashAlt />,
-                        child: (
-                            <ClientStatusToggle
-                                client={row}
-                                currentStatus={row.status}
-                                onConfirm={() => {
-                                    // Optional: refresh data or show toast
-                                }}
-                            />
-                        ),
-                    },
-                ];
-            }}
+            actionsMenuItems={getClientActionsMenu}
 
 
 
         />
     );
+}
+
+
+export function getClientActionsMenu(row: ClientRow, onClose?: () => void): MenuActionItem[] {
+    const isSuspended = row.status === 'suspended';
+
+    return [
+        {
+            label: 'عرض التفاصيل',
+            icon: <FaPencilAlt />,
+            link: `/dashboard/clients/${row.id}`,
+        },
+        {
+            label: 'تعديل العميل',
+            icon: <FaEdit />,
+            link: `/dashboard/clients/${row.id}/edit`,
+        },
+        {
+            label: isSuspended ? 'تفعيل الحساب' : 'تعليق الحساب',
+            type: (isSuspended ? 'primary' : 'delete') as ActionType,
+            icon: isSuspended ? <FaCheck /> : <FaRegTrashAlt />,
+            child: (
+                <ClientStatusToggle
+                    client={row}
+                    currentStatus={row.status}
+                    onConfirm={() => {
+                        onClose?.(); // ✅ إغلاق القائمة بعد التأكيد
+                    }}
+                />
+            ),
+        },
+    ];
 }

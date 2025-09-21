@@ -11,7 +11,7 @@ export default function AppointmentsPage() {
             <DashboardHeaderTitle path={['المواعيد']}>
                 <div className="flex gap-4 flex-wrap">
                     <DownloadList />
-                    <Link className="btn-primary" href="/dashboard/appointments/create">
+                    <Link className="btn-primary" href="/dashboard/appointments/add">
                         <BiPlus /> إضافة موعد
                     </Link>
                 </div>

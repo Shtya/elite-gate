@@ -1,51 +1,57 @@
-// components/InfoCell.tsx
 import Image from 'next/image';
 import Link from 'next/link';
 
 type Props = {
-    user: {
-        id: string | number;
-        name: string;
-        email?: string;
-        image?: string;
-    };
-    href: string;
+    href?: string;
+    image?: string;
     className?: string;
+    title?: string;
     subtitle?: string;
     imageRounded?: 'full' | 'lg';
-    badgeClass?: string;
+    subtitleClass?: string;
 };
 
 export default function InfoCell({
-    user,
     href,
+    image,
     className = '',
+    title = '',
     subtitle,
     imageRounded = 'full',
-    badgeClass = '',
+    subtitleClass = '',
 }: Props) {
     const imageSrc =
-        typeof user.image === 'string' && user.image.trim() !== ''
-            ? user.image
+        typeof image === 'string' && image.trim() !== ''
+            ? image
             : '/users/default-user.png';
 
     const imageClass = `w-10 h-10 object-cover ${imageRounded === 'full' ? 'rounded-full' : 'rounded-lg'}`;
-    const linkClass = `flex items-center gap-3 ${className}`;
-    const subtitleClass = `text-xs px-2 py-0.5 rounded-full w-fit ${badgeClass}`;
+    const containerClass = `flex items-center gap-3 ${className}`;
+    const fullSubtitleClass = `text-right text-xs px-2 py-0.5 rounded-full w-fit ${subtitleClass}`;
 
-    return (
-        <Link href={href} className={linkClass}>
+    const content = (
+        <>
             <Image
                 src={imageSrc}
-                alt={user.name}
+                alt={title}
                 width={40}
                 height={40}
                 className={imageClass}
             />
             <div className="flex flex-col">
-                <span className="font-medium">{user.name}</span>
-                {subtitle && <span className={subtitleClass}>{subtitle}</span>}
+                {title && <span className="font-medium text-right">{title}</span>}
+                {subtitle && <span className={fullSubtitleClass}>{subtitle}</span>}
             </div>
+        </>
+    );
+
+    return href ? (
+        <Link href={href} className={containerClass}>
+            {content}
         </Link>
+    ) : (
+        <div className={containerClass}>
+            {content}
+        </div>
     );
 }

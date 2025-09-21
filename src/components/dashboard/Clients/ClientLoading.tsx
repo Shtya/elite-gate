@@ -1,9 +1,11 @@
 'use client';
+import DashboardHeaderTitleSkeleton from '@/components/shared/Skelatons/DashboardHeaderTitleSkeleton';
 import Skeleton from '@/components/shared/Skelatons/Skeleton';
 
 export default function LoadingClientDetailsPage() {
     return (
         <div>
+            <DashboardHeaderTitleSkeleton buttons={2} />
             {/* Grid Layout */}
             <div className="grid grid-cols-1 2xl:grid-cols-6 gap-4 lg:gap-6 items-stretch">
                 {/* Left Column */}

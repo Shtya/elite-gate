@@ -14,7 +14,7 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { format, parse } from 'date-fns';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FilterConfig, SortConfig } from '@/types/components/table';
 import SelectDropdown from '../Forms/SelectDropdown';
 import SelectDateRange from '../Forms/SelectDateRange';

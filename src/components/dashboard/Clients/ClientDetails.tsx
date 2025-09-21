@@ -1,64 +1,20 @@
-'use client';
-
 import CardInfo from '@/components/shared/infos/CardInfo';
 import IconDetail from '@/components/shared/infos/IconDetail';
 import { InfoBlock } from '@/components/shared/infos/InfoBlock';
 import { ClientRow, statusMap } from '@/types/dashboard/client';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import { BiEdit } from 'react-icons/bi';
 import { FaCalendarAlt, FaClipboardList } from 'react-icons/fa';
-import ClientStatusToggle from './ClientStatusToggle';
-import Popup from '@/components/shared/Popup';
-import { notFound } from 'next/navigation';
-import LoadingClientDetailsPage from './ClientLoading';
-import { rows } from '@/constants/dashboard/client/contants';
 import DashboardSectionCard from '../DashboardSectionCard';
 import { formatDate } from '@/utils/date';
+import ClientStatusControl from './ClientStatusControl';
+
 
 type Props = {
-    clientId: number;
+    client: ClientRow;
 };
-
 const mockActivationDate = '2025-09-01';
-
-export default function ClientDetails({ clientId }: Props) {
-    const [client, setClient] = useState<ClientRow | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [currentStatus, setCurrentStatus] = useState<'active' | 'suspended'>('active');
-    const [showStatusPopup, setShowStatusPopup] = useState(false);
-
-    const handleStatusChange = () => {
-        setCurrentStatus(currentStatus === 'active' ? 'suspended' : 'active');
-        setShowStatusPopup(false);
-        // Optional: toast or refresh logic
-    };
-
-
-
-    useEffect(() => {
-        const fetchClient = async () => {
-            setLoading(true);
-            await new Promise((r) => setTimeout(r, 300)); // simulate loading
-            const found = rows.find((r) => r.id === clientId);
-            if (found) {
-                setClient(found);
-                setCurrentStatus(found.status);
-            }
-            setLoading(false);
-        };
-
-        fetchClient();
-    }, [clientId]);
-
-    if (loading) {
-        return <LoadingClientDetailsPage />;
-    }
-
-    if (!client) {
-        notFound();
-    }
-
+export default function ClientDetails({ client }: Props) {
 
     return (
         <div className="grid grid-cols-1 2xl:grid-cols-6 gap-4 lg:gap-6 items-stretch">
@@ -84,9 +40,6 @@ export default function ClientDetails({ clientId }: Props) {
                                 src={client.image || '/users/default-user.png'}
                                 alt={client.name}
                                 className="rounded-full w-20 h-20 object-cover border"
-                                onError={(e) => {
-                                    e.currentTarget.src = '/users/default-user.png';
-                                }}
                             />
 
                         </div>
@@ -124,15 +77,7 @@ export default function ClientDetails({ clientId }: Props) {
                             href={`mailto:${client.email}`}
                         />
                     </div>
-                    <button
-                        onClick={() => setShowStatusPopup(true)}
-                        className={`mt-6 w-full px-4 py-2 rounded-md text-white font-semibold transition ${currentStatus === 'suspended'
-                            ? 'bg-green-600 hover:bg-green-700'
-                            : 'bg-red-600 hover:bg-red-700'
-                            }`}
-                    >
-                        {currentStatus === 'suspended' ? 'تفعيل الحساب' : 'تعليق الحساب'}
-                    </button>
+                    <ClientStatusControl currentStatus={client.status} client={client} />
 
                 </DashboardSectionCard>
             </div>
@@ -168,7 +113,7 @@ export default function ClientDetails({ clientId }: Props) {
                         </div>
                         <div className="col-span-12 sm:col-span-6 xl:col-span-4 flex flex-col gap-3">
                             <InfoBlock label="الحالة" value={statusMap[client.status]} />
-                            {currentStatus === 'suspended' && (
+                            {client.status === 'suspended' && (
                                 <InfoBlock label="تاريخ التعليق" value={formatDate(mockActivationDate)} />
                             )}
                         </div>
@@ -177,15 +122,8 @@ export default function ClientDetails({ clientId }: Props) {
                     </div>
                 </DashboardSectionCard>
             </div>
-            <Popup show={showStatusPopup} onClose={() => setShowStatusPopup(false)}>
-                <ClientStatusToggle
-                    client={client}
-                    currentStatus={currentStatus}
-                    onConfirm={handleStatusChange}
-                    onCancel={() => setShowStatusPopup(false)}
-                />
-            </Popup>
 
         </div >
     );
 }
+

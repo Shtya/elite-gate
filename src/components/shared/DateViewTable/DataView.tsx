@@ -28,7 +28,7 @@ type DataViewProps<T = Record<string, any>> = {
     showSearch?: boolean;
     searchPlaceholder?: string;
     showSort?: boolean;
-    actionsMenuItems?: (row: T) => MenuActionItem[];
+    actionsMenuItems?: (row: T, onClose?: () => void) => MenuActionItem[];
     showActions?: boolean;
     pageSize?: number;
     getRows: (signal?: AbortSignal) => Promise<{

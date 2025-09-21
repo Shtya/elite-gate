@@ -1,4 +1,4 @@
-import { FaChartBar, FaCalendarAlt, FaUserFriends, FaUserTie, FaUserPlus, FaEdit, FaInfoCircle, FaMapMarkerAlt, FaVideo, FaPhoneAlt, FaAward, FaRegFileAlt, FaCog, FaCity, FaProjectDiagram, FaRegListAlt, FaHome, FaUsers, FaUserCheck, FaUserClock, FaUserEdit, FaUserShield, FaBullhorn, FaFileAlt, FaQuestionCircle } from 'react-icons/fa';
+import { FaCalendarAlt, FaUserFriends, FaUserTie, FaUserPlus, FaInfoCircle, FaMapMarkerAlt, FaVideo, FaPhoneAlt, FaAward, FaRegFileAlt, FaCog, FaCity, FaProjectDiagram, FaRegListAlt, FaHome, FaUsers, FaUserCheck, FaUserClock, FaUserShield, FaBullhorn, FaFileAlt, FaQuestionCircle, FaCalendarPlus } from 'react-icons/fa';
 import { MdDashboard, MdSettings, MdOutlinePrivacyTip, MdDescription } from 'react-icons/md';
 import { AiOutlineTeam, AiOutlineUser } from 'react-icons/ai';
 import { SelectableItem } from '@/types/global';
@@ -14,7 +14,8 @@ export const dashboardItems: SelectableItem[] = [
         icon: FaCalendarAlt,
         children: [
             { label: "قائمة المواعيد", icon: FaRegListAlt, href: "/dashboard/appointments" },
-            { label: "المواعيد غير المثبتة", icon: FaUserClock, href: "/dashboard/appointments/unproofed" }
+            { label: "المواعيد غير المثبتة", icon: FaUserClock, href: "/dashboard/appointments/unproofed" },
+            { label: "إضافة موعد", icon: FaCalendarPlus, href: "/dashboard/appointments/add" }
         ]
     },
     {

@@ -1,0 +1,100 @@
+'use client';
+
+import { useState } from 'react';
+import { MdClose } from 'react-icons/md';
+import { projectTypeColors } from '@/constants/dashboard/appointment/contants';
+import { AppointmentType } from '@/types/dashboard/appointment';
+import InfoCell from '@/components/shared/InfoCell';
+import Popup from '@/components/shared/Popup';
+import PropertyAssignmentToggle from './PropertyAssignmentToggle';
+
+type Property = {
+    id: string;
+    title: string;
+    imageLink: string;
+    type: AppointmentType;
+};
+
+type Props = {
+    appointmentId?: number;
+    initialProperty?: Property;
+    properties: Property[];
+    label?: string;
+    showSelected?: boolean;
+    onChange?: (property?: Property) => void;
+};
+
+export default function PropertyChanger({
+    appointmentId,
+    initialProperty,
+    properties,
+    label = 'العقار',
+    showSelected = true,
+    onChange,
+}: Props) {
+    const [property, setProperty] = useState<Property | undefined>(initialProperty);
+    const [showPopup, setShowPopup] = useState(false);
+
+    const handleSelect = (newProperty: Property) => {
+        setProperty(newProperty);
+        setShowPopup(false);
+        onChange?.(newProperty);
+    };
+
+    const handleCancel = () => {
+        setProperty(undefined);
+        setShowPopup(false);
+        onChange?.(undefined);
+    };
+
+    return (
+        <div className="relative w-full">
+            {!property || !showSelected ? (
+                <button
+                    onClick={() => setShowPopup(true)}
+                    type="button"
+                    className="w-full py-3 px-4 border font-semibold rounded-md hover:bg-gray-100 transition"
+                >
+                    {property ? `اختر ${label} آخر` : `تعيين ${label}`}
+                </button>
+            ) : (
+                <div className="flex items-center gap-2 border p-2 rounded-md bg-white">
+                    <div className="flex gap-2">
+                        <InfoCell
+                            title={property.title}
+                            image={property.imageLink}
+                            href={`/projects/${property.id}`}
+                            imageRounded="lg"
+                            subtitleClass={projectTypeColors[property.type]}
+                            subtitle={property.type}
+                        />
+                        <button
+                            onClick={handleCancel}
+                            type="button"
+                            className="text-gray-500 hover:text-red-500 p-2 rounded-full"
+                        >
+                            <MdClose className="w-5 h-5" />
+                        </button>
+                    </div>
+                    <button
+                        onClick={() => setShowPopup(true)}
+                        className="mr-auto px-4 py-2 rounded-md bg-[var(--primary)] text-white hover:bg-[var(--primary-600)]"
+                    >
+                        تغيير {label}
+                    </button>
+                </div>
+            )}
+
+            <Popup show={showPopup} onClose={() => setShowPopup(false)}>
+                <PropertyAssignmentToggle
+                    appointmentId={appointmentId}
+                    properties={properties}
+                    selectedProperty={property}
+                    label={label}
+                    onConfirm={handleSelect}
+                    onCancel={handleCancel}
+                />
+            </Popup>
+        </div>
+    );
+}

@@ -5,8 +5,6 @@ import { AppointmentRow, AppointmentType, MiniProject, MiniUser } from "@/types/
 import { BookingStatus } from "@/types/global";
 import { getDefaultProjectpath } from "@/utils/appointment";
 import { formatDate, formatTime } from "@/utils/date";
-import Image from "next/image";
-import Link from 'next/link';
 import { FaStar } from 'react-icons/fa';
 
 export const bookingStatusMap: Record<BookingStatus, string> = {
@@ -100,11 +98,12 @@ export const appointmentColumns: TableColumn<AppointmentRow>[] = [
 
             return (
                 <InfoCell
-                    user={{ id: val.id, name: val.title, image: imageSrc }}
+                    image={val.image}
+                    title={val.title}
                     href={`/dashboard/projects/${val.id}`}
                     subtitle={val.type}
                     imageRounded="lg"
-                    badgeClass={projectTypeColors[val.type]}
+                    subtitleClass={projectTypeColors[val.type]}
                 />
             );
         },
@@ -142,14 +141,14 @@ export const appointmentColumns: TableColumn<AppointmentRow>[] = [
         key: 'agent',
         label: 'الوسيط',
         cell: (user: MiniUser) => (
-            <InfoCell user={user} href={`/dashboard/agents/${user.id}`} subtitle={user.email} />
+            <InfoCell image={user.image} subtitle={user.email} title={user.name} href={`/dashboard/agents/${user.id}`} />
         ),
     },
     {
         key: 'client',
         label: 'العميل',
         cell: (user: MiniUser) => (
-            <InfoCell user={user} href={`/dashboard/clients/${user.id}`} subtitle={user.email} />
+            <InfoCell image={user.image} subtitle={user.email} title={user.name} href={`/dashboard/clients/${user.id}`} />
         ),
     },
 
@@ -187,7 +186,7 @@ export const appointmentColumns: TableColumn<AppointmentRow>[] = [
 
 export const mockAppointments: AppointmentRow[] = [
     {
-        id: 101, project: { id: 11, title: 'مشروع 113 – فخامة وتصميم عصري', type: 'شقة', image: '' }, appointmentAt: '2025-10-03T14:30:00', createdAt: '2025-09-28T08:10:00', agent: { id: 21, name: 'يوسف أحمد', email: 'youssef@agency.com', image: '/users/user-2.webp' }, client: { id: 1, name: 'خالد الشمري', email: 'khaled@example.com', image: '/users/user-1.jpg' }, status: 'confirmed', reviewStars: undefined,
+        id: 101, project: { id: 11, title: 'مشروع 113 – فخامة وتصميم عصري', type: 'شقة', image: '/main/projects/property-2.webp' }, appointmentAt: '2025-10-03T14:30:00', createdAt: '2025-09-28T08:10:00', agent: { id: 21, name: 'يوسف أحمد', email: 'youssef@agency.com', image: '/users/user-2.webp' }, client: { id: 1, name: 'خالد الشمري', email: 'khaled@example.com', image: '/users/user-1.jpg' }, status: 'completed', reviewStars: 3,
     },
     {
         id: 102, project: { id: 12, title: 'فلل البستان – واجهات حجرية', type: 'فيلا', image: '' }, appointmentAt: '2025-10-05T09:00:00', createdAt: '2025-09-29T10:20:00', agent: { id: 22, name: 'سارة العتيبي', email: 'sara@agency.com', image: '/users/user-3.jpg' }, client: { id: 2, name: 'عبدالله الشهري', email: 'abdullah@example.com', image: '/users/user-2.webp' }, status: 'completed', reviewStars: 4,
@@ -234,3 +233,30 @@ export const mockAppointments: AppointmentRow[] = [
     },
 ];
 
+
+export const agents: MiniUser[] = [
+    { id: 21, name: 'يوسف أحمد', email: 'youssef@agency.com', image: '/users/user-2.webp' },
+    { id: 22, name: 'سارة العتيبي', email: 'sara@agency.com', image: '/users/user-3.jpg' },
+    { id: 23, name: 'نواف المطيري', email: 'nawaf@agency.com', image: '' },
+    { id: 24, name: 'ليان الغامدي', email: 'layan@agency.com' },
+    { id: 25, name: 'فهد الزهراني', email: 'fahad@agency.com', image: '/users/user-4.jpg' },
+    { id: 26, name: 'نورة السبيعي', email: 'noura@agency.com', image: '/users/user-5.jpg' },
+    { id: 27, name: 'خالد الزامل', email: 'khalid@agency.com', image: '/users/user-7.jpg' },
+    { id: 28, name: 'هند القحطاني', email: 'hind@agency.com', image: '' },
+    { id: 29, name: 'سعد المطيري', email: 'saad@agency.com', image: '/users/user-10.jpg' },
+    { id: 30, name: 'راكان العتيبي', email: 'rakan@agency.com', image: '/users/user-11.jpg' },
+]
+
+
+export const clients: MiniUser[] = [
+    { id: 1, name: 'خالد الشمري', email: 'khaled@example.com', image: '/users/user-1.jpg' },
+    { id: 2, name: 'عبدالله الشهري', email: 'abdullah@example.com', image: '/users/user-2.webp' },
+    { id: 3, name: 'أحمد العتيبي', email: 'ahmad@example.com', image: '' },
+    { id: 4, name: 'هناء العبدالله', email: 'hannah@example.com' },
+    { id: 5, name: 'ريم الحربي', email: 'reem@example.com', image: '' },
+    { id: 6, name: 'عبدالرحمن القحطاني', email: 'abdulrahman@example.com', image: '/users/user-6.jpg' },
+    { id: 7, name: 'سلمان العتيبي', email: 'salman@example.com', image: '/users/user-8.jpg' },
+    { id: 8, name: 'ماجد السالم', email: 'majed@example.com', image: '/users/user-9.jpg' },
+    { id: 9, name: 'نجلاء العنزي', email: 'najla@example.com', image: '' },
+    { id: 10, name: 'أماني الزهراني', email: 'amani@example.com', image: '/users/user-12.jpg' },
+]

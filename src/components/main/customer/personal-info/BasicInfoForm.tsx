@@ -1,185 +1,151 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+
 import Card from '@/components/shared/Card';
 import TextInput from '@/components/shared/Forms/TextInput';
 import PrimaryButton from '@/components/shared/Button';
 import SoftActionButton from '@/components/shared/SoftActionButton';
 import SelectInput from '@/components/shared/Forms/SelectInput';
 import { ClientRow } from '@/types/dashboard/client';
+import ImageUpload from '@/components/shared/Forms/ImageUpload';
 
 type Props = {
-    client?: Omit<ClientRow, 'joinedAt'>; // joinedAt is not editable
+    client?: Omit<ClientRow, 'joinedAt'>;
     isAdmin?: boolean;
     isCurentUser?: boolean;
 };
 
+// 🧠 Define Zod schema
+const schema = z.object({
+    name: z.string().min(10, 'الاسم مطلوب'),
+    email: z.email('البريد الإلكتروني غير صالح'),
+    phone: z.string().optional(),
+    image: z
+        .string()
+        .refine((val) =>
+            typeof val === 'string' &&
+            (val.startsWith('http') || val.startsWith('blob:') || val.startsWith('/')),
+            { message: 'رابط الصورة غير صالح', })
+        .optional(),
+
+    status: z.enum(['active', 'suspended']),
+});
+
+type FormValues = z.infer<typeof schema>;
+
 export default function BasicInfoForm({ client, isCurentUser = false, isAdmin = false }: Props) {
     const isEdit = isCurentUser || (client && client.id);
-    const [info, setInfo] = useState<Omit<ClientRow, 'id' | 'joinedAt'>>(
-        isEdit
-            ? {
-                name: client?.name || '',
-                email: client?.email || '',
-                phone: client?.phone || '',
-                image: client?.image || '/users/default-user.png',
-                status: client?.status ?? 'active',
-            }
-            : {
-                name: '',
-                email: '',
-                phone: '',
-                image: '/users/default-user.png',
-                status: 'active',
-            }
-    );
 
-    const handleTextChange = (key: keyof typeof info) =>
-        (e: React.ChangeEvent<HTMLInputElement>) => {
-            setInfo((prev) => ({ ...prev, [key]: e.target.value }));
-        };
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        reset,
+        watch,
+        formState: { errors },
+    } = useForm<FormValues>({
+        resolver: zodResolver(schema),
+        defaultValues: {
+            name: client?.name || '',
+            email: client?.email || '',
+            phone: client?.phone || '',
+            image: client?.image || '/users/default-user.png',
+            status: client?.status ?? 'active',
+        },
+    });
 
-    const handleSelectChange = (key: keyof typeof info) =>
-        (val: string) => {
-            setInfo((prev) => ({ ...prev, [key]: val }));
-        };
+    const onSubmit = (data: FormValues) => {
+        if (client) {
+            console.log('🔄 تحديث العميل:', { id: client.id, ...data });
+        } else {
+            console.log('🆕 إضافة عميل جديد:', data);
+        }
+    };
+
+
+    const handleCancel = () => {
+        reset({
+            name: client?.name || '',
+            email: client?.email || '',
+            phone: client?.phone || '',
+            image: client?.image || '/users/default-user.png',
+            status: client?.status ?? 'active',
+        });
+    };
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             const imageUrl = URL.createObjectURL(file);
-            setInfo((prev) => ({ ...prev, image: imageUrl }));
-        }
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-
-        if (client) {
-            console.log('🔄 تحديث العميل:', { id: client.id, ...info });
-            // Call update API here
-        } else {
-            console.log('🆕 إضافة عميل جديد:', info);
-            // Call create API here
-        }
-    };
-
-    const handleCancel = () => {
-        if (isEdit) {
-            setInfo({
-                name: client?.name || '',
-                email: client?.email || '',
-                phone: client?.phone || '',
-                image: client?.image || '/users/default-user.png',
-                status: client?.status ?? 'active',
-            });
-        }
-        else {
-
-            setInfo({
-                name: '',
-                email: '',
-                phone: '',
-                image: '/users/default-user.png',
-                status: 'active',
-            });
+            setValue('image', imageUrl);
         }
     };
 
     return (
         <Card title={client ? 'تعديل معلومات العميل' : 'إضافة عميل جديد'}>
             {/* رفع الصورة */}
-            <div className="relative mx-auto mb-6 w-[180px] h-[180px]">
-                <input
-                    id="imageUpload"
-                    accept=".png, .jpg, .jpeg"
-                    className="hidden"
-                    type="file"
-                    onChange={handleImageChange}
-                />
-                <label htmlFor="imageUpload" className="cursor-pointer">
-                    <img
-                        alt="الصورة الشخصية"
-                        loading="lazy"
-                        width={180}
-                        height={180}
-                        className="rounded-full border-[6px] border-[#F5F5FE] shadow-md"
-                        src={info.image}
-                    />
-                    <div className="absolute bottom-2 right-2 bg-white rounded-full p-2 shadow-md">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 text-gray-600"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M15.232 5.232l3.536 3.536M9 13l6.536-6.536a2 2 0 112.828 2.828L11.828 15H9v-2z"
-                            />
-                        </svg>
-                    </div>
-                </label>
-            </div>
+            <ImageUpload
+                imageUrl={watch('image') || '/users/default-user.png'}
+                onChange={handleImageChange}
+                error={errors.image?.message}
+            />
 
             {/* النموذج */}
-            <form onSubmit={handleSubmit} className="grid grid-cols-12 gap-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-12 gap-4">
                 <TextInput
                     id="full-name"
-                    name="name"
                     label="الاسم الكامل"
                     placeholder="أدخل الاسم"
-                    value={info.name}
-                    onChange={handleTextChange('name')}
+                    {...register('name')}
+                    error={errors.name?.message}
                     required
                 />
 
                 <TextInput
                     id="user-email"
-                    name="email"
                     type="email"
                     label="البريد الإلكتروني"
                     placeholder="أدخل البريد الإلكتروني"
-                    value={info.email}
-                    onChange={handleTextChange('email')}
+                    {...register('email')}
+                    error={errors.email?.message}
                     required
                 />
 
                 <TextInput
                     id="user-phone"
-                    name="phone"
                     type="text"
                     label="رقم الهاتف"
                     placeholder="أدخل الرقم"
-                    className='ltr-data'
-                    value={info.phone}
-                    onChange={handleTextChange('phone')}
+                    className="ltr-data"
+                    {...register('phone')}
+                    error={errors.phone?.message}
                 />
 
                 {isAdmin && (
                     <SelectInput
                         name="status"
                         label="حالة الحساب"
-                        value={info.status}
-                        onChange={handleSelectChange('status')}
+                        value={client?.status ?? 'active'}
+                        onChange={(val) => setValue('status', val as 'active' | 'suspended')}
                         options={[
                             { label: 'نشط', value: 'active' },
                             { label: 'موقوف', value: 'suspended' },
                         ]}
+                        error={errors.status?.message}
                     />
                 )}
 
                 <div className="col-span-12 flex items-center gap-6 flex-wrap">
                     <PrimaryButton type="submit">
-                        {isCurentUser ? "المعلومات الاساسية" : client ? 'تحديث  بيانات العميل' : 'إضافة عميل جديد'}
+                        {isCurentUser ? 'المعلومات الاساسية' : client ? 'تحديث بيانات العميل' : 'إضافة عميل جديد'}
                     </PrimaryButton>
                     <SoftActionButton onClick={handleCancel}>إلغاء</SoftActionButton>
                 </div>
             </form>
-
         </Card>
     );
 }

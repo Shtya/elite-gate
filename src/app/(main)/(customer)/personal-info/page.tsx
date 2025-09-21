@@ -17,8 +17,8 @@ const currentClient: Omit<ClientRow, 'joinedAt'> = {
     image: '/users/user-1.jpg',
     status: 'active',
 };
+export default async function PersonalInfo() {
 
-export default function PersonalInfo() {
     return (
         <div className="space-y-4 lg:space-y-6">
             <BasicInfoForm client={currentClient} isCurentUser={true} />

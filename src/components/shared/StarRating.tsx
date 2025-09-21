@@ -8,6 +8,7 @@ interface StarRatingProps {
     editable?: boolean;       // whether user can change it
     onChange?: (rating: number) => void; // callback when rating changes
     max?: number;             // total stars
+    className?: string
 }
 
 export default function StarRating({
@@ -15,11 +16,12 @@ export default function StarRating({
     editable = false,
     onChange,
     max = 5,
+    className
 }: StarRatingProps) {
     const [hover, setHover] = useState<number | null>(null);
 
     return (
-        <div className="flex gap-1">
+        <div className={`flex gap-1 ${className}`}>
             {[...Array(max)].map((_, index) => {
                 const ratingValue = index + 1;
                 const isActive = ratingValue <= (hover ?? value);

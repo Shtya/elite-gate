@@ -28,6 +28,7 @@ export type MiniUser = {
     name: string;
     email: string;
     image?: string;
+    phone?: string
 };
 
 export type MiniProject = {
@@ -40,8 +41,8 @@ export type MiniProject = {
 export type AppointmentRow = {
     id: number;
     project: MiniProject;
-    appointmentAt: string;   // ISO string
-    createdAt: string;       // ISO string
+    appointmentAt: string;
+    createdAt: string;
     agent: MiniUser;
     client: MiniUser;
     status: BookingStatus;

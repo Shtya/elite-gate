@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 type IconDetailProps = {
     icon: ReactNode;
     label: string;
-    value: string;
+    value: string | ReactNode;
     href?: string;
     className?: string;
 
@@ -12,7 +12,7 @@ type IconDetailProps = {
 export default function IconDetail({ icon, label, value, href, className }: IconDetailProps) {
     return (
         <div className="flex gap-3 items-center" >
-            <div className={`rounded-full w-14 h-14 flex items-center justify-center`}>
+            <div className={`rounded-full min-w-14 min-h-14 flex items-center justify-center`}>
                 {icon}
             </div>
             <div>

@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default async function EditClientPage({ params }: Props) {
-    const clientId = Number(params.clientId);
+    const clientId = 1;
     const client = rows.find((r) => r.id === clientId);
 
     await new Promise((r) => setTimeout(r, 300)); // simulate loading

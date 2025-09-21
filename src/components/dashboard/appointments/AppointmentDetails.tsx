@@ -1,0 +1,214 @@
+import Link from 'next/link';
+import { FaRegCalendarAlt, FaClipboardList, FaCalendarAlt } from 'react-icons/fa';
+import { formatDate, formatTime } from '@/utils/date';
+import { agents, bookingStatusMap, bookingStatusStyle, projectTypeColors } from '@/constants/dashboard/appointment/contants';
+import AppointmentStatusControl from './AppointmentStatusControl';
+import Card from '@/components/shared/Card';
+import { addMinutes } from 'date-fns';
+import { AppointmentRow } from '@/types/dashboard/appointment';
+import { getDefaultProjectpath } from '@/utils/appointment';
+import Image from 'next/image';
+import IconDetail from '@/components/shared/infos/IconDetail';
+import { SlCalender } from 'react-icons/sl';
+import { BiTimeFive } from 'react-icons/bi';
+import { MdReviews, MdStarRate, MdTimelapse } from 'react-icons/md';
+import StarRating from '@/components/shared/StarRating';
+import AppointmentNotesCard from './AppointmentNotesCard';
+import UserChanger from '../UserChanger';
+
+type AppointmentDetailsProps = {
+    appointment: AppointmentRow;
+};
+
+const reviewText = 'لقد كانت تجربتي مع شركة العقارات ممتازة من البداية حتى النهاية. ساعدوني في العثور على منزل يناسب احتياجاتي بكل احترافية.';
+export default function AppointmentDetails({ appointment }: AppointmentDetailsProps) {
+
+    const { id, project, client, agent, appointmentAt, status, reviewStars, createdAt } = appointment;
+    const appointmentDate = new Date(appointment.appointmentAt);
+    const imageSrc = project.image || getDefaultProjectpath(project.type);
+    const badgeStyle = projectTypeColors[project.type];
+
+    return (
+        <div className="grid grid-cols-1 2xl:grid-cols-6 gap-4 lg:gap-6 ">
+            <div className="h-full 2xl:col-span-2 space-y-4 lg:space-y-6">
+                <Card title="تفاصيل العقار">
+                    <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+                        <div className="relative w-[80px] h-[80px] shrink-0">
+                            <Image
+                                src={imageSrc}
+                                alt={project.title}
+                                fill
+                                className={`rounded-lg object-cover ${project.image && 'border'}`}
+                                sizes="80px"
+                            />
+                        </div>
+
+                        <div className="flex flex-col justify-between text-center sm:text-start gap-1">
+                            <Link href={`/dashboard/projects/${project.id}`}>
+                                <span className="text-lg font-semibold text-gray-800 hover:underline">
+                                    {project.title}
+                                </span>
+                            </Link>
+
+                            <span className={`w-fit mt-2 inline-block px-3 py-1 rounded-full text-sm font-medium ${badgeStyle}`}>
+                                {project.type}
+                            </span>
+                        </div>
+                    </div>
+                </Card>
+                <Card title="تفاصيل الحجز" className='space-y-4'>
+                    <IconDetail
+                        icon={<SlCalender className="text-[var(--primary)] w-6 h-6" />}
+                        label="تاريخ الإنشاء"
+                        value={formatDate(createdAt)}
+                        className="block"
+                    />
+
+                    <IconDetail
+                        icon={<FaRegCalendarAlt className="text-[var(--primary)] w-6 h-6" />}
+                        label="تاريخ الموعد"
+                        value={formatDate(appointmentAt)}
+                        className="block"
+                    />
+                    <div className='flex flex-row flex-wrap gap-4 '>
+                        <div className='flex-1'>
+
+                            <IconDetail
+                                icon={<BiTimeFive className="text-[var(--primary)] w-6 h-6" />}
+                                label="بدابة الموعد"
+                                value={formatTime(appointmentAt)}
+                            />
+                        </div>
+                        <div className='flex-1'>
+                            <IconDetail
+                                icon={<MdTimelapse className="text-[var(--primary)] w-6 h-6" />}
+                                label="نهاية الموعد"
+                                value={formatTime(addMinutes(appointmentDate, 60))}
+                            />
+                        </div>
+                    </div>
+                    {reviewStars && <IconDetail
+                        icon={<MdStarRate className="text-[var(--primary)] w-6 h-6" />}
+                        label="تقييم العميل للموعد"
+                        value={<StarRating value={reviewStars} className='mt-2' />}
+                    />}
+
+                    {reviewStars && reviewText && <IconDetail
+                        icon={<MdReviews className="text-[var(--primary)] w-6 h-6" />}
+                        label="نص تقييم العميل"
+                        value={reviewText}
+                        className='text-[16px] font-semibold'
+                    />}
+
+                    <IconDetail
+                        icon={<MdReviews className="text-[var(--primary)] w-6 h-6" />}
+                        label="الحالة"
+                        value={bookingStatusMap[status]}
+                        className={`${bookingStatusStyle[status]} block px-3 py-1 !rounded-full text-sm font-medium mt-1`}
+                    />
+                    <AppointmentStatusControl appointmentId={id} currentStatus={status} />
+                </Card>
+            </div>
+            <div className='h-full 2xl:col-span-4 flex flex-col gap-4 lg:gap-6 '>
+                <div className="flex gap-4 lg:gap-6 items-start flex-col md:flex-row">
+                    <Card className="flex-1 w-full h-full flex flex-col" title="الوسيط">
+                        <div className="flex-1">
+                            {agent ? (
+                                <>
+                                    {/* ✅ معلومات الوسيط المعين */}
+                                    <div className="relative rounded-2xl bg-white p-6">
+                                        <div className="relative w-fit mx-auto">
+                                            <img
+                                                src={agent.image || '/users/default-user.png'}
+                                                alt={agent.name}
+                                                className="rounded-full w-20 h-20 object-cover border"
+                                            />
+                                        </div>
+
+                                        <Link href={`/dashboard/agents/${agent.id}`}>
+                                            <h5 className="text-xl font-semibold mt-5 text-center hover:underline">
+                                                {agent.name}
+                                            </h5>
+                                        </Link>
+                                    </div>
+
+                                    <div className="mt-6 space-y-4 flex flex-col md:flex-row">
+                                        <IconDetail
+                                            icon={<FaClipboardList className="text-[var(--primary)] w-6 h-6" />}
+                                            label="رقم الهاتف"
+                                            value={agent.phone || 'غير متوفر'}
+                                            href={agent.phone ? `tel:${agent.phone}` : undefined}
+                                            className="ltr-data block"
+                                        />
+                                        <IconDetail
+                                            icon={<FaCalendarAlt className="text-[var(--secondary-500)] w-6 h-6" />}
+                                            label="البريد الإلكتروني"
+                                            value={agent.email || 'غير متوفر'}
+                                            href={agent.email ? `mailto:${agent.email}` : undefined}
+                                        />
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    {/* 🚫 لا يوجد وسيط معين */}
+                                    <div className="text-center py-10 text-gray-500">
+                                        <p className="text-lg font-semibold">لم يتم تعيين وسيط بعد</p>
+                                        <p className="text-sm mt-2">يمكنك اختيار وسيط من القائمة أو تعيينه لاحقًا</p>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+
+                        {/* ✅ مكون اختيار الوسيط يظهر دائمًا في الأسفل */}
+                        <div className="mt-auto pt-4">
+                            <UserChanger appointmentId={appointment.id} showSelected={false} initialUser={agent} users={agents} label='وسيط' />
+                        </div>
+                    </Card>
+
+                    <Card className='flex-1 h-full w-full' title='العميل'>
+
+                        <div className="relative rounded-2xl bg-white p-6">
+
+                            {/* Avatar */}
+                            <div className="relative w-fit mx-auto">
+                                <img
+                                    src={client.image || '/users/default-user.png'}
+                                    alt={client.name}
+                                    className="rounded-full w-20 h-20 object-cover border"
+                                />
+
+                            </div>
+
+                            {/* Name */}
+                            <Link href={`/dashboard/clients/${client.id}`}>
+                                <h5 className="text-xl font-semibold mt-5 text-center hover:underline">{client.name}</h5>
+                            </Link>
+
+                        </div>
+
+                        {/* Contact Info */}
+                        <div className="mt-6 space-y-4">
+                            <IconDetail
+                                icon={<FaClipboardList className="text-[var(--primary)] w-6 h-6" />}
+                                label="رقم الهاتف"
+                                value={client?.phone || "+456 546 4654"}
+                                href={`tel:${client?.phone || "+456 546 4654"}`}
+                                className='ltr-data block'
+                            />
+                            <IconDetail
+                                icon={<FaCalendarAlt className="text-[var(--secondary-500)] w-6 h-6" />}
+                                label="البريد الإلكتروني"
+                                value={client.email}
+                                href={`mailto:${client.email}`}
+                            />
+                        </div>
+
+                    </Card>
+                </div>
+                <AppointmentNotesCard initailNotes='' />
+            </div>
+
+        </div>
+    );
+}
+

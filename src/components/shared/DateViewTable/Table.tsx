@@ -1,10 +1,11 @@
 'use client';
 
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { TableColumn, TableRow } from '@/types/components/table';
-import Menu, { MenuChildProps } from '../Menu';
-import MenuActionList, { MenuActionItem } from '../Header/MenuActionList';
+import Menu from '../Menu';
+import { MenuActionItem } from '../Header/MenuActionList';
 import NoRowsFound from '../NoRowsFound';
+import MenuActionListWrapper from '../Header/MenuActionListWrapper';
 
 
 
@@ -12,7 +13,7 @@ interface TableProps<T = Record<string, any>> {
     columns: TableColumn<T>[];
     rows: TableRow<T>[];
     showActions?: boolean;
-    actionsMenuItems?: (row: T) => MenuActionItem[];
+    actionsMenuItems?: (row: T, onClose?: () => void) => MenuActionItem[];
 }
 
 export default function Table<T = Record<string, any>>({
@@ -75,10 +76,7 @@ export default function Table<T = Record<string, any>>({
                                                         </button>
                                                     )}
                                                 >
-                                                    {React.cloneElement(
-                                                        <MenuActionList items={actionsMenuItems?.(row)} />,
-                                                        { row }
-                                                    ) as ReactElement<MenuChildProps>}
+                                                    <MenuActionListWrapper row={row} actionsMenuItems={actionsMenuItems} />
                                                 </Menu>
                                             ) : col.cell ? (
                                                 col.cell(value, row)
