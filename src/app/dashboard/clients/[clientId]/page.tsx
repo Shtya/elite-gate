@@ -2,8 +2,8 @@
 import AppointmentsDataView from '@/components/dashboard/appointments/AppointmentsDataView';
 import DashboardSectionCard from '@/components/dashboard/DashboardSectionCard';
 import { Suspense } from 'react';
-import ClientDetailsWrapper from '@/components/dashboard/clients/ClientDetailsWrapper';
-import LoadingClientDetailsPage from '@/components/dashboard/clients/ClientLoading';
+import ClientDetailsWrapper from '@/components/dashboard/Clients/ClientDetailsWrapper';
+import LoadingClientDetailsPage from '@/components/dashboard/Clients/ClientLoading';
 
 
 export default function ClientDetailsPage() {
