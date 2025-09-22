@@ -1,18 +1,12 @@
-import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
-import Link from 'next/link';
-import { BiGroup } from 'react-icons/bi';
-import DownloadContent from '@/components/shared/DownloadContent';
+
 import AppointmentsDataView from '@/components/dashboard/appointments/AppointmentsDataView';
 import DashboardSectionCard from '@/components/dashboard/DashboardSectionCard';
 import { Suspense } from 'react';
 import ClientDetailsWrapper from '@/components/dashboard/clients/ClientDetailsWrapper';
 import LoadingClientDetailsPage from '@/components/dashboard/clients/ClientLoading';
 
-type Props = {
-    params: { clientId: string };
-};
 
-export default function ClientDetailsPage({ params }: { params: { clientId: string } }) {
+export default function ClientDetailsPage() {
     const clientId = 1;
 
     return (

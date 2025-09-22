@@ -1,6 +1,6 @@
 'use client'
 import DataView from "@/components/shared/DateViewTable/DataView";
-import { appointmentColumns, appointmentFilters, appointmentSortConfig } from "@/constants/dashboard/appointment/contants";
+import { agents, appointmentColumns, appointmentFilters, appointmentSortConfig } from "@/constants/dashboard/appointment/contants";
 import useAppointments from "@/hooks/dashboard/appointments/useAppointments";
 import { AppointmentRow } from "@/types/dashboard/appointment";
 import { FaExchangeAlt, FaEye, FaUserEdit } from "react-icons/fa";
@@ -52,8 +52,10 @@ function getAppointmentActionsMenu(row: AppointmentRow, onClose?: () => void): M
             icon: <FaUserEdit />,
             child: (
                 <AgentAssignmentToggle
+                    users={agents}
+                    label="وسيط"
                     appointmentId={row.id}
-                    selectedAgent={row.agent} // ✅ بدلًا من currentAgent
+                    selectedUser={row.agent} // ✅ بدلًا من currentAgent
                     onConfirm={(agent) => {
                         onClose?.();
                     }}

@@ -77,7 +77,7 @@ export default function UserChanger({
                     <button
                         onClick={() => setShowPopup(true)}
                         type='button'
-                        className="mr-auto px-4 py-2 rounded-md bg-[var(--primary)] text-white hover:bg-[var(--primary-600)]"
+                        className="mr-auto px-4 py-2 rounded-md bg-[var(--primary)] text-white hover:bg-[var(--primary-600)] min-w-[110px] text-center"
                     >
                         تغيير {label}
                     </button>

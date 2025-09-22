@@ -78,7 +78,7 @@ export default function PropertyChanger({
                     </div>
                     <button
                         onClick={() => setShowPopup(true)}
-                        className="mr-auto px-4 py-2 rounded-md bg-[var(--primary)] text-white hover:bg-[var(--primary-600)]"
+                        className="mr-auto px-4 py-2 rounded-md bg-[var(--primary)] text-white hover:bg-[var(--primary-600)] min-w-[110px] text-center"
                     >
                         تغيير {label}
                     </button>

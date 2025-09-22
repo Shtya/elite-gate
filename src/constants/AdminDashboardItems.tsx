@@ -34,16 +34,15 @@ export const dashboardItems: SelectableItem[] = [
                 label: "الوسطاء",
                 icon: FaUserTie,
                 children: [
-                    { label: "قائمة الوسطاء", icon: FaRegListAlt, href: "/dashboard/agents/list" },
+                    { label: "قائمة الوسطاء", icon: FaRegListAlt, href: "/dashboard/agents" },
                     { label: "إضافة وسيط", icon: FaUserPlus, href: "/dashboard/agents/add" },
-                    { label: "طلبات التسجيل", icon: FaUserCheck, href: "/dashboard/agents/requests" },
                 ]
             },
             {
                 label: "المسوقين",
                 icon: FaBullhorn,
                 children: [
-                    { label: "قائمة المسوقين", icon: FaRegListAlt, href: "/dashboard/marketers/list" },
+                    { label: "قائمة المسوقين", icon: FaRegListAlt, href: "/dashboard/marketers" },
                     { label: "إضافة مسوق", icon: FaUserPlus, href: "/dashboard/marketers/add" }
                 ]
             }

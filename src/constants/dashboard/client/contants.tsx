@@ -91,7 +91,6 @@ export const columns: TableColumn<ClientRow>[] = [
 ];
 
 
-
 export const rows: TableRow<ClientRow>[] = [
     { id: 1, image: "/users/user-1.jpg", name: 'احمد العتيبي', email: 'khaled@example.com', phone: '+966 500 123 456', joinedAt: '2023-01-15', status: 'active', },
     { id: 2, image: "/users/user-2.webp", name: 'عبدالله الشهري', email: 'abdullah@example.com', phone: '+966 511 987 654', joinedAt: '2022-09-03', status: 'active', },

@@ -1,8 +1,85 @@
+'use client'
+import { useState, useRef, useEffect } from 'react'
+import { ExcelDownloadRequest, ExcelDownloadResponse } from '@/types/excelDownload.types'
+import { setupExcelDownloadWorker } from '@/libs/worker-setup'
 
-export default function DownloadContent({ text = 'تحميل القائمة' }: { text?: string }) {
-    return <button className="btn-primary ">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path>
-        </svg>  {text}
-    </button>
+
+interface DownloadContentProps {
+    text?: string
+    headers?: string[]
+    columnWidths?: { wch: number }[]
+    rows?: (string | number | null)[][]
+    sheetName?: string
+    fileName?: string
+}
+
+export default function DownloadContent({
+    text = 'تحميل القائمة',
+    headers,
+    columnWidths,
+    rows,
+    sheetName = 'Sheet1',
+    fileName = 'ExcelData',
+}: DownloadContentProps) {
+    const [isLoading, setLoading] = useState(false)
+    const workerRef = useRef<Worker | null>(null)
+    const unMounted = useRef(false);
+
+    useEffect(() => {
+        setupExcelDownloadWorker({ setLoading, unMounted, workerRef });
+        return () => {
+            unMounted.current = true;
+        };
+    }, []);
+
+
+    // Trigger export
+    const handleExport = () => {
+        if (!workerRef.current) {
+            setupExcelDownloadWorker({ setLoading, unMounted, workerRef });
+        }
+        if (
+            !workerRef.current ||
+            !headers?.length ||
+            !columnWidths?.length ||
+            !rows?.length
+        ) return;
+
+        const payload: ExcelDownloadRequest = {
+            headers: headers!,
+            columnWidths: columnWidths!,
+            rows: rows!,
+            sheetName,
+            fileName,
+        };
+
+
+        setLoading(true)
+        workerRef.current.postMessage(payload)
+    }
+
+    return (
+        <button
+            className="btn-primary"
+            onClick={handleExport}
+            disabled={isLoading}
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="w-5 h-5 inline-block ml-2"
+            >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+            </svg>
+            {isLoading ? 'جاري التصدير...' : text}
+        </button>
+    )
 }
