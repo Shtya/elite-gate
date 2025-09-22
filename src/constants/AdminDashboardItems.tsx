@@ -64,7 +64,7 @@ export const dashboardItems: SelectableItem[] = [
                 label: "المشاريع",
                 icon: FaProjectDiagram,
                 children: [
-                    { label: "قائمة المشاريع", icon: FaRegListAlt, href: "/dashboard/projects/list" },
+                    { label: "قائمة المشاريع", icon: FaRegListAlt, href: "/dashboard/projects" },
                     { label: "إضافة مشروع", icon: FaUserPlus, href: "/dashboard/projects/add" }
                 ]
             }
