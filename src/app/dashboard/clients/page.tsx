@@ -2,7 +2,7 @@ import DashboardHeaderTitle from "@/components/dashboard/DashboardHeaderTitle";
 import DownloadList from "@/components/shared/DownloadContent";
 import Link from "next/link";
 import { BiEditAlt } from "react-icons/bi";
-import ClientsDataView from "@/components/dashboard/clients/ClientsDataView";
+import ClientsDataView from "@/components/dashboard/Clients/ClientsDataView";
 import DashboardSectionCard from "@/components/dashboard/DashboardSectionCard";
 import { columns, rows } from "@/constants/dashboard/client/contants";
 import { formatDate } from "@/utils/date";
