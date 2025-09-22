@@ -1,4 +1,4 @@
-import { BaseFilterKeys } from "../components/table";
+import { BaseFilterKeys } from "../components/Table";
 
 // types/appointment.ts
 export type AppointmentType = 'شقة' | 'فيلا' | 'أرض';

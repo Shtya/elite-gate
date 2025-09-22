@@ -1,4 +1,4 @@
-import { BaseFilterKeys } from "../components/table";
+import { BaseFilterKeys } from "../components/Table";
 
 export type ClientStatus = 'active' | 'suspended';
 

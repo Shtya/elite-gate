@@ -1,4 +1,4 @@
-import { BaseFilterKeys } from "../components/table";
+import { BaseFilterKeys } from "../components/Table";
 
 // Possible statuses for a marketer
 export type MarketerStatus = 'active' | 'suspended' | 'pending' | 'rejected';
