@@ -3,13 +3,12 @@
 import { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Slider from 'rc-slider';
-import Link from 'next/link';
 import SelectDropdown from '@/components/shared/Forms/SelectDropdown';
 import PrimaryButton from '@/components/shared/Button';
+import { PropertyType } from '@/types/property';
 
 type TransactionType = 'للإيجار' | 'للبيع';
 type CityType = 'jeddah' | 'riyadh' | 'dammam' | 'mecca' | 'medina';
-type PropertyType = 'apartment' | 'villa' | 'office';
 
 
 export default function HeroPropertyFiltering() {

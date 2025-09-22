@@ -12,8 +12,7 @@ type AgentDetailsPageProps = {
 };
 
 export default function AgentDetailsPage({ params }: AgentDetailsPageProps) {
-    const agentId = Number(params.agentId); // convert to number if needed
-
+    const agentId = 1 // convert to number if needed
 
     return (
         <div>

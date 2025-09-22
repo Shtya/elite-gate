@@ -4,6 +4,7 @@ import { rows } from '@/constants/dashboard/client/contants'; // mock data
 import { notFound } from 'next/navigation';
 import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import BasicInfoForm from '@/components/main/customer/personal-info/BasicInfoForm';
+import CenteredContainer from '@/components/shared/CenteredContainer';
 
 type Props = {
     params: { clientId: string };
@@ -32,7 +33,9 @@ export default async function EditClientPage({ params }: Props) {
 
             </DashboardHeaderTitle>
 
-            <BasicInfoForm client={client} isAdmin={true} />
+            <CenteredContainer>
+                <BasicInfoForm client={client} isAdmin={true} />
+            </CenteredContainer>
         </div>
     );
 }

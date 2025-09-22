@@ -479,5 +479,11 @@
     border-radius: 0.5rem !important;
   }
 
+  /* استهداف textarea بالـ id */
+  .property-info-form #description {
+    height: 140px;
+    resize: none;
+    overflow-y: auto;
+  }
 
 }

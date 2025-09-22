@@ -2,6 +2,7 @@ import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import Link from 'next/link';
 import { BiGroup } from 'react-icons/bi';
 import AgentForm from '@/components/dashboard/agents/AgentForm';
+import CenteredContainer from '@/components/shared/CenteredContainer';
 
 export default function AddAgentPage() {
     return (
@@ -11,8 +12,10 @@ export default function AddAgentPage() {
                     <BiGroup /> عرض جميع الوسطاء
                 </Link>
             </DashboardHeaderTitle>
+            <CenteredContainer>
 
-            <AgentForm isAdmin={true} />
+                <AgentForm isAdmin={true} />
+            </CenteredContainer>
         </div>
     );
 }

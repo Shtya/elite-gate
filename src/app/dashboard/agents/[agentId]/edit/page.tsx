@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { BiUser, BiGroup } from 'react-icons/bi';
 import AgentForm from '@/components/dashboard/agents/AgentForm';
 import { mockedAgents } from '@/constants/dashboard/agent/contants';
+import CenteredContainer from '@/components/shared/CenteredContainer';
 
 type Props = {
     params: { agentId: string };
@@ -31,7 +32,10 @@ export default async function EditAgentPage({ params }: Props) {
                 </div>
             </DashboardHeaderTitle>
 
-            <AgentForm agent={agent} isAdmin={true} />
+            <CenteredContainer>
+
+                <AgentForm agent={agent} isAdmin={true} />
+            </CenteredContainer>
         </div>
     );
 }

@@ -18,8 +18,8 @@ export default function ProjectsFilterPanel() {
         type: searchParams.get('type') || '',
         city: searchParams.get('city') || '',
         priceRange: [
-            Number(searchParams.get('priceMin')) || 25,
-            Number(searchParams.get('priceMax')) || 89,
+            Number(searchParams.get('priceMin')) || 100000,
+            Number(searchParams.get('priceMax')) || 500000,
         ] as [number, number],
     });
 
@@ -32,8 +32,13 @@ export default function ProjectsFilterPanel() {
         if (debouncedKeyword.trim()) params.set('keyword', debouncedKeyword);
         if (estate.type) params.set('type', estate.type);
         if (estate.city) params.set('city', estate.city);
-        if (debouncedPriceRange[0]) params.set('priceMin', debouncedPriceRange[0].toString());
-        if (debouncedPriceRange[1]) params.set('priceMax', debouncedPriceRange[1].toString());
+
+        const [min, max] = debouncedPriceRange;
+        if (min !== 100000) params.set('priceMin', min.toString());
+        else params.delete('priceMin');
+
+        if (max !== 500000) params.set('priceMax', max.toString());
+        else params.delete('priceMax');
 
         router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     }, [debouncedKeyword, estate.type, estate.city, debouncedPriceRange]);
@@ -43,7 +48,7 @@ export default function ProjectsFilterPanel() {
             keyword: '',
             type: '',
             city: '',
-            priceRange: [25, 89],
+            priceRange: [100000, 500000],
         });
         router.replace(`${pathname}?`, { scroll: false });
     };

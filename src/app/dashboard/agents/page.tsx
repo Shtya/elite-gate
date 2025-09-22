@@ -20,6 +20,7 @@ export default function AgentsPage() {
                     </Link>
                 </div>
             </DashboardHeaderTitle>
+
             <DashboardSectionCard>
                 <AgentsDataView />
             </DashboardSectionCard>

@@ -15,8 +15,8 @@ export default function PriceRangeSlider({ value, onChange }: PriceRangeSliderPr
             <div className="range-slider relative">
                 <Slider
                     range
-                    min={0}
-                    max={100}
+                    min={100}
+                    max={1000000}
                     value={value}
                     onChange={(val) => onChange(val as [number, number])}
                     styles={{
@@ -34,9 +34,9 @@ export default function PriceRangeSlider({ value, onChange }: PriceRangeSliderPr
                 />
 
                 <div className="flex justify-center gap-4 py-5 text-[var(--neutral-700)] font-medium">
-                    <span>${value[0]}</span>
-                    <span>-</span>
                     <span>${value[1]}</span>
+                    <span>-</span>
+                    <span>${value[0]}</span>
                 </div>
             </div>
         </div>

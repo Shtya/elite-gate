@@ -1,5 +1,6 @@
 import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import MarketerForm from '@/components/dashboard/marketers/MarketerForm';
+import CenteredContainer from '@/components/shared/CenteredContainer';
 import Link from 'next/link';
 import { BiGroup } from 'react-icons/bi';
 
@@ -12,7 +13,9 @@ export default function AddMarketerPage() {
                 </Link>
             </DashboardHeaderTitle>
 
-            <MarketerForm isAdmin={true} />
+            <CenteredContainer>
+                <MarketerForm isAdmin={true} />
+            </CenteredContainer>
         </div>
     );
 }

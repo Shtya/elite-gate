@@ -6,7 +6,7 @@ type TextInputProps = {
     placeholder: string;
     name: string;
     type?: string;
-    value?: string;
+    value?: string | number;
     required?: boolean
     error?: string;
     className?: string

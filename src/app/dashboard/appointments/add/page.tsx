@@ -1,5 +1,6 @@
 import AddAppointmentForm from "@/components/dashboard/appointments/AddAppointmentForm";
 import DashboardHeaderTitle from "@/components/dashboard/DashboardHeaderTitle";
+import CenteredContainer from "@/components/shared/CenteredContainer";
 import Link from "next/link";
 import { BiGroup } from "react-icons/bi";
 
@@ -13,7 +14,10 @@ export default function AddAppointmentPage() {
                 </Link>
             </DashboardHeaderTitle>
 
-            <AddAppointmentForm />
+            <CenteredContainer>
+
+                <AddAppointmentForm />
+            </CenteredContainer>
         </div>
     );
 }

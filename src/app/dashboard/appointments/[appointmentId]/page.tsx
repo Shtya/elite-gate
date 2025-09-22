@@ -1,5 +1,6 @@
 import AppointmentDetails from '@/components/dashboard/appointments/AppointmentDetails';
 import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
+import CenteredContainer from '@/components/shared/CenteredContainer';
 import DownloadContent from '@/components/shared/DownloadContent';
 import { mockAppointments } from '@/constants/dashboard/appointment/contants';
 import Link from 'next/link';
@@ -26,7 +27,9 @@ export default async function AppointmentDetailsPage({ params }: { params: { app
                 </div>
             </DashboardHeaderTitle>
 
+
             <AppointmentDetails appointment={appointment} />
+
         </>
     );
 }

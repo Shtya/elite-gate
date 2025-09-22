@@ -17,9 +17,9 @@ export const metadata = {
 
 
 const projectImages = [
-    '/main/projects/property-1.webp',
     '/main/projects/property-2.webp',
-    '/main/projects/property-3.webp'
+    '/main/projects/property-3.webp',
+    '/main/projects/property-4.webp'
 ];
 
 const propertyInfo = {

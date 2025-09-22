@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { BiUser, BiGroup } from 'react-icons/bi';
 import MarketerForm from '@/components/dashboard/marketers/MarketerForm';
 import { mockedMarketers } from '@/constants/dashboard/marketers/contants';
+import CenteredContainer from '@/components/shared/CenteredContainer';
 
 
 type Props = {
@@ -32,7 +33,9 @@ export default async function EditMarketerPage({ params }: Props) {
                 </div>
             </DashboardHeaderTitle>
 
-            <MarketerForm marketer={marketer} isAdmin={true} />
+            <CenteredContainer>
+                <MarketerForm marketer={marketer} isAdmin={true} />
+            </CenteredContainer>
         </div>
     );
 }

@@ -5,7 +5,8 @@ import PropertyPagination from "./PropertyPagination";
 import PropertyToolbar from "./PropertyToolbar";
 
 
-export default function PropertiesDataView() {
+export default function PropertiesDataView({ isAdmin = false }: { isAdmin?: boolean }) {
+
     return (
         <div className="container">
             <div className="flex flex-col md:flex-row gap-4 md:gap-6 ">
@@ -18,7 +19,7 @@ export default function PropertiesDataView() {
                             <PropertyToolbar total={20} shown={5} />
                         </div>
                         <div className="col-span-12 space-y-4 xl:space-y-6">
-                            <PropertyCardsDisplay properties={properties} />
+                            <PropertyCardsDisplay isAdmin={isAdmin} />
                             <PropertyPagination pageCount={20} />
                         </div>
 
