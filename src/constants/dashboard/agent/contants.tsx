@@ -1,4 +1,4 @@
-import { FilterConfig, SortConfig, TableColumn } from '@/types/components/table';
+import { FilterConfig, SortConfig, TableColumn } from '@/types/components/Table';
 import { AgentRow, AgentStatus, agentStatusMap } from '@/types/dashboard/agent';
 import { formatDate } from '@/utils/date';
 

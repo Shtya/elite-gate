@@ -1,4 +1,4 @@
-import { FilterConfig, SortConfig, TableColumn } from '@/types/components/table';
+import { FilterConfig, SortConfig, TableColumn } from '@/types/components/Table';
 import { MarketerRow, MarketerStatus, marketerStatusMap } from '@/types/dashboard/marketer';
 import { formatDate } from '@/utils/date';
 

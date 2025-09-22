@@ -12,7 +12,7 @@
  * This component is designed to be reusable across different data types by leveraging generics (`<T>`).
  */
 import { useSearchParams } from 'next/navigation';
-import { FilterConfig, SortConfig, TableColumn, TableRow } from '@/types/components/table';
+import { FilterConfig, SortConfig, TableColumn, TableRow } from '@/types/components/Table';
 import TableSkeleton from './TableSkeleton';
 import PropertyPagination from '../../main/projects/PropertyPagination';
 import FilterContainer from './FilterContainer';

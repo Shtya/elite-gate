@@ -1,4 +1,4 @@
-import { TableRow } from "@/types/components/table";
+import { TableRow } from "@/types/components/Table";
 import MenuActionList, { MenuActionItem } from "./MenuActionList";
 
 

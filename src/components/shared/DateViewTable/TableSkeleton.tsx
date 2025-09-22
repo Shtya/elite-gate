@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { TableColumn } from '@/types/components/table';
+import { TableColumn } from '@/types/components/Table';
 
 type TableSkeletonProps<T = Record<string, any>> = {
     columns: TableColumn<T>[];

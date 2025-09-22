@@ -1,5 +1,5 @@
 import { ClientRow, ClientStatus } from "@/types/dashboard/client";
-import { FilterConfig, SortConfig, TableColumn, TableRow } from "@/types/components/table";
+import { FilterConfig, SortConfig, TableColumn, TableRow } from "@/types/components/Table";
 import { formatDate } from "@/utils/date";
 
 

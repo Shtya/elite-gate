@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { TableColumn, TableRow } from '@/types/components/table';
+import { TableColumn, TableRow } from '@/types/components/Table';
 import Menu from '../Menu';
 import { MenuActionItem } from '../Header/MenuActionList';
 import NoRowsFound from '../NoRowsFound';

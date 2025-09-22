@@ -1,6 +1,6 @@
 import AgentFilterPopup from "@/components/dashboard/AgentFilterPopup";
 import InfoCell from "@/components/shared/InfoCell";
-import { FilterConfig, SortConfig, TableColumn } from "@/types/components/table";
+import { FilterConfig, SortConfig, TableColumn } from "@/types/components/Table";
 import { AppointmentRow, AppointmentType, MiniProject, MiniUser } from "@/types/dashboard/appointment";
 import { BookingStatus } from "@/types/global";
 import { getDefaultProjectpath } from "@/utils/appointment";
