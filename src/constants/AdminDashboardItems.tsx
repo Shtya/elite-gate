@@ -56,8 +56,8 @@ export const dashboardItems: SelectableItem[] = [
                 label: "المدن والمناطق",
                 icon: FaCity,
                 children: [
-                    { label: "قائمة المدن والمناطق", icon: FaRegListAlt, href: "/dashboard/locations/list" },
-                    { label: "إضافة مدينة / منطقة", icon: FaUserPlus, href: "/dashboard/locations/add" }
+                    { label: "قائمة المدن والمناطق", icon: FaRegListAlt, href: "/dashboard/cities" },
+                    { label: "تعديل مدينة / منطقة", icon: FaUserPlus, href: "/dashboard/cities/edit" }
                 ]
             },
             {

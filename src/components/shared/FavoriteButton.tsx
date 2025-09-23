@@ -15,7 +15,7 @@ export default function FavoriteButton({ property }: FavoriteButtonProps) {
     return (
         <button
             onClick={() => toggleFavorite(property)}
-            className={`z-10 p-2.5 rounded-full transition-colors ${active ? 'bg-primary text-white' : 'bg-white text-primary hover:bg-primary-light'
+            className={`z-10 p-2 rounded-full transition-colors ${active ? 'bg-primary text-white' : 'bg-white text-primary hover:bg-primary-light'
                 }`}
             aria-label="Toggle Favorite"
         >

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { BiGroup } from 'react-icons/bi';
 import { mockedMarketers } from '@/constants/dashboard/marketers/contants';
 import MarketerDetails from '@/components/dashboard/marketers/MarketerDetails';
-import CenteredContainer from '@/components/shared/CenteredContainer';
 
 
 type Props = {
@@ -33,9 +32,9 @@ export default async function MarketerPage({ params }: Props) {
                     </Link>
                 </div>
             </DashboardHeaderTitle>
-            <CenteredContainer>
-                <MarketerDetails marketer={marketer} />
-            </CenteredContainer>
+
+            <MarketerDetails marketer={marketer} />
+
         </>
     );
 }
