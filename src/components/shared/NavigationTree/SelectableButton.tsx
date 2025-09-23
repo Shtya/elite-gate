@@ -51,7 +51,7 @@ export default function SelectableButton({
     ) : (
         <button onClick={onClick} className={className} style={style}>
             {content}
-            {children && <ul className="mt-1 flex flex-col gap-1 border-l border-gray-200 ">{children}</ul>}
+            {children && <ul className="mt-1 flex flex-col gap-1  border-gray-200 ">{children}</ul>}
         </button>
     );
 

@@ -18,6 +18,7 @@ export default function TextareaInput({
     className = '',
     value,
     onChange,
+    ...props
 }: TextareaInputProps) {
     return (
         <div className={`col-span-12 ${className}`}>
@@ -31,6 +32,7 @@ export default function TextareaInput({
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
+                {...props}
                 className="w-full bg-[var(--bg-1)] focus:outline-none border rounded-3xl py-3 px-5"
             />
         </div>

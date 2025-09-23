@@ -10,6 +10,11 @@ export const dashboardItems: SelectableItem[] = [
         href: "/dashboard"
     },
     {
+        label: "طلبات الاهتمام",
+        icon: FaUserShield,
+        href: "/dashboard/interest-requests"
+    },
+    {
         label: "المواعيد",
         icon: FaCalendarAlt,
         children: [
@@ -70,11 +75,7 @@ export const dashboardItems: SelectableItem[] = [
             }
         ]
     },
-    {
-        label: "طلبات الاهتمام",
-        icon: FaUserShield,
-        href: "/dashboard/interest-requests"
-    },
+
     {
         label: "الصفحات",
         icon: FaFileAlt,
@@ -107,15 +108,9 @@ export const dashboardItems: SelectableItem[] = [
         icon: MdSettings,
         children: [
             { label: "الموقع", icon: FaMapMarkerAlt, href: "/dashboard/settings/location" },
-            { label: "الفيديو التعريفي", icon: FaVideo, href: "/dashboard/settings/video" },
-            { label: "معلومات التواصل", icon: FaPhoneAlt, href: "/dashboard/settings/contact" },
-            { label: "الإنجازات", icon: FaAward, href: "/dashboard/settings/accomplishments" },
+            { label: "الفيديو التعريفي", icon: FaVideo, href: "/dashboard/settings/intro-video" },
+            { label: "معلومات التواصل و الإنجازات", icon: FaAward, href: "/dashboard/settings/info" },
             { label: "الفوتر", icon: FaRegFileAlt, href: "/dashboard/settings/footer" }
         ]
     },
-    {
-        label: "إعدادات المسؤول",
-        icon: FaCog,
-        href: "/dashboard/admin/account"
-    }
 ];

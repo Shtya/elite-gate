@@ -19,6 +19,24 @@ export default function VideoSection({ videoUrl, title = 'Inside Our Properties'
         setIsPlaying(true);
     };
 
+    // ✅ If no valid videoId, show fallback message
+    if (!videoId) {
+        return (
+            <section className="relative mx-auto max-w-6xl mt-10 z-30">
+                <div
+                    className="relative w-full rounded-2xl overflow-hidden border shadow-lg bg-gray-50"
+                    style={{ paddingTop: '56.25%' }}
+                >
+                    <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                        <p className="text-gray-600 font-medium text-center">
+                            ⚠️ الرابط المدخل غير صالح أو لا يمثل فيديو يوتيوب
+                        </p>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section className="relative mx-auto max-w-6xl mt-10 z-30">
             <div
