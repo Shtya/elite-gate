@@ -1,18 +1,16 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 
-// Fix default marker icons in Next.js bundlers
-import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
-import iconUrl from 'leaflet/dist/images/marker-icon.png';
-import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+const LocationMap = dynamic(() => import('./LocationMap'), {
+    ssr: false,
+});
 
-L.Icon.Default.mergeOptions({ iconRetinaUrl, iconUrl, shadowUrl });
-
-type LatLng = [number, number];
+type LatLng = {
+    lat: number;
+    lng: number
+};
 
 async function reverseGeocode(lat: number, lng: number, signal?: AbortSignal): Promise<string> {
     try {
@@ -36,19 +34,19 @@ async function reverseGeocode(lat: number, lng: number, signal?: AbortSignal): P
 
 export default function StreetViewQuickOpen() {
     // Position state
-    const [position, setPosition] = useState<LatLng>([21.2854, 39.2376]); // Alexandria
+    const [position, setPosition] = useState<LatLng>({ lat: 21.2854, lng: 39.2376 });
     const [address, setAddress] = useState<string>('جاري جلب العنوان...');
     const [loadingAddress, setLoadingAddress] = useState<boolean>(false);
 
     // Text inputs (editable)
-    const [latInput, setLatInput] = useState(position[0].toFixed(6));
-    const [lngInput, setLngInput] = useState(position[1].toFixed(6));
+    const [latInput, setLatInput] = useState(position.lat.toFixed(6));
+    const [lngInput, setLngInput] = useState(position.lng.toFixed(6));
     const [error, setError] = useState<string>('');
 
     // Sync text inputs when position changes (e.g., map click)
     useEffect(() => {
-        setLatInput(position[0].toFixed(6));
-        setLngInput(position[1].toFixed(6));
+        setLatInput(position.lat.toFixed(6));
+        setLngInput(position.lng.toFixed(6));
     }, [position]);
 
     // Fetch address when position changes — race-safe
@@ -59,7 +57,7 @@ export default function StreetViewQuickOpen() {
         const fetchAddress = async () => {
             try {
                 setLoadingAddress(true);
-                const addr = await reverseGeocode(position[0], position[1], controller.signal);
+                const addr = await reverseGeocode(position.lat, position.lng, controller.signal);
                 if (!isMounted) return; // component unmounted
                 setAddress(addr);
             } catch (err) {
@@ -95,21 +93,11 @@ export default function StreetViewQuickOpen() {
                 return;
             }
             setError('');
-            setPosition([lat, lng]);
+            setPosition({ lat, lng });
         } else {
             setError('المدخلات غير صالحة، يرجى إدخال أرقام صحيحة');
         }
     };
-
-    // Map click to set position
-    function ClickToSet() {
-        useMapEvents({
-            click(e) {
-                setPosition([e.latlng.lat, e.latlng.lng]);
-            },
-        });
-        return null;
-    }
 
     return (
         <div className="space-y-4">
@@ -122,7 +110,7 @@ export default function StreetViewQuickOpen() {
                 <div className="flex items-center gap-3">
                     <label className="text-sm font-medium text-gray-700">الموقع المحدد:</label>
                     <span className="text-sm text-gray-700">
-                        خط العرض: {position[0].toFixed(6)} — خط الطول: {position[1].toFixed(6)}
+                        خط العرض: {position.lat.toFixed(6)} — خط الطول: {position.lng.toFixed(6)}
                     </span>
                 </div>
 
@@ -199,20 +187,17 @@ export default function StreetViewQuickOpen() {
 
             {error && <div className="text-xs text-red-600">{error}</div>}
 
-            {/* Map */}
-            <MapContainer
-                center={position}
-                zoom={10}
-                scrollWheelZoom
-                style={{ height: '600px', width: '100%', borderRadius: 12 }}
+            <LocationMap
+                lat={position.lat}
+                lng={position.lng}
+                onChange={(coords) => setPosition(coords)}
+            />
+            <button
+                type="submit"
+                className="ml-auto px-4 py-2 rounded-md text-white bg-[var(--primary)] hover:bg-[var(--primary-600)]"
             >
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution="&copy; OpenStreetMap contributors"
-                />
-                <ClickToSet />
-                <Marker position={position} />
-            </MapContainer>
+                حفظ الموقع
+            </button>
         </div>
     );
 }
