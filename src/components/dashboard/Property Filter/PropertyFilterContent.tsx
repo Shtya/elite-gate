@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDebounce } from '@/hooks/useDebounce';
 import KeywordSearch from '@/components/shared/KeywordSearch';
-import { projectTypeColors } from '@/constants/dashboard/appointment/contants';
-import { AppointmentType } from '@/types/dashboard/appointment';
+import { projectTypeColors } from '@/constants/dashboard/property.tsx/constants';
+import { PropertyType, propertyTypeLabels } from '@/types/property';
 
 type Property = {
     id: string;
     imageLink: string;
-    type: AppointmentType;
+    type: PropertyType;
     title: string;
 };
 
@@ -76,15 +76,12 @@ export default function PropertyFilterContent({ properties, onSelect, label = 'Ø
                                     className="w-14 h-14 rounded-md object-cover"
                                 />
                                 <div>
-                                    <p className="font-semibold text-gray-800">{property.title}</p>
+                                    <p className="font-semibold text-gray-800 ">{property.title}</p>
                                     <span
-                                        className="text-xs font-medium px-2 py-1 rounded"
-                                        style={{
-                                            backgroundColor: projectTypeColors[property.type] || '#ccc',
-                                            color: '#fff',
-                                        }}
+                                        className={`text-xs font-medium px-2 py-1 rounded block w-fit ml-auto ${projectTypeColors[property.type]}`}
+
                                     >
-                                        {property.type}
+                                        {propertyTypeLabels[property.type]}
                                     </span>
                                 </div>
                             </div>

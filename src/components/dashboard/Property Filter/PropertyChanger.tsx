@@ -2,17 +2,17 @@
 
 import { useState } from 'react';
 import { MdClose } from 'react-icons/md';
-import { projectTypeColors } from '@/constants/dashboard/appointment/contants';
-import { AppointmentType } from '@/types/dashboard/appointment';
 import InfoCell from '@/components/shared/InfoCell';
 import Popup from '@/components/shared/Popup';
 import PropertyAssignmentToggle from './PropertyAssignmentToggle';
+import { projectTypeColors } from '@/constants/dashboard/property.tsx/constants';
+import { PropertyType } from '@/types/property';
 
 type Property = {
     id: string;
     title: string;
     imageLink: string;
-    type: AppointmentType;
+    type: PropertyType;
 };
 
 type Props = {

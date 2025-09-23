@@ -1,5 +1,6 @@
 import { IconType } from "react-icons";
-import { AppointmentType } from "./dashboard/appointment";
+import { PropertyType } from "./property";
+
 
 
 export type NavItem = {
@@ -12,7 +13,7 @@ export type Property = {
     id: string;
     imageLink: string;
     location: string;
-    type: AppointmentType;
+    type: PropertyType;
     title: string;
     link: string;
     rooms?: string;

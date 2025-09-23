@@ -16,3 +16,11 @@ export const accessTypeLabels: Record<AccessType, string> = {
     mediated: 'عن طريق وسيط',
     restricted: 'مقيّد',
 };
+
+
+export type MiniProject = {
+    id: number;
+    title: string;
+    type: PropertyType;
+    image?: string;
+};

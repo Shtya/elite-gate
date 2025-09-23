@@ -38,7 +38,7 @@
     ".next/types/**/*.ts",
     "src/hooks/useOutsideClick.js",
     "src/components/shared/Skelatons",
-    "src/workers/exel.download.worker.js"
+    "src/workers/exel.download.worker.js",
   ],
   "exclude": [
     "node_modules"

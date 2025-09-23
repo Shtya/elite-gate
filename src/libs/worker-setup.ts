@@ -1,4 +1,4 @@
-import { ExcelDownloadResponse } from "@/types/excelDownload.types";
+import { ExcelDownloadResponse } from "@/types/workers/excelDownload.types";
 
 type ExcelDownloadWorkerOptions = {
     onComplete?: (name: string, buffer: ArrayBuffer) => void;

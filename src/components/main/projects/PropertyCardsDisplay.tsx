@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import PropertyCardGrid from '@/components/main/projects/PropertyCardGrid';
 import PropertyCardList from '@/components/main/projects/PropertyCardList';

@@ -4,7 +4,7 @@ export const properties: Property[] = [
     {
         id: "564d6g4df54gfdg",
         imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا الزمرد 362',
         link: '/projects/emerald-362',
         rooms: '9 غرف نوم',
@@ -15,7 +15,7 @@ export const properties: Property[] = [
     {
         id: "hdd45d5",
         imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا الزمرد 362',
         link: '/projects/emerald-362',
         rooms: '9 غرف نوم',
@@ -26,7 +26,7 @@ export const properties: Property[] = [
     {
         id: "skljsds5d5s",
         imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا الزمرد 362',
         link: '/projects/emerald-362',
         rooms: '9 غرف نوم',
@@ -37,7 +37,7 @@ export const properties: Property[] = [
     {
         id: "dkkdk55d6",
         imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا الزمرد 362',
         link: '/projects/emerald-362',
         rooms: '9 غرف نوم',
@@ -48,7 +48,7 @@ export const properties: Property[] = [
     {
         id: "ddls4s5",
         imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا الزمرد 362',
         link: '/projects/emerald-362',
         rooms: '9 غرف نوم',
@@ -59,7 +59,7 @@ export const properties: Property[] = [
     {
         id: "kdkdss",
         imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا الزمرد 362',
         link: '/projects/emerald-362',
         rooms: '9 غرف نوم',
@@ -70,7 +70,7 @@ export const properties: Property[] = [
     {
         id: "sjks7s4s",
         imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا الزمرد 362',
         link: '/projects/emerald-362',
         rooms: '9 غرف نوم',
@@ -81,7 +81,7 @@ export const properties: Property[] = [
     {
         id: "kdols445d",
         imageLink: '/ce9724a3-a985-44c0-b92a-acb35a1ca502.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا الزمرد 362',
         link: '/projects/emerald-362',
         rooms: '9 غرف نوم',

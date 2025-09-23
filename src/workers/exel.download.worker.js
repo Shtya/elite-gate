@@ -1,6 +1,5 @@
 // download.worker.ts
 import * as XLSX from 'xlsx';
-import { ExcelDownloadRequest, ExcelDownloadResponse } from '@/types/excelDownload.types';
 
 self.onmessage = ({ data }) => {
     const { headers, columnWidths, rows, sheetName, fileName } = data;

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FaRegCalendarAlt, FaClipboardList, FaCalendarAlt } from 'react-icons/fa';
 import { formatDate, formatTime } from '@/utils/date';
-import { agents, bookingStatusMap, bookingStatusStyle, projectTypeColors } from '@/constants/dashboard/appointment/contants';
+import { agents, bookingStatusMap, bookingStatusStyle } from '@/constants/dashboard/appointment/contants';
 import AppointmentStatusControl from './AppointmentStatusControl';
 import Card from '@/components/shared/Card';
 import { addMinutes } from 'date-fns';
@@ -15,6 +15,8 @@ import { MdReviews, MdStarRate, MdTimelapse } from 'react-icons/md';
 import StarRating from '@/components/shared/StarRating';
 import AppointmentNotesCard from './AppointmentNotesCard';
 import UserChanger from '../UserChanger';
+import { projectTypeColors } from '@/constants/dashboard/property.tsx/constants';
+import { propertyTypeLabels } from '@/types/property';
 
 type AppointmentDetailsProps = {
     appointment: AppointmentRow;
@@ -44,14 +46,14 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
                         </div>
 
                         <div className="flex flex-col justify-between text-center sm:text-start gap-1">
-                            <Link href={`/dashboard/projects/${project.id}`}>
+                            <Link href={`/projects/${project.id}`}>
                                 <span className="text-lg font-semibold text-gray-800 hover:underline">
                                     {project.title}
                                 </span>
                             </Link>
 
                             <span className={`w-fit mt-2 inline-block px-3 py-1 rounded-full text-sm font-medium ${badgeStyle}`}>
-                                {project.type}
+                                {propertyTypeLabels[project.type]}
                             </span>
                         </div>
                     </div>

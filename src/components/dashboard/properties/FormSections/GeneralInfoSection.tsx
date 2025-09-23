@@ -7,6 +7,7 @@ import TextInput from '@/components/shared/Forms/TextInput';
 import SelectDropdown from '@/components/shared/Forms/SelectDropdown';
 import { accessTypeLabels, propertyTypeLabels } from '@/types/property';
 import TextareaInput from '@/components/shared/Forms/TextareaInput';
+import PriceInput from '@/components/shared/Forms/PriceInput';
 
 export default function GeneralInfoSection({ control }: { control: Control<PropertyFormValues> }) {
     return (
@@ -69,32 +70,7 @@ export default function GeneralInfoSection({ control }: { control: Control<Prope
                     )}
                 />
 
-                {/* السعر */}
-                <Controller
-                    name="price"
-                    control={control}
-                    render={({ field }) => (
-                        <TextInput
-                            id="price"
-                            label="سعر البيع"
-                            name="price"
-                            type="text" // مهم: نستخدم text بدل number
-                            placeholder="أدخل السعر"
-                            value={
-                                field.value !== undefined && field.value !== null
-                                    ? field.value.toLocaleString('en-US') // عرض مع فواصل
-                                    : ''
-                            }
-                            onChange={(e) => {
-                                // إزالة أي فواصل وتحويل لرقم
-                                const raw = e.target.value.replace(/,/g, '');
-                                const num = Number(raw);
-                                if (!isNaN(num))
-                                    field.onChange(num);
-                            }}
-                        />
-                    )}
-                />
+                <PriceInput<PropertyFormValues> control={control} name="price" />
                 {/* عدد الغرف */}
                 <Controller
                     name="rooms"

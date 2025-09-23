@@ -73,7 +73,7 @@ export const dashboardItems: SelectableItem[] = [
     {
         label: "طلبات الاهتمام",
         icon: FaUserShield,
-        href: "/dashboard/interests"
+        href: "/dashboard/interest-requests"
     },
     {
         label: "الصفحات",

@@ -2,18 +2,18 @@
 
 import Card from '@/components/shared/Card';
 import { useState } from 'react';
-import { Control, Controller } from 'react-hook-form';
+import { Control, Controller, FieldValues, Path } from 'react-hook-form';
 import { IoMdClose } from 'react-icons/io';
 import { PropertyDetail, PropertyFormValues } from '../PropertyForm';
 import FieldErrorMessage from '@/components/shared/Forms/FieldErrorMessage';
 
-type InfoSectionProps = {
-    control: Control<PropertyFormValues>;
-    name: 'details' | 'warranties'; // قابل لإعادة الاستخدام
+type InfoSectionProps<T extends FieldValues> = {
+    control: Control<T>;
+    name: Path<T>; // قابل لإعادة الاستخدام
     title: string;
 };
 
-export default function InfoSection({ control, name, title }: InfoSectionProps) {
+export default function InfoSection<T extends FieldValues>({ control, name, title }: InfoSectionProps<T>) {
     const [newLabel, setNewLabel] = useState('');
     const [newValue, setNewValue] = useState('');
     const [error, setError] = useState<string | null>(null);

@@ -6,6 +6,7 @@ import { AccessType, PropertyType } from '@/types/property';
 import InfoSection from './FormSections/InfoSection';
 import OwnerContactSection from './FormSections/OwnerContactSection';
 import MediaLocationSection from './FormSections/MediaLocationSection';
+import { FileItem } from '@/utils/upload';
 
 export type PropertyDetail = {
     name: string;
@@ -26,7 +27,7 @@ export type PropertyFormValues = {
     ownerName: string;
     ownerPhone: string;
     ownerEmail: string;
-    images: { url: string; isPrimary: boolean }[];
+    images: FileItem[];
     video: string;
     address: string;
 };
@@ -71,8 +72,8 @@ export default function PropertyForm({ initialData }: PropertyFormProps) {
 
         <form onSubmit={handleSubmit(onSubmit)} className="property-info-form space-y-6">
             <GeneralInfoSection control={control} />
-            <InfoSection control={control} name="details" title="تفاصيل العقار" />
-            <InfoSection control={control} name="warranties" title="الضمانات" />
+            <InfoSection<PropertyFormValues> control={control} name="details" title="تفاصيل العقار" />
+            <InfoSection<PropertyFormValues> control={control} name="warranties" title="الضمانات" />
             <OwnerContactSection control={control} />
             <MediaLocationSection control={control} />
 
@@ -80,7 +81,7 @@ export default function PropertyForm({ initialData }: PropertyFormProps) {
                 type="submit"
                 className="btn-primary px-6 py-3 rounded-full font-semibold"
             >
-                {initialData ? 'Update Property' : 'Save Property'}
+                {initialData ? 'تعديل معلومات العقار' : 'إضافة عقار جديد'}
             </button>
         </form>
 

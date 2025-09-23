@@ -1,7 +1,8 @@
 import { BaseFilterKeys } from "../components/Table";
+import { MiniProject } from "../property";
 
 // types/appointment.ts
-export type AppointmentType = 'شقة' | 'فيلا' | 'أرض';
+
 
 export type BookingStatus =
     | 'pending'
@@ -31,12 +32,7 @@ export type MiniUser = {
     phone?: string
 };
 
-export type MiniProject = {
-    id: number;
-    title: string;
-    type: AppointmentType;
-    image?: string;
-};
+
 
 export type AppointmentRow = {
     id: number;

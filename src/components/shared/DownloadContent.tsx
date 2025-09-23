@@ -1,6 +1,6 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
-import { ExcelDownloadRequest, ExcelDownloadResponse } from '@/types/excelDownload.types'
+import { ExcelDownloadRequest } from '@/types/workers/excelDownload.types'
 import { setupExcelDownloadWorker } from '@/libs/worker-setup'
 
 

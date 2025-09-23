@@ -57,7 +57,7 @@ const similarProjects: Property[] = [
     {
         id: "dihshjs5s5",
         imageLink: '/main/projects/property-1.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا فاخرة – جدة | أبحر الشمالية',
         link: '/projects/obhur-villa',
         rooms: '5 غرف نوم',
@@ -68,7 +68,7 @@ const similarProjects: Property[] = [
     {
         id: "muskslk56",
         imageLink: '/main/projects/property-2.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا نموذج لايت',
         link: '/projects/light-villa',
         rooms: '5 غرف نوم',
@@ -79,7 +79,7 @@ const similarProjects: Property[] = [
     {
         id: "jdoamsl55",
         imageLink: '/main/projects/property-3.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا جوري',
         link: '/projects/jory-villa',
         rooms: '7 غرف نوم',
@@ -90,7 +90,7 @@ const similarProjects: Property[] = [
     {
         id: "dkjsmas5",
         imageLink: '/main/projects/property-4.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا جوري',
         link: '/projects/jory-villa',
         rooms: '7 غرف نوم',
@@ -101,7 +101,7 @@ const similarProjects: Property[] = [
     {
         id: "jdoamsl55",
         imageLink: '/main/projects/property-3.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا جوري',
         link: '/projects/jory-villa',
         rooms: '7 غرف نوم',
@@ -112,7 +112,7 @@ const similarProjects: Property[] = [
     {
         id: "dkjsmas5",
         imageLink: '/main/projects/property-4.webp',
-        type: 'فيلا',
+        type: 'villa',
         title: 'فيلا جوري',
         link: '/projects/jory-villa',
         rooms: '7 غرف نوم',

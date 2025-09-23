@@ -7,6 +7,7 @@ import { Property } from '@/types/global';
 import FavoriteButton from '@/components/shared/FavoriteButton';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { BiEdit } from 'react-icons/bi';
+import { propertyTypeLabels } from '@/types/property';
 
 interface PropertyCardGridProps {
     property: Property;
@@ -24,10 +25,10 @@ export default function PropertyCardGrid({ property, isAdmin = false }: Property
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-0" />
                 <Link
                     href={`/projects?type=${property.type}`}
-                    aria-label={`عرض مشاريع من نوع ${property.type}`}
+                    aria-label={`عرض مشاريع من نوع ${propertyTypeLabels[property.type]}`}
                     className="absolute top-3 left-3 z-10 bg-white text-primary rounded-full py-1.5 px-3 text-xs font-semibold shadow hover:bg-primary-light transition"
                 >
-                    {property.type}
+                    {propertyTypeLabels[property.type]}
                 </Link>
                 <div className="absolute w-[100px] top-3 right-3 flex items-center gap-2 z-10">
                     <FavoriteButton property={property} />

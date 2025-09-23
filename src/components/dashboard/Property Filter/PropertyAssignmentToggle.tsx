@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import PropertyFilterContent from './PropertyFilterContent';
-import { AppointmentType } from '@/types/dashboard/appointment';
+import { PropertyType } from '@/types/property';
 
 type Property = {
     id: string;
     title: string;
     imageLink: string;
-    type: AppointmentType;
+    type: PropertyType;
 };
 
 type Props = {
