@@ -1,5 +1,6 @@
+'use client'
 import { useState, useRef, useEffect } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronUp } from "react-icons/fa";
 
 type CardProps = {
     children: React.ReactNode;

@@ -13,11 +13,11 @@ type ImageUploadProps = {
 
 export default function ImageUpload({ id = 'imageUpload', defaultImage = "/users/default-user.png", imageUrl, onChange, error }: ImageUploadProps) {
 
-    const [src, setSrc] = useState(imageUrl);
+    const [src, setSrc] = useState(imageUrl || defaultImage);
 
     useEffect(() => {
-        setSrc(imageUrl);
-    }, [imageUrl]);
+        setSrc(imageUrl && imageUrl.trim() !== "" ? imageUrl : defaultImage);
+    }, [imageUrl, defaultImage]);
 
     const handleError = () => {
         setSrc(defaultImage);
@@ -33,13 +33,13 @@ export default function ImageUpload({ id = 'imageUpload', defaultImage = "/users
             />
             <label htmlFor={id} className="cursor-pointer">
                 <Image
+                    src={src}
                     alt="الصورة الشخصية"
                     loading="lazy"
                     width={180}
                     height={180}
                     className={`rounded-full border-[6px] ${error ? 'border-red-500' : 'border-[#F5F5FE]'
                         } shadow-md`}
-                    src={src}
                     onError={handleError}
                 />
                 <div className="absolute bottom-2 right-2 bg-white rounded-full p-2 shadow-md">

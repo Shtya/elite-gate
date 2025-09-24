@@ -1,6 +1,5 @@
 
 import FeqTaps from "@/components/main/faq/FeqTaps";
-import { Metadata } from "next";
 
 
 export const metadata = {

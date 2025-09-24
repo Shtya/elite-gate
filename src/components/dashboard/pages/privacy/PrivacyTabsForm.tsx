@@ -6,9 +6,9 @@ import Card from "@/components/shared/Card";
 import TextInput from "@/components/shared/Forms/TextInput";
 import PrimaryButton from "@/components/shared/Button";
 import SoftActionButton from "@/components/shared/SoftActionButton";
-import { PrivacyGroups } from "@/app/(main)/privacy/page";
 import EditPolicyItemsSection from "./EditPolicyItemsSection";
 import SidebarTabs from "../../../shared/SidebarTabs";
+import { PrivacyGroups } from "@/constants/pages/aboutUs";
 
 export type PrivacyPolicy = { title: string; items: string[] };
 export type PrivacyFormValues = {
