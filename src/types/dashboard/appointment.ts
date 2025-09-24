@@ -1,3 +1,4 @@
+import { FileItem } from "@/utils/upload";
 import { BaseFilterKeys } from "../components/Table";
 import { MiniProject } from "../property";
 
@@ -21,6 +22,7 @@ export type AppointmentFilterKeys =
     | 'createdAt_from'
     | 'createdAt_to'
     | 'agentId'
+    | 'isPaid'
     | BaseFilterKeys
 
 
@@ -42,5 +44,7 @@ export type AppointmentRow = {
     agent: MiniUser;
     client: MiniUser;
     status: BookingStatus;
-    reviewStars?: number;    // 1..5 only when status === 'completed'
+    reviewStars?: number;
+    isPaid?: boolean;
+    proofFiles?: FileItem[];
 };

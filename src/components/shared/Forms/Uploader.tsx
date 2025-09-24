@@ -22,7 +22,7 @@ export default function Uploader({
     name,
     allowMultiple = true,
     allowPrimary = true,
-    label = 'الملفات',
+    label,
     accept = '*/*',
     rules = ['الحد الأقصى لحجم الملف 9MB', 'الحد الأقصى 10 ملفات'],
     maxSizeMB = 9,
@@ -83,9 +83,9 @@ export default function Uploader({
                         }}
                         onDragOver={(e) => e.preventDefault()}>
                         {/* Label */}
-                        <label htmlFor={`${name}-dropzone`} className="text-xl font-medium block mb-3">
+                        {label && <label htmlFor={`${name}-dropzone`} className="text-xl font-medium block mb-3">
                             {label}
-                        </label>
+                        </label>}
 
                         {/* Dropzone */}
                         <div className="flex items-center justify-center border-dashed rounded-2xl w-full">

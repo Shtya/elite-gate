@@ -3,10 +3,10 @@ import { InterestRequestFull } from '@/types/dashboard/interest-requests';
 import RequesterDetailsCard from './RequesterDetailsCard';
 import GeneralInfoCard from './GeneralInfoCard';
 
-import AttachmentsCard from './AttachmentsCard';
 import PublishedPropertyCard from './PublishedPropertyCard';
 import AuthorizationDocCard from './AuthorizationDocCard';
 import PropertyInfoSection from '@/components/main/projects/property/PropertyInfoSection';
+import AttachmentsCard from '@/components/shared/AttachmentsCard';
 
 type Props = {
     request: InterestRequestFull;
@@ -37,7 +37,7 @@ export default function InterestRequestDetails({ request }: Props) {
 
                 </div>
             </div >
-            <AttachmentsCard request={request} />
+            <AttachmentsCard attachments={request.attachments} title='المرفقات' />
         </div>
     );
 }

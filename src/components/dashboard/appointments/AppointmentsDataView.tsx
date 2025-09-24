@@ -7,6 +7,7 @@ import { FaExchangeAlt, FaEye, FaUserEdit } from "react-icons/fa";
 import AppointmentStatusToggle from "./AppointmentStatusToggle";
 import AgentAssignmentToggle from "../UserAssignmentToggle";
 import { ActionType, MenuActionItem } from "@/components/shared/Header/MenuActionList";
+import AppointmentProofUploadToggle from "./AppointmentProofUploadToggle";
 
 type AppointmentsDataViewProps = {
     agentId?: number;
@@ -75,5 +76,17 @@ function getAppointmentActionsMenu(row: AppointmentRow, onClose?: () => void): M
                 />
             ),
         },
+        ...(row.status === 'completed' && !row.isPaid ? [{
+            label: 'إرفاق إثبات الدفع',
+            type: 'primary' as ActionType,
+            icon: <FaExchangeAlt />,
+            child: (
+                <AppointmentProofUploadToggle
+                    appointmentId={row.id}
+                    onConfirm={() => { onClose?.(); }}
+                    onCancel={() => { }}
+                />
+            ),
+        } as MenuActionItem] : []),
     ];
 }

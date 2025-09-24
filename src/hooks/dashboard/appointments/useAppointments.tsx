@@ -28,6 +28,7 @@ export default function useAppointments({ agentId: agentIdProp, clientId }: Prop
                 const crFrom = getParam('createdAt_from');
                 const crTo = getParam('createdAt_to');
                 const agentId = agentIdProp?.toString() ?? getParam('agentId');
+                const isPaid = getParam('isPaid');
 
                 const sort = getParam('sort');
                 const dir = getParam('dir');
@@ -47,6 +48,13 @@ export default function useAppointments({ agentId: agentIdProp, clientId }: Prop
 
                 if (clientId) {
                     filtered = filtered.filter((row) => row.client?.id === clientId);
+                }
+
+                // isPaid filter: 'all' | 'paid' | 'unpaid'
+                if (isPaid === 'paid') {
+                    filtered = filtered.filter((row) => row.status === 'completed' && row.isPaid === true);
+                } else if (isPaid === 'unpaid') {
+                    filtered = filtered.filter((row) => row.status === 'completed' && !row.isPaid);
                 }
 
                 if (apFrom || apTo) {

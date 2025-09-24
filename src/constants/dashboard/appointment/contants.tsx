@@ -55,6 +55,17 @@ export const appointmentFilters: FilterConfig[] = [
         key: 'appointmentAt',
     },
     {
+        key: 'isPaid',
+        label: 'الدفع',
+        type: 'select',
+        options: [
+            { label: 'الكل', value: 'all' },
+            { label: 'مدفوعة', value: 'paid' },
+            { label: 'غير مدفوعة', value: 'unpaid' },
+        ],
+        default: 'all',
+    },
+    {
         key: 'agentId',
         label: 'الوسيط',
         type: 'custom',
@@ -70,6 +81,7 @@ export const appointmentFilters: FilterConfig[] = [
             );
         },
     },
+
 ];
 
 export const appointmentSortConfig: SortConfig = {
@@ -173,14 +185,40 @@ export const appointmentColumns: TableColumn<AppointmentRow>[] = [
                 </span>
             );
         },
-    }
+    },
+    {
+        key: 'isPaid',
+        label: 'الدفع',
+        cell: (val: boolean | undefined, row?: AppointmentRow) => {
+            if (row?.status !== 'completed') return <span className="text-xs text-gray-400">—</span>;
+            return val ? (
+                <span className="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-700">مدفوع</span>
+            ) : (
+                <span className="px-2 py-0.5 rounded-full text-xs bg-rose-100 text-rose-700">غير مدفوع</span>
+            );
+        },
+    },
 
 ];
 
 
 export const mockAppointments: AppointmentRow[] = [
     {
-        id: 101, project: { id: 11, title: 'مشروع 113 – فخامة وتصميم عصري', type: 'apartment', image: '/main/projects/property-2.webp' }, appointmentAt: '2025-10-03T14:30:00', createdAt: '2025-09-28T08:10:00', agent: { id: 21, name: 'يوسف أحمد', email: 'youssef@agency.com', image: '/users/user-2.webp' }, client: { id: 1, name: 'خالد الشمري', email: 'khaled@example.com', image: '/users/user-1.jpg' }, status: 'completed', reviewStars: 3,
+        id: 101, project: { id: 11, title: 'مشروع 113 – فخامة وتصميم عصري', type: 'apartment', image: '/main/projects/property-2.webp' }, appointmentAt: '2025-10-03T14:30:00', createdAt: '2025-09-28T08:10:00', agent: { id: 21, name: 'يوسف أحمد', email: 'youssef@agency.com', image: '/users/user-2.webp' }, client: { id: 1, name: 'خالد الشمري', email: 'khaled@example.com', image: '/users/user-1.jpg' }, status: 'completed', reviewStars: 3, isPaid: true, proofFiles: [
+            {
+                url: "/uploads/request-301/property-requests-data.pdf",
+                name: "الاثبات_2.dbf",
+                type: "application/dbf",
+                isPrimary: true,
+            },
+            {
+                url: "/uploads/request-301/property-owners-list.pdf",
+                name: "الاثبات_1.dbf",
+                type: "application/dbf",
+                isPrimary: false,
+            },
+        ],
+
     },
     {
         id: 102, project: { id: 12, title: 'فلل البستان – واجهات حجرية', type: 'office', image: '' }, appointmentAt: '2025-10-05T09:00:00', createdAt: '2025-09-29T10:20:00', agent: { id: 22, name: 'سارة العتيبي', email: 'sara@agency.com', image: '/users/user-3.jpg' }, client: { id: 2, name: 'عبدالله الشهري', email: 'abdullah@example.com', image: '/users/user-2.webp' }, status: 'completed', reviewStars: 4,
@@ -202,7 +240,22 @@ export const mockAppointments: AppointmentRow[] = [
         id: 107, project: { id: 17, title: 'أرض الواحة – موقع استثماري', type: 'villa', image: '' }, appointmentAt: '2025-10-10T15:45:00', createdAt: '2025-09-26T10:00:00', agent: { id: 27, name: 'خالد الزامل', email: 'khalid@agency.com', image: '/users/user-7.jpg' }, client: { id: 7, name: 'سلمان العتيبي', email: 'salman@example.com', image: '/users/user-8.jpg' }, status: 'confirmed',
     },
     {
-        id: 108, project: { id: 18, title: 'شقق البحر – مفروشة بالكامل', type: 'apartment', image: '/main/projects/property-1.webp' }, appointmentAt: '2025-10-11T09:15:00', createdAt: '2025-09-25T14:00:00', agent: { id: 28, name: 'هند القحطاني', email: 'hind@agency.com', image: '' }, client: { id: 8, name: 'ماجد السالم', email: 'majed@example.com', image: '/users/user-9.jpg' }, status: 'completed', reviewStars: 5,
+        id: 108, project: { id: 18, title: 'شقق البحر – مفروشة بالكامل', type: 'apartment', image: '/main/projects/property-1.webp' }, appointmentAt: '2025-10-11T09:15:00', createdAt: '2025-09-25T14:00:00', agent: { id: 28, name: 'هند القحطاني', email: 'hind@agency.com', image: '' }, client: { id: 8, name: 'ماجد السالم', email: 'majed@example.com', image: '/users/user-9.jpg' }, status: 'completed', reviewStars: 5, isPaid: true,
+        proofFiles: [
+            {
+                url: "/uploads/request-301/property-requests-data.pdf",
+                name: "الاثبات_2.dbf",
+                type: "application/dbf",
+                isPrimary: true,
+            },
+            {
+                url: "/uploads/request-301/property-owners-list.pdf",
+                name: "الاثبات_1.dbf",
+                type: "application/dbf",
+                isPrimary: false,
+            },
+        ],
+
     },
     {
         id: 109, project: { id: 19, title: 'فلل النخيل – واجهات حجرية', type: 'office', image: '' }, appointmentAt: '2025-10-12T17:00:00', createdAt: '2025-09-24T09:00:00', agent: { id: 29, name: 'سعد المطيري', email: 'saad@agency.com', image: '/users/user-10.jpg' }, client: { id: 9, name: 'نجلاء العنزي', email: 'najla@example.com', image: '' }, status: 'no_show',

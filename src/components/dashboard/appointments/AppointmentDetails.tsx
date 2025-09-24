@@ -17,6 +17,8 @@ import AppointmentNotesCard from './AppointmentNotesCard';
 import UserChanger from '../UserChanger';
 import { projectTypeColors } from '@/constants/dashboard/property.tsx/constants';
 import { propertyTypeLabels } from '@/types/property';
+import AttachmentsCard from '@/components/shared/AttachmentsCard';
+import AppointmentProofUploadControl from './AppointmentProofUploadControl';
 
 type AppointmentDetailsProps = {
     appointment: AppointmentRow;
@@ -108,7 +110,12 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
                         value={bookingStatusMap[status]}
                         className={`${bookingStatusStyle[status]} block px-3 py-1 !rounded-full text-sm font-medium mt-1`}
                     />
-                    <AppointmentStatusControl appointmentId={id} currentStatus={status} />
+                    <div className='flex gap-2'>
+                        <AppointmentStatusControl appointmentId={id} currentStatus={status} />
+                        {!appointment.isPaid && <AppointmentProofUploadControl
+                            appointmentId={appointment.id}
+                        />}
+                    </div>
                 </Card>
             </div>
             <div className='h-full 2xl:col-span-4 flex flex-col gap-4 lg:gap-6 '>
@@ -209,7 +216,13 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
                 </div>
                 <AppointmentNotesCard initailNotes='' />
             </div>
+            {appointment.status === 'completed' && (
+                <div className='2xl:col-span-6'>
 
+                    <AttachmentsCard title="مستندات الدفع" attachments={appointment.proofFiles || []} />
+
+                </div>
+            )}
         </div>
     );
 }

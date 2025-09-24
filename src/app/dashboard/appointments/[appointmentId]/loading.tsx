@@ -54,6 +54,16 @@ export default function AppointmentDetailsLoading() {
                     <CardSkeleton height={200} title="الملاحظات" />
                 </div>
             </div>
+            <CardSkeleton title="مستندات الدفع" className="mt-6">
+                <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+                    {Array.from({ length: 4 }).map((_, idx) => (
+                        <div
+                            key={idx}
+                            className="h-40 w-full rounded-lg bg-gray-200 animate-pulse"
+                        />
+                    ))}
+                </div>
+            </CardSkeleton>
         </>
     );
 }

@@ -1,9 +1,7 @@
-import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { BiListUl } from 'react-icons/bi';
 
 import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
-import DownloadContent from '@/components/shared/DownloadContent';
 import InterestRequestDetails from '@/components/dashboard/InterestRequests/InterestRequestDetails';
 import { InterestRequestFull } from '@/types/dashboard/interest-requests';
 
@@ -74,7 +72,6 @@ export default async function InterestRequestDetailsPage({ params }: Props) {
 
     // simulate fetch delay
     await new Promise((r) => setTimeout(r, 300));
-
 
 
     return (
