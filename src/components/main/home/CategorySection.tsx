@@ -102,21 +102,20 @@ export default function CategorySection() {
 
 
                     {/* Highlighted Circle */}
-                    <div className="flex justify-center items-center relative group">
+                    <Link href="/projects" className="flex justify-center items-center relative group">
                         <div className="w-[290px] h-[290px] rounded-full bg-secondary-300 duration-300 group-hover:bg-secondary-500 group-hover:text-white flex items-center justify-center p-5 cursor-pointer relative overflow-hidden">
                             <div className="text-center">
                                 <h2 className="mb-2 group-hover:text-white">25+</h2>
                                 <p >استكشف العقارات <br /> واستثمر بثقة</p>
-                                <Link
-                                    href="/projects"
+                                <div
                                     className="rounded-full bg-white group-hover:bg-tertiary mt-4 p-6 inline-block text-black"
                                 >
                                     <BsArrowUpRight size={20} />
-                                </Link>
+                                </div>
                             </div>
                             <div className="h-[197px] w-[197px] rounded-full absolute -right-20 -bottom-16 bg-secondary-400" />
                         </div>
-                    </div>
+                    </Link>
                 </div>
             </div>
         </section>

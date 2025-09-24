@@ -12,15 +12,12 @@ type Props = {
 };
 
 export default function PublishedPropertyCard({ publishedProperty }: Props) {
-    const imageSrc =
-        typeof publishedProperty.image === 'string' && publishedProperty.image.trim() !== ''
-            ? publishedProperty.image
-            : getDefaultProjectpath(publishedProperty.type);
 
     return (
         <Card title="العقار المنشور">
             <InfoCell
-                image={imageSrc}
+                image={publishedProperty.image}
+                defaultImage={getDefaultProjectpath(publishedProperty.type)}
                 title={publishedProperty.title}
                 href={`/projects/${publishedProperty.id}`}
                 subtitle={propertyTypeLabels[publishedProperty.type]}

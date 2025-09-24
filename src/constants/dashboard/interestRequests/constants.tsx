@@ -94,15 +94,12 @@ export const interestRequestColumns: TableColumn<InterestRequestRow>[] = [
                 return <span className="text-xs text-gray-400">—</span>;
             }
 
-            const imageSrc =
-                typeof val.image === 'string' && val.image.trim() !== ''
-                    ? val.image
-                    : getDefaultProjectpath(val.type);
 
             return (
                 <InfoCell
-                    image={imageSrc}
+                    image={val.image}
                     title={val.title}
+                    defaultImage={getDefaultProjectpath(val.type)}
                     href={`/projects/${val.id}`}
                     subtitle={propertyTypeLabels[val.type]}
                     imageRounded="lg"

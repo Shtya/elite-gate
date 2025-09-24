@@ -3,6 +3,8 @@ import { useDebounce } from '@/hooks/useDebounce';
 import KeywordSearch from '@/components/shared/KeywordSearch';
 import { projectTypeColors } from '@/constants/dashboard/property.tsx/constants';
 import { PropertyType, propertyTypeLabels } from '@/types/property';
+import InfoCell from '@/components/shared/InfoCell';
+import { getDefaultProjectpath } from '@/utils/appointment';
 
 type Property = {
     id: string;
@@ -69,21 +71,16 @@ export default function PropertyFilterContent({ properties, onSelect, label = 'Ø
                             type='button'
                             className="w-full text-left"
                         >
-                            <div className="flex items-center gap-3 hover:bg-gray-100 p-2 rounded">
-                                <img
-                                    src={property.imageLink}
-                                    alt={property.title}
-                                    className="w-14 h-14 rounded-md object-cover"
+                            <div className="p-2">
+                                <InfoCell
+                                    title={property.title}
+                                    image={property.imageLink}
+                                    defaultImage={getDefaultProjectpath(property.type)}
+                                    href={`/projects/${property.id}`}
+                                    imageRounded="lg"
+                                    subtitleClass={projectTypeColors[property.type]}
+                                    subtitle={propertyTypeLabels[property.type]}
                                 />
-                                <div>
-                                    <p className="font-semibold text-gray-800 ">{property.title}</p>
-                                    <span
-                                        className={`text-xs font-medium px-2 py-1 rounded block w-fit ml-auto ${projectTypeColors[property.type]}`}
-
-                                    >
-                                        {propertyTypeLabels[property.type]}
-                                    </span>
-                                </div>
                             </div>
                         </button>
                     ))}

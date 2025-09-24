@@ -6,7 +6,8 @@ import InfoCell from '@/components/shared/InfoCell';
 import Popup from '@/components/shared/Popup';
 import PropertyAssignmentToggle from './PropertyAssignmentToggle';
 import { projectTypeColors } from '@/constants/dashboard/property.tsx/constants';
-import { PropertyType } from '@/types/property';
+import { PropertyType, propertyTypeLabels } from '@/types/property';
+import { getDefaultProjectpath } from '@/utils/appointment';
 
 type Property = {
     id: string;
@@ -63,10 +64,11 @@ export default function PropertyChanger({
                         <InfoCell
                             title={property.title}
                             image={property.imageLink}
+                            defaultImage={getDefaultProjectpath(property.type)}
                             href={`/projects/${property.id}`}
                             imageRounded="lg"
                             subtitleClass={projectTypeColors[property.type]}
-                            subtitle={property.type}
+                            subtitle={propertyTypeLabels[property.type]}
                         />
                         <button
                             onClick={handleCancel}
