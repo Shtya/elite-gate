@@ -69,6 +69,7 @@ export default function UserChanger({
                         <button
                             onClick={handleCancel}
                             type='button'
+                            title="إزالة"
                             className="text-gray-500 hover:text-red-500 p-2 rounded-full"
                         >
                             <MdClose className="w-5 h-5" />

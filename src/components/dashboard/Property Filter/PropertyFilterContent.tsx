@@ -76,7 +76,6 @@ export default function PropertyFilterContent({ properties, onSelect, label = 'Ø
                                     title={property.title}
                                     image={property.imageLink}
                                     defaultImage={getDefaultProjectpath(property.type)}
-                                    href={`/projects/${property.id}`}
                                     imageRounded="lg"
                                     subtitleClass={projectTypeColors[property.type]}
                                     subtitle={propertyTypeLabels[property.type]}

@@ -59,7 +59,7 @@ export default function PropertyChanger({
                     {property ? `اختر ${label} آخر` : `تعيين ${label}`}
                 </button>
             ) : (
-                <div className="flex items-center gap-2 border p-2 rounded-md bg-white">
+                <div className="relative flex items-center gap-2 border p-2 rounded-md bg-white">
                     <div className="flex gap-2">
                         <InfoCell
                             title={property.title}
@@ -73,6 +73,7 @@ export default function PropertyChanger({
                         <button
                             onClick={handleCancel}
                             type="button"
+                            title="إزالة"
                             className="text-gray-500 hover:text-red-500 p-2 rounded-full"
                         >
                             <MdClose className="w-5 h-5" />
@@ -85,7 +86,8 @@ export default function PropertyChanger({
                         تغيير {label}
                     </button>
                 </div>
-            )}
+            )
+            }
 
             <Popup show={showPopup} onClose={() => setShowPopup(false)}>
                 <PropertyAssignmentToggle
@@ -97,6 +99,6 @@ export default function PropertyChanger({
                     onCancel={handleCancel}
                 />
             </Popup>
-        </div>
+        </div >
     );
 }
