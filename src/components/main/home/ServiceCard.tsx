@@ -11,7 +11,7 @@ type ServiceCardProps = {
 
 export default function ServiceCard({ title, description, buttonText, imageUrl, link }: ServiceCardProps) {
   return (
-    <div className="bg-white p-7 xl:p-8 rounded-2xl flex flex-col items-center text-center group transition-all hover:-translate-y-1 hover:shadow-xl border border-neutral-200">
+    <div className="w-[400px] bg-white p-7 xl:p-8 rounded-2xl flex flex-col items-center text-center group transition-all hover:-translate-y-1 hover:shadow-xl border border-neutral-200">
       <div className="relative w-[260px] h-[260px]">
         <Image alt="service image" fill src={imageUrl} className="object-contain" sizes="260px" />
       </div>
