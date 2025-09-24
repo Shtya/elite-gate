@@ -95,9 +95,9 @@ export const dashboardItems: SelectableItem[] = [
         children: [
             { label: "الرئيسية", icon: FaHome, href: "/dashboard/pages/home" },
             { label: "من نحن", icon: AiOutlineTeam, href: "/dashboard/pages/about" },
+            { label: "الأسئلة الشائعة", icon: FaQuestionCircle, href: "/dashboard/pages/faq" },
             { label: "سياسة الخصوصية", icon: MdOutlinePrivacyTip, href: "/dashboard/pages/privacy" },
             { label: "الشروط والأحكام", icon: MdDescription, href: "/dashboard/pages/terms" },
-            { label: "الأسئلة الشائعة", icon: FaQuestionCircle, href: "/dashboard/pages/faq" }
         ]
     },
     {

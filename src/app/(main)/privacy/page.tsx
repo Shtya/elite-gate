@@ -1,15 +1,15 @@
 
 import PolicyGroup from "@/components/main/privacy/PolicyGroup";
 import PageHeader from "@/components/shared/PageHeader";
-import { Metadata } from "next";
-
-export const metadata = {
-    title: 'سياسة الخصوصية',
-    description: 'تعرف على كيفية تعامل مراسل جدة العقاري مع بياناتك الشخصية، والتزامنا الكامل بحمايتها واحترام خصوصيتك.',
-};
 
 
-const PrivacyGroups = [
+// export const metadata = {
+//     title: 'سياسة الخصوصية',
+//     description: 'تعرف على كيفية تعامل مراسل جدة العقاري مع بياناتك الشخصية، والتزامنا الكامل بحمايتها واحترام خصوصيتك.',
+// };
+
+
+export const PrivacyGroups = [
     [
         {
             title: 'سياسة الحجز',
@@ -39,8 +39,8 @@ const PrivacyGroups = [
             title: 'الشروط والأحكام',
             items: [
                 'ابدأ يومك بغداء لذيذ وإطلالة جميلة من غرفتك.',
-                'التعامل مع التهور بكل حذر..',
                 'تم تقديم المساعدة بشكل أساسي من دون خجل. الضحك والمقترحات كانت جزءًا من التجربة.',
+                // 'التعامل مع التهور بكل حذر..',
             ],
         },
     ],
@@ -85,7 +85,7 @@ export default function PrivacyPage() {
         <div className="bg-bg-2">
             <PageHeader title="سياسة الخصوصية" description="نحن نحترم خصوصيتك وملتزمون بحماية بياناتك الشخصية." />
             <div className="bg-bg-2 relative before:absolute before:w-full before:h-[150px] before:top-0 before:left-0 before:bg-dark">
-                <div className="container px-3 relative z-[1] lg:mb-[60px]">
+                <div className="container px-3 relative z-[1] lg:mb-[60px] space-y-4 lg:space-y-6">
                     {PrivacyGroups.map((group, idx) => (
                         <PolicyGroup key={idx} policies={group} />
                     ))}

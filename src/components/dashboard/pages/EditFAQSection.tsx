@@ -3,17 +3,20 @@ import TextInput from "@/components/shared/Forms/TextInput";
 import TextareaInput from "@/components/shared/Forms/TextareaInput";
 import EditFAQCard from "./EditFAQCard";
 import { useState } from "react";
-import { HomeContentForm } from "./HomeForm";
+import SubTitle from "@/components/shared/SubTitle";
 
 
 type EditFAQSectionProps = {
-    control: Control<HomeContentForm>;
+    control: Control<any>;
+    name: string; // field array path, e.g. "faqGroups.0.items" or "faqs"
 };
 
-export default function EditFAQSection({ control }: EditFAQSectionProps) {
+type FAQItem = { question: string; answer: string };
+
+export default function EditFAQSection({ control, name }: EditFAQSectionProps) {
     const { fields, append, remove, update } = useFieldArray({
-        control,
-        name: "faqs",
+        control: control as Control<any>,
+        name: name as any,
     });
 
     // local draft for add/edit
@@ -25,10 +28,10 @@ export default function EditFAQSection({ control }: EditFAQSectionProps) {
         if (!draftQuestion.trim() || !draftAnswer.trim()) return;
 
         if (editIndex !== null) {
-            update(editIndex, { question: draftQuestion, answer: draftAnswer });
+            update(editIndex, { question: draftQuestion, answer: draftAnswer } as any);
             setEditIndex(null);
         } else {
-            append({ question: draftQuestion, answer: draftAnswer });
+            append({ question: draftQuestion, answer: draftAnswer } as any);
         }
 
         // clear draft
@@ -50,9 +53,7 @@ export default function EditFAQSection({ control }: EditFAQSectionProps) {
 
     return (
         <>
-            <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2 my-1">
-                أضف سؤال
-            </h3>
+            <SubTitle>أضف سؤال</SubTitle>
             {/* Draft inputs */}
             <div className="space-y-3 mb-4">
                 <TextInput
@@ -83,15 +84,15 @@ export default function EditFAQSection({ control }: EditFAQSectionProps) {
 
             {/* List of FAQ cards */}
             <div className="space-y-3">
-                {fields.map((field, index) => (
+                {(fields as Array<{ id: string } & Partial<FAQItem>>).map((field, index) => (
                     <EditFAQCard
                         key={field.id}
-                        question={field.question}
-                        answer={field.answer}
+                        question={field.question ?? ""}
+                        answer={field.answer ?? ""}
                         isEdited={index === editIndex}
                         onEdit={() => {
-                            setDraftQuestion(field.question);
-                            setDraftAnswer(field.answer);
+                            setDraftQuestion(field.question ?? "");
+                            setDraftAnswer(field.answer ?? "");
                             setEditIndex(index);
                         }}
                         onRemove={() => handleOnRemove(index)}

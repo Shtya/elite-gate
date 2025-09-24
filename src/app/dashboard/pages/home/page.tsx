@@ -5,8 +5,6 @@ import CenteredContainer from '@/components/shared/CenteredContainer';
 
 export default function HomeContentPage() {
 
-
-
     return (
         <div>
             <DashboardHeaderTitle path={['إعدادات', 'محتوى الصفحة الرئيسية']} />

@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 
-const realEstateContent = [
+export const realEstateContent = [
   { title: 'المحتوى والمعلومات', description: 'جميع المعلومات المعروضة عن العقارات هي لأغراض إعلامية وتسويقية فقط، وقد تخضع للتغيير دون إشعار مسبق. لا نضمن دقة أو اكتمال المحتوى بنسبة 100%.' },
   { title: 'الضمانات والمسؤوليات', description: 'نحن نسعى لتقديم معلومات دقيقة، ولكن لا نتحمل أي مسؤولية قانونية عن أي خسارة أو ضرر ناتج عن الاعتماد على المعلومات المنشورة.' },
   { title: 'حقوق الملكية الفكرية', description: 'جميع النصوص، الصور، والشعارات المعروضة في الموقع مملوكة لنا أو مرخصة لنا. يُمنع استخدامها دون إذن كتابي مسبق.' },
@@ -28,7 +28,7 @@ export default function TermsTabs() {
     try {
       const url = `${location.origin}${location.pathname}${location.search}#${hash}`;
       await navigator.clipboard.writeText(url);
-    } catch {}
+    } catch { }
   };
 
   return (

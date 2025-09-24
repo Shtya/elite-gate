@@ -1,15 +1,27 @@
 'use client';
 
-import React from 'react';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
 type ImageUploadProps = {
     id?: string;
     imageUrl: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     error?: string;
+    defaultImage?: string;
 };
 
-export default function ImageUpload({ id = 'imageUpload', imageUrl, onChange, error }: ImageUploadProps) {
+export default function ImageUpload({ id = 'imageUpload', defaultImage = "/users/default-user.png", imageUrl, onChange, error }: ImageUploadProps) {
+
+    const [src, setSrc] = useState(imageUrl);
+
+    useEffect(() => {
+        setSrc(imageUrl);
+    }, [imageUrl]);
+
+    const handleError = () => {
+        setSrc(defaultImage);
+    };
     return (
         <div className="relative mx-auto mb-6 w-[180px] h-[180px]">
             <input
@@ -20,14 +32,15 @@ export default function ImageUpload({ id = 'imageUpload', imageUrl, onChange, er
                 onChange={onChange}
             />
             <label htmlFor={id} className="cursor-pointer">
-                <img
+                <Image
                     alt="الصورة الشخصية"
                     loading="lazy"
                     width={180}
                     height={180}
                     className={`rounded-full border-[6px] ${error ? 'border-red-500' : 'border-[#F5F5FE]'
                         } shadow-md`}
-                    src={imageUrl}
+                    src={src}
+                    onError={handleError}
                 />
                 <div className="absolute bottom-2 right-2 bg-white rounded-full p-2 shadow-md">
                     <svg

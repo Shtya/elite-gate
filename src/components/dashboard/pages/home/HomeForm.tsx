@@ -6,7 +6,9 @@ import TextInput from '@/components/shared/Forms/TextInput';
 import TextareaInput from '@/components/shared/Forms/TextareaInput';
 import Uploader from '@/components/shared/Forms/Uploader';
 import { FileItem } from '@/utils/upload';
-import EditFAQSection from '@/components/dashboard/pages/home/EditFAQSection';
+import EditFAQSection from '@/components/dashboard/pages/EditFAQSection';
+import PrimaryButton from '@/components/shared/Button';
+import SoftActionButton from '@/components/shared/SoftActionButton';
 
 type FAQItem = {
     question: string;
@@ -122,7 +124,7 @@ export default function HomeForm() {
         <form onSubmit={handleSubmit(onSave)} className="space-y-6">
 
             {/* Hero Section */}
-            <Card title="القسم الرئيسي">
+            <Card title="القسم الرئيسي" collapsible>
                 <Controller
                     name="heroTitle"
                     control={control}
@@ -142,7 +144,7 @@ export default function HomeForm() {
 
 
             {/* Categories */}
-            <Card title="الفئات">
+            <Card title="الفئات" collapsible>
                 <Controller
                     name="categoryTitle"
                     control={control}
@@ -161,7 +163,7 @@ export default function HomeForm() {
 
 
             {/* Categories */}
-            <Card title="المشاريع">
+            <Card title="المشاريع" collapsible>
                 <Controller
                     name="projectsTitle"
                     control={control}
@@ -180,7 +182,7 @@ export default function HomeForm() {
 
 
             {/* Services */}
-            <Card title="الخدمات">
+            <Card title="الخدمات" collapsible>
                 <Controller
                     name="servicesTitle"
                     control={control}
@@ -197,7 +199,7 @@ export default function HomeForm() {
                 />
             </Card>
 
-            <Card title="أحدث المشاريع">
+            <Card title="أحدث المشاريع" collapsible>
                 <Controller
                     name="recentProjectsTitle"
                     control={control}
@@ -216,7 +218,7 @@ export default function HomeForm() {
 
 
             {/* Testimonials */}
-            <Card title="آراء العملاء">
+            <Card title="آراء العملاء" collapsible>
                 <Controller
                     name="testimonialTitle"
                     control={control}
@@ -235,7 +237,7 @@ export default function HomeForm() {
 
 
             {/* Partners */}
-            <Card title="شركاؤنا">
+            <Card title="شركاؤنا" collapsible>
                 <Controller
                     name="partnersTitle"
                     control={control}
@@ -254,7 +256,7 @@ export default function HomeForm() {
             </Card>
 
             {/* FAQ */}
-            <Card title="الأسئلة الشائعة">
+            <Card title="الأسئلة الشائعة" collapsible>
                 <Controller
                     name="faqTitle"
                     control={control}
@@ -275,13 +277,11 @@ export default function HomeForm() {
             </Card>
 
 
-            <div className="flex justify-end">
-                <button
-                    type="submit"
-                    className="px-4 py-2 rounded-md bg-[var(--primary)] text-white hover:bg-[var(--primary-600)]"
-                >
+            <div className="col-span-12 flex items-center gap-6 flex-wrap">
+                <PrimaryButton type="submit">
                     حفظ التغييرات
-                </button>
+                </PrimaryButton>
+                <SoftActionButton onClick={() => { }}>إلغاء</SoftActionButton>
             </div>
         </form>
     )
