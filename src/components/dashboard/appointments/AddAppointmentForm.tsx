@@ -12,6 +12,8 @@ import TextareaInput from '@/components/shared/Forms/TextareaInput';
 import PropertyChanger from '../Property Filter/PropertyChanger';
 import { properties } from '@/constants/projects';
 import FieldErrorMessage from '@/components/shared/Forms/FieldErrorMessage';
+import PrimaryButton from '@/components/shared/Button';
+import SoftActionButton from '@/components/shared/SoftActionButton';
 
 const schema = z.object({
     date: z.string().min(1, 'يرجى اختيار التاريخ'),
@@ -143,19 +145,10 @@ export default function AddAppointmentForm() {
 
                     {/* الإجراءات */}
                     <div className="col-span-12 flex items-center gap-6 flex-wrap mt-4">
-                        <button
-                            type="submit"
-                            className="px-6 py-2 rounded-md bg-[var(--primary)] text-white hover:bg-[var(--primary-600)]"
-                        >
+                        <PrimaryButton type="submit">
                             حفظ الموعد
-                        </button>
-                        <button
-                            type="button"
-                            onClick={handleCancel}
-                            className="px-6 py-2 rounded-md text-red-500 hover:text-red-600 hover:bg-red-50 transition"
-                        >
-                            إلغاء
-                        </button>
+                        </PrimaryButton>
+                        <SoftActionButton onClick={() => { }}>إلغاء</SoftActionButton>
                     </div>
                 </form>
 

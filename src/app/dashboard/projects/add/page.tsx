@@ -14,9 +14,8 @@ export default function AddPropertyPage() {
                 </Link>
             </DashboardHeaderTitle>
 
-            <CenteredContainer>
-                <PropertyForm />
-            </CenteredContainer>
+
+            <PropertyForm />
         </div>
     );
 }

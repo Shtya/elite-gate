@@ -1,16 +1,13 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
+import { Control, FieldValues, Path, PathValue, useController } from 'react-hook-form';
 
 const LocationMap = dynamic(() => import('./LocationMap'), {
     ssr: false,
 });
 
-type LatLng = {
-    lat: number;
-    lng: number
-};
 
 async function reverseGeocode(lat: number, lng: number, signal?: AbortSignal): Promise<string> {
     try {
@@ -32,16 +29,31 @@ async function reverseGeocode(lat: number, lng: number, signal?: AbortSignal): P
 }
 
 
-export default function StreetViewQuickOpen() {
+type LocationInputProps<T extends FieldValues> = {
+    control: Control<T>;
+    name: Path<T>; // this ensures the name is a valid path
+};
+
+export type LocationInputType = <T extends FieldValues>(
+    props: LocationInputProps<T>
+) => ReactElement;
+
+function LocationInput<T extends FieldValues>({ control, name }: LocationInputProps<T>) {
+    const {
+        field: { value: position, onChange },
+    } = useController({
+        name,
+        control,
+    });
+
     // Position state
-    const [position, setPosition] = useState<LatLng>({ lat: 21.2854, lng: 39.2376 });
     const [address, setAddress] = useState<string>('جاري جلب العنوان...');
     const [loadingAddress, setLoadingAddress] = useState<boolean>(false);
-
     // Text inputs (editable)
     const [latInput, setLatInput] = useState(position.lat.toFixed(6));
     const [lngInput, setLngInput] = useState(position.lng.toFixed(6));
     const [error, setError] = useState<string>('');
+
 
     // Sync text inputs when position changes (e.g., map click)
     useEffect(() => {
@@ -93,7 +105,7 @@ export default function StreetViewQuickOpen() {
                 return;
             }
             setError('');
-            setPosition({ lat, lng });
+            onChange({ lat, lng });
         } else {
             setError('المدخلات غير صالحة، يرجى إدخال أرقام صحيحة');
         }
@@ -190,14 +202,11 @@ export default function StreetViewQuickOpen() {
             <LocationMap
                 lat={position.lat}
                 lng={position.lng}
-                onChange={(coords) => setPosition(coords)}
+                onChange={(coords) => onChange(coords)}
             />
-            <button
-                type="submit"
-                className="ml-auto px-4 py-2 rounded-md text-white bg-[var(--primary)] hover:bg-[var(--primary-600)]"
-            >
-                حفظ الموقع
-            </button>
+
         </div>
     );
 }
+
+export default LocationInput;

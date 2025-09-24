@@ -5,6 +5,8 @@ import React from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import AccomplishmentsCard from './AccomplishmentsCard';
 import ContactInfoCard from './ContactInfoCard';
+import PrimaryButton from '@/components/shared/Button';
+import SoftActionButton from '@/components/shared/SoftActionButton';
 
 
 type FormValues = {
@@ -42,13 +44,11 @@ export default function WebsiteInfoForm({ defaultValues = {} }: Props) {
 
             <AccomplishmentsCard control={control} />
 
-            <div className="flex justify-end">
-                <button
-                    type="submit"
-                    className="ml-auto px-4 py-2 rounded-md text-white bg-[var(--primary)] hover:bg-[var(--primary-600)]"
-                >
+            <div className='space-x-4 flex items-center justify-start'>
+                <PrimaryButton type="submit">
                     حفظ التغييرات
-                </button>
+                </PrimaryButton>
+                <SoftActionButton onClick={() => { }}>إلغاء</SoftActionButton>
             </div>
         </form>
     );

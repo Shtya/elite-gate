@@ -7,6 +7,8 @@ import InfoSection from './FormSections/InfoSection';
 import OwnerContactSection from './FormSections/OwnerContactSection';
 import MediaLocationSection from './FormSections/MediaLocationSection';
 import { FileItem } from '@/utils/upload';
+import PrimaryButton from '@/components/shared/Button';
+import SoftActionButton from '@/components/shared/SoftActionButton';
 
 export type PropertyDetail = {
     name: string;
@@ -70,19 +72,25 @@ export default function PropertyForm({ initialData }: PropertyFormProps) {
 
     return (
 
-        <form onSubmit={handleSubmit(onSubmit)} className="property-info-form space-y-6">
-            <GeneralInfoSection control={control} />
-            <InfoSection<PropertyFormValues> control={control} name="details" title="تفاصيل العقار" />
-            <InfoSection<PropertyFormValues> control={control} name="warranties" title="الضمانات" />
-            <OwnerContactSection control={control} />
-            <MediaLocationSection control={control} />
+        <form onSubmit={handleSubmit(onSubmit)} className="property-info-form space-y-6 grid xl:grid-cols-2 gap-4 xl:gap-6">
+            <div className='max-xl:order-2 space-y-4 xl:space-y-6'>
+                <InfoSection<PropertyFormValues> control={control} name="details" title="تفاصيل العقار" />
+                <InfoSection<PropertyFormValues> control={control} name="warranties" title="الضمانات" />
+                <OwnerContactSection control={control} />
+                <MediaLocationSection control={control} />
+            </div>
+            <div className='max-xl:order-1'>
+                <GeneralInfoSection control={control} />
+            </div>
 
-            <button
-                type="submit"
-                className="btn-primary px-6 py-3 rounded-full font-semibold"
-            >
-                {initialData ? 'تعديل معلومات العقار' : 'إضافة عقار جديد'}
-            </button>
+            <div className='max-xl:order-3 space-x-4 flex items-center justify-center xl:justify-end'>
+
+                <PrimaryButton type="submit">
+                    {initialData ? 'تعديل معلومات العقار' : 'إضافة عقار جديد'}
+                </PrimaryButton>
+                <SoftActionButton onClick={() => { }}>إلغاء</SoftActionButton>
+            </div>
+
         </form>
 
     );

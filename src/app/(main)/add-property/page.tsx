@@ -9,6 +9,8 @@ import Uploader from '@/components/shared/Forms/Uploader';
 import { FileItem } from '@/utils/upload';
 import Card from '@/components/shared/Card';
 import { PropertyType } from '@/types/property';
+import PrimaryButton from '@/components/shared/Button';
+import SoftActionButton from '@/components/shared/SoftActionButton';
 
 export type PropertyRequestFormValues = {
     requesterName: string; // اسم مقدم الطلب
@@ -55,12 +57,13 @@ export default function AddPropertyRequestPage() {
                     <Uploader control={control} name="authorizationDoc" accept="*/*" label='وثيقة التفويض' allowMultiple={false} allowPrimary={false} />
                 </Card>
 
-                <button
-                    type="submit"
-                    className="btn-primary px-6 py-3 rounded-full font-semibold"
-                >
-                    إرسال الطلب
-                </button>
+                <div className='space-x-4 flex items-center justify-start'>
+
+                    <PrimaryButton type="submit">
+                        إرسال الطلب
+                    </PrimaryButton>
+                    <SoftActionButton onClick={() => { }}>إلغاء</SoftActionButton>
+                </div>
             </form>
             {/* </Card> */}
         </CenteredContainer>

@@ -1,7 +1,9 @@
 'use client';
 
+import PrimaryButton from '@/components/shared/Button';
 import Card from '@/components/shared/Card';
 import SelectDropdown from '@/components/shared/Forms/SelectDropdown';
+import SoftActionButton from '@/components/shared/SoftActionButton';
 import { City, Region } from '@/types/dashboard/city';
 import { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
@@ -148,9 +150,14 @@ export default function CityWithRegionsForm({
                 )}
 
                 {/* Save Button */}
-                <button type="submit" className="btn-primary mt-6 rounded-3xl">
-                    حفظ المدينة والمناطق
-                </button>
+                <div className='space-x-4 flex items-center justify-start'>
+
+                    <PrimaryButton type="submit">
+                        حفظ المدينة والمناطق
+                    </PrimaryButton>
+                    <SoftActionButton onClick={() => { }}>إلغاء</SoftActionButton>
+                </div>
+
             </form>
         </Card>
     );
