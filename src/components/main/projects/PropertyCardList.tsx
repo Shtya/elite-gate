@@ -7,7 +7,7 @@ import { Property } from '@/types/global';
 import FavoriteButton from '@/components/shared/FavoriteButton';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { BiEdit } from 'react-icons/bi';
-import { projectTypeColors } from '@/constants/dashboard/property.tsx/constants';
+import { propertyTypeLabels } from '@/types/property';
 export default function PropertyCardList({ property, isAdmin = false }: { property: Property; isAdmin?: boolean }) {
     const { imageLink, type, title, link, rooms, beds, area, location, price } = property;
 
@@ -24,10 +24,10 @@ export default function PropertyCardList({ property, isAdmin = false }: { proper
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-0" />
                 <Link
                     href={`/projects?type=${type}`}
-                    aria-label={`عرض مشاريع من نوع ${projectTypeColors[type]}`}
+                    aria-label={`عرض مشاريع من نوع ${propertyTypeLabels[type]}`}
                     className="absolute top-3 left-3 z-10 bg-white text-primary rounded-full py-1.5 px-3 text-xs font-semibold shadow hover:bg-primary-light transition"
                 >
-                    {projectTypeColors[type]}
+                    {propertyTypeLabels[type]}
                 </Link>
                 <div className="absolute w-[100px] top-3 right-3 flex items-center gap-2 z-10">
                     <FavoriteButton property={property} />
