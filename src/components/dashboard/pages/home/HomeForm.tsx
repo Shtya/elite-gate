@@ -273,7 +273,7 @@ export default function HomeForm() {
                 />
 
                 {/* Dynamic list */}
-                <EditFAQSection control={control} />
+                <EditFAQSection control={control} name='faqs' />
             </Card>
 
 
