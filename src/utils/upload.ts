@@ -5,6 +5,7 @@ export type FileItem = {
     name?: string;
     type?: string;
     isPrimary: boolean;
+
 };
 
 export function processFiles(
@@ -12,11 +13,13 @@ export function processFiles(
     accept: string,
     allowMultiple: boolean,
     allowPrimary: boolean,
-    existing: FileItem[] = []
+    existing: FileItem[] = [],
+    maxSizeMB: number = 9,
+    maxFiles: number = 10
 ): FileItem[] {
     // 🔹 Validation rules
-    const MAX_SIZE_MB = 9;
-    const MAX_FILES = 10;
+    const MAX_SIZE_MB = maxSizeMB;
+    const MAX_FILES = maxFiles;
 
     // Normalize accept string → array of trimmed rules
     const ACCEPTED_TYPES = accept

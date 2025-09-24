@@ -137,7 +137,7 @@ export default function HomeForm() {
                         <TextareaInput {...field} id="hero-subtitle" label="النص الفرعي" placeholder="اشرح بإيجاز ما يميز منصتك" />
                     )}
                 />
-                <Uploader control={control} name="heroImage" label="صور الخلفية" accept="image/*" allowMultiple />
+                <Uploader control={control} name="heroImage" label="صور الخلفية" accept="image/*" allowMultiple allowPrimary={false} maxFiles={2} />
             </Card>
 
 
@@ -250,7 +250,7 @@ export default function HomeForm() {
                         <TextareaInput {...field} id="partners-subtitle" label="النص الفرعي" placeholder="اشرح بإيجاز ثقة عملائك" />
                     )}
                 />
-                <Uploader control={control} name="partnersLogos" label="شعارات الشركاء" accept="image/*" allowMultiple />
+                <Uploader control={control} name="partnersLogos" label="شعارات الشركاء" accept="image/*" allowMultiple allowPrimary={false} />
             </Card>
 
             {/* FAQ */}

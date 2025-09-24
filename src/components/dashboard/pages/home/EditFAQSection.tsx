@@ -77,7 +77,7 @@ export default function EditFAQSection({ control }: EditFAQSectionProps) {
                     className="px-4 py-2 rounded-md bg-[var(--primary)] text-white hover:bg-[var(--primary-600)]"
                     onClick={handleSave}
                 >
-                    {editIndex !== null ? "تحديث السؤال" : "إضافة سؤال"}
+                    {editIndex !== null ? "تحديث السؤال" : "إضافة السؤال"}
                 </button>
             </div>
 

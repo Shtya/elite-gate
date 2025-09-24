@@ -13,6 +13,8 @@ type UploaderProps = {
     label?: string;
     accept?: string;
     rules?: string[]; // 👈 array of rules to display
+    maxSizeMB?: number;
+    maxFiles?: number;
 };
 
 export default function Uploader({
@@ -23,6 +25,8 @@ export default function Uploader({
     label = 'الملفات',
     accept = '*/*',
     rules = ['الحد الأقصى لحجم الملف 9MB', 'الحد الأقصى 10 ملفات'],
+    maxSizeMB = 9,
+    maxFiles = 10,
 }: UploaderProps) {
     return (
         <Controller
@@ -40,7 +44,9 @@ export default function Uploader({
                         accept,
                         allowMultiple,
                         allowPrimary,
-                        field.value || []
+                        field.value || [],
+                        maxSizeMB,
+                        maxFiles
                     );
 
                     field.onChange(updated);
