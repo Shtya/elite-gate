@@ -1,4 +1,17 @@
-import { FaCalendarAlt, FaUserFriends, FaUserTie, FaUserPlus, FaInfoCircle, FaMapMarkerAlt, FaVideo, FaPhoneAlt, FaAward, FaRegFileAlt, FaCog, FaCity, FaProjectDiagram, FaRegListAlt, FaHome, FaUsers, FaUserCheck, FaUserClock, FaUserShield, FaBullhorn, FaFileAlt, FaQuestionCircle, FaCalendarPlus } from 'react-icons/fa';
+import {
+    FaCalendarAlt, FaUserFriends, FaUserTie, FaUserPlus, FaInfoCircle, FaMapMarkerAlt, FaVideo, FaAward, FaRegFileAlt, FaCity, FaProjectDiagram, FaRegListAlt, FaHome, FaUsers, FaUserClock, FaUserShield, FaBullhorn, FaFileAlt, FaQuestionCircle, FaCalendarPlus,
+    FaStar,
+    FaListAlt,
+    FaServicestack,
+    FaQuoteRight,
+    FaHandshake,
+    FaRegCopyright,
+    FaPlusCircle,
+    FaImage,
+} from 'react-icons/fa';
+import {
+
+} from "react-icons/fa";
 import { MdDashboard, MdSettings, MdOutlinePrivacyTip, MdDescription } from 'react-icons/md';
 import { AiOutlineTeam, AiOutlineUser } from 'react-icons/ai';
 import { SelectableItem } from '@/types/global';
@@ -80,24 +93,8 @@ export const dashboardItems: SelectableItem[] = [
         label: "الصفحات",
         icon: FaFileAlt,
         children: [
-            {
-                label: "الرئيسية",
-                icon: FaHome,
-                children: [
-                    { label: "قسم البطل", icon: FaInfoCircle, href: "/dashboard/pages/home/hero" },
-                    { label: "قسم الميزات", icon: FaInfoCircle, href: "/dashboard/pages/home/features" },
-                    { label: "قسم الشهادات", icon: FaInfoCircle, href: "/dashboard/pages/home/testimonials" }
-                ]
-            },
-            {
-                label: "من نحن",
-                icon: AiOutlineTeam,
-                children: [
-                    { label: "المهمة", icon: FaInfoCircle, href: "/dashboard/pages/about/mission" },
-                    { label: "الفريق", icon: AiOutlineUser, href: "/dashboard/pages/about/team" },
-                    { label: "العملية", icon: FaInfoCircle, href: "/dashboard/pages/about/process" }
-                ]
-            },
+            { label: "الرئيسية", icon: FaHome, href: "/dashboard/pages/home" },
+            { label: "من نحن", icon: AiOutlineTeam, href: "/dashboard/pages/about" },
             { label: "سياسة الخصوصية", icon: MdOutlinePrivacyTip, href: "/dashboard/pages/privacy" },
             { label: "الشروط والأحكام", icon: MdDescription, href: "/dashboard/pages/terms" },
             { label: "الأسئلة الشائعة", icon: FaQuestionCircle, href: "/dashboard/pages/faq" }

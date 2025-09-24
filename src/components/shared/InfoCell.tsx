@@ -1,9 +1,14 @@
+'use client'
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import Tooltip from './Tooltip';
+import { formatCellContent } from '@/utils/helpers';
 
 type Props = {
     href?: string;
     image?: string;
+    defaultImage?: string;
     className?: string;
     title?: string;
     subtitle?: string;
@@ -14,35 +19,66 @@ type Props = {
 export default function InfoCell({
     href,
     image,
+    defaultImage = "/users/default-user.png",
     className = '',
     title = '',
     subtitle,
     imageRounded = 'full',
     subtitleClass = '',
 }: Props) {
-    const imageSrc =
-        typeof image === 'string' && image.trim() !== ''
-            ? image
-            : '/users/default-user.png';
+    const [src, setSrc] = useState(
+        image?.trim() ? image.trim() : defaultImage
+    );
+
+    // إذا تغيّر الـ image أو الـ defaultImage نعيد التهيئة
+    useEffect(() => {
+        setSrc(image?.trim() ? image.trim() : defaultImage);
+    }, [image, defaultImage]);
+
+    const handleError = () => {
+        setSrc(defaultImage);
+    };
 
     const imageClass = `w-10 h-10 object-cover ${imageRounded === 'full' ? 'rounded-full' : 'rounded-lg'}`;
     const containerClass = `flex items-center gap-3 ${className}`;
     const fullSubtitleClass = `text-right text-xs px-2 py-0.5 rounded-full w-fit ${subtitleClass}`;
 
+
+    // Apply formatter
+    const titleContent = formatCellContent(title, 20);
+    const subtitleContent = formatCellContent(subtitle, 20);
+
     const content = (
-        <>
+        <div className='flex flex-row gap-2 min-w-[200px]'>
             <Image
-                src={imageSrc}
+                src={src}
                 alt={title}
                 width={40}
                 height={40}
                 className={imageClass}
+                onError={handleError}
             />
-            <div className="flex flex-col">
-                {title && <span className="font-medium text-right">{title}</span>}
-                {subtitle && <span className={fullSubtitleClass}>{subtitle}</span>}
+            <div className="flex flex-col ">
+                {title && (
+                    titleContent.tooltip ? (
+                        <Tooltip text={titleContent.tooltip}>
+                            <span className="font-medium text-right">{titleContent.display}</span>
+                        </Tooltip>
+                    ) : (
+                        <span className="font-medium text-right">{titleContent.display}</span>
+                    )
+                )}
+                {subtitle && (
+                    subtitleContent.tooltip ? (
+                        <Tooltip text={subtitleContent.tooltip}>
+                            <span className={fullSubtitleClass}>{subtitleContent.display}</span>
+                        </Tooltip>
+                    ) : (
+                        <span className={fullSubtitleClass}>{subtitleContent.display}</span>
+                    )
+                )}
             </div>
-        </>
+        </div>
     );
 
     return href ? (

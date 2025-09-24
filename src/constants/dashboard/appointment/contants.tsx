@@ -7,7 +7,7 @@ import { getDefaultProjectpath } from "@/utils/appointment";
 import { formatDate, formatTime } from "@/utils/date";
 import { FaStar } from 'react-icons/fa';
 import { projectTypeColors } from "../property.tsx/constants";
-import { MiniProject } from "@/types/property";
+import { MiniProject, propertyTypeLabels } from "@/types/property";
 
 export const bookingStatusMap: Record<BookingStatus, string> = {
     pending: 'قيد الانتظار',
@@ -88,17 +88,14 @@ export const appointmentColumns: TableColumn<AppointmentRow>[] = [
         key: 'project',
         label: 'المشروع',
         cell: (val: MiniProject, row?: AppointmentRow) => {
-            const imageSrc =
-                typeof val.image === 'string' && val.image.trim() !== ''
-                    ? val.image
-                    : getDefaultProjectpath(row?.project?.type);
 
             return (
                 <InfoCell
-                    image={imageSrc}
+                    image={val.image}
                     title={val.title}
+                    defaultImage={getDefaultProjectpath(row?.project?.type)}
                     href={`/projects/${val.id}`}
-                    subtitle={val.type}
+                    subtitle={propertyTypeLabels[val.type]}
                     imageRounded="lg"
                     subtitleClass={projectTypeColors[val.type]}
                 />

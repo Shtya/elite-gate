@@ -43,3 +43,14 @@ export function toArabicDigits(input: string): string {
     const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
     return input.replace(/\d/g, (d) => arabicNumbers[parseInt(d)]);
 }
+
+
+export function formatCellContent(content: any, sliceCount = 20) {
+    if (typeof content !== 'string') {
+        return { display: content, tooltip: null };
+    }
+
+    return content.length > sliceCount
+        ? { display: content.slice(0, sliceCount) + '...', tooltip: content }
+        : { display: content, tooltip: null };
+} 
