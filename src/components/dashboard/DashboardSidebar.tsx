@@ -24,7 +24,7 @@ export default function DashboardSidebar({ sidebarOpen, onClose }: SidebarProps)
             className={`${sidebarOpen ? 'mr-0' : 'mr-[-312px]'} lg:mr-0 w-[270px] sm:w-[312px] transition-all duration-300 ease-out z-20 overflow-x-hidden overflow-y-auto fixed top-0 bottom-0 bg-white flex flex-col border-r p-3 md:p-8 min-h-screen shadow-lg lg:shadow-none scrollbarthin`}
         >
             <div className="mb-6 flex flex-col items-center">
-                <div className="inline-flex items-center pb-4 lg:pb-9 border-b border-dashed cursor-pointer w-full ">
+                <div className="inline-flex items-center pb-[6px] border-b border-dashed cursor-pointer w-full ">
                     <Link href="/" className="block mx-auto">
                         <LogoIcon />
                     </Link>
