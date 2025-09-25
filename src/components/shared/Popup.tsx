@@ -27,7 +27,7 @@ export default function Popup({ children, onClose, show }: PopupProps) {
         >
             <div
                 ref={popupRef}
-                className="content relative bg-white rounded-xl shadow-lg p-6  space-y-2 transition-all duration-300 scale-100"
+                className=" sm:min-w-[300px] relative bg-white rounded-xl shadow-lg p-6  space-y-2 transition-all duration-300 scale-100"
             >
                 {/* Close Button */}
                 {onClose && (

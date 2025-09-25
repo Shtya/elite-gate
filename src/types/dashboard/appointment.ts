@@ -45,6 +45,8 @@ export type AppointmentRow = {
     client: MiniUser;
     status: BookingStatus;
     reviewStars?: number;
+    agentReviewStars?: number;
+    agentReviewText?: string;
     isPaid?: boolean;
     proofFiles?: FileItem[];
 };

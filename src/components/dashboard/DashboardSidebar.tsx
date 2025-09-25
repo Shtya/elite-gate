@@ -4,8 +4,9 @@ import LogoIcon from "../shared/LogoIcon";
 import Link from "next/link";
 import SelectableMenu from "../shared/NavigationTree/SelectableMenu";
 import LogoutButton from "../shared/LogoutButton";
-import { dashboardItems } from "@/constants/AdminDashboardItems";
-import { usePathname } from "next/navigation";
+import { dashboardItems } from "@/constants/dashboardItems";
+import { useRoleFromPath } from "@/hooks/dashboard/admin/useRoleFromPath";
+import { SelectableItem } from "@/types/global";
 
 
 interface SidebarProps {
@@ -16,11 +17,13 @@ interface SidebarProps {
 export default function DashboardSidebar({ sidebarOpen, onClose }: SidebarProps) {
 
     const sidebarRef = useRef<HTMLDivElement>(null);
-    const pathname = usePathname();
-    const segments = pathname.split("/");
+    const role = useRoleFromPath();
+    let items: SelectableItem[] = [];
 
-    const role = segments[2] as "admin" | "marketer" | "agent";
-    const items = dashboardItems[role];
+    if (role) {
+        items = dashboardItems[role];
+    }
+
 
     useOutsideClick(sidebarRef, onClose);
 

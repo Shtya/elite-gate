@@ -160,7 +160,7 @@ export const appointmentColumns: TableColumn<AppointmentRow>[] = [
 
     {
         key: 'reviewStars',
-        label: 'التقييم',
+        label: 'تقييم العميل',
         cell: (val: number | undefined, row?: AppointmentRow) => {
             if (row?.status !== 'completed' || !val) return <span className="text-xs text-gray-400">—</span>;
             return (
@@ -221,7 +221,7 @@ export const mockAppointments: AppointmentRow[] = [
 
     },
     {
-        id: 102, project: { id: 12, title: 'فلل البستان – واجهات حجرية', type: 'office', image: '' }, appointmentAt: '2025-10-05T09:00:00', createdAt: '2025-09-29T10:20:00', agent: { id: 22, name: 'سارة العتيبي', email: 'sara@agency.com', image: '/users/user-3.jpg' }, client: { id: 2, name: 'عبدالله الشهري', email: 'abdullah@example.com', image: '/users/user-2.webp' }, status: 'completed', reviewStars: 4,
+        id: 102, project: { id: 12, title: 'فلل البستان – واجهات حجرية', type: 'office', image: '' }, appointmentAt: '2025-10-05T09:00:00', createdAt: '2025-09-29T10:20:00', agent: { id: 35, name: 'سارة العتيبي', email: 'sara@agency.com', image: '/users/user-3.jpg' }, client: { id: 2, name: 'عبدالله الشهري', email: 'abdullah@example.com', image: '/users/user-2.webp' }, status: 'completed', reviewStars: 4,
     },
     {
         id: 103, project: { id: 13, title: 'أرض رقم 54 – مخطط الواحة', type: 'villa', image: '' }, appointmentAt: '2025-10-07T16:15:00', createdAt: '2025-09-25T12:00:00', agent: { id: 23, name: 'نواف المطيري', email: 'nawaf@agency.com', image: '' }, client: { id: 3, name: 'أحمد العتيبي', email: 'ahmad@example.com', image: '' }, status: 'cancelled',
@@ -270,10 +270,10 @@ export const mockAppointments: AppointmentRow[] = [
         id: 112, project: { id: 22, title: 'فلل الواحة – تصميم حديث', type: 'office', image: '/main/projects/property-5.webp' }, appointmentAt: '2025-10-15T14:00:00', createdAt: '2025-09-21T12:00:00', agent: { id: 32, name: 'ليلى العتيبي', email: 'leila@agency.com', image: '/users/user-14.jpg' }, client: { id: 12, name: 'فهد الحربي', email: 'fahad@example.com', image: '/users/user-15.jpg' }, status: 'cancelled',
     },
     {
-        id: 113, project: { id: 23, title: 'أرض المرجان – موقع مميز', type: 'villa', image: '' }, appointmentAt: '2025-10-16T16:30:00', createdAt: '2025-09-20T11:00:00', agent: { id: 33, name: 'نادر فؤاد', email: 'nader@agency.com', image: '/users/user-16.jpg' }, client: { id: 13, name: 'أحمد الزهراني', email: 'ahmed@example.com', image: '' }, status: 'assigned',
+        id: 113, project: { id: 23, title: 'أرض المرجان – موقع مميز', type: 'villa', image: '' }, appointmentAt: '2025-10-16T16:30:00', createdAt: '2025-09-20T11:00:00', agent: { id: 35, name: 'نادر فؤاد', email: 'nader@agency.com', image: '/users/user-16.jpg' }, client: { id: 13, name: 'أحمد الزهراني', email: 'ahmed@example.com', image: '' }, status: 'assigned',
     },
     {
-        id: 114, project: { id: 24, title: 'شقق التلال – إطلالة جبلية', type: 'apartment', image: '/main/projects/property-10.webp' }, appointmentAt: '2025-10-17T11:45:00', createdAt: '2025-09-19T09:30:00', agent: { id: 34, name: 'نوف السالم', email: 'nouf@agency.com', image: '/users/user-17.jpg' }, client: { id: 14, name: 'خالد القحطاني', email: 'khalid@example.com', image: '/users/user-18.jpg' }, status: 'pending',
+        id: 114, project: { id: 24, title: 'شقق التلال – إطلالة جبلية', type: 'apartment', image: '/main/projects/property-10.webp' }, appointmentAt: '2025-10-17T11:45:00', createdAt: '2025-09-19T09:30:00', agent: { id: 35, name: 'نوف السالم', email: 'nouf@agency.com', image: '/users/user-17.jpg' }, client: { id: 14, name: 'خالد القحطاني', email: 'khalid@example.com', image: '/users/user-18.jpg' }, status: 'pending',
     },
     {
         id: 115, project: { id: 25, title: 'فلل البحر – تصميم فاخر', type: 'office', image: '' }, appointmentAt: '2025-10-18T18:00:00', createdAt: '2025-09-18T10:00:00', agent: { id: 35, name: 'سعود العتيبي', email: 'saud@agency.com', image: '/users/user-19.jpg' }, client: { id: 15, name: 'نورة الزامل', email: 'noura@example.com', image: '/users/user-20.jpg' }, status: 'confirmed',

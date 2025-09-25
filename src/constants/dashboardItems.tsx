@@ -1,5 +1,8 @@
 import {
     FaCalendarAlt, FaUserFriends, FaUserTie, FaUserPlus, FaMapMarkerAlt, FaVideo, FaAward, FaRegFileAlt, FaCity, FaProjectDiagram, FaRegListAlt, FaHome, FaUsers, FaUserShield, FaBullhorn, FaFileAlt, FaQuestionCircle, FaCalendarPlus,
+    FaRegCalendarAlt,
+    FaWallet,
+    FaCalendarCheck,
 } from 'react-icons/fa';
 import {
 
@@ -105,7 +108,33 @@ export const adminDashboardItems: SelectableItem[] = [
     },
 ];
 
-export const agentDashboardItems: SelectableItem[] = [];
+export const agentDashboardItems: SelectableItem[] = [
+    {
+        label: "لوحة التحكم",
+        icon: MdDashboard,
+        href: "/dashboard/admin"
+    },
+    {
+        label: "وقت العمل",
+        icon: FaRegCalendarAlt,
+        href: "/dashboard/agent/schedule"
+    },
+    {
+        label: "المحفظة والمدفوعات",
+        icon: FaWallet,
+        href: "/dashboard/agent/payments"
+    },
+    {
+        label: "المواعيد",
+        icon: FaCalendarAlt,
+        children: [
+            { label: "قائمة المواعيد", icon: FaRegListAlt, href: "/dashboard/agent/appointments" },
+            { label: "إضافة موعد", icon: FaCalendarPlus, href: "/dashboard/agent/appointments/add" },
+            { label: "طلبات المواعيد", icon: FaCalendarCheck, href: "/dashboard/agent/appointment-requests" },
+        ]
+    },
+];
+
 export const marketerDashboardItems: SelectableItem[] = [];
 
 

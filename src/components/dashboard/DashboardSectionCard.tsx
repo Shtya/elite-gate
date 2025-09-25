@@ -3,10 +3,11 @@
 import React from 'react';
 type Props = {
     children: React.ReactNode;
+    title?: string;
     className?: string;
 };
 
-export default function DashboardSectionCard({ children, className }: Props) {
+export default function DashboardSectionCard({ children, className, title }: Props) {
     return (
         <section
             className={`
@@ -14,6 +15,7 @@ export default function DashboardSectionCard({ children, className }: Props) {
                 ${className}
             `}
         >
+            {title && <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2 mb-6">{title}</h3>}
             {children}
         </section>
     );

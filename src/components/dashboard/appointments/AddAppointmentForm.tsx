@@ -14,6 +14,7 @@ import { properties } from '@/constants/projects';
 import FieldErrorMessage from '@/components/shared/Forms/FieldErrorMessage';
 import PrimaryButton from '@/components/shared/Button';
 import SoftActionButton from '@/components/shared/SoftActionButton';
+import { useRoleFromPath } from '@/hooks/dashboard/admin/useRoleFromPath';
 
 const schema = z.object({
     date: z.string().min(1, 'يرجى اختيار التاريخ'),
@@ -41,6 +42,8 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export default function AddAppointmentForm() {
+    const role = useRoleFromPath();
+
     const {
         handleSubmit,
         setValue,
@@ -98,7 +101,7 @@ export default function AddAppointmentForm() {
                     </div>
 
                     {/* الوسيط */}
-                    <div className="col-span-12 md:col-span-6">
+                    {role === 'admin' && <div className="col-span-12 md:col-span-6">
                         <label className="text-lg font-medium block mb-3">الوسيط</label>
                         <UserChanger
                             users={agents}
@@ -106,7 +109,7 @@ export default function AddAppointmentForm() {
                             onChange={(agent) => setValue('agent', agent?.id)}
                         />
                         <FieldErrorMessage errors={errors} fieldName='agent' />
-                    </div>
+                    </div>}
 
                     {/* العميل */}
                     <div className="col-span-12 md:col-span-6">

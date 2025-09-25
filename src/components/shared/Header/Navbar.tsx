@@ -32,7 +32,11 @@ const navigation: NavItem[] = [
     },
     {
         name: "لوحة التحكم",
-        href: "/dashboard/admin",
+        children: [
+            { name: "لوحة تحكم الادمن", href: "/dashboard/admin" },
+            { name: "لوحة تحكم الوسيط", href: "/dashboard/agent" },
+            { name: "لوحة تحكم المسوق", href: "/dashboard/marketer" }
+        ],
     },
 ];
 

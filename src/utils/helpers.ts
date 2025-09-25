@@ -53,4 +53,9 @@ export function formatCellContent(content: any, sliceCount = 20) {
     return content.length > sliceCount
         ? { display: content.slice(0, sliceCount) + '...', tooltip: content }
         : { display: content, tooltip: null };
-} 
+}
+
+
+export function formatSAR(amount: number): string {
+    return new Intl.NumberFormat('ar-SA', { style: 'currency', currency: 'SAR', maximumFractionDigits: 0 }).format(amount);
+}

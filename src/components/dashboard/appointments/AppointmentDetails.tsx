@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link';
 import { FaRegCalendarAlt, FaClipboardList, FaCalendarAlt } from 'react-icons/fa';
 import { formatDate, formatTime } from '@/utils/date';
@@ -13,12 +14,14 @@ import { SlCalender } from 'react-icons/sl';
 import { BiTimeFive } from 'react-icons/bi';
 import { MdReviews, MdStarRate, MdTimelapse } from 'react-icons/md';
 import StarRating from '@/components/shared/StarRating';
+import ReviewBookingButton from '@/components/main/customer/user-booking/ReviewBookingButton';
 import AppointmentNotesCard from './AppointmentNotesCard';
 import UserChanger from '../UserChanger';
 import { projectTypeColors } from '@/constants/dashboard/admin/property.tsx/constants';
 import { propertyTypeLabels } from '@/types/property';
 import AttachmentsCard from '@/components/shared/AttachmentsCard';
 import AppointmentProofUploadControl from './AppointmentProofUploadControl';
+import { useRoleFromPath } from '@/hooks/dashboard/admin/useRoleFromPath';
 
 type AppointmentDetailsProps = {
     appointment: AppointmentRow;
@@ -26,8 +29,9 @@ type AppointmentDetailsProps = {
 
 const reviewText = 'لقد كانت تجربتي مع شركة العقارات ممتازة من البداية حتى النهاية. ساعدوني في العثور على منزل يناسب احتياجاتي بكل احترافية.';
 export default function AppointmentDetails({ appointment }: AppointmentDetailsProps) {
+    const role = useRoleFromPath();
 
-    const { id, project, client, agent, appointmentAt, status, reviewStars, createdAt } = appointment;
+    const { id, project, client, agent, appointmentAt, status, reviewStars, createdAt, agentReviewStars, agentReviewText } = appointment;
     const appointmentDate = new Date(appointment.appointmentAt);
     const imageSrc = project.image || getDefaultProjectpath(project.type);
     const badgeStyle = projectTypeColors[project.type];
@@ -104,23 +108,47 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
                         className='text-[16px] font-semibold'
                     />}
 
+                    {agentReviewStars && (
+                        <IconDetail
+                            icon={<MdStarRate className="text-[var(--secondary-500)] w-6 h-6" />}
+                            label="تقييم الوسيط للعميل"
+                            value={<StarRating value={agentReviewStars} className='mt-2' />}
+                        />
+                    )}
+
+                    {agentReviewText && (
+                        <IconDetail
+                            icon={<MdReviews className="text-[var(--secondary-500)] w-6 h-6" />}
+                            label="مراجعة الوسيط"
+                            value={agentReviewText}
+                            className='text-[16px] font-semibold'
+                        />
+                    )}
+
                     <IconDetail
                         icon={<MdReviews className="text-[var(--primary)] w-6 h-6" />}
                         label="الحالة"
                         value={bookingStatusMap[status]}
                         className={`${bookingStatusStyle[status]} block px-3 py-1 !rounded-full text-sm font-medium mt-1`}
                     />
-                    <div className='flex gap-2'>
-                        <AppointmentStatusControl appointmentId={id} currentStatus={status} />
-                        {!appointment.isPaid && <AppointmentProofUploadControl
-                            appointmentId={appointment.id}
-                        />}
+                    <div className='flex gap-2 items-center flex-wrap'>
+                        <div className='flex-1'>
+
+                            <AppointmentStatusControl appointmentId={id} currentStatus={status} />
+                        </div>
+                        {!appointment.isPaid && <AppointmentProofUploadControl appointmentId={appointment.id} />}
+                        {role === 'agent' && status === 'completed' && !agentReviewStars && (
+                            <div className='flex-1'>
+                                <ReviewBookingButton bookingId={String(appointment.id)} className='agent-review' />
+                            </div>
+                        )}
                     </div>
                 </Card>
             </div>
             <div className='h-full 2xl:col-span-4 flex flex-col gap-4 lg:gap-6 '>
                 <div className="flex gap-4 lg:gap-6 items-start flex-col md:flex-row">
-                    <Card className="flex-1 w-full h-full flex flex-col" title="الوسيط">
+
+                    {role === 'admin' && <Card className="flex-1 w-full h-full flex flex-col" title="الوسيط">
                         <div className="flex-1">
                             {agent ? (
                                 <>
@@ -172,7 +200,7 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
                         <div className="mt-auto pt-4">
                             <UserChanger appointmentId={appointment.id} showSelected={false} initialUser={agent} users={agents} label='وسيط' />
                         </div>
-                    </Card>
+                    </Card>}
 
                     <Card className='flex-1 h-full w-full' title='العميل'>
 

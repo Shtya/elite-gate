@@ -70,6 +70,7 @@
   --primary-300: #2563eb;
   --secondary: #37d279;
   --tertiary: #ffbe46;
+  --tertiary-300: #ffe4b3;
   --bg-1: #f9f9fe;
   --bg-2: #f5f5fe;
   --btn-bg: #efeffd;
@@ -160,6 +161,8 @@
   --color-secondary-300: var(--secondary-300);
   --color-secondary-400: var(--secondary-400);
   --color-secondary-500: var(--secondary-500);
+
+  --color-tertiary-300: var(--tertiary-300);
   --color-dark: var(--dark);
 
   --font-main: var(--font-din-next);
@@ -486,5 +489,8 @@
     overflow-y: auto;
   }
 
-
+  .agent-review .review-button {
+    width: 100%;
+    border-radius: var(--radius-md) !important;
+  }
 }
