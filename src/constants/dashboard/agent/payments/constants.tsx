@@ -61,7 +61,7 @@ export const paymentColumns: TableColumn<PaymentRow>[] = [
         key: 'client',
         label: 'العميل',
         cell: (user: MiniUser) => (
-            <InfoCell image={user.image} subtitle={user.email} title={user.name} href={`/dashboard/admin/clients/${user.id}`} />
+            <InfoCell image={user.image} subtitle={user.email} title={user.name} />
         ),
     },
     {

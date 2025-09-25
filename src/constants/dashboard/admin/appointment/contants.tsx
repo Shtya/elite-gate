@@ -8,6 +8,7 @@ import { formatDate, formatTime } from "@/utils/date";
 import { FaStar } from 'react-icons/fa';
 import { projectTypeColors } from "../property.tsx/constants";
 import { MiniProject, propertyTypeLabels } from "@/types/property";
+import { useRoleFromPath } from "@/hooks/dashboard/admin/useRoleFromPath";
 
 export const bookingStatusMap: Record<BookingStatus, string> = {
     pending: 'قيد الانتظار',
@@ -153,9 +154,18 @@ export const appointmentColumns: TableColumn<AppointmentRow>[] = [
     {
         key: 'client',
         label: 'العميل',
-        cell: (user: MiniUser) => (
-            <InfoCell image={user.image} subtitle={user.email} title={user.name} href={`/dashboard/admin/clients/${user.id}`} />
-        ),
+        cell: (user: MiniUser) => {
+            const role = useRoleFromPath(); // Make sure useRoleFromPath is available here
+            const isAdmin = role === 'admin';
+            return (
+                <InfoCell
+                    image={user.image}
+                    subtitle={user.email}
+                    title={user.name}
+                    href={isAdmin ? `/dashboard/admin/clients/${user.id}` : undefined}
+                />
+            );
+        },
     },
 
     {

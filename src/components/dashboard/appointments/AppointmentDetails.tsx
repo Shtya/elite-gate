@@ -30,6 +30,7 @@ type AppointmentDetailsProps = {
 const reviewText = 'لقد كانت تجربتي مع شركة العقارات ممتازة من البداية حتى النهاية. ساعدوني في العثور على منزل يناسب احتياجاتي بكل احترافية.';
 export default function AppointmentDetails({ appointment }: AppointmentDetailsProps) {
     const role = useRoleFromPath();
+    const isAdmin = role === 'admin';
 
     const { id, project, client, agent, appointmentAt, status, reviewStars, createdAt, agentReviewStars, agentReviewText } = appointment;
     const appointmentDate = new Date(appointment.appointmentAt);
@@ -217,9 +218,9 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
                             </div>
 
                             {/* Name */}
-                            <Link href={`/dashboard/admin/clients/${client.id}`}>
+                            {isAdmin ? <Link href={`/dashboard/admin/clients/${client.id}`}>
                                 <h5 className="text-xl font-semibold mt-5 text-center hover:underline">{client.name}</h5>
-                            </Link>
+                            </Link> : <h5 className="text-xl font-semibold mt-5 text-center hover:underline">{client.name}</h5>}
 
                         </div>
 

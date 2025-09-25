@@ -3,6 +3,7 @@ import {
     FaRegCalendarAlt,
     FaWallet,
     FaCalendarCheck,
+    FaHeart,
 } from 'react-icons/fa';
 import {
 
@@ -115,6 +116,15 @@ export const agentDashboardItems: SelectableItem[] = [
         href: "/dashboard/admin"
     },
     {
+        label: "المواعيد",
+        icon: FaCalendarAlt,
+        children: [
+            { label: "قائمة المواعيد", icon: FaRegListAlt, href: "/dashboard/agent/appointments" },
+            { label: "إضافة موعد", icon: FaCalendarPlus, href: "/dashboard/agent/appointments/add" },
+            { label: "طلبات المواعيد", icon: FaCalendarCheck, href: "/dashboard/agent/appointment-requests" },
+        ]
+    },
+    {
         label: "وقت العمل",
         icon: FaRegCalendarAlt,
         href: "/dashboard/agent/schedule"
@@ -125,13 +135,9 @@ export const agentDashboardItems: SelectableItem[] = [
         href: "/dashboard/agent/payments"
     },
     {
-        label: "المواعيد",
-        icon: FaCalendarAlt,
-        children: [
-            { label: "قائمة المواعيد", icon: FaRegListAlt, href: "/dashboard/agent/appointments" },
-            { label: "إضافة موعد", icon: FaCalendarPlus, href: "/dashboard/agent/appointments/add" },
-            { label: "طلبات المواعيد", icon: FaCalendarCheck, href: "/dashboard/agent/appointment-requests" },
-        ]
+        label: "العقارات المفضلة",
+        icon: FaHeart,
+        href: "/dashboard/agent/favorites",
     },
 ];
 

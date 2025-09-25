@@ -65,13 +65,20 @@ export default function TopContactBar() {
         </div>
 
         {/* Submit Button */}
-        <PrimaryButton
-          href="/add-property"
-          className="btn-primary-lg hidden md:inline-flex focus:outline-none focus:ring-2 focus:ring-primary/30"
-          aria-label="أضف عقارك"
-        >
-          أضف عقارك
-        </PrimaryButton>
+        <div className='flex items-center gap-2 '>
+          <PrimaryButton
+            href="/add-property"
+            className="btn-primary-lg hidden md:inline-flex focus:outline-none focus:ring-2 focus:ring-primary/30"
+          >
+            أضف عقارك
+          </PrimaryButton>
+          <PrimaryButton
+            href="/become-agent"
+            className="btn-primary-lg hidden md:inline-flex focus:outline-none focus:ring-2 focus:ring-primary/30"
+          >
+            انضم كوكيل
+          </PrimaryButton>
+        </div>
       </div>
     </header>
   );

@@ -10,7 +10,7 @@ type CardInfoProps = {
 
 export default function CardInfo({ icon, value, label, className }: CardInfoProps) {
     return (
-        <div className={`bg-white border min-w-[250px] md:min-w-[300px] rounded-2xl p-3 xl:p-3 flex items-center gap-6  ${className || ''}`}>
+        <div className={`bg-white border min-w-[250px]  rounded-2xl p-3 xl:p-3 flex items-center gap-6  ${className || ''}`}>
             <div className={`flex items-center justify-center rounded-full `}>
                 {icon}
             </div>
