@@ -32,7 +32,7 @@ export default function AppointmentProofUploadToggle({ appointmentId, onConfirm,
         <div className="p-2">
             <div className="rounded-lg bg-white mx-auto">
                 <h3 className="text-lg font-bold text-gray-800 text-center mb-3">إرفاق مستندات الدفع</h3>
-                <div className="w-full xs:w-[300px] md:w-[400px] lg:w-[700px]">
+                <div className="w-full xs:w-[300px] md:w-[400px] lg:w-[700px] max-h-[500px] lg:!max-h-[600px]  overflow-y-auto">
                     <Uploader control={control as unknown as Control<any>} name="proofFiles" allowPrimary={false} accept="image/*,application/pdf" maxFiles={6} />
                 </div>
                 <div className="flex justify-end gap-3 pt-6">

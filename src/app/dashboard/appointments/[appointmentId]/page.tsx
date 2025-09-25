@@ -17,7 +17,7 @@ export default async function AppointmentDetailsPage({ params }: { params: { app
 
     return (
         <>
-            <DashboardHeaderTitle path={['المواعيد', `تفاصيل الموعد - ${appointment.client.name}`]}>
+            <DashboardHeaderTitle path={['المواعيد', `تفاصيل الموعد`]}>
                 <div className="flex gap-4  flex-wrap ">
                     <DownloadContent text="تحميل المعلومات" />
                     <Link className="btn-primary" href="/dashboard/appointments">

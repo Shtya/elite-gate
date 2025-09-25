@@ -12,8 +12,8 @@ type Props = {
 };
 
 export default async function EditMarketerPage({ params }: Props) {
-    const marketerId = Number(params.marketerId);
-    const marketer = mockedMarketers.find((r) => r.id === marketerId);
+    const { marketerId } = await params;
+    const marketer = mockedMarketers.find((r) => r.id === Number(marketerId));
 
     await new Promise((r) => setTimeout(r, 300)); // simulate loading
     if (!marketer) {

@@ -11,8 +11,8 @@ type Props = {
 };
 
 export default async function EditAgentPage({ params }: Props) {
-    const agentId = Number(params.agentId);
-    const agent = mockedAgents.find((r) => r.id === agentId);
+    const { agentId } = await params;
+    const agent = mockedAgents.find((r) => r.id === Number(agentId));
 
     await new Promise((r) => setTimeout(r, 300)); // simulate loading
     if (!agent) {

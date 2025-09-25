@@ -68,7 +68,7 @@ type Props = {
 };
 
 export default async function InterestRequestDetailsPage({ params }: Props) {
-    const { requestId } = params;
+    const { requestId } = await params;
 
     // simulate fetch delay
     await new Promise((r) => setTimeout(r, 300));
@@ -76,7 +76,7 @@ export default async function InterestRequestDetailsPage({ params }: Props) {
 
     return (
         <>
-            <DashboardHeaderTitle path={['طلبات الاهتمام', `تفاصيل الطلب - ${mockInterestRequestFull.requesterName}`]}>
+            <DashboardHeaderTitle path={['طلبات الاهتمام', `تفاصيل طلب - ${mockInterestRequestFull.requesterName}`]}>
                 <Link className="btn-primary" href="/dashboard/interest-requests">
                     <BiListUl /> عرض جميع الطلبات
                 </Link>

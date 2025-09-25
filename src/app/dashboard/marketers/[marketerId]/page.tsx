@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default async function MarketerPage({ params }: Props) {
-    const { marketerId } = params;
+    const { marketerId } = await params;
     await new Promise((r) => setTimeout(r, 300)); // simulate fetch
     const marketer = mockedMarketers.find((r) => r.id === Number(marketerId));
 
