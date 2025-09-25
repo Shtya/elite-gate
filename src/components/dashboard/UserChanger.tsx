@@ -63,7 +63,7 @@ export default function UserChanger({
                             image={user.image}
                             subtitle={user.email}
                             title={user.name}
-                            href={`/dashboard/${label === 'وسيط' ? 'agents' : 'clients'}/${user.id}`}
+                            href={`/dashboard/admin/${label === 'وسيط' ? 'agents' : 'clients'}/${user.id}`}
                             imageRounded="full"
                         />
                         <button

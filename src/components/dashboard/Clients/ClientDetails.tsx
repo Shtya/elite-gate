@@ -27,7 +27,7 @@ export default function ClientDetails({ client }: Props) {
 
                         {/* ✏️ Edit Icon at Card Corner */}
                         <Link
-                            href={`/dashboard/clients/${client.id}/edit`}
+                            href={`/dashboard/admin/clients/${client.id}/edit`}
                             className="absolute top-4 right-4 bg-white border border-gray-200 p-2 rounded-full shadow-sm hover:bg-gray-50 transition z-10"
                             title="تعديل العميل"
                         >

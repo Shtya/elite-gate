@@ -45,7 +45,7 @@ function getAppointmentActionsMenu(row: AppointmentRow, onClose?: () => void): M
         {
             label: 'عرض التفاصيل',
             icon: <FaEye />,
-            link: `/dashboard/appointments/${row.id}`,
+            link: `/dashboard/admin/appointments/${row.id}`,
         },
         {
             label: row.agent ? 'تغيير الوسيط' : 'تعيين وسيط',

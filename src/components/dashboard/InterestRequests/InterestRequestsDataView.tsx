@@ -31,7 +31,7 @@ function getInterestRequestActionsMenu(row: InterestRequestRow, onClose?: () => 
         {
             label: 'عرض التفاصيل',
             icon: <FaEye />,
-            link: `/dashboard/interest-requests/${row.id}`,
+            link: `/dashboard/admin/interest-requests/${row.id}`,
         },
         {
             label: 'تغيير الحالة',

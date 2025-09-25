@@ -33,12 +33,12 @@ function getMarketerActionsMenu(row: MarketerRow, onClose?: () => void): MenuAct
         {
             label: 'عرض التفاصيل',
             icon: <FaPencilAlt />,
-            link: `/dashboard/marketers/${row.id}`,
+            link: `/dashboard/admin/marketers/${row.id}`,
         },
         {
             label: 'تعديل المسوق',
             icon: <FaEdit />,
-            link: `/dashboard/marketers/${row.id}/edit`,
+            link: `/dashboard/admin/marketers/${row.id}/edit`,
         },
     ];
 

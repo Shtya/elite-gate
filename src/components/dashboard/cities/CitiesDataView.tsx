@@ -34,7 +34,7 @@ export function getCityActionsMenu(row: CityRow, onClose?: () => void): MenuActi
         {
             label: 'تعديل المدينة',
             icon: <FaEdit />,
-            link: `/dashboard/cities/${row.id}/edit`,
+            link: `/dashboard/admin/cities/${row.id}/edit`,
         },
         {
             label: 'حذف المدينة',

@@ -37,12 +37,12 @@ export function getClientActionsMenu(row: ClientRow, onClose?: () => void): Menu
         {
             label: 'عرض التفاصيل',
             icon: <FaPencilAlt />,
-            link: `/dashboard/clients/${row.id}`,
+            link: `/dashboard/admin/clients/${row.id}`,
         },
         {
             label: 'تعديل العميل',
             icon: <FaEdit />,
-            link: `/dashboard/clients/${row.id}/edit`,
+            link: `/dashboard/admin/clients/${row.id}/edit`,
         },
         {
             label: isSuspended ? 'تفعيل الحساب' : 'تعليق الحساب',

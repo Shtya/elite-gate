@@ -147,14 +147,14 @@ export const appointmentColumns: TableColumn<AppointmentRow>[] = [
         key: 'agent',
         label: 'الوسيط',
         cell: (user: MiniUser) => (
-            <InfoCell image={user.image} subtitle={user.email} title={user.name} href={`/dashboard/agents/${user.id}`} />
+            <InfoCell image={user.image} subtitle={user.email} title={user.name} href={`/dashboard/admin/agents/${user.id}`} />
         ),
     },
     {
         key: 'client',
         label: 'العميل',
         cell: (user: MiniUser) => (
-            <InfoCell image={user.image} subtitle={user.email} title={user.name} href={`/dashboard/clients/${user.id}`} />
+            <InfoCell image={user.image} subtitle={user.email} title={user.name} href={`/dashboard/admin/clients/${user.id}`} />
         ),
     },
 

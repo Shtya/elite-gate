@@ -32,7 +32,7 @@ const navigation: NavItem[] = [
     },
     {
         name: "لوحة التحكم",
-        href: "/dashboard",
+        href: "/dashboard/admin",
     },
 ];
 

@@ -96,7 +96,7 @@ export default function UserFilterContent({ users, onSelect, label = 'المست
                                     image={user.image}
                                     subtitle={user.email}
                                     title={user.name}
-                                    href={`/dashboard/${label === 'العميل' ? 'clients' : 'agents'}/${user.id}`}
+                                    href={`/dashboard/admin/${label === 'العميل' ? 'clients' : 'agents'}/${user.id}`}
                                     imageRounded="full"
                                     className="hover:bg-gray-100 p-2 rounded"
                                 />

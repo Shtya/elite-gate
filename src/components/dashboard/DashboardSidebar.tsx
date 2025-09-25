@@ -5,16 +5,22 @@ import Link from "next/link";
 import SelectableMenu from "../shared/NavigationTree/SelectableMenu";
 import LogoutButton from "../shared/LogoutButton";
 import { dashboardItems } from "@/constants/AdminDashboardItems";
+import { usePathname } from "next/navigation";
+
 
 interface SidebarProps {
     sidebarOpen: boolean;
     onClose: () => void;
 }
 
-
-
 export default function DashboardSidebar({ sidebarOpen, onClose }: SidebarProps) {
+
     const sidebarRef = useRef<HTMLDivElement>(null);
+    const pathname = usePathname();
+    const segments = pathname.split("/");
+
+    const role = segments[2] as "admin" | "marketer" | "agent";
+    const items = dashboardItems[role];
 
     useOutsideClick(sidebarRef, onClose);
 
@@ -30,7 +36,7 @@ export default function DashboardSidebar({ sidebarOpen, onClose }: SidebarProps)
                     </Link>
                 </div>
             </div>
-            <SelectableMenu items={dashboardItems} onClose={onClose} />
+            <SelectableMenu items={items} onClose={onClose} />
             <LogoutButton />
         </div >
     );

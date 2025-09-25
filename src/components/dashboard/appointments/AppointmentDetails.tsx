@@ -134,7 +134,7 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
                                             />
                                         </div>
 
-                                        <Link href={`/dashboard/agents/${agent.id}`}>
+                                        <Link href={`/dashboard/admin/agents/${agent.id}`}>
                                             <h5 className="text-xl font-semibold mt-5 text-center hover:underline">
                                                 {agent.name}
                                             </h5>
@@ -189,7 +189,7 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
                             </div>
 
                             {/* Name */}
-                            <Link href={`/dashboard/clients/${client.id}`}>
+                            <Link href={`/dashboard/admin/clients/${client.id}`}>
                                 <h5 className="text-xl font-semibold mt-5 text-center hover:underline">{client.name}</h5>
                             </Link>
 

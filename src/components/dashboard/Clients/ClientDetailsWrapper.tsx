@@ -23,7 +23,7 @@ export default async function ClientDetailsWrapper({ clientId }: Props) {
             <DashboardHeaderTitle path={['العملاء', `تفاصيل العميل - ${client.name}`]}>
                 <div className="flex gap-4 flex-wrap">
                     <DownloadContent text="تحميل المعلومات" />
-                    <Link className="btn-primary" href="/dashboard/clients">
+                    <Link className="btn-primary" href="/dashboard/admin/clients">
                         <BiGroup /> عرض جميع العملاء
                     </Link>
                 </div>

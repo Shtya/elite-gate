@@ -58,3 +58,4 @@ export type SelectableItem = {
 };
 
 
+export type Role = 'admin' | 'marketer' | 'agent';

@@ -31,12 +31,12 @@ function getAgentActionsMenu(row: AgentRow, onClose?: () => void): MenuActionIte
         {
             label: 'عرض التفاصيل',
             icon: <FaPencilAlt />,
-            link: `/dashboard/agents/${row.id}`,
+            link: `/dashboard/admin/agents/${row.id}`,
         },
         {
             label: 'تعديل الوسيط',
             icon: <FaEdit />,
-            link: `/dashboard/agents/${row.id}/edit`,
+            link: `/dashboard/admin/agents/${row.id}/edit`,
         },
     ];
 

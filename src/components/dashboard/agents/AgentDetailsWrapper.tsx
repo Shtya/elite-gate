@@ -24,7 +24,7 @@ export default async function AgentDetailsWrapper({ agentId }: Props) {
             <DashboardHeaderTitle path={['الوسطاء', `تفاصيل الوسيط - ${agent.name}`]}>
                 <div className="flex gap-4 flex-wrap">
                     <DownloadContent text="تحميل المعلومات" />
-                    <Link className="btn-primary" href="/dashboard/agents">
+                    <Link className="btn-primary" href="/dashboard/admin/agents">
                         <BiGroup /> عرض جميع الوسطاء
                     </Link>
                 </div>

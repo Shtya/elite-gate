@@ -1,38 +1,32 @@
 import {
-    FaCalendarAlt, FaUserFriends, FaUserTie, FaUserPlus, FaInfoCircle, FaMapMarkerAlt, FaVideo, FaAward, FaRegFileAlt, FaCity, FaProjectDiagram, FaRegListAlt, FaHome, FaUsers, FaUserClock, FaUserShield, FaBullhorn, FaFileAlt, FaQuestionCircle, FaCalendarPlus,
-    FaStar,
-    FaListAlt,
-    FaServicestack,
-    FaQuoteRight,
-    FaHandshake,
-    FaRegCopyright,
-    FaPlusCircle,
-    FaImage,
+    FaCalendarAlt, FaUserFriends, FaUserTie, FaUserPlus, FaMapMarkerAlt, FaVideo, FaAward, FaRegFileAlt, FaCity, FaProjectDiagram, FaRegListAlt, FaHome, FaUsers, FaUserShield, FaBullhorn, FaFileAlt, FaQuestionCircle, FaCalendarPlus,
 } from 'react-icons/fa';
 import {
 
 } from "react-icons/fa";
 import { MdDashboard, MdSettings, MdOutlinePrivacyTip, MdDescription } from 'react-icons/md';
-import { AiOutlineTeam, AiOutlineUser } from 'react-icons/ai';
-import { SelectableItem } from '@/types/global';
+import { AiOutlineTeam } from 'react-icons/ai';
+import { Role, SelectableItem } from '@/types/global';
 
-export const dashboardItems: SelectableItem[] = [
+
+
+export const adminDashboardItems: SelectableItem[] = [
     {
         label: "لوحة التحكم",
         icon: MdDashboard,
-        href: "/dashboard"
+        href: "/dashboard/admin"
     },
     {
         label: "طلبات الاهتمام",
         icon: FaUserShield,
-        href: "/dashboard/interest-requests"
+        href: "/dashboard/admin/interest-requests"
     },
     {
         label: "المواعيد",
         icon: FaCalendarAlt,
         children: [
-            { label: "قائمة المواعيد", icon: FaRegListAlt, href: "/dashboard/appointments" },
-            { label: "إضافة موعد", icon: FaCalendarPlus, href: "/dashboard/appointments/add" }
+            { label: "قائمة المواعيد", icon: FaRegListAlt, href: "/dashboard/admin/appointments" },
+            { label: "إضافة موعد", icon: FaCalendarPlus, href: "/dashboard/admin/appointments/add" }
         ]
     },
     {
@@ -43,24 +37,24 @@ export const dashboardItems: SelectableItem[] = [
                 label: "العملاء",
                 icon: FaUserFriends,
                 children: [
-                    { label: "قائمة العملاء", icon: FaRegListAlt, href: "/dashboard/clients" },
-                    { label: "إضافة عميل", icon: FaUserPlus, href: "/dashboard/clients/add" }
+                    { label: "قائمة العملاء", icon: FaRegListAlt, href: "/dashboard/admin/clients" },
+                    { label: "إضافة عميل", icon: FaUserPlus, href: "/dashboard/admin/clients/add" }
                 ]
             },
             {
                 label: "الوسطاء",
                 icon: FaUserTie,
                 children: [
-                    { label: "قائمة الوسطاء", icon: FaRegListAlt, href: "/dashboard/agents" },
-                    { label: "إضافة وسيط", icon: FaUserPlus, href: "/dashboard/agents/add" },
+                    { label: "قائمة الوسطاء", icon: FaRegListAlt, href: "/dashboard/admin/agents" },
+                    { label: "إضافة وسيط", icon: FaUserPlus, href: "/dashboard/admin/agents/add" },
                 ]
             },
             {
                 label: "المسوقين",
                 icon: FaBullhorn,
                 children: [
-                    { label: "قائمة المسوقين", icon: FaRegListAlt, href: "/dashboard/marketers" },
-                    { label: "إضافة مسوق", icon: FaUserPlus, href: "/dashboard/marketers/add" }
+                    { label: "قائمة المسوقين", icon: FaRegListAlt, href: "/dashboard/admin/marketers" },
+                    { label: "إضافة مسوق", icon: FaUserPlus, href: "/dashboard/admin/marketers/add" }
                 ]
             }
         ]
@@ -73,16 +67,16 @@ export const dashboardItems: SelectableItem[] = [
                 label: "المدن والمناطق",
                 icon: FaCity,
                 children: [
-                    { label: "قائمة المدن والمناطق", icon: FaRegListAlt, href: "/dashboard/cities" },
-                    { label: "تعديل مدينة / منطقة", icon: FaUserPlus, href: "/dashboard/cities/edit" }
+                    { label: "قائمة المدن والمناطق", icon: FaRegListAlt, href: "/dashboard/admin/cities" },
+                    { label: "تعديل مدينة / منطقة", icon: FaUserPlus, href: "/dashboard/admin/cities/edit" }
                 ]
             },
             {
                 label: "المشاريع",
                 icon: FaProjectDiagram,
                 children: [
-                    { label: "قائمة المشاريع", icon: FaRegListAlt, href: "/dashboard/projects" },
-                    { label: "إضافة مشروع", icon: FaUserPlus, href: "/dashboard/projects/add" }
+                    { label: "قائمة المشاريع", icon: FaRegListAlt, href: "/dashboard/admin/projects" },
+                    { label: "إضافة مشروع", icon: FaUserPlus, href: "/dashboard/admin/projects/add" }
                 ]
             }
         ]
@@ -92,21 +86,31 @@ export const dashboardItems: SelectableItem[] = [
         label: "الصفحات",
         icon: FaFileAlt,
         children: [
-            { label: "الرئيسية", icon: FaHome, href: "/dashboard/pages/home" },
-            { label: "من نحن", icon: AiOutlineTeam, href: "/dashboard/pages/about" },
-            { label: "الأسئلة الشائعة", icon: FaQuestionCircle, href: "/dashboard/pages/faq" },
-            { label: "سياسة الخصوصية", icon: MdOutlinePrivacyTip, href: "/dashboard/pages/privacy" },
-            { label: "الشروط والأحكام", icon: MdDescription, href: "/dashboard/pages/terms" },
+            { label: "الرئيسية", icon: FaHome, href: "/dashboard/admin/pages/home" },
+            { label: "من نحن", icon: AiOutlineTeam, href: "/dashboard/admin/pages/about" },
+            { label: "الأسئلة الشائعة", icon: FaQuestionCircle, href: "/dashboard/admin/pages/faq" },
+            { label: "سياسة الخصوصية", icon: MdOutlinePrivacyTip, href: "/dashboard/admin/pages/privacy" },
+            { label: "الشروط والأحكام", icon: MdDescription, href: "/dashboard/admin/pages/terms" },
         ]
     },
     {
         label: "الإعدادات العامة",
         icon: MdSettings,
         children: [
-            { label: "الموقع", icon: FaMapMarkerAlt, href: "/dashboard/settings/location" },
-            { label: "الفيديو التعريفي", icon: FaVideo, href: "/dashboard/settings/intro-video" },
-            { label: "معلومات التواصل و الإنجازات", icon: FaAward, href: "/dashboard/settings/info" },
-            { label: "الفوتر", icon: FaRegFileAlt, href: "/dashboard/settings/footer" }
+            { label: "الموقع", icon: FaMapMarkerAlt, href: "/dashboard/admin/settings/location" },
+            { label: "الفيديو التعريفي", icon: FaVideo, href: "/dashboard/admin/settings/intro-video" },
+            { label: "معلومات التواصل و الإنجازات", icon: FaAward, href: "/dashboard/admin/settings/info" },
+            { label: "الفوتر", icon: FaRegFileAlt, href: "/dashboard/admin/settings/footer" }
         ]
     },
 ];
+
+export const agentDashboardItems: SelectableItem[] = [];
+export const marketerDashboardItems: SelectableItem[] = [];
+
+
+export const dashboardItems: Record<Role, SelectableItem[]> = {
+    admin: adminDashboardItems,
+    marketer: marketerDashboardItems,
+    agent: agentDashboardItems,
+};
