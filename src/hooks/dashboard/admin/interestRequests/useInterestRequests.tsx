@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 import { InterestRequestRow } from '@/types/dashboard/interest-requests';
-import { mockInterestRequests } from '@/constants/dashboard/interestRequests/constants';
+import { mockInterestRequests } from '@/constants/dashboard/admin/interestRequests/constants';
 
 export default function useInterestRequests() {
   const searchParams = useSearchParams();

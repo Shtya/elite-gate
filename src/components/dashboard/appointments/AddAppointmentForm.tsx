@@ -7,7 +7,7 @@ import Card from '@/components/shared/Card';
 import SelectSingleDate from '@/components/shared/Forms/SelectSingleDate';
 import SelectTime from '@/components/shared/Forms/SelectTime';
 import UserChanger from '../UserChanger';
-import { agents, clients } from '@/constants/dashboard/appointment/contants';
+import { agents, clients } from '@/constants/dashboard/admin/appointment/contants';
 import TextareaInput from '@/components/shared/Forms/TextareaInput';
 import PropertyChanger from '../Property Filter/PropertyChanger';
 import { properties } from '@/constants/projects';

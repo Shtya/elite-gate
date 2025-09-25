@@ -1,6 +1,6 @@
 'use client'
 import SelectDropdown from "@/components/shared/Forms/SelectDropdown";
-import { bookingStatusMap, bookingStatusStyle } from "@/constants/dashboard/appointment/contants";
+import { bookingStatusMap, bookingStatusStyle } from "@/constants/dashboard/admin/appointment/contants";
 import { BookingStatus } from "@/types/global";
 import { useState } from "react";
 

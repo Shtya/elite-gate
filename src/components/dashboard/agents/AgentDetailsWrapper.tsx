@@ -5,7 +5,7 @@ import DownloadContent from '@/components/shared/DownloadContent';
 import Link from 'next/link';
 import { BiGroup } from 'react-icons/bi';
 import AgentDetails from './AgentDetails';
-import { mockedAgents } from '@/constants/dashboard/agent/contants';
+import { mockedAgents } from '@/constants/dashboard/admin/agent/contants';
 
 type Props = {
     agentId: number;

@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import PropertyCardGrid from '@/components/main/projects/PropertyCardGrid';
 import PropertyCardList from '@/components/main/projects/PropertyCardList';
 import LoadingPropertyCardsDisplay from './LoadingPropertyCardsDisplay';
-import useProperties from '@/hooks/dashboard/properties/useProperties';
+import useProperties from '@/hooks/dashboard/admin/properties/useProperties';
 
 export default function PropertyCardsDisplay({ isAdmin = false }: { isAdmin?: boolean }) {
     const searchParams = useSearchParams();

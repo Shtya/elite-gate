@@ -1,6 +1,6 @@
 'use client';
 
-import WebsiteFooterForm from '@/components/dashboard/settings/WebsiteFooterForm';
+import WebsiteFooterForm from '@/components/dashboard/admin/settings/WebsiteFooterForm';
 import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import CenteredContainer from '@/components/shared/CenteredContainer';
 

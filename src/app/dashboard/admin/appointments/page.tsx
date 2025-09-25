@@ -1,7 +1,7 @@
 import AppointmentsDataView from '@/components/dashboard/appointments/AppointmentsDataView';
 import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import DownloadList from "@/components/shared/DownloadContent";
-import { bookingStatusMap, mockAppointments } from '@/constants/dashboard/appointment/contants';
+import { bookingStatusMap, mockAppointments } from '@/constants/dashboard/admin/appointment/contants';
 import { formatDate, formatTime } from '@/utils/date';
 import Link from 'next/link';
 import { BiPlus } from 'react-icons/bi';

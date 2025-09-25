@@ -1,6 +1,6 @@
 // types/dashboard/interest-requests.ts
 
-import { InterestRequestStatus } from "@/constants/dashboard/interestRequests/constants";
+import { InterestRequestStatus } from "@/constants/dashboard/admin/interestRequests/constants";
 import { MiniProject, PropertyType } from "../property";
 import { FileItem } from "@/utils/upload";
 

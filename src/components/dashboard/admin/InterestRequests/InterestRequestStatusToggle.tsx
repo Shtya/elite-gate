@@ -1,7 +1,7 @@
 'use client';
 
 import SelectDropdown from "@/components/shared/Forms/SelectDropdown";
-import { InterestRequestStatus, interestRequestStatusMap, interestRequestStatusStyle } from "@/constants/dashboard/interestRequests/constants";
+import { InterestRequestStatus, interestRequestStatusMap, interestRequestStatusStyle } from "@/constants/dashboard/admin/interestRequests/constants";
 import { useState } from "react";
 
 

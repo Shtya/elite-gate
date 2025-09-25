@@ -1,6 +1,6 @@
 import DashboardHeaderTitle from "@/components/dashboard/DashboardHeaderTitle";
 import CenteredContainer from "@/components/shared/CenteredContainer";
-import TermsTabsForm from "@/components/dashboard/pages/terms/TermsTabsForm";
+import TermsTabsForm from "@/components/dashboard/admin/pages/terms/TermsTabsForm";
 
 export default function TermsContentPage() {
     return (

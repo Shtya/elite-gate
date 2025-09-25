@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FaRegCalendarAlt, FaClipboardList, FaCalendarAlt } from 'react-icons/fa';
 import { formatDate, formatTime } from '@/utils/date';
-import { agents, bookingStatusMap, bookingStatusStyle } from '@/constants/dashboard/appointment/contants';
+import { agents, bookingStatusMap, bookingStatusStyle } from '@/constants/dashboard/admin/appointment/contants';
 import AppointmentStatusControl from './AppointmentStatusControl';
 import Card from '@/components/shared/Card';
 import { addMinutes } from 'date-fns';
@@ -15,7 +15,7 @@ import { MdReviews, MdStarRate, MdTimelapse } from 'react-icons/md';
 import StarRating from '@/components/shared/StarRating';
 import AppointmentNotesCard from './AppointmentNotesCard';
 import UserChanger from '../UserChanger';
-import { projectTypeColors } from '@/constants/dashboard/property.tsx/constants';
+import { projectTypeColors } from '@/constants/dashboard/admin/property.tsx/constants';
 import { propertyTypeLabels } from '@/types/property';
 import AttachmentsCard from '@/components/shared/AttachmentsCard';
 import AppointmentProofUploadControl from './AppointmentProofUploadControl';

@@ -1,7 +1,7 @@
 // hooks/useAppointments.ts
 'use client';
 
-import { mockAppointments } from '@/constants/dashboard/appointment/contants';
+import { mockAppointments } from '@/constants/dashboard/admin/appointment/contants';
 import { AppointmentFilterKeys, AppointmentRow } from '@/types/dashboard/appointment';
 import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';

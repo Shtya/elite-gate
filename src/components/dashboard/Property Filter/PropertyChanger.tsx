@@ -5,7 +5,7 @@ import { MdClose } from 'react-icons/md';
 import InfoCell from '@/components/shared/InfoCell';
 import Popup from '@/components/shared/Popup';
 import PropertyAssignmentToggle from './PropertyAssignmentToggle';
-import { projectTypeColors } from '@/constants/dashboard/property.tsx/constants';
+import { projectTypeColors } from '@/constants/dashboard/admin/property.tsx/constants';
 import { PropertyType, propertyTypeLabels } from '@/types/property';
 import { getDefaultProjectpath } from '@/utils/appointment';
 

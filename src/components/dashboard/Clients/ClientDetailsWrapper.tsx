@@ -1,4 +1,4 @@
-import { rows } from '@/constants/dashboard/client/contants';
+import { rows } from '@/constants/dashboard/admin/client/contants';
 import ClientDetails from './ClientDetails';
 import { notFound } from 'next/navigation';
 import DashboardHeaderTitle from '../DashboardHeaderTitle';

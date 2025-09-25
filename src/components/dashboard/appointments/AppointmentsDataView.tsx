@@ -1,7 +1,7 @@
 'use client'
 import DataView from "@/components/shared/DateViewTable/DataView";
-import { agents, appointmentColumns, appointmentFilters, appointmentSortConfig } from "@/constants/dashboard/appointment/contants";
-import useAppointments from "@/hooks/dashboard/appointments/useAppointments";
+import { agents, appointmentColumns, appointmentFilters, appointmentSortConfig } from "@/constants/dashboard/admin/appointment/contants";
+import useAppointments from "@/hooks/dashboard/admin/appointments/useAppointments";
 import { AppointmentRow } from "@/types/dashboard/appointment";
 import { FaExchangeAlt, FaEye, FaUserEdit } from "react-icons/fa";
 import AppointmentStatusToggle from "./AppointmentStatusToggle";

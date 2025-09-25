@@ -5,8 +5,8 @@ import { InterestRequestRow } from "@/types/dashboard/interest-requests";
 import { FaExchangeAlt, FaEye } from "react-icons/fa";
 import { ActionType, MenuActionItem } from "@/components/shared/Header/MenuActionList";
 import InterestRequestStatusToggle from "./InterestRequestStatusToggle";
-import { interestRequestColumns, interestRequestFilters, interestRequestSortConfig } from "@/constants/dashboard/interestRequests/constants";
-import useInterestRequests from "@/hooks/dashboard/interestRequests/useInterestRequests";
+import { interestRequestColumns, interestRequestFilters, interestRequestSortConfig } from "@/constants/dashboard/admin/interestRequests/constants";
+import useInterestRequests from "@/hooks/dashboard/admin/interestRequests/useInterestRequests";
 
 
 export default function InterestRequestsDataView() {

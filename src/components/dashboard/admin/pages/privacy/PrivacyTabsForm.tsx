@@ -7,8 +7,8 @@ import TextInput from "@/components/shared/Forms/TextInput";
 import PrimaryButton from "@/components/shared/Button";
 import SoftActionButton from "@/components/shared/SoftActionButton";
 import EditPolicyItemsSection from "./EditPolicyItemsSection";
-import SidebarTabs from "../../../shared/SidebarTabs";
 import { PrivacyGroups } from "@/constants/pages/aboutUs";
+import SidebarTabs from "@/components/shared/SidebarTabs";
 
 export type PrivacyPolicy = { title: string; items: string[] };
 export type PrivacyFormValues = {

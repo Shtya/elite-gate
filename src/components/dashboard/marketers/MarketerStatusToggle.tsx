@@ -1,5 +1,5 @@
 
-import { marketerStatusClassMap } from "@/constants/dashboard/marketers/contants";
+import { marketerStatusClassMap } from "@/constants/dashboard/admin/marketers/contants";
 import { MarketerRow, MarketerStatus, marketerStatusMap } from "@/types/dashboard/marketer";
 import { useState } from "react";
 

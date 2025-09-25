@@ -2,8 +2,8 @@
 
 import DataView from "@/components/shared/DateViewTable/DataView";
 import { MenuActionItem } from "@/components/shared/Header/MenuActionList";
-import { cityColumns, citySortConfig } from "@/constants/dashboard/city/contants";
-import { useCities } from "@/hooks/dashboard/cities/useCities";
+import { cityColumns, citySortConfig } from "@/constants/dashboard/admin/city/contants";
+import { useCities } from "@/hooks/dashboard/admin/cities/useCities";
 import { CityRow } from "@/types/dashboard/city";
 import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 import DeleteCityConfirm from "./DeleteCityConfirm";

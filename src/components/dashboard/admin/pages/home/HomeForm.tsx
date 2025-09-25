@@ -6,9 +6,9 @@ import TextInput from '@/components/shared/Forms/TextInput';
 import TextareaInput from '@/components/shared/Forms/TextareaInput';
 import Uploader from '@/components/shared/Forms/Uploader';
 import { FileItem } from '@/utils/upload';
-import EditFAQSection from '@/components/dashboard/pages/EditFAQSection';
 import PrimaryButton from '@/components/shared/Button';
 import SoftActionButton from '@/components/shared/SoftActionButton';
+import EditFAQSection from '../EditFAQSection';
 
 type FAQItem = {
     question: string;

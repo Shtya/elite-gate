@@ -1,7 +1,7 @@
 import AppointmentDetails from '@/components/dashboard/appointments/AppointmentDetails';
 import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import DownloadContent from '@/components/shared/DownloadContent';
-import { mockAppointments } from '@/constants/dashboard/appointment/contants';
+import { mockAppointments } from '@/constants/dashboard/admin/appointment/contants';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { BiGroup } from 'react-icons/bi';

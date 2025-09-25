@@ -3,7 +3,7 @@ import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import Link from 'next/link';
 import { BiUser, BiGroup } from 'react-icons/bi';
 import MarketerForm from '@/components/dashboard/marketers/MarketerForm';
-import { mockedMarketers } from '@/constants/dashboard/marketers/contants';
+import { mockedMarketers } from '@/constants/dashboard/admin/marketers/contants';
 import CenteredContainer from '@/components/shared/CenteredContainer';
 
 

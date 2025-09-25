@@ -8,7 +8,7 @@ import EditFAQSection from "./EditFAQSection";
 import { faqGroups } from "@/components/main/faq/FeqTaps";
 import PrimaryButton from "@/components/shared/Button";
 import SoftActionButton from "@/components/shared/SoftActionButton";
-import SidebarTabs from "../../shared/SidebarTabs";
+import SidebarTabs from "@/components/shared/SidebarTabs";
 
 export type FAQGroup = {
     title: string;

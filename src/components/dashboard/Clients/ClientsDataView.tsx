@@ -1,8 +1,8 @@
 'use client';
 import DataView from '@/components/shared/DateViewTable/DataView';
 import { FaCheck, FaEdit, FaPencilAlt, FaRegTrashAlt } from 'react-icons/fa';
-import useClients from '@/hooks/dashboard/client/useClients';
-import { columns, filters, sortConfig } from '@/constants/dashboard/client/contants';
+import useClients from '@/hooks/dashboard/admin/client/useClients';
+import { columns, filters, sortConfig } from '@/constants/dashboard/admin/client/contants';
 import { ClientRow } from '@/types/dashboard/client';
 import ClientStatusToggle from './ClientStatusToggle';
 import { ActionType, MenuActionItem } from '@/components/shared/Header/MenuActionList';

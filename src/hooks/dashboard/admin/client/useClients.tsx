@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { rows as mockRows } from '@/constants/dashboard/client/contants';
+import { rows as mockRows } from '@/constants/dashboard/admin/client/contants';
 import { ClientFilterKeys, ClientRow, ClientStatus } from '@/types/dashboard/client';
 import { useCallback } from 'react';
 

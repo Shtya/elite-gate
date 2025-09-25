@@ -3,7 +3,7 @@ import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import DownloadContent from '@/components/shared/DownloadContent';
 import Link from 'next/link';
 import { BiGroup } from 'react-icons/bi';
-import { mockedMarketers } from '@/constants/dashboard/marketers/contants';
+import { mockedMarketers } from '@/constants/dashboard/admin/marketers/contants';
 import MarketerDetails from '@/components/dashboard/marketers/MarketerDetails';
 
 

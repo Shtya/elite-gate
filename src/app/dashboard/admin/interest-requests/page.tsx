@@ -3,7 +3,7 @@ import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import DownloadList from "@/components/shared/DownloadContent";
 import { BiPlus } from 'react-icons/bi';
 import Link from 'next/link';
-import InterestRequestsDataView from '@/components/dashboard/InterestRequests/InterestRequestsDataView';
+import InterestRequestsDataView from '@/components/dashboard/admin/InterestRequests/InterestRequestsDataView';
 
 export default function InterestRequestsPage() {
     return (

@@ -1,6 +1,6 @@
 import DashboardHeaderTitle from "@/components/dashboard/DashboardHeaderTitle";
 import CenteredContainer from "@/components/shared/CenteredContainer";
-import PrivacyTabsForm from "@/components/dashboard/pages/privacy/PrivacyTabsForm";
+import PrivacyTabsForm from "@/components/dashboard/admin/pages/privacy/PrivacyTabsForm";
 
 export default function PrivacyContentPage() {
     return (

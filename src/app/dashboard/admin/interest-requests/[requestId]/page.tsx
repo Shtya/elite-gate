@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { BiListUl } from 'react-icons/bi';
 
 import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
-import InterestRequestDetails from '@/components/dashboard/InterestRequests/InterestRequestDetails';
+import InterestRequestDetails from '@/components/dashboard/admin/InterestRequests/InterestRequestDetails';
 import { InterestRequestFull } from '@/types/dashboard/interest-requests';
 
 ;

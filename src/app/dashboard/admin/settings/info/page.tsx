@@ -1,7 +1,7 @@
 
 import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import CenteredContainer from '@/components/shared/CenteredContainer';
-import WebsiteInfoForm from '@/components/dashboard/settings/WebsiteInfoForm';
+import WebsiteInfoForm from '@/components/dashboard/admin/settings/WebsiteInfoForm';
 
 export default function SiteInfoPage() {
 

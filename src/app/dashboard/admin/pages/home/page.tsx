@@ -1,5 +1,5 @@
 import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
-import HomeForm from '@/components/dashboard/pages/home/HomeForm';
+import HomeForm from '@/components/dashboard/admin/pages/home/HomeForm';
 import CenteredContainer from '@/components/shared/CenteredContainer';
 
 

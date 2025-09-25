@@ -2,7 +2,7 @@
 
 import Card from '@/components/shared/Card';
 import Popup from '@/components/shared/Popup';
-import { InterestRequestStatus, interestRequestStatusMap, interestRequestStatusStyle } from '@/constants/dashboard/interestRequests/constants';
+import { InterestRequestStatus, interestRequestStatusMap, interestRequestStatusStyle } from '@/constants/dashboard/admin/interestRequests/constants';
 import { InterestRequestFull } from '@/types/dashboard/interest-requests';
 import { propertyTypeLabels } from '@/types/property';
 import InterestRequestStatusToggle from './InterestRequestStatusToggle';

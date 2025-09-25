@@ -8,7 +8,8 @@ import TextareaInput from "@/components/shared/Forms/TextareaInput";
 import PrimaryButton from "@/components/shared/Button";
 import SoftActionButton from "@/components/shared/SoftActionButton";
 import { realEstateContent } from "@/components/main/terms/TermsTabs";
-import SidebarTabs from "../../../shared/SidebarTabs";
+import SidebarTabs from "@/components/shared/SidebarTabs";
+
 
 export type Term = { title: string; description: string };
 export type TermsFormValues = {

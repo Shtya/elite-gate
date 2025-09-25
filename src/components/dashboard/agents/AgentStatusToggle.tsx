@@ -1,4 +1,4 @@
-import { agentStatusClassMap } from "@/constants/dashboard/agent/contants";
+import { agentStatusClassMap } from "@/constants/dashboard/admin/agent/contants";
 import { AgentRow, AgentStatus, agentStatusMap } from "@/types/dashboard/agent";
 import { useState } from "react";
 

@@ -1,8 +1,9 @@
-import CityWithRegionsForm from '@/components/dashboard/cities/CityWithRegionsForm';
-import CitiesDataView from '@/components/dashboard/cities/CitiesDataView';
+
+import CitiesDataView from '@/components/dashboard/admin/cities/CitiesDataView';
+import CityWithRegionsForm from '@/components/dashboard/admin/cities/CityWithRegionsForm';
 import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import DashboardSectionCard from '@/components/dashboard/DashboardSectionCard';
-import { mockedUnSavedCities } from '@/constants/dashboard/city/contants';
+import { mockedUnSavedCities } from '@/constants/dashboard/admin/city/contants';
 import Link from 'next/link';
 import { BiEditAlt } from 'react-icons/bi';
 

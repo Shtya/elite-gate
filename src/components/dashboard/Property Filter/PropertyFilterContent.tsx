@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDebounce } from '@/hooks/useDebounce';
 import KeywordSearch from '@/components/shared/KeywordSearch';
-import { projectTypeColors } from '@/constants/dashboard/property.tsx/constants';
+import { projectTypeColors } from '@/constants/dashboard/admin/property.tsx/constants';
 import { PropertyType, propertyTypeLabels } from '@/types/property';
 import InfoCell from '@/components/shared/InfoCell';
 import { getDefaultProjectpath } from '@/utils/appointment';

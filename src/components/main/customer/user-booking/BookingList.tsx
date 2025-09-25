@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import BookingCard from './BookingCard';
 import { Booking, BookingStatus } from '@/types/global';
 import Card from '@/components/shared/Card';
-import { bookingStatusMap } from '@/constants/dashboard/appointment/contants';
+import { bookingStatusMap } from '@/constants/dashboard/admin/appointment/contants';
 
 interface BookingListProps {
     bookings: Booking[];

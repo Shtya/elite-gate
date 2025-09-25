@@ -1,17 +1,20 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { AgentFilterKeys, AgentRow, AgentStatus } from '@/types/dashboard/agent';
+import { MarketerFilterKeys, MarketerRow, MarketerStatus } from '@/types/dashboard/marketer';
 import { useCallback } from 'react';
-import { mockedAgents } from '@/constants/dashboard/agent/contants';
+import { mockedMarketers } from '@/constants/dashboard/admin/marketers/contants';
 
-export default function useAgents() {
+export default function useMarketers() {
     const searchParams = useSearchParams();
-    const getParam = useCallback((key: AgentFilterKeys) => searchParams.get(key), [searchParams]);
+    const getParam = useCallback(
+        (key: MarketerFilterKeys) => searchParams.get(key),
+        [searchParams]
+    );
 
     const getRows = useCallback(
         async (signal?: AbortSignal): Promise<{
-            rows: AgentRow[];
+            rows: MarketerRow[];
             error?: Error | null;
             totalCount?: number;
         }> => {
@@ -25,14 +28,17 @@ export default function useAgents() {
                 const limit = parseInt(getParam('limit') || '10', 10);
                 const searchKey = getParam('search')?.toLowerCase().trim() || '';
 
-                await new Promise((r) => setTimeout(r, 300)); // simulate delay
+                // Simulate delay
+                await new Promise((r) => setTimeout(r, 300));
 
-                let filtered = [...mockedAgents];
+                let filtered = [...mockedMarketers];
 
+                // Filter by status
                 if (status && status !== 'all') {
-                    filtered = filtered.filter((row) => row.status === status as AgentStatus);
+                    filtered = filtered.filter((row) => row.status === status as MarketerStatus);
                 }
 
+                // Filter by joined date range
                 if (joinedFrom || joinedTo) {
                     filtered = filtered.filter((row) => {
                         const date = new Date(row.joinedAt);
@@ -42,6 +48,7 @@ export default function useAgents() {
                     });
                 }
 
+                // Search across multiple fields
                 if (searchKey) {
                     filtered = filtered.filter((row) => {
                         return (
@@ -52,8 +59,9 @@ export default function useAgents() {
                     });
                 }
 
+                // Sorting
                 if (sort) {
-                    const sortKey = sort as keyof AgentRow;
+                    const sortKey = sort as keyof MarketerRow;
 
                     filtered.sort((a, b) => {
                         let valA = a[sortKey];
@@ -75,6 +83,7 @@ export default function useAgents() {
                     });
                 }
 
+                // Pagination
                 const total = filtered.length;
                 const paginated = filtered.slice((page - 1) * limit, page * limit);
 
@@ -88,7 +97,7 @@ export default function useAgents() {
                 }
                 return {
                     rows: [],
-                    error: new Error('فشل في جلب بيانات الوسطاء'),
+                    error: new Error('فشل في جلب بيانات المسوقين'),
                 };
             }
         },

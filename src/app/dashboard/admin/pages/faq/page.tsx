@@ -1,5 +1,5 @@
 import DashboardHeaderTitle from "@/components/dashboard/DashboardHeaderTitle";
-import FaqTabsForm from "@/components/dashboard/pages/FaqTabsForm";
+import FaqTabsForm from "@/components/dashboard/admin/pages/FaqTabsForm";
 import CenteredContainer from "@/components/shared/CenteredContainer";
 
 export default function FAQContentPage() {

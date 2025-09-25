@@ -4,7 +4,7 @@ import Popup from '../shared/Popup';
 import InfoCell from '../shared/InfoCell';
 import { MdClose } from 'react-icons/md';
 import UserFilterContent from './UserFilterContent';
-import { agents } from '@/constants/dashboard/appointment/contants';
+import { agents } from '@/constants/dashboard/admin/appointment/contants';
 
 type Agent = {
     id: number;

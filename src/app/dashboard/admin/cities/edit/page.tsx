@@ -1,7 +1,7 @@
-import CityWithRegionsForm from "@/components/dashboard/cities/CityWithRegionsForm";
+import CityWithRegionsForm from "@/components/dashboard/admin/cities/CityWithRegionsForm";
 import DashboardHeaderTitle from "@/components/dashboard/DashboardHeaderTitle";
 import CenteredContainer from "@/components/shared/CenteredContainer";
-import { mockedCitiesForEdit } from "@/constants/dashboard/city/contants";
+import { mockedCitiesForEdit } from "@/constants/dashboard/admin/city/contants";
 import Link from "next/link";
 import { FaCity } from "react-icons/fa";
 

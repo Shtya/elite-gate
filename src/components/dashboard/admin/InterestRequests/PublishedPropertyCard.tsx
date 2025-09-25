@@ -2,7 +2,7 @@
 
 import Card from '@/components/shared/Card';
 import InfoCell from '@/components/shared/InfoCell';
-import { projectTypeColors } from '@/constants/dashboard/property.tsx/constants';
+import { projectTypeColors } from '@/constants/dashboard/admin/property.tsx/constants';
 import { MiniProject, propertyTypeLabels } from '@/types/property';
 import { getDefaultProjectpath } from '@/utils/appointment';
 
