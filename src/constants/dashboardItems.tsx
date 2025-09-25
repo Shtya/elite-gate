@@ -113,7 +113,7 @@ export const agentDashboardItems: SelectableItem[] = [
     {
         label: "لوحة التحكم",
         icon: MdDashboard,
-        href: "/dashboard/admin"
+        href: "/dashboard/agent"
     },
     {
         label: "المواعيد",
@@ -141,7 +141,13 @@ export const agentDashboardItems: SelectableItem[] = [
     },
 ];
 
-export const marketerDashboardItems: SelectableItem[] = [];
+export const marketerDashboardItems: SelectableItem[] = [
+    {
+        label: "لوحة التحكم",
+        icon: MdDashboard,
+        href: "/dashboard/marketer"
+    },
+];
 
 
 export const dashboardItems: Record<Role, SelectableItem[]> = {

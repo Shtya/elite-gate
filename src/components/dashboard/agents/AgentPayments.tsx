@@ -10,7 +10,7 @@ export default function AgentPayments() {
         <DashboardSectionCard className="mt-4 lg:mt-6" title="المحفظة">
             <div className="grid grid-cols-12 gap-4 lg:gap-6">
                 {/* إجمالي الأرباح */}
-                <div className="col-span-12 md:col-span-6 lg:col-span-4">
+                <div className="col-span-12 md:col-span-6 xl:col-span-4">
                     <CardInfo
                         icon={
                             <div className="rounded-full bg-primary p-4">
@@ -24,7 +24,7 @@ export default function AgentPayments() {
                 </div>
 
                 {/* الرصيد المعلق */}
-                <div className="col-span-12 md:col-span-6 lg:col-span-4">
+                <div className="col-span-12 md:col-span-6 xl:col-span-4">
                     <CardInfo
                         icon={
                             <div className="rounded-full bg-secondary-500 p-4">
@@ -38,7 +38,7 @@ export default function AgentPayments() {
                 </div>
 
                 {/* الزوار (مثال إذا أردت بطاقة إضافية بطابع مشابه) */}
-                <div className="col-span-12 md:col-span-6 lg:col-span-4">
+                <div className="col-span-12 md:col-span-6 xl:col-span-4">
                     <CardInfo
                         icon={
                             <div className="rounded-full bg-tertiary p-4">

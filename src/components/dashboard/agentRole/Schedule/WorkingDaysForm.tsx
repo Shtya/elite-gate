@@ -6,6 +6,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { isEndTimeAfterStart } from "@/utils/date";
 import TimeOnlyInput from "@/components/shared/Forms/TimeOnlyInput";
+import PrimaryButton from "@/components/shared/Button";
+import SoftActionButton from "@/components/shared/SoftActionButton";
 
 
 type DayKey = "sun" | "mon" | "tue" | "wed" | "thu" | "fri" | "sat";
@@ -174,18 +176,14 @@ export default function WorkingDaysForm() {
                         />
                     </div>
 
-                    <div className="flex items-center justify-end gap-3 pt-2">
-                        {savedAt && (
-                            <span className="text-sm text-[var(--dark-400)]">تم الحفظ</span>
-                        )}
-                        <button
-                            type="submit"
-                            disabled={saving}
-                            className="btn-primary px-5 py-2 rounded-xl disabled:opacity-60"
-                        >
+
+                    <div className="col-span-12 flex items-center gap-6 flex-wrap mt-4">
+                        <PrimaryButton type="submit">
                             {saving ? "جاري الحفظ..." : "حفظ الإعدادات"}
-                        </button>
+                        </PrimaryButton>
+                        <SoftActionButton onClick={() => { }}>إلغاء</SoftActionButton>
                     </div>
+
                 </div>
             </section>
         </form>
