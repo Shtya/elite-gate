@@ -1,14 +1,12 @@
 import { BaseFilterKeys } from "../components/Table";
 
 // Possible statuses for a marketer
-export type MarketerStatus = 'active' | 'suspended' | 'pending' | 'rejected';
+export type MarketerStatus = 'active' | 'suspended';
 
 // Map status → Arabic label
 export const marketerStatusMap: Record<MarketerStatus, string> = {
     active: 'نشط',
     suspended: 'موقوف',
-    pending: 'قيد الانتظار',
-    rejected: 'مرفوض',
 };
 
 // Marketer row type (used in tables, lists, etc.)

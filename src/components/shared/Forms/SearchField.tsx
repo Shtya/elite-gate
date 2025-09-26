@@ -23,11 +23,12 @@ export default function SearchField({ value, onChange, searchPlaceholder }: Prop
 
         if (debouncedValue) {
             params.set('search', debouncedValue);
-        } else {
+            router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+        } else if (params.get('search')) {
             params.delete('search');
-        }
+            router.replace(`${pathname}?${params.toString()}`, { scroll: false });
 
-        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+        }
     }, [debouncedValue]);
 
     return <KeywordSearch value={value} onChange={onChange} searchPlaceholder={searchPlaceholder} />;

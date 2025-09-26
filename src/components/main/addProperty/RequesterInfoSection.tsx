@@ -2,7 +2,7 @@ import { Control, Controller } from "react-hook-form";
 import Card from "@/components/shared/Card";
 import TextInput from "@/components/shared/Forms/TextInput";
 import SelectDropdown from "@/components/shared/Forms/SelectDropdown";
-import { PropertyRequestFormValues } from "@/app/(main)/add-property/page";
+import { PropertyRequestFormValues } from "./PropertyRequestForm";
 
 
 export default function RequesterInfoSection({ control }: { control: Control<PropertyRequestFormValues> }) {

@@ -8,6 +8,9 @@ import { useCallback, useState } from 'react';
 import PrimaryButton from '../Button';
 import LogoIcon from '../LogoIcon';
 import ContactItem from './ContactItem';
+import { MdAddHomeWork } from 'react-icons/md';
+import { FaUserPlus } from 'react-icons/fa';
+import Tooltip from '../Tooltip';
 
 export default function TopContactBar() {
   const [copied, setCopied] = useState<'phone' | 'email' | 'location' | null>(null);
@@ -37,7 +40,7 @@ export default function TopContactBar() {
         </div>
 
         {/* Contact Info */}
-        <div className="flex items-stretch divide-x">
+        <div className="hidden md:flex items-stretch divide-x">
           <ContactItem
             icon={<FiPhoneCall size={20} aria-hidden />}
             label="اتصال مجاني"
@@ -65,19 +68,28 @@ export default function TopContactBar() {
         </div>
 
         {/* Submit Button */}
-        <div className='flex items-center gap-2 '>
-          <PrimaryButton
-            href="/add-property"
-            className="btn-primary-lg hidden md:inline-flex focus:outline-none focus:ring-2 focus:ring-primary/30"
-          >
-            أضف عقارك
-          </PrimaryButton>
-          <PrimaryButton
-            href="/become-agent"
-            className="btn-primary-lg hidden md:inline-flex focus:outline-none focus:ring-2 focus:ring-primary/30"
-          >
-            انضم كوكيل
-          </PrimaryButton>
+        <div className="flex items-center gap-2">
+          {/* Desktop buttons */}
+          <Tooltip text='أضف عقارك' tipClassName='block md:hidden '>
+            <PrimaryButton
+              href="/add-property"
+              className="max-md:p-2 md:inline-flex focus:outline-none focus:ring-2 focus:ring-primary/30"
+            >
+              <span className='hidden md:block'>أضف عقارك</span>
+              <MdAddHomeWork size={22} className='block md:hidden ' />
+            </PrimaryButton>
+          </Tooltip>
+
+          <Tooltip text='انضم كوكيل' tipClassName='block md:hidden'>
+            <PrimaryButton
+              href="/become-agent"
+              className="max-md:p-2 md:inline-flex focus:outline-none focus:ring-2 focus:ring-primary/30"
+            >
+
+              <span className='hidden md:block'>انضم كوكيل</span>
+              <FaUserPlus size={22} className='block md:hidden ' />
+            </PrimaryButton>
+          </Tooltip>
         </div>
       </div>
     </header>

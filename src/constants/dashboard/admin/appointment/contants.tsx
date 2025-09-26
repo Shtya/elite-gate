@@ -228,7 +228,8 @@ export const mockAppointments: AppointmentRow[] = [
                 isPrimary: false,
             },
         ],
-
+        agentReviewStars: 4,
+        agentReviewText: "خالد كان عميلًا محترمًا ومنظمًا، حضر في الوقت المحدد وكان واضحًا في متطلباته. التعامل معه كان سلسًا وساعدني في تقديم أفضل الخيارات له."
     },
     {
         id: 102, project: { id: 12, title: 'فلل البستان – واجهات حجرية', type: 'office', image: '' }, appointmentAt: '2025-10-05T09:00:00', createdAt: '2025-09-29T10:20:00', agent: { id: 35, name: 'سارة العتيبي', email: 'sara@agency.com', image: '/users/user-3.jpg' }, client: { id: 2, name: 'عبدالله الشهري', email: 'abdullah@example.com', image: '/users/user-2.webp' }, status: 'completed', reviewStars: 4,

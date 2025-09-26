@@ -8,22 +8,11 @@ export default function ContactForm() {
     return (
         <div className="bg-white rounded-2xl p-3 sm:p-4 md:p-6 lg:p-8">
             <form>
-                <h3 className="mb-0 h3">طلب عرض سعر</h3>
+                <h3 className="mb-0 h3">تواصل معنا الآن</h3>
                 <div className="border border-dashed my-6"></div>
                 <div className="grid grid-cols-12 gap-4">
                     <TextInput id="first-name" label="الاسم" placeholder="أدخل الاسم" name="name" />
                     <TextInput id="enter-email" label="البريد الإلكتروني" placeholder="أدخل البريد الإلكتروني" name="email" type="email" />
-                    <SelectInput
-                        label="اختر نوع الخدمة"
-                        name="service"
-                        options={[
-                            { value: 'apartment', label: 'شقق' },
-                            { value: 'new-york', label: 'نيويورك' },
-                            { value: 'chicago', label: 'شيكاغو' },
-                            { value: 'atlanta', label: 'أتلانتا' },
-                        ]}
-                    />
-
                     <TextareaInput id="review-review" label="الرسالة" name="message" placeholder="اكتب رسالتك" />
                     <div className="col-span-12">
                         <PrimaryButton

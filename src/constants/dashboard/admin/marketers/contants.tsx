@@ -5,8 +5,6 @@ import { formatDate } from '@/utils/date';
 export const marketerStatusClassMap: Record<MarketerStatus, string> = {
     active: 'bg-green-600 hover:bg-green-700',
     suspended: 'bg-red-600 hover:bg-red-700',
-    pending: 'bg-yellow-500 hover:bg-yellow-600',
-    rejected: 'bg-gray-500 hover:bg-gray-600',
 };
 
 export const marketerSortConfig: SortConfig = {
@@ -27,8 +25,6 @@ export const marketerFilters: FilterConfig[] = [
             { label: 'الكل', value: 'all' },
             { label: 'نشط', value: 'active' },
             { label: 'موقوف', value: 'suspended' },
-            { label: 'قيد الانتظار', value: 'pending' },
-            { label: 'مرفوض', value: 'rejected' },
         ],
         default: 'all',
     },
@@ -79,8 +75,6 @@ export const marketerColumns: TableColumn<MarketerRow>[] = [
             const statusStyles: Record<MarketerStatus, string> = {
                 active: 'bg-[#EBFBF2] text-[var(--secondary-500)]',
                 suspended: 'bg-[#FFF0F0] text-[#BE6464]',
-                pending: 'bg-yellow-100 text-yellow-700',
-                rejected: 'bg-gray-200 text-gray-600',
             };
             const style = statusStyles[val as MarketerStatus] || '';
 
@@ -110,7 +104,7 @@ export const mockedMarketers: MarketerRow[] = [
         email: 'sara.abdullah@example.com',
         phone: '+966 511 222 333',
         joinedAt: '2023-11-02',
-        status: 'pending',
+        status: 'suspended',
     },
     {
         id: 3,
@@ -128,6 +122,6 @@ export const mockedMarketers: MarketerRow[] = [
         email: 'layla.zahrani@marketingpro.com',
         phone: '+966 544 666 777',
         joinedAt: '2021-05-10',
-        status: 'rejected',
+        status: 'active',
     },
 ];

@@ -139,7 +139,7 @@ export default function HomeForm() {
                         <TextareaInput {...field} id="hero-subtitle" label="النص الفرعي" placeholder="اشرح بإيجاز ما يميز منصتك" />
                     )}
                 />
-                <Uploader control={control} name="heroImage" label="صور الخلفية" accept="image/*" allowMultiple allowPrimary={false} maxFiles={2} />
+                <Uploader control={control} name="heroImage" label="صور الخلفية" accept="image/*" allowMultiple allowPrimary={false} maxFiles={2} rules={['الحد الأقصى لحجم الملف 9MB', 'الحد الأقصى ملقان']} />
             </Card>
 
 

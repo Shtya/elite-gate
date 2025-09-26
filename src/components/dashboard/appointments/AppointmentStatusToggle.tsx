@@ -1,9 +1,9 @@
 'use client'
 import SelectDropdown from "@/components/shared/Forms/SelectDropdown";
 import { bookingStatusMap, bookingStatusStyle } from "@/constants/dashboard/admin/appointment/contants";
+import { useRoleFromPath } from "@/hooks/dashboard/admin/useRoleFromPath";
 import { BookingStatus } from "@/types/global";
-import { useState } from "react";
-
+import { useState, useMemo } from "react";
 
 type Props = {
     appointmentId: number;
@@ -45,11 +45,28 @@ export default function AppointmentStatusToggle({
     const title = "تغيير حالة الموعد";
     const message = `اختر الحالة الجديدة للموعد رقم ${appointmentId}.`;
     const style = currentStatus ? bookingStatusStyle[currentStatus] : 'bg-gray-100 text-gray-500';
-    const statusOptions = Object.entries(bookingStatusMap).map(([value, label]) => ({
-        value,
-        label,
-    }));
 
+    const role = useRoleFromPath();
+
+
+    const statusOptions = useMemo(() => {
+        const allOptions = Object.entries(bookingStatusMap).map(([value, label]) => ({
+            value,
+            label,
+        }));
+
+        if (role === 'agent') {
+            // Remove 'pending', 'assigned', 'confirmed'
+            return allOptions.filter(
+                (option) =>
+                    option.value !== 'pending' &&
+                    option.value !== 'assigned' &&
+                    option.value !== 'confirmed'
+            );
+        }
+
+        return allOptions;
+    }, [role]);
     return (
         <div className="rounded-lg bg-white max-w-md mx-auto">
             <h3 className="text-lg font-bold text-gray-800 text-center">{title}</h3>

@@ -3,9 +3,9 @@
 import CardInfo from "@/components/shared/infos/CardInfo";
 import { formatSAR } from "@/utils/helpers";
 import { FaWallet, FaHourglassHalf, FaMoneyBillWave } from "react-icons/fa";
-import DashboardSectionCard from "../DashboardSectionCard";
+import DashboardSectionCard from "./DashboardSectionCard";
 
-export default function AgentPayments() {
+export default function PaymentsInformation() {
     return (
         <DashboardSectionCard className="mt-4 lg:mt-6" title="المحفظة">
             <div className="grid grid-cols-12 gap-4 lg:gap-6">

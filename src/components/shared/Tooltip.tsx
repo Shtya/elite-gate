@@ -5,9 +5,10 @@ type TooltipProps = {
     children: ReactNode;
     text: string;
     className?: string;
+    tipClassName?: string;
 };
 
-const Tooltip: React.FC<TooltipProps> = ({ children, text, className = "" }) => {
+const Tooltip: React.FC<TooltipProps> = ({ children, text, className = "", tipClassName = "" }) => {
     const [show, setShow] = useState(false);
     const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -24,11 +25,11 @@ const Tooltip: React.FC<TooltipProps> = ({ children, text, className = "" }) => 
             {show && text &&
                 createPortal(
                     <div
-                        className="fixed z-[99999] w-fit max-w-xs rounded-md 
+                        className={` ${tipClassName} fixed z-[99999] w-fit max-w-xs rounded-md 
                        bg-[var(--primary)]/90 text-white 
                        px-3 py-2 text-xs font-medium shadow-lg 
                        backdrop-blur-sm border border-[var(--primary-600)] 
-                       pointer-events-none transition-opacity duration-150"
+                       pointer-events-none transition-opacity duration-150`}
                         style={{
                             top: position.y + 16,
                             left: position.x + 16,

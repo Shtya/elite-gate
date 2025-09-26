@@ -29,16 +29,17 @@ export default function SidebarTabs({
                 return (
                     <div
                         key={itemKey}
-                        className={`flex items-center justify-between rounded-full transition ${active ? "bg-primary text-white shadow-sm" : "text-neutral-800 hover:bg-white"}`}
+                        className={`flex items-center justify-between rounded-full transition text-ellipsis ${active ? "bg-primary text-white shadow-sm" : "text-neutral-800 hover:bg-white"}`}
                     >
                         <button
                             type="button"
                             role="tab"
                             aria-selected={active}
                             onClick={() => onSelect(i)}
-                            className={`flex-1 text-right focus:outline-none flex gap-2 items-center font-medium py-3 px-5 rounded-full`}
+                            className={`flex-1 min-w-0 text-right focus:outline-none flex gap-2 items-center font-medium py-3 px-5 rounded-full`}
+                            title={title}
                         >
-                            <span className="truncate">{title}</span>
+                            <span className="truncate block">{title}</span>
                         </button>
 
                         {onRemove && (

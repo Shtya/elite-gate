@@ -10,6 +10,7 @@ import { ActionType, MenuActionItem } from "@/components/shared/Header/MenuActio
 import AppointmentProofUploadToggle from "./AppointmentProofUploadToggle";
 import { useRoleFromPath } from "@/hooks/dashboard/admin/useRoleFromPath";
 import { useMemo } from "react";
+import { getRoleBasedAppointmentFilters } from "@/utils/appointment";
 
 type AppointmentsDataViewProps = {
     agentId?: number;
@@ -34,10 +35,11 @@ export default function AppointmentsDataView({ agentId, clientId }: Appointments
 
     // ✅ Role-based filters
     const roleBasedFilters = useMemo(() => {
-        if (role === "admin") return appointmentFilters;
-        // remove agentId filter for non-admins
-        return appointmentFilters.filter((f) => f.key !== "agentId");
+        if (!role) return [];
+
+        return getRoleBasedAppointmentFilters(role, appointmentFilters);
     }, [role]);
+
 
     // ✅ Role-based sort config
     const roleBasedSortConfig = useMemo(() => {

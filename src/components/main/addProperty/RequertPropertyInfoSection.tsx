@@ -1,17 +1,17 @@
-import { PropertyRequestFormValues } from "@/app/(main)/add-property/page";
 import Uploader from "@/components/shared/Forms/Uploader";
 import Card from "@/components/shared/Card";
 import SelectDropdown from "@/components/shared/Forms/SelectDropdown";
 import { propertyTypeLabels } from "@/types/property";
 import { Control, Controller } from "react-hook-form";
 import PriceInput from "@/components/shared/Forms/PriceInput";
+import { PropertyRequestFormValues } from "./PropertyRequestForm";
 
 export default function RequertPropertyInfoSection({ control }: { control: Control<PropertyRequestFormValues> }) {
     return (
         <Card title="معلومات العقار">
             <div className="grid grid-cols-12 gap-6">
                 {/* نوع العقار */}
-                <Uploader control={control} name="attachments" accept="*/*" label='الملحقات' />
+                <Uploader control={control} name="attachments" accept="*/*" label='الملحقات' maxFiles={10} />
                 <Controller
                     name="propertyType"
                     control={control}

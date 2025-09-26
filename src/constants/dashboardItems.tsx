@@ -147,6 +147,11 @@ export const marketerDashboardItems: SelectableItem[] = [
         icon: MdDashboard,
         href: "/dashboard/marketer"
     },
+    {
+        label: "المحفظة والمدفوعات",
+        icon: FaWallet,
+        href: "/dashboard/marketer/payments"
+    },
 ];
 
 

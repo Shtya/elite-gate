@@ -1,6 +1,6 @@
-import { PropertyRequestFormValues } from "@/app/(main)/add-property/page";
 import InfoSection from "@/components/dashboard/properties/FormSections/InfoSection";
 import { Control } from "react-hook-form";
+import { PropertyRequestFormValues } from "./PropertyRequestForm";
 
 export default function SpecificationsSection({ control }: { control: Control<PropertyRequestFormValues> }) {
     return (
