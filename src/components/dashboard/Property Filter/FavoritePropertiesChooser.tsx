@@ -34,11 +34,6 @@ export default function FavoritePropertiesChooser({
     const [selected, setSelected] = useState<fevorateProperty[]>(defaultValue);
     const [showPopup, setShowPopup] = useState(false);
 
-    // ✅ Sync defaultValue if it changes (e.g. from form reset)
-    useEffect(() => {
-        setSelected(defaultValue);
-    }, [defaultValue]);
-
     const handleAdd = (newProperty: fevorateProperty) => {
         if (selected.find((p) => p.id === newProperty.id)) {
             setShowPopup(false);

@@ -5,8 +5,6 @@ import { FileItem } from '@/utils/upload';
 
 
 
-
-
 export default function BecomeAgentPage() {
 
     return (

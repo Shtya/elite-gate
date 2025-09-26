@@ -72,6 +72,7 @@ export default function BecomeAgentForm() {
                         <input
                             className="w-full border rounded-full bg-[var(--bg-2)] px-4 py-3 focus:outline-none"
                             value={userData.fullName}
+                            disabled
                             readOnly
                         />
                     </div>
@@ -83,6 +84,7 @@ export default function BecomeAgentForm() {
                             type="email"
                             className="w-full border rounded-full bg-[var(--bg-2)] px-4 py-3 focus:outline-none"
                             value={userData.email}
+                            disabled
                             readOnly
                         />
                     </div>
@@ -93,6 +95,7 @@ export default function BecomeAgentForm() {
                         <input
                             className="w-full border rounded-full bg-[var(--bg-2)] px-4 py-3 focus:outline-none ltr-data"
                             value={userData.phone}
+                            disabled
                             readOnly
                         />
                     </div>
