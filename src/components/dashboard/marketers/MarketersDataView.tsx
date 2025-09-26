@@ -28,7 +28,7 @@ export default function MarketersDataView() {
 
 function getMarketerActionsMenu(row: MarketerRow, onClose?: () => void): MenuActionItem[] {
     const { status } = row;
-
+    const isSuspended = status === 'suspended';
     const baseActions: MenuActionItem[] = [
         {
             label: 'عرض التفاصيل',
@@ -40,71 +40,8 @@ function getMarketerActionsMenu(row: MarketerRow, onClose?: () => void): MenuAct
             icon: <FaEdit />,
             link: `/dashboard/admin/marketers/${row.id}/edit`,
         },
-    ];
+        {
 
-    const statusActions: MenuActionItem[] = [];
-
-    if (status === 'pending') {
-        statusActions.push(
-            {
-                label: 'قبول الطلب',
-                type: 'primary',
-                icon: <FaCheck />,
-                child: (
-                    <MarketerStatusToggle
-                        marketer={row}
-                        currentStatus="pending"
-                        nextStatus="active"
-                        onConfirm={() => onClose?.()}
-                    />
-                ),
-            },
-            {
-                label: 'رفض الطلب',
-                type: 'delete',
-                icon: <FaRegTrashAlt />,
-                child: (
-                    <MarketerStatusToggle
-                        marketer={row}
-                        currentStatus="pending"
-                        nextStatus="rejected"
-                        onConfirm={() => onClose?.()}
-                    />
-                ),
-            }
-        );
-    } else if (status === 'rejected') {
-        statusActions.push(
-            {
-                label: 'إعادة النظر',
-                type: 'primary',
-                icon: <FaCheck />,
-                child: (
-                    <MarketerStatusToggle
-                        marketer={row}
-                        currentStatus="rejected"
-                        nextStatus="active"
-                        onConfirm={() => onClose?.()}
-                    />
-                ),
-            },
-            {
-                label: 'تحويل إلى قيد الانتظار',
-                type: 'primary',
-                icon: <FaUndo />,
-                child: (
-                    <MarketerStatusToggle
-                        marketer={row}
-                        currentStatus="rejected"
-                        nextStatus="pending"
-                        onConfirm={() => onClose?.()}
-                    />
-                ),
-            }
-        );
-    } else {
-        const isSuspended = status === 'suspended';
-        statusActions.push({
             label: isSuspended ? 'تفعيل الحساب' : 'تعليق الحساب',
             type: isSuspended ? 'primary' : 'delete',
             icon: isSuspended ? <FaCheck /> : <FaRegTrashAlt />,
@@ -116,8 +53,11 @@ function getMarketerActionsMenu(row: MarketerRow, onClose?: () => void): MenuAct
                     onConfirm={() => onClose?.()}
                 />
             ),
-        });
-    }
+        }
+    ];
+
+    const statusActions: MenuActionItem[] = [];
+
 
     return [...baseActions, ...statusActions];
 }

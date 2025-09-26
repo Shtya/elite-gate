@@ -58,11 +58,7 @@ export default function MarketerDetails({ marketer }: Props) {
                                 <span
                                     className={`w-3 h-3 rounded-full border border-white ${marketer.status === 'active'
                                         ? 'bg-green-500'
-                                        : marketer.status === 'pending'
-                                            ? 'bg-yellow-500'
-                                            : marketer.status === 'rejected'
-                                                ? 'bg-gray-500'
-                                                : 'bg-red-500'
+                                        : 'bg-red-500'
                                         }`}
                                     title={marketerStatusMap[marketer.status]}
                                 />
