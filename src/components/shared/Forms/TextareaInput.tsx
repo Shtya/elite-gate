@@ -8,6 +8,7 @@ type TextareaInputProps = {
     className?: string;
     value?: string;
     onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    error?: string;
 };
 
 export default function TextareaInput({
@@ -18,6 +19,7 @@ export default function TextareaInput({
     className = '',
     value,
     onChange,
+    error,
     ...props
 }: TextareaInputProps) {
     return (
@@ -35,6 +37,9 @@ export default function TextareaInput({
                 {...props}
                 className="w-full bg-[var(--bg-1)] focus:outline-none border rounded-3xl py-3 px-5"
             />
+            {error && (
+                <p className="mt-2 text-sm text-red-600 font-medium">{error}</p>
+            )}
         </div>
     );
 }

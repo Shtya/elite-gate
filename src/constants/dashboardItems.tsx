@@ -4,6 +4,7 @@ import {
     FaWallet,
     FaCalendarCheck,
     FaHeart,
+    FaPlusCircle,
 } from 'react-icons/fa';
 import {
 
@@ -85,7 +86,14 @@ export const adminDashboardItems: SelectableItem[] = [
             }
         ]
     },
-
+    {
+        label: "الحملات",
+        icon: FaBullhorn,
+        children: [
+            { label: "قائمة الحملات", icon: FaRegListAlt, href: "/dashboard/admin/campaigns" },
+            { label: "إنشاء حملة", icon: FaPlusCircle, href: "/dashboard/admin/campaigns/add" }
+        ]
+    },
     {
         label: "الصفحات",
         icon: FaFileAlt,
@@ -97,6 +105,7 @@ export const adminDashboardItems: SelectableItem[] = [
             { label: "الشروط والأحكام", icon: MdDescription, href: "/dashboard/admin/pages/terms" },
         ]
     },
+
     {
         label: "الإعدادات العامة",
         icon: MdSettings,

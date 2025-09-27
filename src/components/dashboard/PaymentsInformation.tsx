@@ -51,15 +51,7 @@ export default function PaymentsInformation() {
                     />
                 </div>
 
-                {/* مثال بطاقة رابعة إذا لزم (يمكن استبدال الأيقونة والقيم) */}
-                {/* <div className="col-span-12 md:col-span-6">
-          <CardInfo
-            icon={<FaStar className="self-center rounded-full bg-primary text-white text-3xl p-4" />}
-            value={"7.6k"}
-            label="التقييمات"
-            className="bg-[#EBEBFD]"
-          />
-        </div> */}
+
             </div>
         </DashboardSectionCard>
     );

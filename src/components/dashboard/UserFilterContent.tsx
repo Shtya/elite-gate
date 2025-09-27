@@ -71,7 +71,7 @@ export default function UserFilterContent({ users, onSelect, label = 'المست
     }, [debouncedQuery, users, filterByTime]);
 
     return (
-        <>
+        <div>
             <h3 className="text-lg font-semibold mb-4">ابحث عن {label}</h3>
             <KeywordSearch
                 inputRef={inputRef}
@@ -128,6 +128,6 @@ export default function UserFilterContent({ users, onSelect, label = 'المست
                     )}
                 </div>
             )}
-        </>
+        </div>
     );
 }

@@ -40,6 +40,16 @@ export default function ProjectsFilterPanel({ defaultPriceRange = { min: 100000,
     const handlePriceChange = (price: price) => {
         const params = new URLSearchParams(searchParams);
 
+        if (price.min === defaultPriceRange.min && price.max === defaultPriceRange.max) {
+            if (!params.has('priceMin') && !params.has('priceMax')) return;
+
+            params.delete('priceMin');
+            params.delete('priceMax');
+
+            router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+            return;
+        }
+
         if (String(price.min) === params.get('priceMin') && String(price.max) === params.get('priceMax')) return;
 
         const updated = { ...filters };
@@ -84,13 +94,10 @@ export default function ProjectsFilterPanel({ defaultPriceRange = { min: 100000,
 
     const handleReset = () => {
         const params = new URLSearchParams(searchParams.toString());
-        ['search', 'type', 'city'].forEach((key) => {
+        ['search', 'type', 'city', 'priceMin', 'priceMax'].forEach((key) => {
             params.delete(key);
         });
         setSearch('');
-
-        params.set('priceMin', defaultPriceRange.min.toString());
-        params.set('priceMax', defaultPriceRange.max.toString());
 
         setFilters({
             type: '',

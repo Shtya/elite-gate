@@ -14,25 +14,29 @@ type Props = {
     onChange: (date?: Date) => void;
     label?: string;
     className?: string;
+    minDate?: Date;
+    maxDate?: Date;
 };
 
-export default function SelectSingleDate({ value, onChange, label, className }: Props) {
+export default function SelectSingleDate({ value, onChange, label, className, minDate, maxDate }: Props) {
     const [open, setOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     useOutsideClick(dropdownRef, () => setOpen(false));
 
     const formatted = value ? format(value, 'yyyy-MM-dd') : 'لم يتم التحديد';
 
+
     return (
-        <div className={`relative w-fit ${className}`} ref={dropdownRef} dir="ltr">
+        <div className={`relative w-fit  ${className}`} ref={dropdownRef} dir="ltr">
             <button
                 type="button"
+
                 onClick={() => setOpen(!open)}
-                className="open-btn relative w-full py-3 px-8 focus:shadow-xl flex gap-2 items-center sm:text-sm bg-bg-1 border rounded-3xl justify-between"
+                className="open-btn relative w-full py-3 px-8 focus:shadow-xl flex gap-2 items-center sm:text-sm bg-bg-1 border rounded-3xl justify-end"
             >
-                <span className="text truncate flex items-center gap-2">
-                    <span className="font-medium">{formatted}</span>
-                    {label && <span className="text-gray-500">:{label}</span>}
+                <span className="text truncate flex items-center gap-2" >
+                    <span className="font-medium" >{formatted}</span>
+                    {label && <span className="text-gray-500" >:{label}</span>}
                 </span>
                 <SlArrowDown size={13} className="text-gray-400" />
             </button>
@@ -47,6 +51,8 @@ export default function SelectSingleDate({ value, onChange, label, className }: 
                                 onChange(date);
                                 setOpen(false);
                             }}
+                            minDate={minDate}
+                            maxDate={maxDate}
                             locale={ar}
                             color='var(--primary-300)'
 

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect } from "react";
-import { DateRange } from "react-date-range";
-import { format } from "date-fns";
+import { DateRange, RangeKeyDict } from "react-date-range";
+import { format, isSameDay } from "date-fns";
 import { SlArrowDown } from "react-icons/sl";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { ar } from 'date-fns/locale';
@@ -63,6 +63,16 @@ export default function SelectDateRange({
         setOpen(false);
     };
 
+    function handleSelect(item: RangeKeyDict) {
+        const { startDate, endDate, key } = item.selection;
+        setRange([{ startDate, endDate, key: key ?? 'selection' }]);
+        if (!startDate || !endDate) return;
+
+        if (isSameDay(startDate, endDate)) return;
+        setOpen(false)
+        onChange({ startDate: startDate ?? undefined, endDate: endDate ?? undefined });
+    }
+
     return (
         <div className="relative w-fit" ref={dropdownRef} dir="ltr">
             <button
@@ -81,11 +91,7 @@ export default function SelectDateRange({
                 <div className="absolute z-50 mt-2 bg-white rounded-xl shadow-lg p-3">
                     <DateRange
                         editableDateInputs
-                        onChange={(item) => {
-                            const { startDate, endDate, key } = item.selection;
-                            setRange([{ startDate, endDate, key: key ?? 'selection' }]);
-                            onChange({ startDate: startDate ?? undefined, endDate: endDate ?? undefined });
-                        }}
+                        onChange={handleSelect}
                         moveRangeOnFirstSelection={false}
                         rangeColors={['var(--primary-300)']}
                         ranges={isSelected ? range : fallbackRange}

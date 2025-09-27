@@ -18,6 +18,8 @@ export default function Popup({ children, onClose, show }: PopupProps) {
         if (show) onClose?.();
     });
     if (typeof document === 'undefined') return null;
+
+    if (!children) return null;
     return createPortal(
         <div
             data-popup
@@ -27,7 +29,7 @@ export default function Popup({ children, onClose, show }: PopupProps) {
         >
             <div
                 ref={popupRef}
-                className=" sm:min-w-[300px] relative bg-white rounded-xl shadow-lg p-6  space-y-2 transition-all duration-300 scale-100"
+                className="  w-fit sm:min-w-[300px]  relative bg-white rounded-xl shadow-lg p-6  space-y-2 transition-all duration-300 scale-100"
             >
                 {/* Close Button */}
                 {onClose && (

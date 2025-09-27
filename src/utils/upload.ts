@@ -1,3 +1,5 @@
+import z from "zod";
+
 // helpers/fileUpload.ts
 export type FileItem = {
     url: string;
@@ -7,6 +9,14 @@ export type FileItem = {
     isPrimary: boolean;
 
 };
+export const fileItemSchema = z.object({
+    url: z.string(),
+    file: z.instanceof(File).optional(),
+    name: z.string().optional(),
+    type: z.string().optional(),
+    isPrimary: z.boolean().optional()
+});
+
 
 export function processFiles(
     files: File[],

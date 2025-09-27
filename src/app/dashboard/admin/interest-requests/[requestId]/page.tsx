@@ -5,8 +5,6 @@ import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
 import InterestRequestDetails from '@/components/dashboard/admin/InterestRequests/InterestRequestDetails';
 import { InterestRequestFull } from '@/types/dashboard/interest-requests';
 
-;
-
 export const mockInterestRequestFull: InterestRequestFull = {
     id: 301,
     requesterName: "Dana Bint Shakir",
