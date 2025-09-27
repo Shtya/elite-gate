@@ -8,7 +8,7 @@ import {
 } from '@/constants/dashboard/admin/campaign/contants'
 import { Campaign, CampaignStatus } from '@/types/campaign'
 import { FaEdit, FaEye, FaPause, FaStop, FaSave, FaPlay } from 'react-icons/fa'
-import { JSX, useState } from 'react'
+import { JSX } from 'react'
 import CampaignActionConfirmModal, { ActionType } from './CampaignActionConfirmModal'
 
 export default function CampaignsDataView() {
@@ -119,17 +119,15 @@ export function getCampaignActionsMenu(row: Campaign, onClose?: () => void): Men
         icon,
         type,
         child: (
-            <>
-                <CampaignActionConfirmModal
-                    confirmAction={actionType}
-                    campaignId={row.id}
-                    onClose={() => {
-                        onClose?.();
-                    }}
-                    onConfirm={() => console.log(`Confirmed ${actionType} for campaign ${row.id}`)}
-                    onCancel={() => console.log(`Cancelled ${actionType} for campaign ${row.id}`)}
-                />
-            </>
+            <CampaignActionConfirmModal
+                confirmAction={actionType}
+                campaignId={row.id}
+                onClose={() => {
+                    onClose?.();
+                }}
+                onConfirm={() => console.log(`Confirmed ${actionType} for campaign ${row.id}`)}
+                onCancel={() => console.log(`Cancelled ${actionType} for campaign ${row.id}`)}
+            />
         )
     });
 

@@ -40,9 +40,10 @@ export default function CampaignStatsCard({ stats }: CampaignStatsCardProps) {
 
     return (
         <Card title="إحصائيات الحملة">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 2xl:grid-cols-4 gap-4">
                 {statsData.map((stat, index) => (
                     <CardInfo
+                        key={index}
                         icon={stat.icon}
                         value={stat.value}
                         label={stat.label}

@@ -1,10 +1,10 @@
 'use client'
-import { FaCalendarAlt, FaUser, FaUserTie, FaClock, FaCheckCircle, FaTimesCircle, FaExclamationCircle } from 'react-icons/fa'
+import { FaCalendarAlt, FaUser, FaUserTie, FaClock, FaCheckCircle, FaTimesCircle, FaExclamationCircle, FaBellSlash } from 'react-icons/fa'
 
 interface AppointmentNotification {
     id: string
     clientName: string
-    agentName: string
+    agentName?: string
     status: 'confirmed' | 'pending' | 'cancelled' | 'completed'
     appointmentDate: string
     updatedAt: string
@@ -61,6 +61,15 @@ const getStatusColor = (status: string) => {
 }
 
 export default function NotificationsCard({ notifications }: NotificationsCardProps) {
+    if (notifications.length === 0) {
+        return (
+            <div className="flex flex-col items-center justify-center py-16">
+                <FaBellSlash className="w-12 h-12 text-gray-300 mb-4" />
+                <p className="text-gray-500">لا توجد إشعارات</p>
+            </div>
+        );
+    }
+
     return (
         <div className="space-y-3 max-h-[900px] overflow-y-auto">
             {notifications.map((notification) => (
@@ -89,11 +98,11 @@ export default function NotificationsCard({ notifications }: NotificationsCardPr
                                 <span className="text-sm font-medium text-gray-800">{notification.clientName}</span>
                             </div>
 
-                            <div className="flex items-center gap-2">
+                            {notification.agentName && <div className="flex items-center gap-2">
                                 <FaUserTie className="w-3 h-3 text-gray-500" />
                                 <span className="text-sm text-gray-600">الوسيط:</span>
                                 <span className="text-sm font-medium text-gray-800">{notification.agentName}</span>
-                            </div>
+                            </div>}
                         </div>
 
                         {/* Right side - Date and update info */}
@@ -149,6 +158,43 @@ export const defaultNotifications: AppointmentNotification[] = [
         id: '4',
         clientName: 'مريم خالد',
         agentName: 'أحمد محمد',
+        status: 'cancelled',
+        appointmentDate: '2024-01-13',
+        updatedAt: '2024-01-12 11:20',
+        appointmentNumber: 'APT-004'
+    }
+]
+
+
+
+export const agetnDefaultNotifications: AppointmentNotification[] = [
+    {
+        id: '1',
+        clientName: 'أحمد محمد',
+        status: 'confirmed',
+        appointmentDate: '2024-01-15',
+        updatedAt: '2024-01-10 14:30',
+        appointmentNumber: 'APT-001'
+    },
+    {
+        id: '2',
+        clientName: 'سارة حسن',
+        status: 'confirmed',
+        appointmentDate: '2024-01-16',
+        updatedAt: '2024-01-11 09:15',
+        appointmentNumber: 'APT-002'
+    },
+    {
+        id: '3',
+        clientName: 'علي أحمد',
+        status: 'completed',
+        appointmentDate: '2024-01-14',
+        updatedAt: '2024-01-14 16:45',
+        appointmentNumber: 'APT-003'
+    },
+    {
+        id: '4',
+        clientName: 'مريم خالد',
         status: 'cancelled',
         appointmentDate: '2024-01-13',
         updatedAt: '2024-01-12 11:20',

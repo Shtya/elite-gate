@@ -32,6 +32,7 @@ export default function IntroLocationPage() {
         }
     })
 
+
     const onSubmit = (data: PropertyFormValues) => {
 
         console.log('save location...', data);

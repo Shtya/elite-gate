@@ -1,5 +1,5 @@
 'use client'
-import { FaStar, FaUserTie, FaEye, FaComments, FaClock } from 'react-icons/fa'
+import { FaUserTie, FaEye, FaComments, FaClock } from 'react-icons/fa'
 
 interface RatingCategory {
     name: string
@@ -10,6 +10,7 @@ interface RatingCategory {
 
 interface AverageRatingsCardProps {
     ratings: RatingCategory[]
+
 }
 
 export default function AverageRatingsCard({ ratings }: AverageRatingsCardProps) {
@@ -19,7 +20,6 @@ export default function AverageRatingsCard({ ratings }: AverageRatingsCardProps)
 
     return (
         <div className="space-y-6">
-            {/* Global Average Circle */}
             {/* Global Average Circle */}
             <div className="flex justify-center">
                 <div className="relative w-32 h-32"> {/* ⬅️ Increased size */}

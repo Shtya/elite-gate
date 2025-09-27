@@ -4,7 +4,7 @@ type CardInfoProps = {
     icon: ReactNode;
     value: string | number;
     title?: string;
-    label: string;
+    label?: string;
     className?: string; // ✅ new prop
 
 };
