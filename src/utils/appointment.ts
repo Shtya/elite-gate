@@ -1,4 +1,4 @@
-import { FilterConfig } from "@/types/components/table";
+import { FilterConfig } from "@/types/components/Table";
 import { Role } from "@/types/global";
 import { PropertyType } from "@/types/property";
 

@@ -1,4 +1,4 @@
-import { FilterConfig, SortConfig, TableColumn } from '@/types/components/table'
+import { FilterConfig, SortConfig, TableColumn } from '@/types/components/Table'
 import { Campaign, CampaignStatus } from '@/types/campaign'
 import { formatDate } from '@/utils/date'
 
