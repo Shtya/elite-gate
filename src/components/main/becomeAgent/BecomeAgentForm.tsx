@@ -157,7 +157,7 @@ export default function BecomeAgentForm() {
                         <>
                             <FavoritePropertiesChooser
                                 properties={properties}
-                                label="العقار"
+                                label="عقار"
                                 max={5}
                                 onChange={(newList) => field.onChange(newList)}
                             />

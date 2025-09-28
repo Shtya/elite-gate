@@ -81,7 +81,7 @@ export default function NotificationCard({
                 {/* main content */}
                 <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-3">
-                        <h4 className={`text-sm font-semibold truncate  ${cfg.titleColor}`} title={title}>{title}</h4>
+                        <h4 className={`text-sm font-semibold truncate cursor-pointer ${cfg.titleColor}`} title={title} onClick={() => setOpen((v) => !v)}>{title}</h4>
 
                         <div className="flex items-center gap-1">
                             <button

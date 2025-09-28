@@ -28,7 +28,7 @@ export default function FavoritePropertiesForm() {
     return <div>
         <FavoritePropertiesChooser
             properties={properties}
-            label="العقار"
+            label="عقار"
             max={5}
             defaultValue={favoritProperties}
             onChange={(list) => {
