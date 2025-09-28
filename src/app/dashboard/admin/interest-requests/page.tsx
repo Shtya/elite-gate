@@ -10,9 +10,7 @@ export default function InterestRequestsPage() {
         <div>
             <DashboardHeaderTitle path={['طلبات الاهتمام']}>
                 <div className="flex gap-4 flex-wrap">
-                    <DownloadList
-                        fileName="interest-requests"
-                    />
+                    <DownloadList />
                     <Link className="btn-primary" href="/add-property">
                         <BiPlus /> إضافة طلب اهتمام
                     </Link>

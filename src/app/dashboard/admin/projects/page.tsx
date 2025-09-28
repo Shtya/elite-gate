@@ -11,7 +11,7 @@ export default function PropertiesPage() {
         <div>
             <DashboardHeaderTitle path={['العقارات']}>
                 <div className="flex gap-4 flex-wrap">
-                    <DownloadList fileName="projects" />
+                    <DownloadList />
                     <Link className="btn-primary" href="/dashboard/admin/projects/add">
                         <BiEditAlt /> إضافة عقار
                     </Link>

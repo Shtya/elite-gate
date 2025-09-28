@@ -12,9 +12,7 @@ export default function AgentsPage() {
         <div>
             <DashboardHeaderTitle path={['الوسطاء']}>
                 <div className="flex gap-4 flex-wrap">
-                    <DownloadList
-                        fileName="agents"
-                    />
+                    <DownloadList />
                     <Link className="btn-primary" href="/dashboard/admin/agents/add">
                         <BiEditAlt /> إضافة وسيط
                     </Link>

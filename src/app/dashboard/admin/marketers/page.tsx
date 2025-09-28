@@ -10,7 +10,7 @@ export default function MarketersPage() {
         <div>
             <DashboardHeaderTitle path={['المسوقين']}>
                 <div className="flex gap-4 flex-wrap">
-                    <DownloadList fileName="marketers" />
+                    <DownloadList />
                     <Link className="btn-primary" href="/dashboard/admin/marketers/add">
                         <BiEditAlt /> إضافة مسوق
                     </Link>

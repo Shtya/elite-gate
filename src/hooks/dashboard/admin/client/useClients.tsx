@@ -18,6 +18,7 @@ export default function useClients() {
             totalCount?: number;
         }> => {
             try {
+                console.log("called")
                 const status = getParam('status');
                 const sort = getParam('sort');
                 const dir = getParam('dir');

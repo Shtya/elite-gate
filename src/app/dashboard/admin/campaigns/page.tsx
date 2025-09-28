@@ -11,7 +11,7 @@ export default function CampaignsPage() {
         <div>
             <DashboardHeaderTitle path={['الحملات']}>
                 <div className="flex gap-4 flex-wrap">
-                    <DownloadList fileName="campaigns" />
+                    <DownloadList />
                     <Link className="btn-primary" href="/dashboard/admin/campaigns/add">
                         <BiEditAlt /> إضافة حملة جديدة
                     </Link>
