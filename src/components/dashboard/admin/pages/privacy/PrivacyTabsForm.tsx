@@ -41,7 +41,7 @@ export default function PrivacyTabsForm() {
             return;
         }
         if (activeIndex > total - 1) setActiveIndex(total - 1);
-    }, [watchedPolicies?.length]);
+    }, [watchedPolicies?.length, fields.length, setActiveIndex]);
 
     const titles = useMemo(() => {
         const list = watchedPolicies ?? (fields as Array<{ title?: string }>).map(f => ({ title: (f as any).title ?? "" }));

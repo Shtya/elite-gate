@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import {
     Chart as ChartJS,
     LineElement,
@@ -16,7 +16,7 @@ import {
 
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import ChartTooltip, { TooltipDP } from './ChartTooltip';
+import ChartTooltip from './ChartTooltip';
 import { createGradiant } from '@/utils/color';
 import useChartToolTip from '@/hooks/useChartToolTip';
 

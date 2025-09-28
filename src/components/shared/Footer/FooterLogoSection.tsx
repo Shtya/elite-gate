@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import LogoIcon from "../LogoIcon";
 import { socialLinks } from "@/constants/general";
 import Image from "next/image";
 

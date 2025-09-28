@@ -1,5 +1,4 @@
 import PrimaryButton from '@/components/shared/Button';
-import SelectInput from '@/components/shared/Forms/SelectInput';
 import TextareaInput from '@/components/shared/Forms/TextareaInput';
 import TextInput from '@/components/shared/Forms/TextInput';
 import React from 'react';

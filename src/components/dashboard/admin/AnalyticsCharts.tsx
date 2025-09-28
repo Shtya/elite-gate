@@ -5,21 +5,8 @@ import { BarChart } from '@/components/shared/charts/BarChart'
 import VisitsRegistrationsChart from './VisitsRegistrationsChart'
 import { DoughnutChart } from '@/components/shared/charts/DoughnutChart'
 
-interface AnalyticsChartsProps {
-    visitsData?: {
-        visits: number[]
-        registrations: number[]
-        labels: string[]
-    }
-}
 
-export default function AnalyticsCharts({
-    visitsData = {
-        visits: [1200, 1500, 1800, 1600, 2000, 2200],
-        registrations: [45, 52, 68, 55, 78, 85],
-        labels: ['يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر']
-    }
-}: AnalyticsChartsProps) {
+export default function AnalyticsCharts() {
     return (
         <div className='flex flex-col xl:flex-row gap-4 xl:gap-6'>
             <Card className='xl:w-[calc(50%-12px)]' title='عدد الطلبات' subTitle='اخر 6 شهور'>

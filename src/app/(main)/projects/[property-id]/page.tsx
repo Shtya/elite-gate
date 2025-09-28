@@ -4,7 +4,6 @@ import ProjectBookingForm from '@/components/main/projects/ProjectBookingForm';
 import PropertyInfoSection from '@/components/main/projects/property/PropertyInfoSection';
 import PropertySummary from '@/components/main/projects/property/PropertySummary';
 import PropertyDescriptionSection from '@/components/main/projects/property/PropertyDescriptionSection';
-import MapCard from '@/components/shared/MapCard';
 import VideoSection from '@/components/shared/VideoSection';
 import GuaranteesSection from '@/components/main/projects/property/GuaranteesSection';
 import SimilarProjectsSection from '@/components/shared/SimilarProjectsSection';

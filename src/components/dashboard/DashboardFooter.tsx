@@ -9,7 +9,7 @@ const links = [
 ];
 
 export default function DashboardFooter() {
-    const currentYear = new Date().getFullYear();
+
     return (
         <footer className="py-4 flex justify-between bg-white items-center flex-wrap px-3 gap-5 lg:px-6 w-full">
             <FooterRights />

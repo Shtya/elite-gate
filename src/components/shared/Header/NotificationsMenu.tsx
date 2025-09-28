@@ -8,11 +8,6 @@ type Notification = {
   avatarUrl: string;
 };
 
-const notifications: Notification[] = [
-  { id: 1, name: "Peter Parker", message: "New Message alert! @trending", time: "قبل 6 ثوان", avatarUrl: "/users/user-2.webp" },
-  { id: 2, name: "Gal Gadot", message: "Measure actions your users", time: "قبل 4 دقائق", avatarUrl: "/users/user-3.webp" },
-  { id: 3, name: "Eva Green", message: "New Message alert! @trending", time: "قبل 15 دقيقة", avatarUrl: "/users/user-4.webp" },
-];
 
 export default function NotificationsMenu() {
   return (

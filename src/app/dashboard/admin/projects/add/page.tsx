@@ -1,6 +1,5 @@
 import DashboardHeaderTitle from "@/components/dashboard/DashboardHeaderTitle";
 import PropertyForm from "@/components/dashboard/properties/PropertyForm";
-import CenteredContainer from "@/components/shared/CenteredContainer";
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 

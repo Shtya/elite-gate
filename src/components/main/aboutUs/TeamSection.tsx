@@ -9,6 +9,7 @@ import SwiperNextButton from '@/components/shared/SwiperNextButton';
 import SwiperPrevButton from '@/components/shared/SwiperPrevButton';
 
 import SectionTitle from '@/components/shared/SectionTitle';
+import Image from 'next/image';
 
 interface TeamMember {
     name: string;
@@ -100,9 +101,11 @@ export default function TeamSection() {
                         <SwiperSlide key={idx}>
                             <div className="group text-center">
                                 <div className="relative flex justify-center">
-                                    <img
+                                    <Image
                                         src={member.image}
                                         alt={member.name}
+                                        width={250}
+                                        height={250}
                                         className="rounded-full w-[200px] h-[200px] md:w-[250px] md:h-[250px] object-cover group-hover:grayscale duration-300"
                                     />
 

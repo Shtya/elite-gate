@@ -15,6 +15,7 @@ import {
 } from 'react-icons/fa';
 import { formatDate } from '@/utils/date';
 import MarketerStatusControl from './MarketerStatusControl';
+import Image from 'next/image';
 
 
 type Props = {
@@ -44,9 +45,11 @@ export default function MarketerDetails({ marketer }: Props) {
                         </Link>
 
                         <div className="relative w-fit mx-auto">
-                            <img
+                            <Image
                                 src={marketer.image || '/users/default-user.png'}
                                 alt={marketer.name}
+                                width={80}
+                                height={80}
                                 className="rounded-full w-20 h-20 object-cover border"
                             />
                         </div>

@@ -486,6 +486,15 @@
     color: white;
   }
 
+  @media (max-width: 640px) {
+    .btn-secondary {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      /* أصغر قليلاً */
+    }
+  }
+
+
   .text-area>textarea {
     /* w-full h-full min-h-[200px] resize-none */
     width: 100%;

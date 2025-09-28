@@ -156,9 +156,11 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
                                     {/* ✅ معلومات الوسيط المعين */}
                                     <div className="relative rounded-2xl bg-white p-6">
                                         <div className="relative w-fit mx-auto">
-                                            <img
+                                            <Image
                                                 src={agent.image || '/users/default-user.png'}
                                                 alt={agent.name}
+                                                width={80}
+                                                height={80}
                                                 className="rounded-full w-20 h-20 object-cover border"
                                             />
                                         </div>
@@ -209,9 +211,11 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
 
                             {/* Avatar */}
                             <div className="relative w-fit mx-auto">
-                                <img
+                                <Image
                                     src={client.image || '/users/default-user.png'}
                                     alt={client.name}
+                                    width={80}
+                                    height={80}
                                     className="rounded-full w-20 h-20 object-cover border"
                                 />
 

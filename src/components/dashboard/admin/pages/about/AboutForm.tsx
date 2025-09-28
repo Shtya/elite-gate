@@ -1,9 +1,6 @@
 "use client"
 
-import { useForm, Controller } from "react-hook-form";
-import EditTeamSection from "./EditTeamSection";
-import TextInput from "@/components/shared/Forms/TextInput";
-import TextareaInput from "@/components/shared/Forms/TextareaInput";
+import { useForm } from "react-hook-form";
 import MainSectionForm from "./MainSectionForm";
 import ReservationSectionForm from "./ReservationSectionForm";
 import DiscoverPropertiesSectionForm from "./DiscoverPropertiesSectionForm";
@@ -11,7 +8,6 @@ import WhyChooseUsSectionForm from "./WhyChooseUsSectionForm";
 import TeamSectionForm from "./TeamSectionForm";
 import PrimaryButton from "@/components/shared/Button";
 import SoftActionButton from "@/components/shared/SoftActionButton";
-import Card from "@/components/shared/Card";
 
 export type TeamMember = {
     imageUrl: string;

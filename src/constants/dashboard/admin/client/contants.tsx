@@ -1,6 +1,7 @@
 import { ClientRow, ClientStatus } from "@/types/dashboard/client";
 import { FilterConfig, SortConfig, TableColumn, TableRow } from "@/types/components/Table";
 import { formatDate } from "@/utils/date";
+import Image from "next/image";
 
 
 
@@ -42,9 +43,11 @@ export const columns: TableColumn<ClientRow>[] = [
                 : '/users/default-user.png';
 
             return (
-                <img
+                <Image
                     src={imageSrc}
                     alt="User"
+                    width={40}
+                    height={40}
                     className="w-10 h-10 rounded-full object-cover"
                     onError={(e) => {
                         e.currentTarget.src = '/users/default-user.png';

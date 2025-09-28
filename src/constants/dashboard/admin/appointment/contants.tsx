@@ -9,6 +9,7 @@ import { FaStar } from 'react-icons/fa';
 import { projectTypeColors } from "../property.tsx/constants";
 import { MiniProject, propertyTypeLabels } from "@/types/property";
 import { useRoleFromPath } from "@/hooks/dashboard/admin/useRoleFromPath";
+import { useMemo } from "react";
 
 export const bookingStatusMap: Record<BookingStatus, string> = {
     pending: 'قيد الانتظار',
@@ -96,121 +97,122 @@ export const appointmentSortConfig: SortConfig = {
     defaultSort: 'appointmentAt',
 };
 
-export const appointmentColumns: TableColumn<AppointmentRow>[] = [
-    {
-        key: 'project',
-        label: 'المشروع',
-        cell: (val: MiniProject, row?: AppointmentRow) => {
+export function useAppointmentColumns(): TableColumn<AppointmentRow>[] {
+    const role = useRoleFromPath();
+    const isAdmin = role === "admin";
 
-            return (
-                <InfoCell
-                    image={val.image}
-                    title={val.title}
-                    defaultImage={getDefaultProjectpath(row?.project?.type)}
-                    href={`/projects/${val.id}`}
-                    subtitle={propertyTypeLabels[val.type]}
-                    imageRounded="lg"
-                    subtitleClass={projectTypeColors[val.type]}
-                />
-            );
-        },
-    },
+    return useMemo(() => [
+        {
+            key: 'project',
+            label: 'المشروع',
+            cell: (val: MiniProject, row?: AppointmentRow) => {
 
-    {
-        key: 'appointmentAt',
-        label: 'موعد الزيارة',
-        cell: (val: string) => {
-            const d = new Date(val);
-            const date = formatDate(d);
-            const time = formatTime(d);
-            return (
-                <div className="flex flex-col">
-                    <span className="font-medium">{date}</span>
-                    <span className="text-xs text-gray-500">{time}</span>
-                </div>
-            );
+                return (
+                    <InfoCell
+                        image={val.image}
+                        title={val.title}
+                        defaultImage={getDefaultProjectpath(row?.project?.type)}
+                        href={`/projects/${val.id}`}
+                        subtitle={propertyTypeLabels[val.type]}
+                        imageRounded="lg"
+                        subtitleClass={projectTypeColors[val.type]}
+                    />
+                );
+            },
         },
-    },
-    {
-        key: 'createdAt',
-        label: 'تاريخ الإنشاء',
-        cell: (val: string) => {
-            const d = new Date(val);
-            const date = formatDate(d);
-            return (
-                <div className="">
-                    <span className="font-medium">{date}</span>
-                </div>
-            );
-        },
-    },
-    {
-        key: 'agent',
-        label: 'الوسيط',
-        cell: (user: MiniUser) => (
-            <InfoCell image={user.image} subtitle={user.email} title={user.name} href={`/dashboard/admin/agents/${user.id}`} />
-        ),
-    },
-    {
-        key: 'client',
-        label: 'العميل',
-        cell: (user: MiniUser) => {
-            const role = useRoleFromPath(); // Make sure useRoleFromPath is available here
-            const isAdmin = role === 'admin';
-            return (
-                <InfoCell
-                    image={user.image}
-                    subtitle={user.email}
-                    title={user.name}
-                    href={isAdmin ? `/dashboard/admin/clients/${user.id}` : undefined}
-                />
-            );
-        },
-    },
 
-    {
-        key: 'reviewStars',
-        label: 'تقييم العميل',
-        cell: (val: number | undefined, row?: AppointmentRow) => {
-            if (row?.status !== 'completed' || !val) return <span className="text-xs text-gray-400">—</span>;
-            return (
-                <div className="flex items-center gap-0.5 text-amber-500">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                        <FaStar key={i} className={i < val ? 'fill-amber-500' : 'fill-gray-300'} />
-                    ))}
-                </div>
-            );
+        {
+            key: 'appointmentAt',
+            label: 'موعد الزيارة',
+            cell: (val: string) => {
+                const d = new Date(val);
+                const date = formatDate(d);
+                const time = formatTime(d);
+                return (
+                    <div className="flex flex-col">
+                        <span className="font-medium">{date}</span>
+                        <span className="text-xs text-gray-500">{time}</span>
+                    </div>
+                );
+            },
         },
-    },
-    {
-        key: 'status',
-        label: 'الحالة',
-        cell: (val: BookingStatus | undefined) => {
-            const style = val ? bookingStatusStyle[val] : 'bg-gray-100 text-gray-500';
-            const label = val ? bookingStatusMap[val] : 'غير محدد';
-
-            return (
-                <span className={`px-3 py-1 rounded-full text-sm ${style}`}>
-                    {label}
-                </span>
-            );
+        {
+            key: 'createdAt',
+            label: 'تاريخ الإنشاء',
+            cell: (val: string) => {
+                const d = new Date(val);
+                const date = formatDate(d);
+                return (
+                    <div className="">
+                        <span className="font-medium">{date}</span>
+                    </div>
+                );
+            },
         },
-    },
-    {
-        key: 'isPaid',
-        label: 'الدفع',
-        cell: (val: boolean | undefined, row?: AppointmentRow) => {
-            if (row?.status !== 'completed') return <span className="text-xs text-gray-400">—</span>;
-            return val ? (
-                <span className="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-700">مدفوع</span>
-            ) : (
-                <span className="px-2 py-0.5 rounded-full text-xs bg-rose-100 text-rose-700">غير مدفوع</span>
-            );
+        {
+            key: 'agent',
+            label: 'الوسيط',
+            cell: (user: MiniUser) => (
+                <InfoCell image={user.image} subtitle={user.email} title={user.name} href={`/dashboard/admin/agents/${user.id}`} />
+            ),
         },
-    },
+        {
+            key: 'client',
+            label: 'العميل',
+            cell: (user: MiniUser) => {
+                return (
+                    <InfoCell
+                        image={user.image}
+                        subtitle={user.email}
+                        title={user.name}
+                        href={isAdmin ? `/dashboard/admin/clients/${user.id}` : undefined}
+                    />
+                );
+            },
+        },
 
-];
+        {
+            key: 'reviewStars',
+            label: 'تقييم العميل',
+            cell: (val: number | undefined, row?: AppointmentRow) => {
+                if (row?.status !== 'completed' || !val) return <span className="text-xs text-gray-400">—</span>;
+                return (
+                    <div className="flex items-center gap-0.5 text-amber-500">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                            <FaStar key={i} className={i < val ? 'fill-amber-500' : 'fill-gray-300'} />
+                        ))}
+                    </div>
+                );
+            },
+        },
+        {
+            key: 'status',
+            label: 'الحالة',
+            cell: (val: BookingStatus | undefined) => {
+                const style = val ? bookingStatusStyle[val] : 'bg-gray-100 text-gray-500';
+                const label = val ? bookingStatusMap[val] : 'غير محدد';
 
+                return (
+                    <span className={`px-3 py-1 rounded-full text-sm ${style}`}>
+                        {label}
+                    </span>
+                );
+            },
+        },
+        {
+            key: 'isPaid',
+            label: 'الدفع',
+            cell: (val: boolean | undefined, row?: AppointmentRow) => {
+                if (row?.status !== 'completed') return <span className="text-xs text-gray-400">—</span>;
+                return val ? (
+                    <span className="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-700">مدفوع</span>
+                ) : (
+                    <span className="px-2 py-0.5 rounded-full text-xs bg-rose-100 text-rose-700">غير مدفوع</span>
+                );
+            },
+        },
+    ], [isAdmin]);
+}
 
 export const mockAppointments: AppointmentRow[] = [
     {

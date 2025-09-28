@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import React, { cloneElement, ReactElement, useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { MenuChildProps } from '../Menu';
 import Popup from '../Popup';
 

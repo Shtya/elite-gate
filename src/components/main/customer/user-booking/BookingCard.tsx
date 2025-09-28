@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCalendarAlt, FaUserTie, FaHome } from 'react-icons/fa';
+import { FaCalendarAlt, FaUserTie } from 'react-icons/fa';
 import Link from 'next/link';
 import { Booking } from '@/types/global';
 import Image from 'next/image';

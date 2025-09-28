@@ -1,10 +1,5 @@
-import PrimaryButton from "@/components/shared/Button";
-import SectionTitle from "@/components/shared/SectionTitle";
-import SelectInput from "@/components/shared/Forms/SelectInput";
-import { BsArrowRight } from "react-icons/bs";
-import ListPropertyFilterBar from "./ListPropertyFilterBar";
 import ListProperty from "./ListProperty";
-import { Property } from "@/types/global";
+import SectionTitle from "@/components/shared/SectionTitle";
 import { properties } from "@/constants/projects";
 
 

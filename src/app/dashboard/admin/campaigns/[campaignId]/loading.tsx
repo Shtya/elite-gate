@@ -1,6 +1,5 @@
 'use client';
 
-import CenteredContainer from '@/components/shared/CenteredContainer';
 import Card from '@/components/shared/Card';
 import Skeleton from '@/components/shared/Skelatons/Skeleton';
 import DashboardHeaderTitleSkeleton from '@/components/shared/Skelatons/DashboardHeaderTitleSkeleton';

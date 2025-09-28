@@ -64,8 +64,8 @@ export default function useMarketers() {
                     const sortKey = sort as keyof MarketerRow;
 
                     filtered.sort((a, b) => {
-                        let valA = a[sortKey];
-                        let valB = b[sortKey];
+                        const valA = a[sortKey];
+                        const valB = b[sortKey];
 
                         if (valA === undefined || valB === undefined) return 0;
 

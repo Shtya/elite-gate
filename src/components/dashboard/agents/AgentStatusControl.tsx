@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Popup from '@/components/shared/Popup';
 import AgentStatusToggle from './AgentStatusToggle';
-import { AgentRow, AgentStatus, agentStatusMap } from '@/types/dashboard/agent';
+import { AgentRow, AgentStatus } from '@/types/dashboard/agent';
 import { agentStatusClassMap } from '@/constants/dashboard/admin/agent/contants';
 
 

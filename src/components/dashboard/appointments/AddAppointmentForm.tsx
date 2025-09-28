@@ -49,7 +49,6 @@ export default function AddAppointmentForm() {
         setValue,
         watch,
         reset,
-        getValues,
         formState: { errors },
     } = useForm<FormValues>({
         resolver: zodResolver(schema),
@@ -67,10 +66,6 @@ export default function AddAppointmentForm() {
         console.log('🆕 إضافة موعد جديد:', data);
     };
 
-
-    const handleCancel = () => {
-        reset();
-    };
 
     return (
         <div className='space-y-4 lg:space-y-6'>

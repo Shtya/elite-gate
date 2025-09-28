@@ -22,7 +22,7 @@ export default function BookingList({
     });
     const taps = useMemo<[BookingStatus, string][]>(
         () => Object.entries(bookingStatusMap) as [BookingStatus, string][],
-        [bookingStatusMap]
+        []
     );
     return (
         <Card title='حجوزاتي' hasMinHeight={true}>

@@ -1,4 +1,3 @@
-import { properties } from "@/constants/projects";
 import ProjectsFilterPanel from "./ProjectsFilterPanel";
 import PropertyCardsDisplay from "./PropertyCardsDisplay";
 import PropertyPagination from "./PropertyPagination";

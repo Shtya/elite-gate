@@ -4,7 +4,7 @@ import Card from '@/components/shared/Card';
 import { useState } from 'react';
 import { Control, Controller, FieldValues, Path } from 'react-hook-form';
 import { IoMdClose } from 'react-icons/io';
-import { PropertyDetail, PropertyFormValues } from '../PropertyForm';
+import { PropertyDetail } from '../PropertyForm';
 import FieldErrorMessage from '@/components/shared/Forms/FieldErrorMessage';
 
 type InfoSectionProps<T extends FieldValues> = {

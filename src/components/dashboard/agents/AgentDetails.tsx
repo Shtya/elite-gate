@@ -8,6 +8,7 @@ import { BiEdit } from 'react-icons/bi';
 import { FaCalendarAlt, FaClipboardList, FaDollarSign, FaCheckCircle } from 'react-icons/fa';
 import { formatDate } from '@/utils/date';
 import AgentStatusControl from './AgentStatusControl';
+import Image from 'next/image';
 
 type Props = {
     agent: AgentRow;
@@ -35,9 +36,11 @@ export default function AgentDetails({ agent }: Props) {
                         </Link>
 
                         <div className="relative w-fit mx-auto">
-                            <img
+                            <Image
                                 src={agent.image || '/users/default-user.png'}
                                 alt={agent.name}
+                                width={80}
+                                height={80}
                                 className="rounded-full w-20 h-20 object-cover border"
                             />
                         </div>

@@ -15,21 +15,6 @@ interface NotificationsCardProps {
     notifications: AppointmentNotification[]
 }
 
-const getStatusIcon = (status: string) => {
-    switch (status) {
-        case 'confirmed':
-            return <FaCheckCircle className="w-4 h-4 text-green-500" />
-        case 'pending':
-            return <FaExclamationCircle className="w-4 h-4 text-yellow-500" />
-        case 'cancelled':
-            return <FaTimesCircle className="w-4 h-4 text-red-500" />
-        case 'completed':
-            return <FaCheckCircle className="w-4 h-4 text-blue-500" />
-        default:
-            return <FaExclamationCircle className="w-4 h-4 text-gray-500" />
-    }
-}
-
 const getStatusText = (status: string) => {
     switch (status) {
         case 'confirmed':

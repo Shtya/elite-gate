@@ -15,7 +15,7 @@ export function useCities() {
     }> => {
         try {
             // 👉 Mocked data
-            let rows: CityRow[] = [
+            const rows: CityRow[] = [
                 { id: 1, name: 'المدينة المنورة', regionsCount: 7 },
                 { id: 2, name: 'الطائف', regionsCount: 6 },
                 { id: 3, name: 'أبها', regionsCount: 4 },

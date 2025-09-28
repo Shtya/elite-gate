@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { ReactElement, useEffect, useState } from 'react';
-import { Control, FieldValues, Path, PathValue, useController } from 'react-hook-form';
+import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 const LocationMap = dynamic(() => import('./LocationMap'), {
     ssr: false,

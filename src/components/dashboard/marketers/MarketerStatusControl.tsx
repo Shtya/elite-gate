@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Popup from '@/components/shared/Popup';
 import MarketerStatusToggle from './MarketerStatusToggle';
-import { MarketerRow, MarketerStatus, marketerStatusMap } from '@/types/dashboard/marketer';
+import { MarketerRow, MarketerStatus } from '@/types/dashboard/marketer';
 import { marketerStatusClassMap } from '@/constants/dashboard/admin/marketers/contants';
 
 type Props = {

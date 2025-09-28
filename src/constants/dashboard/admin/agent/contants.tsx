@@ -1,6 +1,7 @@
 import { FilterConfig, SortConfig, TableColumn } from '@/types/components/Table';
 import { AgentRow, AgentStatus, agentStatusMap } from '@/types/dashboard/agent';
 import { formatDate } from '@/utils/date';
+import Image from 'next/image';
 
 export const agentStatusClassMap: Record<AgentStatus, string> = {
     active: 'bg-green-600 hover:bg-green-700',
@@ -52,9 +53,11 @@ export const agentColumns: TableColumn<AgentRow>[] = [
                 : '/users/default-user.png';
 
             return (
-                <img
+                <Image
                     src={imageSrc}
                     alt="Agent"
+                    width={40}
+                    height={40}
                     className="w-10 h-10 rounded-full object-cover"
                     onError={(e) => {
                         e.currentTarget.src = '/users/default-user.png';

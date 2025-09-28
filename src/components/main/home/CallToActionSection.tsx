@@ -1,6 +1,5 @@
 import PrimaryButton from "@/components/shared/Button";
 import SectionTitle from "@/components/shared/SectionTitle";
-import Link from "next/link";
 import { BsArrowLeft } from "react-icons/bs";
 
 

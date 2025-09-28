@@ -61,8 +61,8 @@ export default function useClients() {
                     const sortKey = sort as keyof ClientRow;
 
                     filtered.sort((a, b) => {
-                        let valA = a[sortKey];
-                        let valB = b[sortKey];
+                        const valA = a[sortKey];
+                        const valB = b[sortKey];
 
                         // Handle undefined values safely
                         if (valA === undefined || valB === undefined) return 0;

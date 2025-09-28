@@ -33,29 +33,7 @@ export default function useProperties() {
                 await new Promise((r) => setTimeout(r, 300)); // simulate delay
                 if (signal.aborted) return;
 
-                let filtered = [...mockedProperties];
-
-                // if (keyword) {
-                //     filtered = filtered.filter((p) =>
-                //         p.title.toLowerCase().includes(keyword)
-                //     );
-                // }
-
-                // if (type) {
-                //     filtered = filtered.filter((p) => p.type === type);
-                // }
-
-                // if (city) {
-                //     filtered = filtered.filter((p) => p.city === city);
-                // }
-
-                // filtered = filtered.filter((p) => {
-                //     const price = p.price || 0;
-                //     return price >= priceMin && price <= priceMax;
-                // });
-
-                // const total = filtered.length;
-                // const paginated = filtered.slice((page - 1) * limit, page * limit);
+                const filtered = [...mockedProperties];
 
                 if (!signal.aborted) {
                     setData(filtered);

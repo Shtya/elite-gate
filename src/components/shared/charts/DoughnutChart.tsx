@@ -8,7 +8,6 @@ import {
     ChartOptions,
     ChartData,
     TooltipModel,
-    Plugin,
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 

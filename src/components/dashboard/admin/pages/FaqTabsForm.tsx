@@ -37,7 +37,7 @@ export default function FaqTabsForm() {
         if (activeIndex > watchedGroups.length - 1) {
             setActiveIndex(watchedGroups.length - 1);
         }
-    }, [watchedGroups?.length]);
+    }, [watchedGroups?.length, setActiveIndex]);
 
     const titles = useMemo(() => {
         const list = watchedGroups ?? fields.map(f => ({ title: (f as any).title ?? "" } as FAQGroup));

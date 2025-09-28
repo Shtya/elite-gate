@@ -1,11 +1,9 @@
 'use client'
-import { useMemo, useState } from "react";
 import SectionTitle from "@/components/shared/SectionTitle";
-import { extractVideoId } from "@/utils/helpers";
 import VideoSection from "@/components/shared/VideoSection";
+import Image from "next/image";
 
 export default function ExplorePropertiesSection() {
-    const [isPlaying, setIsPlaying] = useState(false);
 
     // Your YouTube URL
     const videoUrl = "https://youtu.be/v6E-NKtYLRg?si=nCCCOoyOfkELc9kx";
@@ -13,7 +11,7 @@ export default function ExplorePropertiesSection() {
     return (
         <section className="bg-white pt-[60px] lg:pt-[120px] relative z-10">
             {/* Decorative Background Layer */}
-            <img
+            <Image
                 alt="el"
                 width={110}
                 height={115}

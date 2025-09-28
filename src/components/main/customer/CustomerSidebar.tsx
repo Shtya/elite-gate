@@ -3,7 +3,6 @@ import {
     FaUserCircle,
     FaShieldAlt,
     FaBell,
-    FaComments,
     FaShoppingCart,
 } from 'react-icons/fa';
 import Image from 'next/image';

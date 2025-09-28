@@ -1,4 +1,3 @@
-import AvatarSkeleton from "@/components/shared/Skelatons/AvatarSkeleton";
 import CardSkeleton from "@/components/shared/Skelatons/CardSkeleton";
 import DashboardHeaderTitleSkeleton from "@/components/shared/Skelatons/DashboardHeaderTitleSkeleton";
 import TextSkeleton from "@/components/shared/Skelatons/TextSkeleton";

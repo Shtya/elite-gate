@@ -1,4 +1,3 @@
-import Spinner from "@/components/shared/Spinner";
 import SpinnerLarge from "@/components/shared/SpinnerLarge";
 
 export default function Loading() {

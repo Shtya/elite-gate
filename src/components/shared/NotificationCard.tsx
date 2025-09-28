@@ -3,7 +3,6 @@ import { NotificationType } from "@/types/global";
 import React, { JSX, useState } from "react";
 import { AiOutlineInfoCircle, AiOutlineCheckCircle, AiOutlineWarning, AiOutlineCloseCircle } from "react-icons/ai";
 import { HiChevronUp, HiChevronDown } from "react-icons/hi";
-import { MdClose } from "react-icons/md";
 
 
 

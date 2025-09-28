@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Card from "@/components/shared/Card";
 import Uploader from "@/components/shared/Forms/Uploader";
 import { Control, useForm } from "react-hook-form";
 

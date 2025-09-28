@@ -1,5 +1,5 @@
 'use client'
-import { useForm } from 'react-hook-form'
+import { FieldErrors, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { campaignSchema, CampaignFormData } from '@/types/campaign'
 import Card from '@/components/shared/Card'
@@ -53,7 +53,7 @@ export default function CampaignForm({ initialData }: CampaignFormProps) {
         console.log('Form Data:', data)
     }
 
-    function onError(errors: any) {
+    function onError(errors: FieldErrors<CampaignFormData>) {
         console.log('Form Errors:', errors)
     }
     return (

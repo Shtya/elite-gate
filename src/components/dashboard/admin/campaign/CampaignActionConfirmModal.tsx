@@ -1,7 +1,6 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import Popup from '@/components/shared/Popup';
 import ConfirmActionToggle from '@/components/shared/ConfirmActionToggle';
 
 export type ActionType = 'pause' | 'cancel' | 'draft' | 'resume' | null;
@@ -39,7 +38,9 @@ export default function CampaignActionConfirmModal({
         }
     }
 
-    const getConfig = () => {
+
+
+    const config = useMemo(() => {
         switch (confirmAction) {
             case 'pause':
                 return {
@@ -68,9 +69,8 @@ export default function CampaignActionConfirmModal({
             default:
                 return null;
         }
-    };
+    }, [confirmAction, campaignId]);
 
-    const config = useMemo(() => getConfig(), [confirmAction, campaignId]);
 
     if (!config) return null;
 

@@ -4,7 +4,7 @@ import DataView from "@/components/shared/DateViewTable/DataView";
 import { MenuActionItem } from "@/components/shared/Header/MenuActionList";
 import { marketerColumns, marketerFilters, marketerSortConfig } from "@/constants/dashboard/admin/marketers/contants";
 import { MarketerRow } from "@/types/dashboard/marketer";
-import { FaCheck, FaEdit, FaPencilAlt, FaRegTrashAlt, FaUndo } from "react-icons/fa";
+import { FaCheck, FaEdit, FaPencilAlt, FaRegTrashAlt } from "react-icons/fa";
 import MarketerStatusToggle from "./MarketerStatusToggle";
 import useMarketers from "@/hooks/dashboard/admin/marketer/useMarketers";
 

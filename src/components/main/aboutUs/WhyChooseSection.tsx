@@ -1,8 +1,8 @@
 
-import PrimaryButton from "@/components/shared/Button";
 import SectionTitle from "@/components/shared/SectionTitle";
+import Image from "next/image";
 import { BiLike } from "react-icons/bi";
-import { BsArrowRight, BsBuilding, BsShop, BsBuildings } from "react-icons/bs";
+import { BsBuilding, BsBuildings } from "react-icons/bs";
 const services =
     [
         {
@@ -25,7 +25,7 @@ const WhyChooseSection = () => {
                     {/* Left Image Section */}
                     <div className="col-span-12 lg:col-span-6">
                         <div className="relative z-[1] text-center text-xxl-start pb-lg-0">
-                            <img
+                            <Image
                                 alt="image"
                                 width={526}
                                 height={633}

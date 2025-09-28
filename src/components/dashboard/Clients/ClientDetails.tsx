@@ -8,6 +8,7 @@ import { FaCalendarAlt, FaClipboardList } from 'react-icons/fa';
 import DashboardSectionCard from '../DashboardSectionCard';
 import { formatDate } from '@/utils/date';
 import ClientStatusControl from './ClientStatusControl';
+import Image from 'next/image';
 
 
 type Props = {
@@ -36,9 +37,11 @@ export default function ClientDetails({ client }: Props) {
 
                         {/* Avatar */}
                         <div className="relative w-fit mx-auto">
-                            <img
+                            <Image
                                 src={client.image || '/users/default-user.png'}
                                 alt={client.name}
+                                width={80}
+                                height={80}
                                 className="rounded-full w-20 h-20 object-cover border"
                             />
 

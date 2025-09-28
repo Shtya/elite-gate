@@ -6,6 +6,7 @@ import StatBadge from '@/components/shared/StatBadge';
 import FeatureList from './FeatureList';
 import SectionTitle from '@/components/shared/SectionTitle';
 import { BiLike } from 'react-icons/bi';
+import Image from 'next/image';
 
 const tabConfig = [
     {
@@ -35,7 +36,7 @@ export default function AboutSection() {
                 <div className="flex flex-col lg:flex-row items-center  gap-4 lg:gap-6">
                     {/* Left Image */}
                     <div className="w-full lg:w-1/2 text-center lg:text-start">
-                        <img
+                        <Image
                             alt="صورة العقار"
                             loading="lazy"
                             width={526}

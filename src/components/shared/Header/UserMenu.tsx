@@ -2,7 +2,6 @@ import {
   HiOutlineUser,
   HiOutlineCalendar,
   HiOutlineHeart,
-  HiOutlineQuestionMarkCircle,
   HiOutlineArrowRightOnRectangle,
 } from "react-icons/hi2";
 import Image from "next/image";

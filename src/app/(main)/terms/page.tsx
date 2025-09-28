@@ -2,7 +2,7 @@ import TermsTabs from "@/components/main/terms/TermsTabs";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
     title: 'الشروط والأحكام',
     description: 'اطّلع على الشروط والأحكام الخاصة باستخدام منصة مراسل جدة العقاري لضمان تجربة آمنة وشفافة.',
 };

@@ -1,7 +1,6 @@
 'use client';
 
 import useChartToolTip from '@/hooks/useChartToolTip';
-import { createGradiant } from '@/utils/color';
 import {
     Chart as ChartJS,
     BarElement,

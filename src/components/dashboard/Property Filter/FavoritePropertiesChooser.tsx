@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import InfoCell from "@/components/shared/InfoCell";
 import Popup from "@/components/shared/Popup";

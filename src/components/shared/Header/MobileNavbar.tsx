@@ -1,5 +1,5 @@
 "use client"
-import Image from "next/image";
+
 import { RiCloseLargeFill } from "react-icons/ri";
 import Navbar from "./Navbar";
 import { useState } from "react";

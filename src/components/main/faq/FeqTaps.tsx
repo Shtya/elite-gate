@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import FaqList from "@/components/shared/FaqList";
 
@@ -62,7 +62,6 @@ export const faqGroups = [
 ];
 
 export default function FeqTaps() {
-  const titles = useMemo(() => faqGroups.map(g => g.title), []);
   const [activeTitle, setActiveTitle] = useState<string>(faqGroups[0].title);
 
   // Support deep link via ?group=<slug>

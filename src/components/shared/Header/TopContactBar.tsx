@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FiPhoneCall, FiCopy } from 'react-icons/fi';
+import { FiPhoneCall } from 'react-icons/fi';
 import { HiOutlineMailOpen } from 'react-icons/hi';
 import { IoLocation } from 'react-icons/io5';
 import { useCallback, useState } from 'react';

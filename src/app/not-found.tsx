@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -12,9 +13,12 @@ export default function NotFound() {
                 <div className="flex justify-center">
                     <div className="col-span-10 lg:col-span-6">
                         <div className="text-center pb-10">
-                            <img
+                            <Image
+                                width={856}
+                                height={558}
                                 alt="image"
                                 className="mx-auto w-full"
+
                                 src="/error-img.png"
                             />
                             <h2 className="mt-10 mb-5 text-3xl font-bold">عذرًا! الصفحة غير موجودة</h2>
@@ -23,12 +27,12 @@ export default function NotFound() {
                             </p>
 
                             <div className="flex justify-center gap-4 flex-wrap">
-                                <Link href="/" className="btn-primary font-semibold inline-block">
+                                <Link href="/" className="btn-primary font-semibold">
                                     العودة إلى الصفحة الرئيسية
                                 </Link>
                                 <button
                                     onClick={() => router.back()}
-                                    className="btn-secondary font-semibold inline-block"
+                                    className="btn-secondary font-semibold"
                                 >
                                     العودة للخلف
                                 </button>

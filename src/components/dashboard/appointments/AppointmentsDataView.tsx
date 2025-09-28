@@ -1,6 +1,6 @@
 'use client'
 import DataView from "@/components/shared/DateViewTable/DataView";
-import { agents, appointmentColumns, appointmentFilters, appointmentSortConfig } from "@/constants/dashboard/admin/appointment/contants";
+import { agents, useAppointmentColumns, appointmentFilters, appointmentSortConfig } from "@/constants/dashboard/admin/appointment/contants";
 import useAppointments from "@/hooks/dashboard/admin/appointments/useAppointments";
 import { AppointmentRow } from "@/types/dashboard/appointment";
 import { FaExchangeAlt, FaEye, FaUserEdit } from "react-icons/fa";
@@ -19,7 +19,7 @@ type AppointmentsDataViewProps = {
 
 export default function AppointmentsDataView({ agentId, clientId }: AppointmentsDataViewProps) {
     const getRows = useAppointments({ agentId, clientId });
-
+    const appointmentColumns = useAppointmentColumns();
     const role = useRoleFromPath();
 
     // ✅ Filter columns by context
@@ -30,7 +30,7 @@ export default function AppointmentsDataView({ agentId, clientId }: Appointments
                 if (agentId && col.key === "agent") return false;
                 return true;
             }),
-        [appointmentColumns, clientId, agentId]
+        [clientId, agentId]
     );
 
     // ✅ Role-based filters

@@ -4,7 +4,6 @@ import { useMemo, useState } from 'react';
 import Card from '@/components/shared/Card';
 import Link from 'next/link';
 import Popup from '@/components/shared/Popup';
-import ConfirmActionToggle from '@/components/shared/ConfirmActionToggle';
 import { Campaign } from '@/types/campaign';
 import { FaPause, FaStop, FaEdit, FaSave, FaPlay } from 'react-icons/fa';
 import CampaignActionConfirmModal from './CampaignActionConfirmModal';
@@ -19,7 +18,7 @@ export default function CampaignActionsCard({
     const [confirmAction, setConfirmAction] = useState<null | 'pause' | 'cancel' | 'draft' | 'resume'>(null);
 
 
-    const getAvailableActions = () => {
+    const actions = useMemo(() => {
         switch (campaign.status) {
             case 'draft':
                 return [
@@ -86,9 +85,8 @@ export default function CampaignActionsCard({
             default:
                 return [];
         }
-    };
+    }, [campaign.status, campaign.id, setConfirmAction]);
 
-    const actions = useMemo(() => getAvailableActions(), [campaign.status]);
 
 
     return (

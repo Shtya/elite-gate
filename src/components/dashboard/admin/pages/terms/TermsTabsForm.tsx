@@ -35,7 +35,7 @@ export default function TermsTabsForm() {
         const total = watchedTerms?.length ?? fields.length;
         if (!total) { setActiveIndex(0); return; }
         if (activeIndex > total - 1) setActiveIndex(total - 1);
-    }, [watchedTerms?.length]);
+    }, [watchedTerms?.length, fields.length, setActiveIndex]);
 
     const titles = useMemo(() => {
         const list = watchedTerms ?? (fields as Array<{ title?: string }>).map(f => ({ title: (f as any).title ?? "" }));

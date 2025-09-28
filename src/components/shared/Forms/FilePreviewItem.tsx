@@ -1,6 +1,7 @@
 'use client';
 
 import { FileItem } from "@/utils/upload";
+import Image from "next/image";
 import { FaFilePdf, FaFileExcel, FaFileWord, FaFileCsv, FaFileArchive, FaFileAlt } from "react-icons/fa";
 
 
@@ -53,9 +54,11 @@ export default function FilePreviewItem({
     return (
         <div key={idx} className="relative group">
             {isImage ? (
-                <img
+                <Image
                     src={fileObj.url}
                     alt={fileName}
+                    height={160}
+                    width={160}
                     className={`w-full h-40 object-cover rounded-lg border ${allowPrimary && fileObj.isPrimary ? "border-4 border-primary" : ""
                         }`}
                 />

@@ -4,7 +4,7 @@ import { TwoLineChart } from '@/components/shared/charts/TwoLineChart';
 import Card from '@/components/shared/Card';
 import AgentAppointmentStatusCards from '@/components/dashboard/agentRole/Schedule/charts/AgentAppointmentStatusCards';
 import AverageRatingsCard, { defaultRatings } from '@/components/dashboard/admin/AverageRatingsCard';
-import NotificationsCard, { agetnDefaultNotifications, defaultNotifications } from '@/components/dashboard/admin/NotificationsCard';
+import NotificationsCard, { agetnDefaultNotifications } from '@/components/dashboard/admin/NotificationsCard';
 import AgentStatsCard from '@/components/dashboard/agentRole/Schedule/charts/AgentStatsCard';
 
 export default function AgentDashboardPage() {
