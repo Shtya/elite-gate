@@ -32,7 +32,7 @@ export default function ServicesSection() {
                     />
                 </div>
 
-                <div className="flex flex-row justify-center xl:!grid-cols-3  gap-4 px-3 px-xl-0 mt-10">
+                <div className="flex flex-row flex-wrap justify-center gap-4 px-3 px-xl-0 mt-10">
                     {services.map((service, index) => (
                         <ServiceCard key={index} {...service} />
                     ))}

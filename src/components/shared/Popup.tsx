@@ -9,9 +9,10 @@ interface PopupProps {
     children: React.ReactNode;
     onClose?: () => void;
     show: boolean;
+    className?: string;
 }
 
-export default function Popup({ children, onClose, show }: PopupProps) {
+export default function Popup({ children, onClose, show, className }: PopupProps) {
     const popupRef = useRef<HTMLDivElement>(null);
 
     useOutsideClick(popupRef, () => {
@@ -23,13 +24,12 @@ export default function Popup({ children, onClose, show }: PopupProps) {
     return createPortal(
         <div
             data-popup
-            className={`popup fixed inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-300 ${show ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-                }`}
+            className={`popup fixed inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-300 ${show ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
             style={{ zIndex: 99999 }}
         >
             <div
                 ref={popupRef}
-                className="  w-fit sm:min-w-[300px]  relative bg-white rounded-xl shadow-lg p-6  space-y-2 transition-all duration-300 scale-100"
+                className={` w-fit sm:min-w-[300px]  relative bg-white rounded-xl shadow-lg p-6  space-y-2 transition-all duration-300 scale-100  ${className}`}
             >
                 {/* Close Button */}
                 {onClose && (

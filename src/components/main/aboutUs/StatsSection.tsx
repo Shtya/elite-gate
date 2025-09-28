@@ -40,7 +40,7 @@ export default function StatsSection() {
                     {stats.map((stat, index) => (
                         <div
                             key={index}
-                            className="col-span-12 md:col-span-6 lg:col-span-3 text-white text-center"
+                            className="col-span-12 xs:col-span-6 lg:col-span-3 text-white text-center"
                         >
                             <div
                                 className={`text-4xl rounded-full mb-4 ${stat.bg} w-20 h-20 flex items-center justify-center mx-auto`}

@@ -21,7 +21,7 @@ const WhyChooseSection = () => {
     return (
         <div className="py-[60px] md:py-[120px] bg-[var(--bg-2)] relative z-[1] px-3">
             <div className="container">
-                <div className="grid grid-cols-12">
+                <div className="grid grid-cols-12 gap-4 lg:gap-6">
                     {/* Left Image Section */}
                     <div className="col-span-12 lg:col-span-6">
                         <div className="relative z-[1] text-center text-xxl-start pb-lg-0">
@@ -33,12 +33,12 @@ const WhyChooseSection = () => {
                                 src="/main/about/why-choose-img.webp"
                             />
 
-                            <div className="flex flex-col sm:flex-row items-center gap-4 rounded-xl p-6 bg-tertiary text-white z-10 absolute top-12 right-0 2xl:-right-24 shadow-lg">
-                                <div className="w-14 h-14 rounded-full bg-white text-secondary  flex items-center justify-center">
-                                    <BiLike className="text-[28px]" />
+                            <div className="flex flex-col sm:flex-row items-center gap-4 rounded-xl p-3 lg:p-6 bg-tertiary text-white z-10 absolute top-12 right-0 2xl:-right-24 shadow-lg">
+                                <div className="w-10 h-10 lg:w-14 lg:h-14 rounded-full bg-white text-secondary  flex items-center justify-center">
+                                    <BiLike className="text-[20px] lg:text-[28px]" />
                                 </div>
                                 <div className="text-center sm:text-start">
-                                    <h3 className="text-2xl font-bold mb-1">
+                                    <h3 className="text-lg lg:text-2xl font-bold mb-1">
                                         <span>10</span>+
                                     </h3>
                                     <p className="text-sm">سنوات من الخبرة</p>

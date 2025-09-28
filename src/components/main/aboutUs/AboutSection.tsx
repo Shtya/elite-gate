@@ -32,7 +32,7 @@ export default function AboutSection() {
     return (
         <section className="py-20 px-4 bg-[var(--bg-2)] relative z-[1]">
             <div className="container">
-                <div className="flex flex-col lg:flex-row items-center gap-12">
+                <div className="flex flex-col lg:flex-row items-center  gap-4 lg:gap-6">
                     {/* Left Image */}
                     <div className="w-full lg:w-1/2 text-center lg:text-start">
                         <img

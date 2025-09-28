@@ -103,13 +103,13 @@ export default function TeamSection() {
                                     <img
                                         src={member.image}
                                         alt={member.name}
-                                        className="rounded-full w-[250px] h-[250px] object-cover group-hover:grayscale duration-300"
+                                        className="rounded-full w-[200px] h-[200px] md:w-[250px] md:h-[250px] object-cover group-hover:grayscale duration-300"
                                     />
 
                                 </div>
                                 <div className="mt-6">
-                                    <h4 className="text-[24px] font-semibold">{member.name}</h4>
-                                    <p className="text-lg mb-4">{member.role}</p>
+                                    <h4 className="text-[20px] md:text-[24px] font-semibold">{member.name}</h4>
+                                    <p className="text-base md:text-lg mb-4">{member.role}</p>
                                 </div>
                             </div>
                         </SwiperSlide>
