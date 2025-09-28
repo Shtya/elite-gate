@@ -1,5 +1,5 @@
 'use client'
-import Image from 'next/image'
+import FallbackImage from '@/components/shared/FallbackImage'
 
 interface Agent {
     id: string
@@ -25,12 +25,7 @@ export default function AgentPerformanceCard({ agents }: AgentPerformanceCardPro
                     <div key={agent.id} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
                         {/* Agent Image */}
                         <div className="relative w-12 h-12 flex-shrink-0">
-                            <Image
-                                src={agent.image}
-                                alt={agent.name}
-                                fill
-                                className="rounded-full object-cover"
-                            />
+                            <FallbackImage src={agent.image} alt={agent.name} fill className="rounded-full object-cover" />
                         </div>
 
                         {/* Agent Info */}

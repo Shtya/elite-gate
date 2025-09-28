@@ -135,126 +135,132 @@ export default function FilterContainer({
         router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     };
 
+
+
     return (
-        <div className="flex justify-between items-center mb-7 gap-3 flex-wrap">
-            {showSort && sortFields.length > 0 && (
-                <>
-                    <div className="w-fit">
-                        <SelectDropdown
-                            label="ترتيب حسب"
-                            options={sortFields}
-                            value={allFilters.sort}
-                            onChange={handleSortChange}
-                        />
+        <div className="flex flex-row flex-wrap items-center justify-between gap-3 mb-7">
+            <div className=" order-first w-full md:w-auto flex items-center gap-3 "
+            >
+                {(showSearch || filters.length > 0 || showSort) && <button
+                    onClick={handleReset}
+                    className=" inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--btn-bg)] text-[var(--dark)] transition-colors duration-200 hover:bg-[var(--primary-light)] hover:text-[var(--primary)]
+        "
+                >
+                    <TbFilterCancel size={24} />
+                </button>}
 
-                    </div>
-                    <div className="w-fit">
-                        <SelectDropdown
-                            label="الاتجاه"
-                            options={directions}
-                            value={allFilters.dir}
-                            onChange={handleDirChange}
-                        />
-
-                    </div>
-                </>
-            )}
-
-            {filters.map((filter) => {
-                const current = allFilters[filter.key];
-                const handleChange = (value: string | undefined) => {
-                    updateQuery(filter.key, value);
-                };
-                if (filter.type === 'custom' && filter.component) {
-                    const CustomComponent = filter.component;
-                    return (
-                        <div key={filter.key} className="w-fit">
-                            <CustomComponent value={current} onChange={handleChange} />
-                        </div>
-                    );
-                }
-
-                if (filter.type === 'select' && filter.options) {
-                    return (
-                        <div className="w-fit" key={filter.key}>
-                            <SelectDropdown
-                                label={filter.label}
-                                options={filter.options}
-                                value={current}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    );
-                }
-
-                if (filter.type === 'dateRange') {
-                    const fromDate = allFilters[`${filter.key}_from`]
-                        ? parse(allFilters[`${filter.key}_from`], 'yyyy-MM-dd', new Date())
-                        : undefined;
-                    const toDate = allFilters[`${filter.key}_to`]
-                        ? parse(allFilters[`${filter.key}_to`], 'yyyy-MM-dd', new Date())
-                        : undefined;
-
-
-                    const handleDateChange = (range: { startDate?: Date; endDate?: Date }) => {
-                        const params = new URLSearchParams(allFilters);
-
-                        if (range.startDate) {
-                            params.set(`${filter.key}_from`, format(range.startDate, 'yyyy-MM-dd'));
-                        } else {
-                            params.delete(`${filter.key}_from`);
-                        }
-
-                        if (range.endDate) {
-                            params.set(`${filter.key}_to`, format(range.endDate, 'yyyy-MM-dd'));
-                        } else {
-                            params.delete(`${filter.key}_to`);
-                        }
-
-                        const updated = Object.fromEntries(params.entries());
-                        setAllFilters(updated);
-                        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-                    };
-
-                    return (
-                        <SelectDateRange
-                            key={filter.key}
-                            label={filter.label}
-                            value={{
-                                startDate: fromDate,
-                                endDate: toDate
-                            }}
-                            onChange={handleDateChange}
-                        />
-                    );
-                }
-
-                return null;
-            })}
-
-            {showSearch ? (
-                <div className="mr-auto">
-                    <SearchField
+                <div className="flex-1 md:flex-none">
+                    {showSearch && <SearchField
                         value={search}
                         onChange={setSearch}
                         searchPlaceholder={searchPlaceholder}
-                    />
-                </div>) : <div className='mr-auto'></div>
-            }
-
-            {(showSearch || filters.length > 0 || showSort) && (
-                <div className="relative group">
-                    <button
-                        onClick={handleReset}
-                        className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--btn-bg)] text-[var(--dark)] cursor-pointer transition-colors duration-200 hover:bg-[var(--primary-light)] hover:text-[var(--primary)]"
-                    >
-                        <TbFilterCancel size={24} />
-                    </button>
-                    <span className="absolute bottom-[-35px] left-1/2 -translate-x-1/2 bg-[var(--rt-color-dark)] text-[var(--rt-color-white)] text-[12px] px-2 py-1 rounded-md whitespace-nowrap opacity-0 pointer-events-none transition-opacity duration-200 group-hover:opacity-[var(--rt-opacity)] z-10">
-                        إعادة تعيين الفلاتر
-                    </span>
+                    />}
                 </div>
-            )}
-        </div>
-    );
+            </div>
+
+            {/* 2) Sort dropdowns, each as its own flex‐item */}
+            <div className='flex flex-wrap gap-3 '>
+                {showSort && sortFields.length > 0 && (
+                    <>
+                        <div className="w-full md:w-fit">
+                            <SelectDropdown
+                                label="ترتيب حسب"
+                                options={sortFields}
+                                value={allFilters.sort}
+                                onChange={handleSortChange}
+                            />
+
+                        </div>
+                        <div className="w-full md:w-fit">
+                            <SelectDropdown
+                                label="الاتجاه"
+                                options={directions}
+                                value={allFilters.dir}
+                                onChange={handleDirChange}
+                            />
+
+                        </div>
+                    </>
+                )}
+
+                {/* 3) Other filters, each direct child */}
+                {filters.map((filter) => {
+
+                    const current = allFilters[filter.key];
+                    const handleChange = (value: string | undefined) => {
+                        updateQuery(filter.key, value);
+                    };
+                    if (filter.type === 'custom' && filter.component) {
+                        const CustomComponent = filter.component;
+                        return (
+                            <div key={filter.key} className="w-full md:w-fit">
+                                <CustomComponent value={current} onChange={handleChange} />
+                            </div>
+                        );
+                    }
+
+
+                    if (filter.type === "select" && filter.options) {
+                        return (
+                            <div key={filter.key} className="w-full md:w-fit">
+                                <SelectDropdown
+                                    label={filter.label}
+                                    options={filter.options}
+                                    value={current}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        )
+                    }
+
+
+
+                    if (filter.type === "dateRange") {
+                        const fromDate = allFilters[`${filter.key}_from`]
+                            ? parse(allFilters[`${filter.key}_from`], 'yyyy-MM-dd', new Date())
+                            : undefined;
+                        const toDate = allFilters[`${filter.key}_to`]
+                            ? parse(allFilters[`${filter.key}_to`], 'yyyy-MM-dd', new Date())
+                            : undefined;
+
+
+                        const handleDateChange = (range: { startDate?: Date; endDate?: Date }) => {
+                            const params = new URLSearchParams(allFilters);
+
+                            if (range.startDate) {
+                                params.set(`${filter.key}_from`, format(range.startDate, 'yyyy-MM-dd'));
+                            } else {
+                                params.delete(`${filter.key}_from`);
+                            }
+
+                            if (range.endDate) {
+                                params.set(`${filter.key}_to`, format(range.endDate, 'yyyy-MM-dd'));
+                            } else {
+                                params.delete(`${filter.key}_to`);
+                            }
+
+                            const updated = Object.fromEntries(params.entries());
+                            setAllFilters(updated);
+                            router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+                        };
+
+
+                        return (
+                            <div key={filter.key} className="w-full md:w-fit">
+                                <SelectDateRange
+                                    label={filter.label}
+                                    value={{ startDate: fromDate, endDate: toDate }}
+                                    onChange={handleDateChange}
+                                    direction="rtl"
+                                    triggerClassName='w-full md:w-fit'
+                                />
+                            </div>
+                        )
+                    }
+
+                    return null
+                })}
+            </div>
+        </div >
+    )
 }

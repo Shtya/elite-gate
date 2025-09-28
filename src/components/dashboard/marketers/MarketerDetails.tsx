@@ -15,7 +15,7 @@ import {
 } from 'react-icons/fa';
 import { formatDate } from '@/utils/date';
 import MarketerStatusControl from './MarketerStatusControl';
-import Image from 'next/image';
+import FallbackImage from '@/components/shared/FallbackImage';
 
 
 type Props = {
@@ -45,8 +45,8 @@ export default function MarketerDetails({ marketer }: Props) {
                         </Link>
 
                         <div className="relative w-fit mx-auto">
-                            <Image
-                                src={marketer.image || '/users/default-user.png'}
+                            <FallbackImage
+                                src={marketer.image}
                                 alt={marketer.name}
                                 width={80}
                                 height={80}

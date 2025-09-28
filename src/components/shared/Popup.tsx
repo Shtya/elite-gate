@@ -24,7 +24,7 @@ export default function Popup({ children, onClose, show, className }: PopupProps
     return createPortal(
         <div
             data-popup
-            className={`popup fixed inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-300 ${show ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+            className={`px-2 popup fixed inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-300 ${show ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
             style={{ zIndex: 99999 }}
         >
             <div

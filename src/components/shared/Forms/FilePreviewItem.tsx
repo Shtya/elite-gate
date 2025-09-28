@@ -59,13 +59,11 @@ export default function FilePreviewItem({
                     alt={fileName}
                     height={160}
                     width={160}
-                    className={`w-full h-40 object-cover rounded-lg border ${allowPrimary && fileObj.isPrimary ? "border-4 border-primary" : ""
-                        }`}
+                    className={`w-full h-40 object-cover rounded-lg border ${allowPrimary && fileObj.isPrimary ? "border-4 border-primary" : ""}`}
                 />
             ) : (
                 <div
-                    className={`w-full h-40 flex flex-col items-center justify-center bg-gray-100 rounded-lg border ${allowPrimary && fileObj.isPrimary ? "border-4 border-primary" : ""
-                        }`}
+                    className={`w-full h-40 flex flex-col items-center justify-center bg-gray-100 rounded-lg border ${allowPrimary && fileObj.isPrimary ? "border-4 border-primary" : ""}`}
                 >
                     <FileIcon className={`w-12 h-12 mb-2 ${color}`} />
                     <a

@@ -4,8 +4,8 @@ import {
   HiOutlineHeart,
   HiOutlineArrowRightOnRectangle,
 } from "react-icons/hi2";
-import Image from "next/image";
 import MenuItem from "../MenuItem";
+import FallbackImage from "../FallbackImage";
 
 type Props = {
   user: { name: string; location: string; avatarUrl: string };
@@ -21,7 +21,7 @@ export default function UserMenu({ user, onLogout, onClose }: Props) {
   return (
     <>
       <div className="flex gap-3 pb-3 items-center border-b border-dashed">
-        <Image src={user.avatarUrl} alt="" width={55} height={55} className="rounded-full" />
+        <FallbackImage src={user.avatarUrl} alt="" width={55} height={55} className="rounded-full" />
         <div className="flex flex-col">
           <span className="text-gray-800 text-lg font-semibold">{user.name}</span>
           <span className="text-gray-600 text-sm">{user.location}</span>

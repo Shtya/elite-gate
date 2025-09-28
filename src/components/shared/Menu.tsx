@@ -1,11 +1,11 @@
 'use client';
 
+import { useFloatingMenuPosition } from '@/hooks/useFloatingMenuPosition';
 import React, {
     cloneElement,
     ReactElement,
     ReactNode,
     useEffect,
-    useLayoutEffect,
     useRef,
     useState,
 } from 'react';
@@ -19,6 +19,7 @@ type MenuProps = {
     trigger: (toggle: () => void) => ReactNode;
     children: ReactElement<MenuChildProps>; // expects onClose prop
     className?: string;
+    triggerClassName?: string;
     width?: number; // px
     align?: 'right' | 'left'; // alignment relative to trigger
 };
@@ -28,64 +29,18 @@ export default function Menu({
     children,
     width = 224,
     className = '',
+    triggerClassName = '',
     align = 'right',
 }: MenuProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const anchorRef = useRef<HTMLElement | null>(null); // the trigger wrapper
 
     const menuRef = useRef<HTMLDivElement | null>(null);
-    const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
+    const pos = useFloatingMenuPosition(anchorRef, isMenuOpen, width, align)
+
 
     const onClose = () => setIsMenuOpen(false);
     const toggleMenu = () => setIsMenuOpen((p) => !p);
-
-    // measure and position the menu relative to anchor
-    const updatePosition = () => {
-        const anchor = anchorRef.current;
-        if (!anchor) return;
-        const rect = anchor.getBoundingClientRect();
-        // default align right (align menu's right edge with anchor's right edge)
-        let left = rect.left;
-        if (align === 'right') {
-            left = rect.right - width;
-        } else {
-            left = rect.left;
-        }
-
-        // Keep menu inside viewport (basic clamp)
-        const vw = window.innerWidth;
-        const vh = window.innerHeight;
-        const clampedLeft = Math.max(8, Math.min(left, vw - width - 8));
-        const top = rect.bottom + window.scrollY + 8; // 8px offset
-        const clampedTop = Math.max(8 + window.scrollY, Math.min(top, window.scrollY + vh - 40));
-        setPos({ top: clampedTop, left: clampedLeft });
-    };
-
-    // When menu opens, compute position
-    useLayoutEffect(() => {
-        if (isMenuOpen) {
-            updatePosition();
-        } else {
-            setPos(null);
-        }
-    }, [isMenuOpen]);
-
-    // Recompute on resize/scroll (throttle-ish via requestAnimationFrame)
-    useEffect(() => {
-        if (!isMenuOpen) return;
-        let raf = 0;
-        const handler = () => {
-            cancelAnimationFrame(raf);
-            raf = requestAnimationFrame(() => updatePosition());
-        };
-        window.addEventListener('resize', handler);
-        window.addEventListener('scroll', handler, true); // capture scroll from ancestors
-        return () => {
-            cancelAnimationFrame(raf);
-            window.removeEventListener('resize', handler);
-            window.removeEventListener('scroll', handler, true);
-        };
-    }, [isMenuOpen]);
 
     // close when clicking outside anchor or menu (works across portal boundary)
     useEffect(() => {
@@ -112,7 +67,7 @@ export default function Menu({
                 // anchorRef should be an HTMLElement. Cast from HTMLSpanElement to HTMLElement ok.
                 anchorRef.current = el;
             }}
-            className="inline-flex"
+            className={`${triggerClassName} inline-flex`}
         // keep wrapper display inline so table layout unaffected
         >
             {trigger(toggleMenu)}

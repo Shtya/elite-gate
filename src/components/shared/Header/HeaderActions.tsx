@@ -1,12 +1,12 @@
 'use client';
 
 import { BsBell } from 'react-icons/bs';
-import Image from 'next/image';
 import Menu from '../Menu';
 import UserMenu from './UserMenu';
 import NotificationsMenu from './NotificationsMenu';
 import { usePathname } from 'next/navigation';
 import PrimaryButton from '../Button';
+import FallbackImage from '../FallbackImage';
 
 export default function HeaderActions() {
   const pathname = usePathname();
@@ -24,8 +24,8 @@ export default function HeaderActions() {
       {/* Notification Icon */}
       <div className="relative inline-block text-left">
         <Menu
-
           width={250}
+          align='left'
           trigger={(toggle) => (
             <div className="relative inline-flex">
               {/* Notification Dot */}
@@ -55,25 +55,26 @@ export default function HeaderActions() {
       <div className="relative inline-block">
         <Menu
           width={200}
+          align='left'
           trigger={(toggle) => (
             <button
               onClick={toggle}
               className="flex justify-center items-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary/30"
               aria-label="فتح قائمة المستخدم"
             >
-              <Image
+              <FallbackImage
                 alt="profile"
                 src="/users/user-1.jpg"
                 width={44}
                 height={44}
                 className="rounded-full"
-                priority
               />
             </button>
           )}
         >
           <UserMenu
             user={{ name: "Peter Parker", location: "Los Angeles, CA", avatarUrl: "/users/user-1.jpg" }}
+
             onLogout={() => console.log("Logging out...")}
           />
         </Menu>

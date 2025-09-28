@@ -7,9 +7,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import SwiperNextButton from '@/components/shared/SwiperNextButton';
 import SwiperPrevButton from '@/components/shared/SwiperPrevButton';
-
 import SectionTitle from '@/components/shared/SectionTitle';
-import Image from 'next/image';
+import FallbackImage from '@/components/shared/FallbackImage';
 
 interface TeamMember {
     name: string;
@@ -101,7 +100,7 @@ export default function TeamSection() {
                         <SwiperSlide key={idx}>
                             <div className="group text-center">
                                 <div className="relative flex justify-center">
-                                    <Image
+                                    <FallbackImage
                                         src={member.image}
                                         alt={member.name}
                                         width={250}

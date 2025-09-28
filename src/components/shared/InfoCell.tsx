@@ -1,9 +1,8 @@
 'use client'
-import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import Tooltip from './Tooltip';
 import { formatCellContent } from '@/utils/helpers';
+import FallbackImage from './FallbackImage';
 
 type Props = {
     href?: string;
@@ -26,18 +25,7 @@ export default function InfoCell({
     imageRounded = 'full',
     subtitleClass = '',
 }: Props) {
-    const [src, setSrc] = useState(
-        image?.trim() ? image.trim() : defaultImage
-    );
 
-    // إذا تغيّر الـ image أو الـ defaultImage نعيد التهيئة
-    useEffect(() => {
-        setSrc(image?.trim() ? image.trim() : defaultImage);
-    }, [image, defaultImage]);
-
-    const handleError = () => {
-        setSrc(defaultImage);
-    };
 
     const imageClass = `w-10 h-10 object-cover ${imageRounded === 'full' ? 'rounded-full' : 'rounded-lg'}`;
     const containerClass = `flex items-center gap-3 ${className}`;
@@ -50,14 +38,8 @@ export default function InfoCell({
 
     const content = (
         <div className='flex flex-row gap-2 min-w-[200px]'>
-            <Image
-                src={src}
-                alt={title}
-                width={40}
-                height={40}
-                className={imageClass}
-                onError={handleError}
-            />
+
+            <FallbackImage src={image?.trim()} defaultImage={defaultImage} alt={title} width={40} height={40} className={imageClass} />
             <div className="flex flex-col ">
                 {title && (
                     titleContent.tooltip ? (

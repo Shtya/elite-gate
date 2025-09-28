@@ -8,7 +8,6 @@ import Card from '@/components/shared/Card';
 import { addMinutes } from 'date-fns';
 import { AppointmentRow } from '@/types/dashboard/appointment';
 import { getDefaultProjectpath } from '@/utils/appointment';
-import Image from 'next/image';
 import IconDetail from '@/components/shared/infos/IconDetail';
 import { SlCalender } from 'react-icons/sl';
 import { BiTimeFive } from 'react-icons/bi';
@@ -22,6 +21,7 @@ import { propertyTypeLabels } from '@/types/property';
 import AttachmentsCard from '@/components/shared/AttachmentsCard';
 import AppointmentProofUploadControl from './AppointmentProofUploadControl';
 import { useRoleFromPath } from '@/hooks/dashboard/admin/useRoleFromPath';
+import FallbackImage from '@/components/shared/FallbackImage';
 
 type AppointmentDetailsProps = {
     appointment: AppointmentRow;
@@ -34,7 +34,6 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
 
     const { id, project, client, agent, appointmentAt, status, reviewStars, createdAt, agentReviewStars, agentReviewText } = appointment;
     const appointmentDate = new Date(appointment.appointmentAt);
-    const imageSrc = project.image || getDefaultProjectpath(project.type);
     const badgeStyle = projectTypeColors[project.type];
 
     return (
@@ -43,12 +42,12 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
                 <Card title="تفاصيل العقار">
                     <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
                         <div className="relative w-[80px] h-[80px] shrink-0">
-                            <Image
-                                src={imageSrc}
+                            <FallbackImage
+                                src={project.image}
                                 alt={project.title}
+                                defaultImage={getDefaultProjectpath(project.type)}
                                 fill
                                 className={`rounded-lg object-cover ${project.image && 'border'}`}
-                                sizes="80px"
                             />
                         </div>
 
@@ -156,8 +155,8 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
                                     {/* ✅ معلومات الوسيط المعين */}
                                     <div className="relative rounded-2xl bg-white p-6">
                                         <div className="relative w-fit mx-auto">
-                                            <Image
-                                                src={agent.image || '/users/default-user.png'}
+                                            <FallbackImage
+                                                src={agent.image}
                                                 alt={agent.name}
                                                 width={80}
                                                 height={80}
@@ -211,8 +210,8 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
 
                             {/* Avatar */}
                             <div className="relative w-fit mx-auto">
-                                <Image
-                                    src={client.image || '/users/default-user.png'}
+                                <FallbackImage
+                                    src={client.image}
                                     alt={client.name}
                                     width={80}
                                     height={80}

@@ -35,7 +35,7 @@ export default function AgentFilterPopup({
             {!selectedAgent ? (
                 <button
                     onClick={() => setShow(true)}
-                    className={`py-3 px-8 border font-semibold rounded-full hover:bg-gray-200 transition-colors ${buttonClassName}`}
+                    className={`w-full md:w-fit py-3 px-8 border font-semibold rounded-full hover:bg-gray-200 transition-colors ${buttonClassName}`}
                 >
                     {buttonLabel}
                 </button>

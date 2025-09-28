@@ -4,8 +4,8 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { useState } from "react";
 import ImageUpload from "@/components/shared/Forms/ImageUpload";
 import { AboutContentForm } from "./AboutForm";
-import Image from "next/image";
 import SubTitle from "@/components/shared/SubTitle";
+import FallbackImage from "@/components/shared/FallbackImage";
 
 type EditTeamSectionProps = {
     control: Control<AboutContentForm>;
@@ -89,18 +89,12 @@ export default function EditTeamSection({ control }: EditTeamSectionProps) {
                         key={field.id}
                         className="border p-4 rounded-md flex flex-col items-center text-center"
                     >
-                        <Image
-                            src={field.imageUrl || "/users/default-user.png"}
+                        <FallbackImage
+                            src={field.imageUrl}
                             alt={field.name || "عضو الفريق"}
                             className="w-20 h-20 rounded-full object-cover mb-3"
                             width={80}
                             height={80}
-                            onError={(e) => {
-                                const target = e.currentTarget as HTMLImageElement;
-                                if (target.src !== window.location.origin + "/users/default-user.png") {
-                                    target.src = "/users/default-user.png";
-                                }
-                            }}
                         />
                         <p className="font-semibold">{field.name || "اسم العضو"}</p>
                         <p className="text-sm text-gray-500 mb-3">{field.job || "المسمى الوظيفي"}</p>

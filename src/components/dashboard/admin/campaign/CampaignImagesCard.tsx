@@ -35,6 +35,7 @@ export default function CampaignImagesCard({ campaign }: CampaignImagesCardProps
                                 fill
                                 className="object-cover transition-transform group-hover:scale-105"
                             />
+
                         </div>
                         <p className="text-xs text-gray-500 mt-2 text-center">
                             صورة {index + 1}

@@ -1,7 +1,7 @@
+import FallbackImage from '@/components/shared/FallbackImage';
 import { FilterConfig, SortConfig, TableColumn } from '@/types/components/Table';
 import { MarketerRow, MarketerStatus, marketerStatusMap } from '@/types/dashboard/marketer';
 import { formatDate } from '@/utils/date';
-import Image from 'next/image';
 
 export const marketerStatusClassMap: Record<MarketerStatus, string> = {
     active: 'bg-green-600 hover:bg-green-700',
@@ -41,21 +41,9 @@ export const marketerColumns: TableColumn<MarketerRow>[] = [
         key: 'image',
         label: 'الصورة',
         cell: (val) => {
-            const imageSrc = typeof val === 'string' && val.trim() !== ''
-                ? val
-                : '/users/default-user.png';
 
             return (
-                <Image
-                    src={imageSrc}
-                    alt="Marketer"
-                    width={40}
-                    height={40}
-                    className="w-10 h-10 rounded-full object-cover"
-                    onError={(e) => {
-                        e.currentTarget.src = '/users/default-user.png';
-                    }}
-                />
+                <FallbackImage src={val} alt="Marketer" />
             );
         },
     },
