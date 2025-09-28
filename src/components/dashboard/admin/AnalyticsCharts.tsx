@@ -5,6 +5,13 @@ import { BarChart } from '@/components/shared/charts/BarChart'
 import VisitsRegistrationsChart from './VisitsRegistrationsChart'
 import { DoughnutChart } from '@/components/shared/charts/DoughnutChart'
 
+interface AnalyticsChartsProps {
+    visitsData?: {
+        visits: number[]
+        registrations: number[]
+        labels: string[]
+    }
+}
 
 export default function AnalyticsCharts() {
     return (
