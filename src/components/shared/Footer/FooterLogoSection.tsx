@@ -10,10 +10,10 @@ export default function FooterLogoSection() {
             <Link href="/" className="inline-block mb-4">
 
                 <Image
-                    src="/whiteLogo.svg"
+                    src="/whiteLogo1.svg"
                     alt="Logo"
-                    width={150}
-                    height={128}
+                    width={100}
+                    height={80}
                     priority
                 />
             </Link>

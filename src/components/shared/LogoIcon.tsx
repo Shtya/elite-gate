@@ -7,11 +7,11 @@ export default function LogoIcon({ className = "" }) {
     return (
 
         <Image
-            src="/logo.svg"
+            src="/logo1.svg"
             alt="Logo"
             className={className}
-            width={150}
-            height={128}
+            width={58}
+            height={100}
             priority
         />
     );

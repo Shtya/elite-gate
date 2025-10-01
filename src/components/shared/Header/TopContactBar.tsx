@@ -34,7 +34,7 @@ export default function TopContactBar() {
         <div className="flex items-center z-[11]">
           <Link href="/">
             <div className="block">
-              <LogoIcon className="w-[140px] max-md:w-[140px] text-black" />
+              <LogoIcon className="text-black" />
             </div>
           </Link>
         </div>

@@ -17,7 +17,7 @@ export default function ClientStatusControl({ currentStatus, client }: Props) {
         <>
             <button
                 onClick={() => setShowPopup(true)}
-                className={`mt-6 w-full px-4 py-2 rounded-md text-white font-semibold transition ${currentStatus === 'suspended'
+                className={`w-full px-4 py-2 rounded-md text-white font-semibold transition ${currentStatus === 'suspended'
                     ? 'bg-green-600 hover:bg-green-700'
                     : 'bg-red-600 hover:bg-red-700'
                     }`}
