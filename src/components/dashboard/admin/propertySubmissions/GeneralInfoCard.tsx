@@ -2,13 +2,13 @@
 
 import Card from '@/components/shared/Card';
 import Popup from '@/components/shared/Popup';
-import { InterestRequestStatus, interestRequestStatusMap, interestRequestStatusStyle } from '@/constants/dashboard/admin/interestRequests/constants';
-import { InterestRequestFull } from '@/types/dashboard/interest-requests';
+import { propertySubmissionStatus, propertySubmissionStatusMap, propertySubmissionStatusStyle } from '@/constants/dashboard/admin/propertySubmissions/constants';
+import { propertySubmissionFull } from '@/types/dashboard/property-submissions';
 import { propertyTypeLabels } from '@/types/property';
-import InterestRequestStatusToggle from './InterestRequestStatusToggle';
+import PropertySubmissionStatusToggle from './PropertySubmissionStatusToggle';
 import { useState } from 'react';
 
-type Props = { request: InterestRequestFull };
+type Props = { request: propertySubmissionFull };
 
 export default function GeneralInfoCard({ request }: Props) {
     const [showPopup, setShowPopup] = useState(false);
@@ -20,8 +20,8 @@ export default function GeneralInfoCard({ request }: Props) {
                 <div><span className="font-medium">سعر البيع:</span> {request.price.toLocaleString()} ريال</div>
                 <div>
                     <span className="font-medium">الحالة:</span>{' '}
-                    <span className={`px-3 py-1 rounded-full text-sm ${interestRequestStatusStyle[request.status]}`}>
-                        {interestRequestStatusMap[request.status]}
+                    <span className={`px-3 py-1 rounded-full text-sm ${propertySubmissionStatusStyle[request.status]}`}>
+                        {propertySubmissionStatusMap[request.status]}
                     </span>
                 </div>
                 <div><span className="font-medium">تاريخ الإنشاء:</span> {new Date(request.createdAt).toLocaleString('ar-EG')}</div>
@@ -35,11 +35,11 @@ export default function GeneralInfoCard({ request }: Props) {
                 </button>
             </div>
 
-            {/* ✅ Popup with InterestRequestStatusToggle */}
+            {/* ✅ Popup with PropertySubmissionStatusToggle */}
             <Popup show={showPopup} onClose={() => setShowPopup(false)}>
-                <InterestRequestStatusToggle
+                <PropertySubmissionStatusToggle
                     requestId={request.id}
-                    currentStatus={request.status as InterestRequestStatus}
+                    currentStatus={request.status as propertySubmissionStatus}
                     onConfirm={() => setShowPopup(false)}
                     onCancel={() => setShowPopup(false)}
                 />

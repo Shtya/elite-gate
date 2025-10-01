@@ -28,11 +28,17 @@ export default function Uploader({
     maxSizeMB = 9,
     maxFiles = 10,
 }: UploaderProps) {
+
     return (
         <Controller
             name={name}
             control={control}
             render={({ field }) => {
+                const currentFiles: FileItem[] = allowMultiple
+                    ? (field.value as FileItem[] || [])
+                    : field.value
+                        ? [field.value as FileItem]
+                        : [];
 
                 const handleFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
                     if (!e.target.files) return;
@@ -49,7 +55,7 @@ export default function Uploader({
                         maxFiles
                     );
 
-                    field.onChange(updated);
+                    field.onChange(allowMultiple ? updated : updated[0]);
                 };
 
 
@@ -117,9 +123,9 @@ export default function Uploader({
                             </label>
                         </div>
 
-                        {Array.isArray(field.value) && field.value.length > 0 && (
+                        {currentFiles.length > 0 && (
                             <div className="grid grid-cols-1 xs:!grid-cols-2 md:!grid-cols-3 lg:!grid-cols-4 gap-4 mt-6">
-                                {field.value.map((file: FileItem | string, idx: number) => (
+                                {currentFiles.map((file: FileItem | string, idx: number) => (
                                     <FilePreviewItem
                                         key={idx}
                                         file={file}

@@ -5,6 +5,7 @@ import {
     FaCalendarCheck,
     FaHeart,
     FaPlusCircle,
+    FaEdit,
 } from 'react-icons/fa';
 import {
 
@@ -22,9 +23,20 @@ export const adminDashboardItems: SelectableItem[] = [
         href: "/dashboard/admin"
     },
     {
-        label: "طلبات الاهتمام",
+        label: "طلبات عرض العقار",
         icon: FaUserShield,
-        href: "/dashboard/admin/interest-requests"
+        children: [
+            {
+                label: "قائمة طلبات عرض العقار",
+                icon: FaRegListAlt,
+                href: "/dashboard/admin/property-submissions"
+            },
+            {
+                label: "إضافة طلب عرض عقار",
+                icon: FaPlusCircle,
+                href: "/dashboard/admin/property-submissions/add"
+            }
+        ]
     },
     {
         label: "المواعيد",

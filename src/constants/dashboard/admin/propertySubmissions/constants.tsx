@@ -1,20 +1,20 @@
 import InfoCell from "@/components/shared/InfoCell";
 import { FilterConfig, SortConfig, TableColumn } from "@/types/components/Table";
-import { InterestRequestRow } from "@/types/dashboard/interest-requests";
+import { propertySubmissionRow } from "@/types/dashboard/property-submissions";
 import { getDefaultProjectpath } from "@/utils/appointment";
 import { projectTypeColors } from "../property.tsx/constants";
 import { MiniProject, PropertyType, propertyTypeLabels } from "@/types/property";
 
-// types/dashboard/interest-requests.ts
-export type InterestRequestStatus =
+// types/dashboard/property-submissions.ts
+export type propertySubmissionStatus =
     | 'pending_review'
     | 'pending_inspection'
     | 'inspected'
     | 'rejected'
     | 'published';
 
-// constants/dashboard/interest-requests/constants.ts
-export const interestRequestStatusMap: Record<InterestRequestStatus, string> = {
+// constants/dashboard/property-submissions/constants.ts
+export const propertySubmissionStatusMap: Record<propertySubmissionStatus, string> = {
     pending_review: 'قيد المراجعة',
     pending_inspection: 'قيد المعاينة',
     inspected: 'تمت المعاينة',
@@ -22,7 +22,7 @@ export const interestRequestStatusMap: Record<InterestRequestStatus, string> = {
     published: 'منشور',
 };
 
-export const interestRequestStatusStyle: Record<InterestRequestStatus, string> = {
+export const propertySubmissionStatusStyle: Record<propertySubmissionStatus, string> = {
     pending_review: 'bg-[#FFF8E1] text-[#9C6B00]',
     pending_inspection: 'bg-[#E6F4FF] text-[#0369A1]',
     inspected: 'bg-[#E9FBEA] text-[#1B7B3A]',
@@ -30,7 +30,7 @@ export const interestRequestStatusStyle: Record<InterestRequestStatus, string> =
     published: 'bg-[#EBFBF2] text-[var(--secondary-500)]',
 };
 
-export const interestRequestFilters: FilterConfig[] = [
+export const propertySubmissionFilters: FilterConfig[] = [
     {
         type: 'select',
         key: 'status',
@@ -65,7 +65,7 @@ export const interestRequestFilters: FilterConfig[] = [
 ];
 
 
-export const interestRequestSortConfig: SortConfig = {
+export const propertySubmissionSortConfig: SortConfig = {
     sortFields: [
         { label: 'اسم مقدم الطلب', value: 'requesterName' },
         { label: 'نوع العقار', value: 'propertyType' },
@@ -77,7 +77,7 @@ export const interestRequestSortConfig: SortConfig = {
 
 
 
-export const interestRequestColumns: TableColumn<InterestRequestRow>[] = [
+export const propertySubmissionColumns: TableColumn<propertySubmissionRow>[] = [
     { key: 'requesterName', label: 'اسم مقدم الطلب' },
     { key: 'relationshipType', label: 'نوع العلاقة' },
     { key: 'propertyType', label: 'نوع العقار', cell: (val: PropertyType) => <span>{propertyTypeLabels[val]}</ span > },
@@ -89,7 +89,7 @@ export const interestRequestColumns: TableColumn<InterestRequestRow>[] = [
     {
         key: 'publishedProperty',
         label: 'العقار المنشور',
-        cell: (val: MiniProject | undefined, row?: InterestRequestRow) => {
+        cell: (val: MiniProject | undefined, row?: propertySubmissionRow) => {
             if (row?.status !== 'published' || !val) {
                 return <span className="text-xs text-gray-400">—</span>;
             }
@@ -111,9 +111,9 @@ export const interestRequestColumns: TableColumn<InterestRequestRow>[] = [
     {
         key: 'status',
         label: 'الحالة',
-        cell: (val: InterestRequestStatus) => {
-            const style = interestRequestStatusStyle[val];
-            const label = interestRequestStatusMap[val];
+        cell: (val: propertySubmissionStatus) => {
+            const style = propertySubmissionStatusStyle[val];
+            const label = propertySubmissionStatusMap[val];
             return <span className={`px-3 py-1 rounded-full text-sm ${style}`}> {label} </span>;
         },
     },
@@ -133,7 +133,7 @@ export const interestRequestColumns: TableColumn<InterestRequestRow>[] = [
 ];
 
 
-export const mockInterestRequests: InterestRequestRow[] = [
+export const mockpropertySubmissions: propertySubmissionRow[] = [
     {
         id: 201,
         requesterName: "Ali Albarakati",

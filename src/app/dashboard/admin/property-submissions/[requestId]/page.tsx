@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { BiListUl } from 'react-icons/bi';
 
 import DashboardHeaderTitle from '@/components/dashboard/DashboardHeaderTitle';
-import InterestRequestDetails from '@/components/dashboard/admin/InterestRequests/InterestRequestDetails';
-import { InterestRequestFull } from '@/types/dashboard/interest-requests';
+import PopertySubmissionDetails from '@/components/dashboard/admin/propertySubmissions/PopertySubmissionDetails';
+import { propertySubmissionFull } from '@/types/dashboard/property-submissions';
 
-export const mockInterestRequestFull: InterestRequestFull = {
+export const mockPropertySubmissionFull: propertySubmissionFull = {
     id: 301,
     requesterName: "Dana Bint Shakir",
     relationshipType: "مفوض",
@@ -65,7 +65,7 @@ type Props = {
     };
 };
 
-export default async function InterestRequestDetailsPage({ params }: Props) {
+export default async function propertySubmissionDetailsPage({ params }: Props) {
     const { requestId } = await params;
 
     // simulate fetch delay
@@ -74,13 +74,13 @@ export default async function InterestRequestDetailsPage({ params }: Props) {
 
     return (
         <>
-            <DashboardHeaderTitle path={['طلبات الاهتمام', `تفاصيل طلب - ${mockInterestRequestFull.requesterName}`]}>
-                <Link className="btn-primary" href="/dashboard/admin/interest-requests">
+            <DashboardHeaderTitle path={['طلبات عرض العقار', `تفاصيل طلب - ${mockPropertySubmissionFull.requesterName}`]}>
+                <Link className="btn-primary" href="/dashboard/admin/property-submissions">
                     <BiListUl /> عرض جميع الطلبات
                 </Link>
             </DashboardHeaderTitle>
 
-            <InterestRequestDetails request={mockInterestRequestFull} />
+            <PopertySubmissionDetails request={mockPropertySubmissionFull} />
         </>
     );
 }

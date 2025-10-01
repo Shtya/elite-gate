@@ -11,7 +11,7 @@ export default function RequertPropertyInfoSection({ control }: { control: Contr
         <Card title="معلومات العقار">
             <div className="grid grid-cols-12 gap-6">
                 {/* نوع العقار */}
-                <Uploader control={control} name="attachments" accept="*/*" label='الملحقات' maxFiles={10} />
+                <Uploader control={control} name="attachments" accept="*/*" label='الملحقات' maxFiles={10} allowPrimary={false} />
                 <Controller
                     name="propertyType"
                     control={control}

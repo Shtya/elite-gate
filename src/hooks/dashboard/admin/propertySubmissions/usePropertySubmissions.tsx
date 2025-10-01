@@ -2,16 +2,16 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
-import { InterestRequestRow } from '@/types/dashboard/interest-requests';
-import { mockInterestRequests } from '@/constants/dashboard/admin/interestRequests/constants';
+import { propertySubmissionRow } from '@/types/dashboard/property-submissions';
+import { mockpropertySubmissions } from '@/constants/dashboard/admin/propertySubmissions/constants';
 
-export default function useInterestRequests() {
+export default function usePropertySubmissions() {
   const searchParams = useSearchParams();
   const getParam = useCallback((key: string) => searchParams.get(key), [searchParams]);
 
   const getRows = useCallback(
     async (signal?: AbortSignal): Promise<{
-      rows: InterestRequestRow[];
+      rows: propertySubmissionRow[];
       error?: Error | null;
       totalCount?: number;
     }> => {
@@ -29,7 +29,7 @@ export default function useInterestRequests() {
 
         await new Promise((r) => setTimeout(r, 300)); // simulate delay
 
-        let filtered = [...mockInterestRequests];
+        let filtered = [...mockpropertySubmissions];
 
         if (status && status !== 'all') {
           filtered = filtered.filter((row) => row.status === status);

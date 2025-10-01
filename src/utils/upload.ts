@@ -6,7 +6,7 @@ export type FileItem = {
     file?: File;
     name?: string;
     type?: string;
-    isPrimary: boolean;
+    isPrimary?: boolean;
 
 };
 export const fileItemSchema = z.object({

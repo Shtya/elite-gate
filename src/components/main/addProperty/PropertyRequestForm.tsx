@@ -22,7 +22,13 @@ export type PropertyRequestFormValues = {
     authorizationDoc?: FileItem;
 };
 
-export default function PropertyRequestForm() {
+type PropertyRequestFormProps = {
+    defaultValues?: Partial<PropertyRequestFormValues>;
+    requestId?: number
+};
+
+export default function PropertyRequestForm({ defaultValues, requestId }: PropertyRequestFormProps) {
+    const isEdit = !!requestId
     const { control, handleSubmit } = useForm<PropertyRequestFormValues>({
         defaultValues: {
             requesterName: '',
@@ -33,6 +39,7 @@ export default function PropertyRequestForm() {
             address: '',
             specifications: {},
             authorizationDoc: undefined,
+            ...defaultValues
         },
     });
 
@@ -59,7 +66,7 @@ export default function PropertyRequestForm() {
             </Card>
 
             <div className="space-x-4 flex items-center justify-start">
-                <PrimaryButton type="submit">إرسال الطلب</PrimaryButton>
+                <PrimaryButton type="submit">{requestId ? "تعديل الطلب" : "إرسال الطلب"}</PrimaryButton>
                 <SoftActionButton onClick={() => { }}>إلغاء</SoftActionButton>
             </div>
         </form>

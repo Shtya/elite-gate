@@ -1,28 +1,27 @@
-// types/dashboard/interest-requests.ts
 
-import { InterestRequestStatus } from "@/constants/dashboard/admin/interestRequests/constants";
+import { propertySubmissionStatus } from "@/constants/dashboard/admin/propertySubmissions/constants";
 import { MiniProject, PropertyType } from "../property";
 import { FileItem } from "@/utils/upload";
 
-export type InterestRequestRow = {
+export type propertySubmissionRow = {
     id: number;
     requesterName: string;
     relationshipType: string;
     propertyType: PropertyType;
     price: number;
-    status: InterestRequestStatus;
+    status: propertySubmissionStatus;
     createdAt: string;
     publishedProperty?: MiniProject
 };
 
 
-export type InterestRequestFull = {
+export type propertySubmissionFull = {
     id: number;
     requesterName: string;
     relationshipType: string;
     propertyType: PropertyType;
     price: number;
-    status: InterestRequestStatus;
+    status: propertySubmissionStatus;
     attachments: FileItem[];
     address: string;
     specifications: Record<string, { name: string; value: string | string[] }>;

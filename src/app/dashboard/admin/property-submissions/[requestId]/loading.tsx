@@ -3,7 +3,7 @@ import DashboardHeaderTitleSkeleton from "@/components/shared/Skelatons/Dashboar
 import TextSkeleton from "@/components/shared/Skelatons/TextSkeleton";
 
 
-export default function InterestRequestDetailsLoading() {
+export default function propertySubmissionDetailsLoading() {
     return (
         <>
             {/* رأس الصفحة */}

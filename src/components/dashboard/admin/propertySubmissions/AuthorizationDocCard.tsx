@@ -2,10 +2,10 @@
 
 import Card from '@/components/shared/Card';
 import FilePreviewItem from '@/components/shared/Forms/FilePreviewItem';
-import { InterestRequestFull } from '@/types/dashboard/interest-requests';
+import { propertySubmissionFull } from '@/types/dashboard/property-submissions';
 
 type Props = {
-    request: InterestRequestFull;
+    request: propertySubmissionFull;
 };
 
 export default function AuthorizationDocCard({ request }: Props) {
