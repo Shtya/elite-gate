@@ -82,9 +82,9 @@ export default async function EditProjectPage({ params }: Props) {
                 </div>
             </DashboardHeaderTitle>
 
-            <CenteredContainer >
-                <PropertyForm initialData={project} />
-            </CenteredContainer>
+
+            <PropertyForm initialData={project} />
+
         </div>
     );
 }

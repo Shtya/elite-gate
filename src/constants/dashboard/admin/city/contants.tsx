@@ -50,6 +50,26 @@ export const mockedCitiesForEdit: City[] = [
             { id: 303, name: 'النصار', selected: true },
         ],
     },
+    {
+        id: 4,
+        name: 'تبوك',
+        regions: [
+            { id: 401, name: 'المنطقة الأولى', selected: true },
+            { id: 402, name: 'المنطقة الثانية', selected: true },
+            { id: 403, name: 'المنطقة الثالثة', selected: false },
+            { id: 404, name: 'المنطقة الرابعة', selected: false },
+            { id: 405, name: 'المنطقة الخامسة', selected: false },
+        ],
+    },
+    {
+        id: 5,
+        name: 'حائل',
+        regions: [
+            { id: 501, name: 'المنطقة الأولى', selected: true },
+            { id: 502, name: 'المنطقة الثانية', selected: false },
+            { id: 503, name: 'المنطقة الثالثة', selected: false },
+        ],
+    },
 ];
 
 

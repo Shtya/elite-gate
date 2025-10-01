@@ -3,7 +3,7 @@ import IconDetail from '@/components/shared/infos/IconDetail';
 import { InfoBlock } from '@/components/shared/infos/InfoBlock';
 import { ClientRow, statusMap } from '@/types/dashboard/client';
 import Link from 'next/link';
-import { BiEdit } from 'react-icons/bi';
+import { BiCalendarPlus, BiEdit } from 'react-icons/bi';
 import { FaCalendarAlt, FaClipboardList } from 'react-icons/fa';
 import DashboardSectionCard from '../DashboardSectionCard';
 import { formatDate } from '@/utils/date';
@@ -28,7 +28,7 @@ export default function ClientDetails({ client }: Props) {
 
                         {/* ✏️ Edit Icon at Card Corner */}
                         <Link
-                            href={`/dashboard/admin/clients/${client.id}/edit`}
+                            href={`/dashboard/admin/clients/edit/${client.id}`}
                             className="absolute top-4 right-4 bg-white border border-gray-200 p-2 rounded-full shadow-sm hover:bg-gray-50 transition z-10"
                             title="تعديل العميل"
                         >
@@ -80,8 +80,20 @@ export default function ClientDetails({ client }: Props) {
                             href={`mailto:${client.email}`}
                         />
                     </div>
-                    <ClientStatusControl currentStatus={client.status} client={client} />
+                    <div className='mt-6  flex gap-2 items-end'>
+                        <div className='flex-1'>
 
+                            <ClientStatusControl currentStatus={client.status} client={client} />
+                        </div>
+                        <div className="flex-1">
+                            <Link
+                                href={`/dashboard/admin/appointments/add?client_id=${client.id}`}
+                                className="bg-primary w-full px-4 py-2 rounded-md text-white font-semibold transition flex items-center justify-center gap-2"
+                            >
+                                حجز موعد جديد
+                            </Link>
+                        </div>
+                    </div>
                 </DashboardSectionCard>
             </div>
 

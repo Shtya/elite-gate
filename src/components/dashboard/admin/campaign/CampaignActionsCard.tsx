@@ -25,7 +25,7 @@ export default function CampaignActionsCard({
                     {
                         icon: <FaEdit className="w-4 h-4" />,
                         label: 'تحرير الحملة',
-                        href: `/dashboard/admin/campaigns/${campaign.id}/edit`,
+                        href: `/dashboard/admin/campaigns/edit/${campaign.id}`,
                         className: 'bg-primary text-white hover:bg-primary-600'
                     }
                 ];
@@ -47,7 +47,7 @@ export default function CampaignActionsCard({
                     {
                         icon: <FaEdit className="w-4 h-4" />,
                         label: 'تحرير',
-                        href: `/dashboard/admin/campaigns/${campaign.id}/edit`,
+                        href: `/dashboard/admin/campaigns/edit/${campaign.id}`,
                         className: 'bg-primary text-white hover:bg-primary-600'
                     }
                 ];
@@ -68,7 +68,7 @@ export default function CampaignActionsCard({
                     {
                         icon: <FaEdit className="w-4 h-4" />,
                         label: 'تحرير',
-                        href: `/dashboard/admin/campaigns/${campaign.id}/edit`,
+                        href: `/dashboard/admin/campaigns/edit/${campaign.id}`,
                         className: 'bg-primary text-white hover:bg-primary-600'
                     }
                 ];
@@ -78,7 +78,7 @@ export default function CampaignActionsCard({
                     {
                         icon: <FaEdit className="w-4 h-4" />,
                         label: 'تحرير',
-                        href: `/dashboard/admin/campaigns/${campaign.id}/edit`,
+                        href: `/dashboard/admin/campaigns/edit/${campaign.id}`,
                         className: 'bg-primary text-white hover:bg-primary-600'
                     }
                 ];

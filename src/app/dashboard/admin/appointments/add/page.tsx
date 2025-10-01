@@ -15,7 +15,6 @@ export default function AddAppointmentPage() {
             </DashboardHeaderTitle>
 
             <CenteredContainer>
-
                 <AddAppointmentForm />
             </CenteredContainer>
         </div>

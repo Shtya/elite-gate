@@ -5,21 +5,24 @@ import Card from '@/components/shared/Card';
 import SelectDropdown from '@/components/shared/Forms/SelectDropdown';
 import SoftActionButton from '@/components/shared/SoftActionButton';
 import { City, Region } from '@/types/dashboard/city';
+import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 
 type OptionItem = { value: string; label: string };
 type Props = {
     cities: City[];
-    initialCityId?: number;
     titleText: string;
 };
 
 export default function CityWithRegionsForm({
     cities,
-    initialCityId,
     titleText,
 }: Props) {
+    const searchParams = useSearchParams();
+    const cityIdParam = searchParams.get('city_id');
+    const initialCityId = cityIdParam ? parseInt(cityIdParam) : null;
+
     const [selectedCity, setSelectedCity] = useState<City | null>(
         cities.find((c) => c.id === initialCityId) || null
     );

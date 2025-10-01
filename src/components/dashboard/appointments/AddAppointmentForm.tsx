@@ -15,6 +15,7 @@ import FieldErrorMessage from '@/components/shared/Forms/FieldErrorMessage';
 import PrimaryButton from '@/components/shared/Button';
 import SoftActionButton from '@/components/shared/SoftActionButton';
 import { useRoleFromPath } from '@/hooks/dashboard/admin/useRoleFromPath';
+import { useSearchParams } from 'next/navigation';
 
 const schema = z.object({
     date: z.string().min(1, 'يرجى اختيار التاريخ'),
@@ -42,6 +43,10 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export default function AddAppointmentForm() {
+    const searchParams = useSearchParams();
+    const clientIdParam = searchParams.get('client_id');
+    const initialClientId = clientIdParam ? parseInt(clientIdParam) : null;
+
     const role = useRoleFromPath();
 
     const {
@@ -57,7 +62,7 @@ export default function AddAppointmentForm() {
             duration: 0,
             time: '09:00',
             agent: undefined,
-            client: undefined,
+            client: initialClientId || undefined,
             property: undefined,
         },
     });
@@ -112,6 +117,7 @@ export default function AddAppointmentForm() {
                         <UserChanger
                             users={clients}
                             label="عميل"
+                            initialUserId={initialClientId ?? undefined}
                             onChange={(client) => setValue('client', client?.id)}
                         />
                         <FieldErrorMessage errors={errors} fieldName='client' />

@@ -15,7 +15,7 @@ type User = {
 
 type Props = {
     appointmentId?: number;
-    initialUser?: User;
+    initialUserId?: number;
     users: User[];
     label?: string;
     showSelected?: boolean;
@@ -24,13 +24,13 @@ type Props = {
 
 export default function UserChanger({
     appointmentId,
-    initialUser,
+    initialUserId,
     users,
     label = 'المستخدم',
     showSelected = true,
     onChange
 }: Props) {
-    const [user, setUser] = useState<User | undefined>(initialUser);
+    const [user, setUser] = useState<User | undefined>(() => users.find((u) => u.id === initialUserId));
     const [showPopup, setShowPopup] = useState(false);
 
     const handleSelect = (newUser: User) => {

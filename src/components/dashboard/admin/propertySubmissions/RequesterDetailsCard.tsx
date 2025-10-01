@@ -11,7 +11,7 @@ export default function RequesterDetailsCard({ request }: Props) {
     return (
         <Card title="بيانات مقدم الطلب" className='relative'>
             <Link
-                href={`/dashboard/admin/property-submissions/${request.id}/edit`}
+                href={`/dashboard/admin/property-submissions/edit/${request.id}`}
                 className="absolute top-4 left-4 bg-white border border-gray-200 p-2 rounded-full shadow-sm hover:bg-gray-50 transition z-10"
                 title="تعديل بيانات الطلب"
             >

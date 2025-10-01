@@ -108,7 +108,7 @@ export function getCampaignActionsMenu(row: Campaign, onClose?: () => void): Men
         {
             label: 'تحرير الحملة',
             icon: <FaEdit />,
-            link: `/dashboard/admin/campaigns/${row.id}/edit`,
+            link: `/dashboard/admin/campaigns/edit/${row.id}`,
         }
     ];
 

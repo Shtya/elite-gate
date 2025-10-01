@@ -34,7 +34,7 @@ export default function PropertyCardList({ property, isAdmin = false }: { proper
 
                     {isAdmin && (
                         <Link
-                            href={`/dashboard/admin/projects/${property.id}/edit`}
+                            href={`/dashboard/admin/projects/edit/${property.id}`}
                             className="bg-white p-2 rounded-full shadow hover:bg-gray-300 transition"
                         >
                             <BiEdit className="w-5 h-5 text-gray-600" />

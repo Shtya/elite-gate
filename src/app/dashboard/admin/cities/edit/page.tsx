@@ -5,9 +5,8 @@ import { mockedCitiesForEdit } from "@/constants/dashboard/admin/city/contants";
 import Link from "next/link";
 import { FaCity } from "react-icons/fa";
 
+
 export default async function CityAgentPage() {
-
-
 
     await new Promise((r) => setTimeout(r, 300)); // simulate loading
     return (

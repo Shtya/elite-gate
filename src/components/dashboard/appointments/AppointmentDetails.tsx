@@ -200,7 +200,7 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
 
                         {/* ✅ مكون اختيار الوسيط يظهر دائمًا في الأسفل */}
                         <div className="mt-auto pt-4">
-                            <UserChanger appointmentId={appointment.id} showSelected={false} initialUser={agent} users={agents} label='وسيط' />
+                            <UserChanger appointmentId={appointment.id} showSelected={false} initialUserId={agent.id} users={agents} label='وسيط' />
                         </div>
                     </Card>}
 

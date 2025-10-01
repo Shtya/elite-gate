@@ -36,7 +36,7 @@ function getPropertySubmissionActionsMenu(row: propertySubmissionRow, onClose?: 
         {
             label: 'تعديل الطلب',
             icon: <FaEdit />,
-            link: `/dashboard/admin/property-submissions/${row.id}/edit`,
+            link: `/dashboard/admin/property-submissions/edit/${row.id}`,
         },
         {
             label: 'تغيير الحالة',

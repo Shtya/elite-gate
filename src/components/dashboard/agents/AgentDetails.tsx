@@ -28,7 +28,7 @@ export default function AgentDetails({ agent }: Props) {
                 <DashboardSectionCard className="h-full">
                     <div className="relative rounded-2xl bg-white p-6">
                         <Link
-                            href={`/dashboard/admin/agents/${agent.id}/edit`}
+                            href={`/dashboard/admin/agents/edit/${agent.id}`}
                             className="absolute top-4 right-4 bg-white border border-gray-200 p-2 rounded-full shadow-sm hover:bg-gray-50 transition z-10"
                             title="تعديل الوسيط"
                         >
