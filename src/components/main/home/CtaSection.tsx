@@ -4,7 +4,7 @@ import { BsArrowLeft } from "react-icons/bs";
 
 export default function CtaSection() {
   return (
-    <section className="bg-secondary-light/60 px-3 xl:px-0">
+    <section className="bg-secondary-light/60 px-3 xl:px-0 ">
       <div className="container">
         <div className="grid grid-cols-2 gap-6">
           <div className="col-span-2 lg:col-span-1 py-[60px] lg:py-[120px] flex items-center">

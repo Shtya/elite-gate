@@ -21,21 +21,27 @@ export default function ServicesSection() {
     ];
 
     return (
-        <section className="bg-bg-2 py-[60px] lg:py-[120px]">
-            <div className="container">
-                <div className="max-w-[630px] mx-auto flex flex-col items-center text-center px-3">
-                    <SectionTitle
-                        title="شاهد كيف يمكن ان نساعدك"
-                        arrowTitle="الخدمات"
-                        bgColor="var(--primary-light)"
-                        description="يمكن شراء العقارات أو بيعها أو تأجيرها أو استئجارها، وهي تُعد فرصة استثمارية قيّمة. وتعتمد قيمة العقار على الموقع والاستخدام."
-                    />
-                </div>
+        <section className="relative bg-bg-2 py-[60px] lg:py-[120px]  bg-[url('/pattern-01.png')] bg-contain bg-center ">
+            {/* Background layers */}
+            <div className="absolute inset-0 bg-white/80 z-[1]" />
 
-                <div className="flex flex-row flex-wrap justify-center gap-4 px-3 px-xl-0 mt-10">
-                    {services.map((service, index) => (
-                        <ServiceCard key={index} {...service} />
-                    ))}
+            {/* Content wrapper */}
+            <div className="relative z-[2]">
+                <div className="container">
+                    <div className="max-w-[630px] mx-auto flex flex-col items-center text-center px-3">
+                        <SectionTitle
+                            title="شاهد كيف يمكن ان نساعدك"
+                            arrowTitle="الخدمات"
+                            bgColor="var(--primary-light)"
+                            description="يمكن شراء العقارات أو بيعها أو تأجيرها أو استئجارها، وهي تُعد فرصة استثمارية قيّمة. وتعتمد قيمة العقار على الموقع والاستخدام."
+                        />
+                    </div>
+
+                    <div className="flex flex-row flex-wrap justify-center gap-4 px-3 px-xl-0 mt-10">
+                        {services.map((service, index) => (
+                            <ServiceCard key={index} {...service} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

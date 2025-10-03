@@ -76,47 +76,52 @@ export const categories: Category[] = [
 
 export default function CategorySection() {
     return (
-        <section className="bg-white py-[60px] lg:py-[120px] relative px-3 ">
+        <section className="bg-white py-[60px] lg:py-[120px] relative px-3 bg-[url('/pattern-01.png')] bg-contain bg-center ">
+            {/* Background layers */}
+            <div className="absolute inset-0 bg-white/80 z-[1]" />
 
-            <Image
-                alt="عنصر زخرفي"
-                src="/main/home/category-section-el.png"
-                width={232}
-                height={207}
-                className="absolute hidden lg:block top-12 left-12"
-                style={{ color: "transparent" }}
-            />
+            {/* Content wrapper */}
+            <div className="relative z-[2]">
+                <Image
+                    alt="عنصر زخرفي"
+                    src="/main/home/category-section-el.png"
+                    width={232}
+                    height={207}
+                    className="absolute hidden lg:block top-12 left-12"
+                    style={{ color: "transparent" }}
+                />
 
-            <div className="container">
-                <SectionTitle title="اختر الفئة المناسبة" bgColor="var(--primary-light)" arrowTitle="الفئات" description="يمكن شراء العقارات أو بيعها، وهي فرصة استثمارية قيّمة. قيمة العقار تعتمد على الموقع والاستخدام." />
+                <div className="container">
+                    <SectionTitle title="اختر الفئة المناسبة" bgColor="var(--primary-light)" arrowTitle="الفئات" description="يمكن شراء العقارات أو بيعها، وهي فرصة استثمارية قيّمة. قيمة العقار تعتمد على الموقع والاستخدام." />
 
-                <div className="flex flex-wrap justify-center gap-6">
-                    {categories.map((cat, idx) => (
-                        <CategoryCard
-                            key={idx}
-                            title={cat.title}
-                            description={cat.description}
-                            href={cat.href}
-                            icon={<cat.icon className={`text-7xl group-hover:!text-white`} style={{ color: cat?.color || "var(--primary)" }} />}
-                        />
-                    ))}
+                    <div className="flex flex-wrap justify-center gap-6">
+                        {categories.map((cat, idx) => (
+                            <CategoryCard
+                                key={idx}
+                                title={cat.title}
+                                description={cat.description}
+                                href={cat.href}
+                                icon={<cat.icon className={`text-7xl group-hover:!text-white`} style={{ color: cat?.color || "var(--primary)" }} />}
+                            />
+                        ))}
 
 
-                    {/* Highlighted Circle */}
-                    <Link href="/projects" className="flex justify-center items-center relative group">
-                        <div className="w-[290px] h-[290px] rounded-full bg-secondary-300 duration-300 group-hover:bg-secondary-500 group-hover:text-white flex items-center justify-center p-5 cursor-pointer relative overflow-hidden">
-                            <div className="text-center">
-                                <h2 className="mb-2 group-hover:text-white">25+</h2>
-                                <p >استكشف العقارات <br /> واستثمر بثقة</p>
-                                <div
-                                    className="rounded-full bg-white group-hover:bg-tertiary mt-4 p-6 inline-block text-black"
-                                >
-                                    <BsArrowUpRight size={20} />
+                        {/* Highlighted Circle */}
+                        <Link href="/projects" className="flex justify-center items-center relative group">
+                            <div className="w-[290px] h-[290px] rounded-full bg-secondary-300 duration-300 group-hover:bg-secondary-500 group-hover:text-white flex items-center justify-center p-5 cursor-pointer relative overflow-hidden">
+                                <div className="text-center">
+                                    <h2 className="mb-2 group-hover:text-white">25+</h2>
+                                    <p >استكشف العقارات <br /> واستثمر بثقة</p>
+                                    <div
+                                        className="rounded-full bg-white group-hover:bg-tertiary mt-4 p-6 inline-block text-black"
+                                    >
+                                        <BsArrowUpRight size={20} />
+                                    </div>
                                 </div>
+                                <div className="h-[197px] w-[197px] rounded-full absolute -right-20 -bottom-16 bg-secondary-400" />
                             </div>
-                            <div className="h-[197px] w-[197px] rounded-full absolute -right-20 -bottom-16 bg-secondary-400" />
-                        </div>
-                    </Link>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </section>
