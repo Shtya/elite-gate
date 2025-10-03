@@ -14,7 +14,7 @@ import { FileItem } from '@/utils/upload';
 type BecomeAgentFormValues = {
     cityId: string;
     identity_proof: FileItem[];
-    residency_document: FileItem[];
+    license_document: FileItem[];
     favorite_properties: number[]
 };
 
@@ -23,14 +23,14 @@ export default function BecomeAgentForm() {
         defaultValues: {
             cityId: "",
             identity_proof: [],
-            residency_document: [],
+            license_document: [],
             favorite_properties: [],
         },
     });
 
     const cityId = watch("cityId");
     const idProof = watch("identity_proof");
-    const residency = watch("residency_document");
+    const license = watch("license_document");
 
     const onSubmit = (data: BecomeAgentFormValues) => {
         if (!data.cityId) {
@@ -41,8 +41,8 @@ export default function BecomeAgentForm() {
             alert("الرجاء رفع وثيقة الهوية");
             return;
         }
-        if (!data.residency_document?.length) {
-            alert("الرجاء رفع وثيقة الإقامة");
+        if (!data.license_document?.length) {
+            alert("الرجاء رفع الرخصة");
             return;
         }
 
@@ -133,11 +133,11 @@ export default function BecomeAgentForm() {
                     <div className="col-span-12">
                         <Uploader
                             control={control}
-                            name="residency_document"
+                            name="license_document"
                             maxFiles={2}
                             allowPrimary={false}
                             accept="image/*,application/pdf"
-                            label="وثيقة الإقامة"
+                            label="الرخصة"
                             rules={[
                                 "الحد الأقصى لحجم الملف 5MB",
                                 "الحد الأقصى 2 ملفات",
