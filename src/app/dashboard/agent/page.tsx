@@ -29,7 +29,7 @@ export default function AgentDashboardPage() {
 
     return (
         <>
-            <DashboardHeaderTitle path={['لوحة الوكيل']} />
+            <DashboardHeaderTitle path={['لوحة الوسيط']} />
             <div className='space-y-4 lg:pace-y-6'>
 
                 {/* 1. إحصائيات سريعة */}
@@ -69,7 +69,7 @@ export default function AgentDashboardPage() {
                     </Card>
 
                 </div>
-                {/* 5. إشعارات الوكيل */}
+                {/* 5. إشعارات الوسيط */}
                 <Card title="الإشعارات" subTitle="أخر التحديثات" >
                     <NotificationsCard notifications={agetnDefaultNotifications} />
                 </Card>

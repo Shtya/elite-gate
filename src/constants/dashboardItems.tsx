@@ -169,10 +169,19 @@ export const marketerDashboardItems: SelectableItem[] = [
         href: "/dashboard/marketer"
     },
     {
+        label: "الحملات",
+        icon: FaBullhorn,
+        children: [
+            { label: "قائمة الحملات", icon: FaRegListAlt, href: "/dashboard/marketer/campaigns" },
+            { label: "إنشاء حملة", icon: FaPlusCircle, href: "/dashboard/marketer/campaigns/add" }
+        ]
+    },
+    {
         label: "المحفظة والمدفوعات",
         icon: FaWallet,
         href: "/dashboard/marketer/payments"
     },
+
 ];
 
 

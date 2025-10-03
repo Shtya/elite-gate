@@ -52,7 +52,7 @@ export default function BookingCard({ booking, onCancel }: BookingCardProps) {
                 {booking.agent && (
                     <div className="flex items-center gap-2">
                         <FaUserTie />
-                        <span>الوكيل: {booking.agent}</span>
+                        <span>الوسيط: {booking.agent}</span>
                     </div>
                 )}
             </div>

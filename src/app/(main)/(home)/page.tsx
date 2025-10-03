@@ -9,7 +9,6 @@ import RecentlyAddedPropertySection from "@/components/main/home/RecentlyAddedPr
 import ServicesSection from "@/components/main/home/ServicesSection";
 import TestimonialSection from "@/components/main/home/TestimonialSection";
 
-
 export const metadata = {
   description: 'اكتشف أفضل العقارات والخدمات العقارية عبر منصة مراسل جدة العقاري. تصفّح المشاريع، اقرأ آراء العملاء، وتواصل معنا لتحقيق أهدافك العقارية.',
 };

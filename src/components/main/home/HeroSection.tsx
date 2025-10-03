@@ -6,10 +6,9 @@ import HeroPropertyFiltering from "./HeroPropertyFiltering";
 
 export default function HeroSection() {
   return (
-    <section className="relative bg-bg-1 border-t lg:border-t-0 overflow-hidden">
+    <section className="relative bg-bg-1 border-t lg:border-t-0 overflow-hidden bg-[url('/pattern-01.png')] bg-contain bg-center ">
       {/* Background layers */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#EEF0FF] via-white to-white" />
-      <div className="pointer-events-none absolute inset-x-0 top-[-120px] h-[320px] bg-[radial-gradient(80%_60%_at_50%_0%,rgba(46,48,190,0.10)_0%,rgba(46,48,190,0)_70%)]" />
+      <div className="absolute inset-0 bg-white/80" />
 
       {/* Decorative photos */}
       <Image

@@ -64,7 +64,7 @@ export default function BecomeAgentForm() {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            <Card title="طلب الانضمام كوكيل">
+            <Card title="طلب الانضمام كوسيط">
                 <div className="grid grid-cols-12 gap-4">
                     {/* الاسم الكامل */}
                     <div className="col-span-12 md:col-span-6">

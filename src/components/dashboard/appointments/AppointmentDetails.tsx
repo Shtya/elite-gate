@@ -11,7 +11,7 @@ import { getDefaultProjectpath } from '@/utils/appointment';
 import IconDetail from '@/components/shared/infos/IconDetail';
 import { SlCalender } from 'react-icons/sl';
 import { BiTimeFive } from 'react-icons/bi';
-import { MdReviews, MdStarRate, MdTimelapse } from 'react-icons/md';
+import { MdAttachMoney, MdReviews, MdStarRate, MdTimelapse } from 'react-icons/md';
 import StarRating from '@/components/shared/StarRating';
 import ReviewBookingButton from '@/components/main/customer/user-booking/ReviewBookingButton';
 import AppointmentNotesCard from './AppointmentNotesCard';
@@ -95,6 +95,24 @@ export default function AppointmentDetails({ appointment }: AppointmentDetailsPr
                             />
                         </div>
                     </div>
+                    {appointment.expectedProfit !== undefined && (
+                        <IconDetail
+                            icon={<MdAttachMoney className="text-[var(--primary)] w-6 h-6" />}
+                            label={
+                                status === 'completed'
+                                    ? 'الربح'
+                                    : status === 'pending' ||
+                                        status === 'assigned' ||
+                                        status === 'confirmed' ||
+                                        status === 'in_progress'
+                                        ? 'الربح المتوقع'
+                                        : 'الربح'
+                            }
+                            value={`${appointment.expectedProfit.toLocaleString()} ريال`}
+                            className="font-semibold text-green-600"
+                        />
+                    )}
+
                     {reviewStars && <IconDetail
                         icon={<MdStarRate className="text-[var(--primary)] w-6 h-6" />}
                         label="تقييم العميل للموعد"

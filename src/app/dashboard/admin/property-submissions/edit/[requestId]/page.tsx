@@ -30,7 +30,7 @@ export const mockPropertyRequests: PropertyRequestFormValues[] = [
             },
         ],
         propertyType: 'villa',
-        address: 'شارع النصر، القاهرة',
+        location: { lat: 21.2854, lng: 39.2376 },
         specifications: {
             rooms: { name: 'عدد الغرف', value: '4' },
             bathrooms: { name: 'عدد الحمامات', value: '3' },

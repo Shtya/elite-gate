@@ -78,7 +78,7 @@ export default function ProjectBookingForm({ id }: { id: string }) {
                     name="message"
                     placeholder="اكتب أي ملاحظات أو استفسارات هنا"
                 />
-                <PrimaryButton type="submit" className="mt-4 !w-full">
+                <PrimaryButton type="submit" className="mt-4 !w-full" >
                     احجز الزيارة
                 </PrimaryButton>
             </form>

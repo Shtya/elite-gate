@@ -8,7 +8,7 @@ export default function BecomeAgentPage() {
 
     return (
         <CenteredContainer>
-            <LightPageHeader text='ابدأ رحلتك معنا كوكيل عقاري' />
+            <LightPageHeader text='ابدأ رحلتك معنا كوسيط عقاري' />
             <BecomeAgentForm />
         </CenteredContainer>
     );

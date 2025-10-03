@@ -50,7 +50,7 @@ export default async function CampaignDetailsPage({ params }: Props) {
     return (
         <>
             <DashboardHeaderTitle path={['الحملات', `تفاصيل الحملة - ${mockCampaign.campaignName}`]}>
-                <Link className="btn-primary" href="/dashboard/admin/campaigns">
+                <Link className="btn-primary" href="/dashboard/marketer/campaigns">
                     <BiListUl /> عرض جميع الحملات
                 </Link>
             </DashboardHeaderTitle>

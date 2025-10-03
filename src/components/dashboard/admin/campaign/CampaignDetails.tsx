@@ -4,6 +4,7 @@ import CampaignStatsCard from './CampaignStatsCard'
 import CampaignInfoCard from './CampaignInfoCard'
 import CampaignActionsCard from './CampaignActionsCard'
 import CampaignImagesCard from './CampaignImagesCard'
+import AttachmentsCard from '@/components/shared/AttachmentsCard'
 
 type Props = {
     campaign: Campaign;
@@ -31,6 +32,7 @@ export default function CampaignDetails({ campaign }: Props) {
                     <CampaignActionsCard campaign={campaign} />
                 </div>
             </div>
+            <AttachmentsCard attachments={campaign.campaignExcel || []} title='ملفات الاكسل' />
             <div className='h-full 2xl:col-span-4 flex flex-col gap-4 lg:gap-6'>
                 <CampaignImagesCard campaign={campaign} />
             </div>

@@ -7,16 +7,18 @@ import Image from "next/image";
 export default function FooterLogoSection() {
     return (
         <div className="col-span-12 md:col-span-6 xl:col-span-3">
-            <Link href="/" className="inline-block mb-4">
+            <div className="flex justify-center">
 
-                <Image
-                    src="/whiteLogo1.svg"
-                    alt="Logo"
-                    width={100}
-                    height={80}
-                    priority
-                />
-            </Link>
+                <Link href="/" className="inline-block mb-4 ">
+                    <Image
+                        src="/logo-white.png"
+                        alt="Logo"
+                        width={160}
+                        height={80}
+                        className="mr-auto"
+                    />
+                </Link>
+            </div>
             <p className="text-neutral-300 mb-6 leading-relaxed">
                 مرحبًا بكر، عبر منصتنا يمكنك استكشاف وشراء وحدات عقارية بكل سهولة وشفافية، حيث نوفر لك عروضًا متنوعة تناسب احتياجاتك. كما نتيح لأصحاب العقارات فرصة عرض وحداتهم للبيع، وإدارتها من خلال نظام ذكي يضمن وصولها إلى المهتمين، مع دعم فريق متخصص لضمان جودة التجربة للطرفين.
             </p>

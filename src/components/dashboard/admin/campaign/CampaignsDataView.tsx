@@ -10,8 +10,13 @@ import { Campaign, CampaignStatus } from '@/types/campaign'
 import { FaEdit, FaEye, FaPause, FaStop, FaSave, FaPlay } from 'react-icons/fa'
 import { JSX } from 'react'
 import CampaignActionConfirmModal, { ActionType } from './CampaignActionConfirmModal'
+import { useRoleFromPath } from '@/hooks/dashboard/admin/useRoleFromPath'
+import { Role } from '@/types/global'
 
 export default function CampaignsDataView() {
+    const role = useRoleFromPath()
+    const isAdmin = role == 'admin';
+
     const getRows = async () => {
         // Mock data - in real app, this would fetch from API
         const mockCampaigns = [
@@ -89,29 +94,30 @@ export default function CampaignsDataView() {
             showSort
             getRows={getRows}
             showActions
-            actionsMenuItems={getCampaignActionsMenu}
+            actionsMenuItems={(row, onClose) => getCampaignActionsMenu(row, role, onClose)}
         />
     )
 }
 ;
 ;
 
-export function getCampaignActionsMenu(row: Campaign, onClose?: () => void): MenuActionItem[] {
+export function getCampaignActionsMenu(row: Campaign, role: Role | undefined, onClose?: () => void): MenuActionItem[] {
 
+
+    const basePath = role === 'admin' ? 'admin/campaigns' : 'marketer/campaigns';
 
     const baseActions: MenuActionItem[] = [
         {
             label: 'عرض التفاصيل',
             icon: <FaEye />,
-            link: `/dashboard/admin/campaigns/${row.id}`,
+            link: `/dashboard/${basePath}/${row.id}`,
         },
         {
             label: 'تحرير الحملة',
             icon: <FaEdit />,
-            link: `/dashboard/admin/campaigns/edit/${row.id}`,
-        }
+            link: `/dashboard/${basePath}/edit/${row.id}`,
+        },
     ];
-
     const statusActions: MenuActionItem[] = [];
 
     const statusToggle = (label: string, icon: JSX.Element, type: 'normal' | 'delete', actionType: ActionType) => ({

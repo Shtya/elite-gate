@@ -107,7 +107,7 @@ export default function CampaignForm({ initialData }: CampaignFormProps) {
                         rules={[
                             'يمكن رفع صورتين كحد أقصى',
                             'الأنواع المدعومة: JPG, PNG, WebP',
-                            'الحد الأقصى لحجم الملف 9MB'
+                            'الحد الأقصى لحجم الملف 5MB'
                         ]}
                     />
                     {errors.campaignImages && (
@@ -117,6 +117,30 @@ export default function CampaignForm({ initialData }: CampaignFormProps) {
                     )}
                 </div>
             </Card>
+
+            <Card title="إرفاق ملفات اكسل">
+                <div className="space-y-4">
+                    <Uploader
+                        control={control}
+                        name="campaignExcel"
+                        accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                        allowMultiple={true}
+                        allowPrimary={false}
+                        maxFiles={2}
+                        maxSizeMB={9}
+                        rules={[
+                            'يمكن رفع ملفين كحد أقصى',
+                            'الحد الأقصى لحجم الملف 9MB'
+                        ]}
+                    />
+                    {errors.campaignExcel && (
+                        <p className="mt-2 text-sm text-red-600 font-medium">
+                            {errors.campaignExcel.message}
+                        </p>
+                    )}
+                </div>
+            </Card>
+
 
             <RunSettings control={control} watch={watch} setValue={setValue} errors={errors} />
             <TargetSettings control={control} errors={errors} />

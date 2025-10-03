@@ -8,7 +8,9 @@ import FooterBottom from "./FooterBottom";
 
 export default function MainFooter() {
     return (
-        <footer className="bg-[#091E43] text-white mt-auto">
+        <footer className="bg-[#091E43] text-white mt-auto bg-[url('/pattern-02.png')] bg-contain bg-center ">
+            {/* Background layers */}
+
             <div className="py-[20px] lg:py-[50px]">
                 <div className="container">
                     <div className="grid grid-cols-12 gap-6 px-3 xl:px-0">

@@ -80,13 +80,13 @@ export default function TopContactBar() {
             </PrimaryButton>
           </Tooltip>
 
-          <Tooltip text='انضم كوكيل' tipClassName='block md:hidden'>
+          <Tooltip text='انضم كوسيط' tipClassName='block md:hidden'>
             <PrimaryButton
               href="/become-agent"
               className="max-md:p-2 md:inline-flex focus:outline-none focus:ring-2 focus:ring-primary/30"
             >
 
-              <span className='hidden md:block'>انضم كوكيل</span>
+              <span className='hidden md:block'>انضم كوسيط</span>
               <FaUserPlus size={22} className='block md:hidden ' />
             </PrimaryButton>
           </Tooltip>

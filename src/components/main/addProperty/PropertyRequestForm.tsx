@@ -10,6 +10,7 @@ import PrimaryButton from '@/components/shared/Button';
 import SoftActionButton from '@/components/shared/SoftActionButton';
 import { FileItem } from '@/utils/upload';
 import { PropertyType } from '@/types/property';
+import LocationInput from '@/components/shared/Forms/LocationInput';
 
 export type PropertyRequestFormValues = {
     requesterName: string;
@@ -17,7 +18,7 @@ export type PropertyRequestFormValues = {
     askedPrice: number;
     attachments: FileItem[];
     propertyType: PropertyType;
-    address: string;
+    location: { lat: number, lng: number };
     specifications: Record<string, { name: string; value: string | string[] }>;
     authorizationDoc?: FileItem;
 };
@@ -36,7 +37,7 @@ export default function PropertyRequestForm({ defaultValues, requestId }: Proper
             attachments: [],
             propertyType: 'apartment',
             askedPrice: 0,
-            address: '',
+            location: { lat: 21.2854, lng: 39.2376 },
             specifications: {},
             authorizationDoc: undefined,
             ...defaultValues
@@ -51,6 +52,9 @@ export default function PropertyRequestForm({ defaultValues, requestId }: Proper
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <RequesterInfoSection control={control} />
             <RequertPropertyInfoSection control={control} />
+            <Card title="موقع العقار">
+                <LocationInput control={control} name='location' />
+            </Card>
             <SpecificationsSection control={control} />
 
             <Card title="وثيقة التفويض (إن وجدت)">

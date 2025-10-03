@@ -58,7 +58,7 @@ const initialBookings: Booking[] = [
         agent: 'ليلى أحمد',
         propertyLink: '/projects/seafront-apartments',
         review: {
-            comment: 'إقامة رائعة وموقع ممتاز على البحر. الخدمة كانت ممتازة والوكيل كان متعاون جداً.',
+            comment: 'إقامة رائعة وموقع ممتاز على البحر. الخدمة كانت ممتازة والوسيط كان متعاون جداً.',
             rating: 5,
         },
     },

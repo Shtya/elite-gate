@@ -7,6 +7,7 @@ import Popup from '@/components/shared/Popup';
 import { Campaign } from '@/types/campaign';
 import { FaPause, FaStop, FaEdit, FaSave, FaPlay } from 'react-icons/fa';
 import CampaignActionConfirmModal from './CampaignActionConfirmModal';
+import { useRoleFromPath } from '@/hooks/dashboard/admin/useRoleFromPath';
 
 interface CampaignActionsCardProps {
     campaign: Campaign;
@@ -16,7 +17,8 @@ export default function CampaignActionsCard({
     campaign,
 }: CampaignActionsCardProps) {
     const [confirmAction, setConfirmAction] = useState<null | 'pause' | 'cancel' | 'draft' | 'resume'>(null);
-
+    const role = useRoleFromPath()
+    const isAdmin = role == 'admin';
 
     const actions = useMemo(() => {
         switch (campaign.status) {
@@ -25,7 +27,7 @@ export default function CampaignActionsCard({
                     {
                         icon: <FaEdit className="w-4 h-4" />,
                         label: 'تحرير الحملة',
-                        href: `/dashboard/admin/campaigns/edit/${campaign.id}`,
+                        href: `/dashboard/${isAdmin ? 'admin' : 'marketer'}/campaigns/edit/${campaign.id}`,
                         className: 'bg-primary text-white hover:bg-primary-600'
                     }
                 ];
@@ -47,7 +49,7 @@ export default function CampaignActionsCard({
                     {
                         icon: <FaEdit className="w-4 h-4" />,
                         label: 'تحرير',
-                        href: `/dashboard/admin/campaigns/edit/${campaign.id}`,
+                        href: `/dashboard/${isAdmin ? 'admin' : 'marketer'}/campaigns/edit/${campaign.id}`,
                         className: 'bg-primary text-white hover:bg-primary-600'
                     }
                 ];
@@ -68,7 +70,7 @@ export default function CampaignActionsCard({
                     {
                         icon: <FaEdit className="w-4 h-4" />,
                         label: 'تحرير',
-                        href: `/dashboard/admin/campaigns/edit/${campaign.id}`,
+                        href: `/dashboard/${isAdmin ? 'admin' : 'marketer'}/campaigns/edit/${campaign.id}`,
                         className: 'bg-primary text-white hover:bg-primary-600'
                     }
                 ];
@@ -78,7 +80,7 @@ export default function CampaignActionsCard({
                     {
                         icon: <FaEdit className="w-4 h-4" />,
                         label: 'تحرير',
-                        href: `/dashboard/admin/campaigns/edit/${campaign.id}`,
+                        href: `/dashboard/${isAdmin ? 'admin' : 'marketer'}/campaigns/edit/${campaign.id}`,
                         className: 'bg-primary text-white hover:bg-primary-600'
                     }
                 ];

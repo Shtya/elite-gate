@@ -33,23 +33,6 @@ export default function RequertPropertyInfoSection({ control }: { control: Contr
                 />
 
                 <PriceInput<PropertyRequestFormValues> control={control} name="askedPrice" />
-
-                {/* العنوان */}
-                <Controller
-                    name="address"
-                    control={control}
-                    render={({ field }) => (
-                        <div className="col-span-12">
-                            <label className="block text-xl font-medium mb-3">العنوان</label>
-                            <input
-                                type="text"
-                                placeholder="أدخل العنوان"
-                                {...field}
-                                className="w-full border p-2 rounded-md"
-                            />
-                        </div>
-                    )}
-                />
             </div>
         </Card>
     );

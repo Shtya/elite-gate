@@ -54,10 +54,10 @@ export default async function EditCampaignPage({ params }: Props) {
         <div>
             <DashboardHeaderTitle path={['الحملات', 'تحرير الحملة']} >
                 <div className="flex gap-4 flex-wrap">
-                    <Link className="btn-primary" href={`/dashboard/admin/campaigns/${mockedCampaign.id}`}>
+                    <Link className="btn-primary" href={`/dashboard/marketer/campaigns/${mockedCampaign.id}`}>
                         <FaBullhorn /> صفحة الحمله
                     </Link>
-                    <Link className="btn-primary" href="/dashboard/admin/campaigns">
+                    <Link className="btn-primary" href="/dashboard/marketer/campaigns">
                         <BiListUl /> عرض جميع الحملات
                     </Link>
                 </div>

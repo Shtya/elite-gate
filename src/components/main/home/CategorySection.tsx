@@ -76,7 +76,8 @@ export const categories: Category[] = [
 
 export default function CategorySection() {
     return (
-        <section className="bg-white py-[60px] lg:py-[120px] relative px-3">
+        <section className="bg-white py-[60px] lg:py-[120px] relative px-3 ">
+
             <Image
                 alt="عنصر زخرفي"
                 src="/main/home/category-section-el.png"

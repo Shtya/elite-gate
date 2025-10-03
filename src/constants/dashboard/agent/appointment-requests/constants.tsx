@@ -12,6 +12,7 @@ export type AppointmentRequestRow = {
     createdAt: string;
     client: MiniUser;
     note?: string;
+    expectedProfit?: number;
 };
 
 export const appointmentRequestFilters: FilterConfig[] = [
@@ -75,6 +76,16 @@ export const appointmentRequestColumns: TableColumn<AppointmentRequestRow>[] = [
         ),
     },
     {
+        key: 'expectedProfit',
+        label: 'الربح المتوقع',
+        cell: (val?: number) =>
+            val !== undefined ? (
+                <span className="font-medium text-green-600">{val.toLocaleString()} ريال</span>
+            ) : (
+                <span className="text-gray-400 text-sm">—</span>
+            ),
+    },
+    {
         key: 'createdAt',
         label: 'تاريخ الإنشاء',
         cell: (val: string) => {
@@ -93,6 +104,7 @@ export const mockAppointmentRequests: AppointmentRequestRow[] = [
         createdAt: '2025-09-28T08:10:00',
         client: { id: 1, name: 'خالد الشمري', email: 'khaled@example.com', image: '/users/user-1.jpg' },
         note: 'أرغب بزيارة صباح السبت',
+        expectedProfit: 25000, // 💰
     },
     {
         id: 202,
@@ -100,6 +112,7 @@ export const mockAppointmentRequests: AppointmentRequestRow[] = [
         appointmentAt: '2025-10-05T09:00:00',
         createdAt: '2025-09-29T10:20:00',
         client: { id: 2, name: 'عبدالله الشهري', email: 'abdullah@example.com', image: '/users/user-2.webp' },
+        expectedProfit: 18000, // 💰
     },
     {
         id: 203,
@@ -107,7 +120,6 @@ export const mockAppointmentRequests: AppointmentRequestRow[] = [
         appointmentAt: '2025-10-07T16:15:00',
         createdAt: '2025-09-25T12:00:00',
         client: { id: 10, name: 'أماني الزهراني', email: 'amani@example.com', image: '/users/user-12.jpg' },
+        expectedProfit: 40000, // 💰
     },
 ];
-
-

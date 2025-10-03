@@ -9,6 +9,7 @@ export const campaignSchema = z.object({
 
   // Images (max 2)
   campaignImages: z.array(fileItemSchema).max(2, 'يمكن رفع صورتين كحد أقصى').optional(),
+  campaignExcel: z.array(fileItemSchema).max(2, 'يمكن رفع صورتين كحد أقصى').optional(),
 
   // Run Settings
   runType: z.enum(['once', 'recurring'], {
@@ -82,6 +83,7 @@ export interface Campaign {
   campaignTitle: string
   campaignDescription: string
   campaignImages: FileItem[]
+  campaignExcel?: FileItem[]
   targetChannel: 'email' | 'whatsapp'
   targetAudience: 'all_users' | 'agents' | 'marketers' | 'clients' | 'new_clients'
   runType: 'once' | 'recurring'

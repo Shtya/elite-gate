@@ -1,5 +1,5 @@
 import Link from "next/link";
-import LogoIcon from "./LogoIcon";
+import { SideLogoIcon } from "./LogoIcon";
 
 
 export default function LogoLink() {
@@ -8,7 +8,8 @@ export default function LogoLink() {
             <Link href="/">
                 <div className="flex items-center justify-center">
                     <div className="xl:block">
-                        <LogoIcon className="mb-2" />
+                        {/* <LogoIcon className="mb-2" /> */}
+                        <SideLogoIcon className="mb-2" />
                     </div>
 
                 </div>

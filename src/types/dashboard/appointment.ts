@@ -49,4 +49,5 @@ export type AppointmentRow = {
     agentReviewText?: string;
     isPaid?: boolean;
     proofFiles?: FileItem[];
+    expectedProfit?: number;
 };

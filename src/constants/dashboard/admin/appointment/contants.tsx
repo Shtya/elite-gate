@@ -231,6 +231,7 @@ export const mockAppointments: AppointmentRow[] = [
             },
         ],
         agentReviewStars: 4,
+        expectedProfit: 25000,
         agentReviewText: "خالد كان عميلًا محترمًا ومنظمًا، حضر في الوقت المحدد وكان واضحًا في متطلباته. التعامل معه كان سلسًا وساعدني في تقديم أفضل الخيارات له."
     },
     {
