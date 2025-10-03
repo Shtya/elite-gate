@@ -5,12 +5,12 @@ import { BsArrowLeft } from "react-icons/bs";
 
 export default function CallToActionSection() {
     return (
-        <section className="bg-white px-3 xl:px-0 relative isolate  ">
+        <section className="bg-bg-2  px-3 xl:px-0 relative isolate  ">
 
             {/* Content wrapper */}
-            <div className="relative z-[2]">
+            <div className="bg-bg-2  relative z-[2]">
 
-                <div className="!ml-0 z-10 relative mt-[110px] after:bg-[url('/main/home/cta-bg.png')] after:absolute after:left-0 3xl:after:left-[12%] 4xl:after:left-[16%] after:w-[98%] after:mx-auto lg:after:w-[84%] after:h-[388px] after:right-0 after:bottom-0 after:bg-[#c2c3f7]">
+                <div className="bg-bg-2  !ml-0 z-10 relative mt-[110px] after:bg-[url('/main/home/cta-bg.png')] after:absolute after:left-0 3xl:after:left-[12%] 4xl:after:left-[16%] after:w-[98%] after:mx-auto lg:after:w-[84%] after:h-[388px] after:right-0 after:bottom-0 after:bg-[#c2c3f7]">
                     <div className="cta-after-flip container  py-[60px] z-20 relative after:absolute lg:after:bg-[url('/main/home/cta-img.png')] after:bg-right-bottom after:bg-no-repeat after:w-full after:h-full after:bottom-0 after:pointer-events-none">
 
                         <div className="xl:pl-[90px] px-3">

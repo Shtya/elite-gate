@@ -76,7 +76,7 @@ export const categories: Category[] = [
 
 export default function CategorySection() {
     return (
-        <section className="bg-white py-[60px] lg:py-[120px] relative px-3 ">
+        <section className="bg-bg-2  py-[60px] lg:py-[120px] relative px-3 ">
             {/* Content wrapper */}
             <div className="relative z-[2]">
                 <Image

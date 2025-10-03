@@ -21,7 +21,7 @@ const clientLogos = [
 
 export default function ClientsSection() {
     return (
-        <section className="py-[60px] lg:py-[120px] relative px-3 ">
+        <section className="py-[60px] lg:py-[120px] relative  bg-bg-2  px-3 ">
 
             {/* Content wrapper */}
             <div className="relative z-[2]">
