@@ -21,9 +21,7 @@ export default function ServicesSection() {
     ];
 
     return (
-        <section className="relative bg-bg-2 py-[60px] lg:py-[120px]  bg-[url('/pattern-01.png')] bg-contain bg-center ">
-            {/* Background layers */}
-            <div className="absolute inset-0 bg-white/80 z-[1]" />
+        <section className="relative bg-bg-2 py-[60px] lg:py-[120px]  ">
 
             {/* Content wrapper */}
             <div className="relative z-[2]">

@@ -21,9 +21,7 @@ const clientLogos = [
 
 export default function ClientsSection() {
     return (
-        <section className="py-[60px] lg:py-[120px] relative px-3  bg-[url('/pattern-01.png')] bg-contain bg-center ">
-            {/* Background layers */}
-            <div className="absolute inset-0 bg-white/80 z-[1]" />
+        <section className="py-[60px] lg:py-[120px] relative px-3 ">
 
             {/* Content wrapper */}
             <div className="relative z-[2]">

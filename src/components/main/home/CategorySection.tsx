@@ -76,10 +76,7 @@ export const categories: Category[] = [
 
 export default function CategorySection() {
     return (
-        <section className="bg-white py-[60px] lg:py-[120px] relative px-3 bg-[url('/pattern-01.png')] bg-contain bg-center ">
-            {/* Background layers */}
-            <div className="absolute inset-0 bg-white/80 z-[1]" />
-
+        <section className="bg-white py-[60px] lg:py-[120px] relative px-3 ">
             {/* Content wrapper */}
             <div className="relative z-[2]">
                 <Image
@@ -124,6 +121,6 @@ export default function CategorySection() {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }

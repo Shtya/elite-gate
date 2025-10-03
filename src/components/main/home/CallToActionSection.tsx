@@ -5,9 +5,7 @@ import { BsArrowLeft } from "react-icons/bs";
 
 export default function CallToActionSection() {
     return (
-        <section className="bg-white px-3 xl:px-0 relative isolate  bg-[url('/pattern-01.png')] bg-contain bg-center ">
-            {/* Background layers */}
-            <div className="absolute inset-0 bg-white/80 z-[1]" />
+        <section className="bg-white px-3 xl:px-0 relative isolate  ">
 
             {/* Content wrapper */}
             <div className="relative z-[2]">
